@@ -7,12 +7,12 @@
       contained
     >
             
-                  <v-card color="surface" height="90vh"> 
+                  <v-card color="surface" height="auto" >  
 
                     <v-toolbar density="compact"><span class="text-h6 pl-4">Add a new trace</span><v-spacer /><v-btn size="small" @click="close">close</v-btn></v-toolbar>
                     
      <v-card-text>
-          <v-row justify="center">
+          <v-row justify="">
             <v-col class="outer">
                <Avatar :image="props.image" :trace="trace" width="300" />
             </v-col>
@@ -36,7 +36,12 @@
             
           </v-row>
      </v-card-text>
-          <v-btn class="ma-4 pa-4" color="primary" @click="writeTrace" block>Submit</v-btn>
+     <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn @click="close">close</v-btn>
+          <v-btn @click="writeTrace">Submit</v-btn>
+     </v-card-actions>
+          
      
         
                   </v-card>

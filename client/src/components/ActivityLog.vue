@@ -8,7 +8,7 @@
             <v-card-text class="pa-0">
             <Avatar :image="props.image" :trace="trace" width="120" />
             
-            <strong>new avatar</strong> Anonymous Penguin created a trace 5 minutes ago.
+            <strong>new avatar</strong> Anonymous Penguin created a trace <Timeago :datetime="trace.createdAt" />
             
             </v-card-text>
           </v-card>

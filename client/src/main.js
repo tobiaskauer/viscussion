@@ -6,7 +6,8 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import Vue3TouchEvents from "vue3-touch-events";
+import timeago from 'vue-timeago3'
+
 import colors from 'vuetify/lib/util/colors'
 
 
@@ -52,7 +53,7 @@ createApp(App)
   .use(router)
   .use(vuetify)
   .use(pinia)
-  .use(Vue3TouchEvents)
+  .use(timeago)
   .mount('#app')
 
   //clear console on vite's hot relad

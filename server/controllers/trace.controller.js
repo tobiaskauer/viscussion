@@ -24,9 +24,7 @@ exports.create = (req, res) => {
       height:req.body.height,
 
     };
-
-    console.log(trace)
-  
+ 
     // Save Tutorial in the database
     Trace.create(trace)
       .then(data => {
@@ -50,7 +48,7 @@ exports.findAll = (req, res) => {
         width: {[Op.gt]: 0}, //width > 0
         height: {[Op.gt]: 0},
       },
-      attributes: ["id", "category", "text", "image", "x", "y", "width", "height"]
+      attributes: ["id", "category", "text", "image", "x", "y", "width", "height","createdAt"]
     })
       .then(data => {
         res.send(data);
