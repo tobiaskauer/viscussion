@@ -35,13 +35,6 @@ const image = computed(() => {
 const traces = computed(() => {     
      return traceStore.getTraces
 })
-
-
-
-
-
-
-
 </script>
 
 <style scoped>

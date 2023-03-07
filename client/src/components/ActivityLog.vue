@@ -1,15 +1,19 @@
 <template>
     <v-row >
-      <v-col class="v-col-8">
+      <v-col class="v-col-8" ref="list">
       <TransitionGroup tag="ul" name="list">
         <li v-for="(trace, index) in props.traces" :key="'tracelog-'+trace.id">
           <v-card color="surface">
             
             <v-card-text class="pa-0">
-            <Avatar v-if="avatar.width" :image="props.image" :trace="trace" :width="avatar.width" />
-            
-            <strong>new avatar</strong> Anonymous Penguin created a trace <Timeago :datetime="trace.createdAt" />
-            
+              <v-row>
+                <v-col style="background: red" class="v-col-2">
+                  <Avatar v-id="avatar.width" :image="props.image" :trace="trace" :width="avatar.width" />
+                </v-col>
+                <v-col class="v-col-10 pl-5 pt-5" >
+                  <strong>new avatar</strong> Anonymous Penguin created a trace <Timeago :datetime="trace.createdAt" />
+                </v-col>
+          </v-row>
             </v-card-text>
           </v-card>
         </li>
@@ -28,29 +32,22 @@ const props = defineProps(['image', 'traces'])
 const clipWidth = 120 //TODO: make this reactive and bind it to the containerWidth of the avatarcontainer
 
 const avatar = reactive({width: null})
-const avatarContainer = ref([])
+const list = ref(null)
 
 
 onMounted(() => {
-  let container = avatarContainer.value
-  if(container) {
-    let listItem = container[0]
-    if(listItem) {
-      let element = listItem.$el
-      if(element) console.log(element)
-    }
-  }
-  
-  /*if(avatarContainer.value) {
-    console.log(avatarContainer.value[2])
-  }*/
-  
+  avatar.width = getWidth()
 })
 
-const getWidth = ((container) => {
-  console.log(container)
+const getWidth = (() => {
+  console.log("resize")
+  let width = list.value.$el.clientWidth * .16666666
+  return width
 })
 
+window.onresize = function() {
+  avatar.width = getWidth()
+}
 
 </script>
 
