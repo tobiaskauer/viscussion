@@ -24,7 +24,7 @@ let avatar = computed(()  => {
     avatar.height = width * aspectRatio
     //TODO: check if height is over props.height and resize accordingly
     if(avatar.height > height) {console.log('reverse it')}
-    avatar.zoom = zoomFactor * image.width * 0.95 //zoom out to correct for some errors
+    avatar.zoom = zoomFactor * image.width * 0.9 //zoom out to correct for some errors
 
     avatar.x = trace.x / image.width * 107 //this should be 100 but css is a wild language
     avatar.y = trace.y / image.height * 107

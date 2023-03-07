@@ -7,7 +7,9 @@ module.exports = app => {
     router.post("/", traces.create);
   
     // Retrieve all Traces for one image
-    router.get("/:image", traces.findAll);
+    router.get("/:image", traces.findImageTraces);
+
+    router.get("/", traces.findAll);
   
     // Retrieve all published Traces
     router.get("/published", traces.findAllPublished);

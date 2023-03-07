@@ -31,7 +31,6 @@
 
 <script setup>
 //import original from '../assets/chess.webp'
-import { UNREF } from '@vue/compiler-core';
 import { reactive, onMounted, computed, ref, watch, nextTick, onUnmounted } from 'vue'
 import Avatar from './Avatar.vue'
 const props = defineProps(['image', 'traces'])

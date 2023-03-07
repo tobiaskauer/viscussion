@@ -1,5 +1,6 @@
 const db = require("../models");
 const Image = db.images;
+const Trace = db.traces;
 var sizeOf = require('image-size');
 
 

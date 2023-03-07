@@ -4,7 +4,7 @@
       persistent
       width="50%"
       min-width="340px"
-      contained
+      
     >
             
                   <v-card color="surface" height="auto" >  
@@ -12,7 +12,7 @@
                     <v-toolbar density="compact"><span class="text-h6 pl-4">Add a new trace</span><v-spacer /><v-btn size="small" @click="close">close</v-btn></v-toolbar>
                     
      <v-card-text>
-          <v-row justify="">
+          <v-row>
             <v-col class="v-col-6" ref="avatar" >
                <Avatar :image="props.image" :trace="trace" width="300" />
             </v-col>
@@ -87,7 +87,7 @@ const writeTrace = (() => {
           width: props.trace.width,
           height: props.trace.height,
      })
-     
+
      
 })
 

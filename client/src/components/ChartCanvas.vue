@@ -143,14 +143,6 @@ window.onresize = function() {
 }
 
 
-function tapHandler(foo) {
-  return function(foo) {
-    console.log(foo)
-  }
-}
-
-
-
 const mouseDown = ((e) => {
   let rect = e.target.getBoundingClientRect();
 

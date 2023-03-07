@@ -39,7 +39,7 @@ exports.create = (req, res) => {
   };
 
 // Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
+exports.findImageTraces = (req, res) => {
   const image = req.params.image;
     
     Trace.findAll({
@@ -60,6 +60,21 @@ exports.findAll = (req, res) => {
         });
       });
   };
+
+exports.findAll = (req, res) => {
+  Trace.findAll({
+    attributes: ["id", "category", "text", "image", "x", "y", "width", "height","createdAt"]
+  })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+};
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
