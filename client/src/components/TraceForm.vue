@@ -25,11 +25,9 @@
       ></v-text-field>
       <v-textarea block v-model="input.comment" label="Your comment (optional)"></v-textarea>
       What best describes your trace? (optional)
-      <v-chip-group v-model="input.category">
-  <v-chip value="personal">Personal Story</v-chip>
-  <v-chip value="critique">Problem</v-chip>
-  <v-chip value="question">Question</v-chip>
-</v-chip-group>
+      <v-chip-group v-model="input.category" multiple selected-class="text-deep-purple-accent-4">
+      <v-chip v-for="category in categories" :key="category.key" :value="category.key">{{ category.name }}</v-chip>
+    </v-chip-group>
 
                </v-form>
             </v-col>
@@ -55,31 +53,26 @@ import { reactive, onMounted, ref, watch, computed, onUnmounted } from 'vue'
 import { useTraceStore } from "../stores/traceStore.js";
 import Avatar from './Avatar.vue'
 
-const store = useTraceStore()
+const traceStore = useTraceStore()
 const props = defineProps(['display','trace', 'image'])
 const emit = defineEmits(['close'])
 const close = (() => {
      emit('close')
 })
 
-
-/*const avatarContainer = ref(null)
-
-watch(avatarContainer, (avatarContainer) => {
-     console.log(avatarContainer)
-})*/
+const categories = computed(() => traceStore.getCategories)
 
 
 let input = reactive({
      name: "",
      comment: "",
-     category: "",
+     category: [],
 })
 
 
 const writeTrace = (() => {
-     store.writeTrace({
-          category: input.category,
+     traceStore.writeTrace({
+          category: input.category.join(","),
           text: input.comment,
           image: props.image.id,
           x: props.trace.x,

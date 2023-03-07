@@ -1,7 +1,7 @@
 <template>
   <div class="avatarWrapper">
-    <div :style="'width: '+(width)+'px; padding: '+padding+'px; background: #ED6A63;'">
-      <div class="traceAvatar" :style="'padding: 0; margin: 0; background-image: url('+avatar.url+'); background-size: '+avatar.zoom+'px; background-position-x: '+avatar.x+'%; background-position-y: '+avatar.y+'%; height: '+avatar.height+'px; width: '+avatar.width+'px;'"></div>
+    <div class="problem" :style="'width: '+(width)+'px; padding: '+padding+'px;'">
+      <div class="traceAvatar"  :style="'background-image: url('+avatar.url+'); background-size: '+avatar.zoom+'px; background-position-x: '+avatar.x+'%; background-position-y: '+avatar.y+'%; height: '+avatar.height+'px; width: '+avatar.width+'px;'"></div>
      </div>
   </div>
 </template>
@@ -41,4 +41,16 @@ let avatar = computed(()  => {
 
 
 <style scoped>
+.traceAvatar {
+  padding: 0; margin: 0; 
+}
+
+.plain {background: rgba(var(--v-theme-plain), 1)}
+.observation {background: rgba(var(--v-theme-problem), 1)}
+.hypothesis {background: rgba(var(--v-theme-hypothesis), 1)}
+.question {background: rgba(var(--v-theme-question), 1)}
+.problem {background: rgba(var(--v-theme-problem), 1)}
+.context {background: rgba(var(--v-theme-context), 1)}
+.personal {background: rgba(var(--v-theme-personal), 1)}
+.optinion {background: rgba(var(--v-theme-opinion), 1)}
 </style>

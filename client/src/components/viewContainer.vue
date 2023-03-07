@@ -23,12 +23,12 @@
           </v-col>
      </v-row>
      <v-row>
-          <v-col class="v-col-8">
+          
                <ChartCanvas v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>
-          </v-col>
-          <v-col class="v-col-4 pt-0">
+          
+          
                <ActivityLog v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>
-          </v-col>
+          
      </v-row>
 
 </v-container>

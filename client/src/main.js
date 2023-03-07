@@ -7,6 +7,8 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import timeago from 'vue-timeago3'
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
+
 
 import colors from 'vuetify/lib/util/colors'
 
@@ -32,12 +34,23 @@ const myCustomLightTheme = {
     info: '#2196F3',
     success: '#4CAF50',
     warning: '#FB8C00',
+
+    plain: '#ffffff',
+    problem: '#6200ea',
+
   }
 }
 
 const vuetify = createVuetify({
   components,
   directives,
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi,
+    }
+  },
   theme: {
     defaultTheme: 'myCustomLightTheme',
     themes: {

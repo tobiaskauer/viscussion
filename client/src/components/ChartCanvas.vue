@@ -1,4 +1,5 @@
 <template>
+  <v-col class="v-col-8">
     <v-row v-if="props.image">
       
       <v-col id="wrapper" class="v-col-12">
@@ -25,6 +26,7 @@
               :key="'trace-'+trace.id"
               class="trace"
               :class="{'untouchable': newTrace.drawing, 'elevation-10': (trace.id == highlight)}"
+              @mouseleave="setHighlight(null)"
               @mouseenter="setHighlight(trace.id)"
               :data-index="index"
               :style="'top: '+trace.y+'px; left: '+trace.x+'px; width: '+trace.width+'px; height: '+trace.height+'px;'"></li>
@@ -39,6 +41,7 @@
         <template v-else>on</template>
       </v-btn>
     </v-row>
+  </v-col>
 </template>
 
 <script setup>
