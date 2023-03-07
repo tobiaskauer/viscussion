@@ -31,12 +31,14 @@ export const useTraceStore = defineStore('trace', {
   getters: {
     getTraces(state){
       let traces = state.traces.map(trace => {
-        let arr  = (trace.category) ? trace.category.split(",") : null
+        //let arr  = (trace.category) ? trace.category.split(",") : null
         
-        console.log(arr)
+        //TODO: split categories
         return trace
       })
       if(state.newTrace) traces.push(this.newTrace)
+
+      //TODO: Filter by activecategories
 
       
       return traces
