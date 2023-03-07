@@ -13,7 +13,7 @@
                     
      <v-card-text>
           <v-row justify="">
-            <v-col class="outer">
+            <v-col class="v-col-6" ref="avatar" >
                <Avatar :image="props.image" :trace="trace" width="300" />
             </v-col>
             <v-col class="v-col-auto">
@@ -51,7 +51,7 @@
 
 <script setup>
 
-import { reactive, onMounted, ref, computed, onUnmounted } from 'vue'
+import { reactive, onMounted, ref, watch, computed, onUnmounted } from 'vue'
 import { useTraceStore } from "../stores/traceStore.js";
 import Avatar from './Avatar.vue'
 
@@ -61,6 +61,13 @@ const emit = defineEmits(['close'])
 const close = (() => {
      emit('close')
 })
+
+
+/*const avatarContainer = ref(null)
+
+watch(avatarContainer, (avatarContainer) => {
+     console.log(avatarContainer)
+})*/
 
 
 let input = reactive({

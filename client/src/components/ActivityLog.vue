@@ -6,7 +6,7 @@
           <v-card color="surface">
             
             <v-card-text class="pa-0">
-            <Avatar :image="props.image" :trace="trace" width="120" />
+            <Avatar v-if="avatar.width" :image="props.image" :trace="trace" :width="avatar.width" />
             
             <strong>new avatar</strong> Anonymous Penguin created a trace <Timeago :datetime="trace.createdAt" />
             
@@ -20,27 +20,36 @@
 
 <script setup>
 //import original from '../assets/chess.webp'
-import { reactive, onMounted, computed, nextTick, onUnmounted } from 'vue'
+import { UNREF } from '@vue/compiler-core';
+import { reactive, onMounted, computed, ref, watch, nextTick, onUnmounted } from 'vue'
 import Avatar from './Avatar.vue'
-import { useTraceStore } from "../stores/traceStore.js";
-
-const store = useTraceStore();
 const props = defineProps(['image', 'traces'])
 
-const clipWidth = 120
+const clipWidth = 120 //TODO: make this reactive and bind it to the containerWidth of the avatarcontainer
+
+const avatar = reactive({width: null})
+const avatarContainer = ref([])
 
 
-/*const traces = computed(() => {
-  let traces = props.traces
-  traces.forEach(trace => {
-    trace.avatar = createAvatar({
-      trace: trace,
-      image: props.image,
-      width: 120
-    })
-  })
-  return traces
-});*/
+onMounted(() => {
+  let container = avatarContainer.value
+  if(container) {
+    let listItem = container[0]
+    if(listItem) {
+      let element = listItem.$el
+      if(element) console.log(element)
+    }
+  }
+  
+  /*if(avatarContainer.value) {
+    console.log(avatarContainer.value[2])
+  }*/
+  
+})
+
+const getWidth = ((container) => {
+  console.log(container)
+})
 
 
 </script>
