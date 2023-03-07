@@ -1,25 +1,32 @@
 <template>
-    <v-row >
-      <v-col class="v-col-8" ref="list">
-      <TransitionGroup tag="ul" name="list">
+    <TransitionGroup tag="ul" name="list" ref="list">
         <li v-for="(trace, index) in props.traces" :key="'tracelog-'+trace.id">
           <v-card color="surface">
             
             <v-card-text class="pa-0">
-              <v-row>
-                <v-col style="background: red" class="v-col-2">
-                  <Avatar v-id="avatar.width" :image="props.image" :trace="trace" :width="avatar.width" />
+              <v-row no-gutters="">
+                <v-col class="v-col-4 ma-0 pa-3">
+                  <Avatar v-if="avatar.width" :image="props.image" :trace="trace" :width="avatar.width" />
                 </v-col>
-                <v-col class="v-col-10 pl-5 pt-5" >
-                  <strong>new avatar</strong> Anonymous Penguin created a trace <Timeago :datetime="trace.createdAt" />
+                <v-col class="v-col-8 pl-5 pa-3" >
+                  
+
+                    <div class="mb-2">
+                      <h5>Anonymous Penguin</h5> (<Timeago :datetime="trace.createdAt" />)
+                    </div>
+                    
+                    <p v-if="trace.text">{{ trace.text }}</p>
+                    <p v-else>This area is interesting to me!</p>
+
+                                  
+                
+
                 </v-col>
           </v-row>
             </v-card-text>
           </v-card>
         </li>
       </TransitionGroup>
-    </v-col>
-    </v-row>  
 </template>
 
 <script setup>
@@ -40,8 +47,7 @@ onMounted(() => {
 })
 
 const getWidth = (() => {
-  console.log("resize")
-  let width = list.value.$el.clientWidth * .16666666
+  let width = Math.round(list.value.$el.clientWidth * .33333)
   return width
 })
 
@@ -52,6 +58,9 @@ window.onresize = function() {
 </script>
 
 <style scoped>
+h5 {
+  display: inline;
+}
 li {
   list-style: none;
   margin-bottom: 10px;

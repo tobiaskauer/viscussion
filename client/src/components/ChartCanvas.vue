@@ -1,6 +1,5 @@
 <template>
-  <v-container>
-    <v-row v-if="props.image" justify="start">
+    <v-row v-if="props.image">
       
       <v-col id="wrapper" class="v-col-12">
         <div id="inner" :style="'width: '+dimensions.width+'px; height: '+dimensions.height+'px;'">
@@ -39,7 +38,6 @@
         <template v-else>on</template>
       </v-btn>
     </v-row>
-  </v-container>
 </template>
 
 <script setup>
@@ -47,11 +45,15 @@
 import { reactive, onMounted, computed, onUnmounted } from 'vue'
 import TraceForm from './TraceForm.vue'
 
+//import { useTraceStore } from "../stores/traceStore.js";
 import { gsap } from 'gsap';
 
-const close = (() => {
+const close = ((payload) => {
+  console.log(payload)
   form.display = false
 }) 
+
+//const traceStore = useTraceStore();
 
 const props = defineProps(['image','traces'])
 

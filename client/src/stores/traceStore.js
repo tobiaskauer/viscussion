@@ -31,7 +31,6 @@ export const useTraceStore = defineStore('trace', {
     },
 
     async writeTrace(payload) {
-      
       try {
         const newTrace = await axios.post('http://localhost:8080/api/trace', payload)
       } catch (error) {

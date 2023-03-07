@@ -1,6 +1,6 @@
 <template>
   <div class="avatarWrapper">
-    <div :style="'width: '+(width)+'px; padding: '+padding+'px; background: #ED6A63; float: left;'">
+    <div :style="'width: '+(width)+'px; padding: '+padding+'px; background: #ED6A63;'">
       <div class="traceAvatar" :style="'padding: 0; margin: 0; background-image: url('+avatar.url+'); background-size: '+avatar.zoom+'px; background-position-x: '+avatar.x+'%; background-position-y: '+avatar.y+'%; height: '+avatar.height+'px; width: '+avatar.width+'px;'"></div>
      </div>
   </div>
@@ -9,7 +9,7 @@
 import { computed } from 'vue'
 const props = defineProps(['trace','image','width', 'height'])
 
-let padding = 10
+let padding = 2
 
 let avatar = computed(()  => {
   let trace  = props.trace
