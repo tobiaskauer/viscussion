@@ -59,7 +59,7 @@ const store = useTraceStore()
 const props = defineProps(['display','trace', 'image'])
 const emit = defineEmits(['close'])
 const close = (() => {
-     emit('close',{message: "foobar"})
+     emit('close')
 })
 
 
@@ -87,6 +87,7 @@ const writeTrace = (() => {
           width: props.trace.width,
           height: props.trace.height,
      })
+     close()
 
      
 })

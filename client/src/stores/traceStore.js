@@ -9,18 +9,29 @@ export const useTraceStore = defineStore('trace', {
 
   state: () => ({
     traces: [], //of a single image
-    allTraces: []
+    allTraces: [],
+    highlight: null,
+    newTrace: null
 
   }),
 
   getters: {
     getTraces(state){
-      return state.traces
+      let traces = state.traces
+      if(state.newTrace) traces.push(this.newTrace)
+      return traces
     },
     getAllTraces(state){
       return state.allTraces
+    },
+    getHighlight(state){
+      return state.highlight
+    },
+    getNewTrace(state){
+      return state.newTrace
     }
   },
+  
 
   actions: {
     async fetchAllTraces() {
@@ -47,17 +58,20 @@ export const useTraceStore = defineStore('trace', {
     async writeTrace(payload) {
       try {
         const newTrace = await axios.post('http://localhost:8080/api/trace', payload)
+        this.newTrace = newTrace.data
+        
       } catch (error) {
         console.log(error.response)
         // let the form component display the error
         return error
       }
     },
+
+    setHighlight(id) {
+      this.highlight = id
+    }
+
+
 },
-  
-})
-
-
-export const useUserStore = defineStore("user", {
   
 })

@@ -24,7 +24,8 @@
               v-for="(trace, index) in traces"
               :key="'trace-'+trace.id"
               class="trace"
-              :class="{untouchable: newTrace.drawing}"
+              :class="{'untouchable': newTrace.drawing, 'elevation-10': (trace.id == highlight)}"
+              @mouseenter="setHighlight(trace.id)"
               :data-index="index"
               :style="'top: '+trace.y+'px; left: '+trace.x+'px; width: '+trace.width+'px; height: '+trace.height+'px;'"></li>
             </TransitionGroup>
@@ -33,7 +34,7 @@
         </div>
       </v-col>
       <v-btn :variant="lights.on ? 'tonal' : 'outlined'" @click="lights.on = !lights.on">
-        lights 
+        lights
         <template v-if="lights.on">off</template>
         <template v-else>on</template>
       </v-btn>
@@ -44,18 +45,27 @@
 //import original from '../assets/chess.webp'
 import { reactive, onMounted, computed, onUnmounted } from 'vue'
 import TraceForm from './TraceForm.vue'
-
-//import { useTraceStore } from "../stores/traceStore.js";
+import { useTraceStore } from "../stores/traceStore.js";
 import { gsap } from 'gsap';
 
-const close = ((payload) => {
-  console.log(payload)
+const traceStore = useTraceStore()
+const props = defineProps(['image','traces'])
+
+const close = (() => {
   form.display = false
 }) 
 
 //const traceStore = useTraceStore();
 
-const props = defineProps(['image','traces'])
+const setHighlight = ((id) => {
+  if(!newTrace.drawing) {
+    traceStore.setHighlight(id)
+  }
+})
+
+const highlight = computed(() => {
+  return traceStore.getHighlight
+})
 
 onMounted(() => {
   setDimensions()

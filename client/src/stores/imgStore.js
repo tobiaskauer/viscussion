@@ -39,8 +39,6 @@ export const useImageStore = defineStore('image', {
 try {
         const images = await axios.get(server+apiURL+'image')
         this.images = images.data
-        console.log(images.data)
-        
       }
       catch (error) {
         console.log(error)

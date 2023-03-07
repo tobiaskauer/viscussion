@@ -27,7 +27,7 @@ let avatar = computed(()  => {
     avatar.zoom = zoomFactor * image.width * 0.9 //zoom out to correct for some errors
 
     avatar.x = trace.x / image.width * 107 //this should be 100 but css is a wild language
-    avatar.y = trace.y / image.height * 107
+    avatar.y = trace.y / image.height * 110
 
 
 

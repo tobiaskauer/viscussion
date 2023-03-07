@@ -14,11 +14,11 @@
     <v-img :src="image.url" contain></v-img>
                          <v-card-item>
                               <v-card-text class="">
-                                   <h4>{{ image.title }}</h4>
+                                   <strong>{{ image.title }}</strong>
                                    (<Timeago :datetime="image.createdAt" />)
                                    
                                    <!--<p>{{ images.traces.length }} traces in the </p>-->
-                                   <p v-if="image.traces">{{ image.traces.length }} recorded traces2</p>
+                                   <p v-if="image.traces">{{ image.traces.length }} recorded traces</p>
                               </v-card-text>
                          </v-card-item></v-card>
   </template>
@@ -29,9 +29,16 @@
                     <router-link to="create">
                     <v-hover>
                          <template v-slot:default="{isHovering, props}">
-                         <v-card v-bind="props" :color="isHovering ? 'primary' : undefined ">
-                              <v-icon icon="mdi-plus"></v-icon>
-                              Add new
+                         <v-card min-height="200px" v-bind="props" :color="isHovering ? 'primary' : undefined ">
+                              <v-card-text>
+                                   <v-btn>
+                                   <v-icon start icon="mdi-vuetify"></v-icon>
+                                   Add new
+                                   </v-btn>
+                              </v-card-text>
+                              
+
+                              
                          </v-card>
                          </template>
                     </v-hover>

@@ -1,7 +1,8 @@
 <template>
     <TransitionGroup tag="ul" name="list" ref="list">
+          
         <li v-for="(trace, index) in props.traces" :key="'tracelog-'+trace.id">
-          <v-card color="surface">
+          <v-card :color="(trace.id == highlight) ? 'primary' : 'surface'" @mouseenter="setHighlight(trace.id)" @mouseleave="setHighlight(null)">
             
             <v-card-text class="pa-0">
               <v-row no-gutters="">
@@ -33,13 +34,26 @@
 //import original from '../assets/chess.webp'
 import { reactive, onMounted, computed, ref, watch, nextTick, onUnmounted } from 'vue'
 import Avatar from './Avatar.vue'
+import { useTraceStore } from "../stores/traceStore.js";
 const props = defineProps(['image', 'traces'])
-
-const clipWidth = 120 //TODO: make this reactive and bind it to the containerWidth of the avatarcontainer
+const traceStore = useTraceStore();
 
 const avatar = reactive({width: null})
 const list = ref(null)
 
+const setHighlight = ((id) => {
+ traceStore.setHighlight(id)
+})
+
+const highlight = computed(() => {
+  return traceStore.getHighlight
+})
+
+watch(highlight, newHighlight => {
+  if(newHighlight) {
+    //TODO scroll to element
+  }
+})
 
 onMounted(() => {
   avatar.width = getWidth()
