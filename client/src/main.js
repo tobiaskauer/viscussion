@@ -36,10 +36,20 @@ const myCustomLightTheme = {
     warning: '#FB8C00',
 
     plain: '#ffffff',
-    problem: '#6200ea',
+    observation: colors.indigo.base,
+    critique: colors.red.base,
+    hypothesis: colors.pink.base,
+    question: colors.blue.base,
+    problem: colors.teal.base,
+    context: colors.lime.base,
+    personal: colors.amber.base,
+    optinion: colors.yellow.base,
+    
 
   }
 }
+
+
 
 const vuetify = createVuetify({
   components,

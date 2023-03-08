@@ -23,7 +23,8 @@
                     
                     <p v-if="trace.text">Anonymous  {{ trace.text }}</p>
                     <p v-else>This area is interesting to me!</p>
-                    {{ trace.category }}
+                    <!--<v-chip v-if="trace.category" size="small">{{ categories.find(category => category.key == trace.category).name }}</v-chip>-->
+                    
                 </v-col>
           </v-row>
             </v-card-text>
@@ -61,12 +62,6 @@ watch(selectedCategory, updated => {
 const highlight = computed(() => {
   return traceStore.getHighlight
 })
-
-/*watch(highlight, newHighlight => {
-  if(newHighlight) {
-    //TODO scroll to element
-  }
-})*/
 
 onMounted(() => {
   avatar.width = getWidth()

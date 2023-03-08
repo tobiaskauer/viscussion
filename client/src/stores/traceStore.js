@@ -31,6 +31,7 @@ export const useTraceStore = defineStore('trace', {
   getters: {
     getTraces(state){
       //push new trace to state after it is created but not yet retrieved from the api
+      let traces = state.traces
       if(state.newTrace) traces.push(this.newTrace)
       
       //filter by active categories (if present)
@@ -65,17 +66,16 @@ export const useTraceStore = defineStore('trace', {
 
   actions: {
     async fetchAllTraces() {
-      try {
-        const allTraces = await axios.get('http://localhost:8080/api/trace')
-        allTraces.forEach(trace => {
+      axios.get('http://localhost:8080/api/trace')
+      .then(traces => {
+        traces.data.forEach(trace => {
           trace.category = (trace.category) ? trace.category.split(",") : []
         })
-        this.allTraces = allTraces.data
-      }
-      catch (error) {
-        
+        this.allTraces = traces.data
+      })
+      .catch(error => {
         console.log(error)
-      }
+      })
     },
     async fetchTraces(imageId) {
       /*try {

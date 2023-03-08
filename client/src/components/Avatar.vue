@@ -45,12 +45,5 @@ let avatar = computed(()  => {
   padding: 0; margin: 0; 
 }
 
-.plain {background: rgba(var(--v-theme-plain), 1)}
-.observation {background: rgba(var(--v-theme-problem), 1)}
-.hypothesis {background: rgba(var(--v-theme-hypothesis), 1)}
-.question {background: rgba(var(--v-theme-question), 1)}
-.problem {background: rgba(var(--v-theme-problem), 1)}
-.context {background: rgba(var(--v-theme-context), 1)}
-.personal {background: rgba(var(--v-theme-personal), 1)}
-.optinion {background: rgba(var(--v-theme-opinion), 1)}
+
 </style>

@@ -11,7 +11,8 @@
       v-bind="props"
       :color="isHovering ? 'primary' : undefined"
     >
-    <v-img :src="image.url" contain></v-img>
+    <!--<v-img :src="image.url" contain></v-img>-->
+    <tracedImage :image="image" :traces="image.traces"></tracedImage>
                          <v-card-item>
                               <v-card-text class="">
                                    <strong>{{ image.title }}</strong>
@@ -53,6 +54,7 @@
 <script setup>
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
+import tracedImage from "./tracedImage.vue";
 
 import { reactive, onMounted, computed, onUnmounted } from 'vue'
 const traceStore = useTraceStore();
@@ -68,9 +70,6 @@ const images = computed(() => {
      return images
 })
 
-const traces = computed(() => {
-     return 
-})
 
 onMounted(() => {
      imageStore.fetchAllImages()

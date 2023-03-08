@@ -58,16 +58,19 @@ const props = defineProps(['display','trace', 'image'])
 const emit = defineEmits(['close'])
 const close = (() => {
      emit('close')
+     Object.assign(input,initialInput)
+
 })
 
 const categories = computed(() => traceStore.getCategories)
 
-
-let input = reactive({
+const initialInput = {
      name: "",
      comment: "",
      category: [],
-})
+}
+
+let input = reactive({...initialInput})
 
 
 const writeTrace = (() => {

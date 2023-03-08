@@ -11,7 +11,7 @@
               
             
             
-            <div id="traces" @mousedown="mouseDown" @mouseup="mouseUp" @mousemove="mouseMove">
+            <div id="traces" ref="traceRef" @mousedown="mouseDown" @mouseup="mouseUp" @mousemove="mouseMove">
            
               <!--<div f-vor="trace in traces" :key="trace.id">{{ trace }}</div>-->
               <div id="newTrace" class="untouchable" v-if="newTrace.drawing || newTrace.drawn" :style="'top: '+newTrace.onScreen.y+'px; left: '+newTrace.onScreen.x+'px; width: '+newTrace.onScreen.width+'px; height: '+newTrace.onScreen.height+'px;'"></div>
@@ -25,7 +25,8 @@
               v-for="(trace, index) in traces"
               :key="'trace-'+trace.id"
               class="trace"
-              :class="{'untouchable': newTrace.drawing, 'elevation-10': (trace.id == highlight)}"
+              :class="liClass(trace)"
+              
               @mouseleave="setHighlight(null)"
               @mouseenter="setHighlight(trace.id)"
               :data-index="index"
@@ -46,16 +47,26 @@
 
 <script setup>
 //import original from '../assets/chess.webp'
-import { reactive, onMounted, computed, onUnmounted } from 'vue'
+import { reactive, onMounted, computed, ref, onUnmounted } from 'vue'
 import TraceForm from './TraceForm.vue'
 import { useTraceStore } from "../stores/traceStore.js";
 import { gsap } from 'gsap';
 
 const traceStore = useTraceStore()
 const props = defineProps(['image','traces'])
+const traceRef = ref(null)
+
+const liClass = (input) => {
+  console.log(input)
+  //:class="{'untouchable': newTrace.drawing, 'elevation-10': (trace.id == highlight)}"
+  return "untouchable elevation10"
+  
+}
 
 const close = (() => {
   form.display = false
+
+
 }) 
 
 //const traceStore = useTraceStore();
@@ -91,7 +102,7 @@ const dimensions = reactive({
 })
 
 const lights = reactive({
-  on: true
+  on: false,
 })
 
 const form = reactive({
@@ -157,7 +168,8 @@ window.onresize = function() {
 
 
 const mouseDown = ((e) => {
-  let rect = e.target.getBoundingClientRect();
+  //let rect = e.target.getBoundingClientRect();
+  let rect = traceRef.value.getBoundingClientRect()
 
   let x = e.clientX - rect.left;
   let y = e.clientY - rect.top;
@@ -176,7 +188,9 @@ const mouseDown = ((e) => {
 const mouseMove = ((e) => {
   //TODO implement vue3-touch-events to differentiate between clicking a trace and dragging a new one
   if(newTrace.drawing) {
-    let rect = e.target.getBoundingClientRect();
+    //let rect = e.target.getBoundingClientRect();
+    let rect = traceRef.value.getBoundingClientRect()
+
     let currentX = e.clientX - rect.left;
     let currentY = e.clientY - rect.top;
     
@@ -196,7 +210,6 @@ const mouseMove = ((e) => {
     }
   }
 
-  
 })
 
 const mouseUp = (() => {
