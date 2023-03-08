@@ -55,7 +55,7 @@ const randomAnimal = computed(() => {
 const categories = computed(() => traceStore.getCategories)
 const selectedCategory = reactive({key: null})
 watch(selectedCategory, updated => {
-  traceStore.setActiveCategories(updated)
+  traceStore.setActiveCategories(updated.key)
 })
 
 const highlight = computed(() => {

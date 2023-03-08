@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref, computed, toRaw } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
@@ -30,17 +30,16 @@ export const useTraceStore = defineStore('trace', {
 
   getters: {
     getTraces(state){
-      let traces = state.traces.map(trace => {
-        //let arr  = (trace.category) ? trace.category.split(",") : null
-        
-        //TODO: split categories
-        return trace
-      })
+      //push new trace to state after it is created but not yet retrieved from the api
       if(state.newTrace) traces.push(this.newTrace)
-
-      //TODO: Filter by activecategories
-
       
+      //filter by active categories (if present)
+      if(this.activeCategories.length > 0) {
+        traces = traces.filter(trace => {
+          let bools = this.activeCategories.map(activeCategory => toRaw(trace.category).includes(activeCategory)) //write array of bools for presence of active category in current trace (ideally, rewrite to break after first occurence)
+          return bools.includes(true)           
+        })
+      }
       return traces
     },
     getCategories(state) {
@@ -68,6 +67,9 @@ export const useTraceStore = defineStore('trace', {
     async fetchAllTraces() {
       try {
         const allTraces = await axios.get('http://localhost:8080/api/trace')
+        allTraces.forEach(trace => {
+          trace.category = (trace.category) ? trace.category.split(",") : []
+        })
         this.allTraces = allTraces.data
       }
       catch (error) {
@@ -76,14 +78,33 @@ export const useTraceStore = defineStore('trace', {
       }
     },
     async fetchTraces(imageId) {
-      try {
+      /*try {
+        
         const traces = await axios.get('http://localhost:8080/api/trace/'+imageId)
+        console.log(traces.data)
+        traces.data.forEach(trace => {
+          trace.category = trace.category.split(",")
+          console.log(trace.category)
+          
+        })
         this.traces = traces.data
+
       }
       catch (error) {
         
         console.log(error)
-      }
+      }*/
+
+      axios.get('http://localhost:8080/api/trace/'+imageId)
+      .then(traces => {
+        traces.data.forEach(trace => {
+          trace.category = (trace.category) ? trace.category.split(",") : []
+        })
+        this.traces = traces.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
     },
 
     async writeTrace(payload) {

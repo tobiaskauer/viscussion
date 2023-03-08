@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" >
-      <v-toolbar-title>viscussion</v-toolbar-title>
+      <v-toolbar-title><router-link to="/">viscussion</router-link></v-toolbar-title>
 
 </v-app-bar>
     <v-main>
