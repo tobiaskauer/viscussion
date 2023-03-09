@@ -1,13 +1,18 @@
 <template>
-  <div class="avatarWrapper">
-    <div class="problem" :style="'width: '+(width)+'px; padding: '+padding+'px;'">
+    <div :class="avatarClass" :style="'width: '+(width)+'px;'">
       <div class="traceAvatar"  :style="'background-image: url('+avatar.url+'); background-size: '+avatar.zoom+'px; background-position-x: '+avatar.x+'%; background-position-y: '+avatar.y+'%; height: '+avatar.height+'px; width: '+avatar.width+'px;'"></div>
      </div>
-  </div>
 </template>
 <script setup>
 import { computed } from 'vue'
 const props = defineProps(['trace','image','width', 'height'])
+
+const avatarClass = computed(() => {
+  if(!props.trace) return false
+  let avatarClass = "cat-"
+  avatarClass += props.trace.category && props.trace.category.length > 0 ? props.trace.category[0] : 'plain'
+  return avatarClass
+})
 
 let padding = 2
 
@@ -28,8 +33,6 @@ let avatar = computed(()  => {
 
     avatar.x = trace.x / image.width * 107 //this should be 100 but css is a wild language
     avatar.y = trace.y / image.height * 110
-
-
 
     avatar.width = width
     avatar.url = props.image.url

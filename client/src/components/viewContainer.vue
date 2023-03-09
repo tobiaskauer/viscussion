@@ -23,11 +23,11 @@
           </v-col>
      </v-row>
      <v-row>
-          
-               <ChartCanvas v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>
-          
-          
-               <ActivityLog v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>
+          <v-col class="v-col-8">
+    <tracedImage v-if="image && traces" :image="image" :traces="traces"></tracedImage>
+    </v-col>
+          <!--<ChartCanvas v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>             -->
+          <ActivityLog v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>
           
      </v-row>
 
@@ -38,15 +38,15 @@
 <script setup>
 import ChartCanvas from './ChartCanvas.vue'
 import ActivityLog from './ActivityLog.vue'
+import tracedImage from './tracedImage.vue'
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
 
 import { reactive, onMounted, computed, watch, onUnmounted } from 'vue'
 const traceStore = useTraceStore();
 const imageStore = useImageStore();
-
-
 const props = defineProps(['id'])
+
 onMounted(() => {
      imageStore.fetchImage(props.id)
      traceStore.fetchTraces(props.id);

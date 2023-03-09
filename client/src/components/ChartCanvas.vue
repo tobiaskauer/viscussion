@@ -1,19 +1,19 @@
 <template>
   <v-col class="v-col-8">
-    <v-row v-if="props.image">
+    <tracedImage :image="image" :traces="props.traces"></tracedImage>
+    <!--<v-row v-if="props.image">
       
-      <v-col id="wrapper" class="v-col-12">
-        <div id="inner" :style="'width: '+dimensions.width+'px; height: '+dimensions.height+'px;'">
+      <v-col id="wrapper" class="v-col-12">-->
+        
+        <!--<div id="inner" :style="'width: '+dimensions.width+'px; height: '+dimensions.height+'px;'">
             <v-img  id="original"  :src="props.image.url"></v-img>
             
             <transition name="lights"><v-img id="desaturated" :src="image.url"></v-img></transition>
-              <transition name="lights"><div v-if="!lights.on" id="overlay"></div></transition>
+              <transition name="lights"><div v-if="!lights.on" id="overlay"></div></transition>-->
               
             
             
-            <div id="traces" ref="traceRef" @mousedown="mouseDown" @mouseup="mouseUp" @mousemove="mouseMove">
-           
-              <!--<div f-vor="trace in traces" :key="trace.id">{{ trace }}</div>-->
+            <!--<div id="traces" ref="traceRef" @mousedown="mouseDown" @mouseup="mouseUp" @mousemove="mouseMove">
               <div id="newTrace" class="untouchable" v-if="newTrace.drawing || newTrace.drawn" :style="'top: '+newTrace.onScreen.y+'px; left: '+newTrace.onScreen.x+'px; width: '+newTrace.onScreen.width+'px; height: '+newTrace.onScreen.height+'px;'"></div>
               <TransitionGroup
                 tag="ul"
@@ -32,16 +32,16 @@
               :data-index="index"
               :style="'top: '+trace.y+'px; left: '+trace.x+'px; width: '+trace.width+'px; height: '+trace.height+'px;'"></li>
             </TransitionGroup>
-            </div>
-            <TraceForm :display="form.display" :trace="newTrace.original" :image="image" @close="close"/>
-        </div>
-      </v-col>
+            </div>-->
+            <!--<TraceForm :display="form.display" :trace="newTrace.original" :image="image" @close="close"/>
+        </div>-->
+     <!-- </v-col>
       <v-btn :variant="lights.on ? 'tonal' : 'outlined'" @click="lights.on = !lights.on">
         lights
         <template v-if="lights.on">off</template>
         <template v-else>on</template>
       </v-btn>
-    </v-row>
+    </v-row>-->
   </v-col>
 </template>
 
@@ -50,6 +50,7 @@
 import { reactive, onMounted, computed, ref, onUnmounted } from 'vue'
 import TraceForm from './TraceForm.vue'
 import { useTraceStore } from "../stores/traceStore.js";
+import tracedImage from "./tracedImage.vue";
 import { gsap } from 'gsap';
 
 const traceStore = useTraceStore()
@@ -82,7 +83,7 @@ const highlight = computed(() => {
 })
 
 onMounted(() => {
-  setDimensions()
+  //setDimensions()
 })
 
 const newTrace = reactive({
@@ -163,7 +164,7 @@ const setDimensions = (() => {
 
 
 window.onresize = function() {
-  setDimensions()
+  //setDimensions()
 }
 
 

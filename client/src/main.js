@@ -2,6 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
+import Vue3TouchEvents from "vue3-touch-events";
+
+
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
@@ -43,7 +46,7 @@ const myCustomLightTheme = {
     problem: colors.teal.base,
     context: colors.lime.base,
     personal: colors.amber.base,
-    optinion: colors.yellow.base,
+    opinion: colors.yellow.base,
     
 
   }
@@ -77,6 +80,7 @@ createApp(App)
   .use(vuetify)
   .use(pinia)
   .use(timeago)
+  .use(Vue3TouchEvents)
   .mount('#app')
 
   //clear console on vite's hot relad

@@ -1,13 +1,22 @@
 <template>
-    <div ref="wrapper" v-resize="onResize" :style="'height: '+state.height+'px'">
-        <img :src="props.image.url" :style="'width: '+state.width+'px'"/>
+    <div
+        v-if="traceClass"
+        ref="wrapper"
+        v-resize="onResize"
+        class="wrapper"
+
+        @mousedown="mouseDown"
+        @mouseup="mouseUp" 
+        @mousemove="mouseMove"
+
+        :style="`height: ${state.height}px`">
+        <img class="untouchable" :src="props.image.url" :style="'width: '+state.width+'px'"/>
         <transition name="lights">
-            <div class="lights" v-if="lights.off">
+            <div class="lights untouchable" v-if="lights.off">
                 <img :src="props.image.url" class="desaturated" :style="'width: '+state.width+'px'"/>
                 <div class="overlay" :style="`width: ${state.width}px; height: ${state.height}px`"></div>
             </div>
         </transition>
-        
             <TransitionGroup
                 tag="div"
                 class="traces"
@@ -20,21 +29,35 @@
                 v-for="(trace, index) in resizedTraces"
                 :data-index="index"
                 :key="'trace-'+trace.id"
-                :class="'cat-'+trace.category"
-                :style="style(trace)"></div>
+                :class="traceClass[index]"
+                :style="traceStyle(trace)"
+
+                @mouseleave="setHighlight(null)"
+                @mouseenter="setHighlight(trace.id)"
+
+                
+              >
+            </div>
+            
             </TransitionGroup>
+            <div id="newTrace" class="untouchable" v-if="newTrace.drawing || newTrace.drawn" :style="'top: '+newTrace.onScreen.y+'px; left: '+newTrace.onScreen.x+'px; width: '+newTrace.onScreen.width+'px; height: '+newTrace.onScreen.height+'px;'"></div>
     </div>
     
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onUpdated, computed, watch, onUnmounted } from 'vue'
+import { ref, reactive, onMounted, onUpdated, computed, toRaw, watch, onUnmounted } from 'vue'
 import { gsap } from 'gsap';
-//import { useTraceStore } from '../stores/traceStore';
+import { useTraceStore } from '../stores/traceStore';
 const props = defineProps(['image','traces', 'lights'])
-
-const lights = reactive({off: true})
+const traceStore = useTraceStore()
+const lights = reactive({off: true}) //make this a prop
 const wrapper = ref(null)
+
+const highlightedTrace = computed(() => {
+    return traceStore.getHighlight
+})
+
 const state = reactive({
     width: 0,
     height: 0,
@@ -46,17 +69,34 @@ const resizedTraces = computed(() => {
     let traces = []
     props.traces.forEach(trace => {
         traces.push({
+            id: trace.id,
+            category: trace.category,
             x: Math.round(trace.x * state.scale),
             y: Math.round(trace.y * state.scale),
             width: Math.round(trace.width * state.scale),
-            height: Math.round(trace.height * state.scale),
-            category: trace.category.length > 0 ? trace.category[0] : 'plain' //TODO adapt this for multiple categories
+            height: Math.round(trace.height * state.scale)
         })
     })
-    return traces
+    return traces.sort((a,b) => a.x*a.y - b.x*b.y)//sort by size
 })
 
-const style = (trace) => {
+const traceClass = computed(() => {
+    if(!resizedTraces) return false
+    
+    return resizedTraces.value.map(trace => {
+        let classes = []
+
+        let category = trace.category && trace.category.length > 0 ? 'cat-'+trace.category[0] : 'cat-plain' //TODO adapt this for multiple categories
+        classes.push(category)
+
+        if(highlightedTrace.value == trace.id) classes.push('elevation-10')
+
+        return classes.join(" ")
+
+    })
+})
+
+const traceStyle = (trace) => {
     return `
     top: ${trace.y}px;
     left: ${trace.x}px;
@@ -84,9 +124,85 @@ function onEnter(el, done) {
   })
 }
 
+const newTrace = reactive({
+    drawing: false,
+    drawn: false,
+    onScreen: {},
+    resized: {}
+})
+
+const mouseDown = ((e) => {
+  //let rect = e.target.getBoundingClientRect();
+  let rect = wrapper.value.getBoundingClientRect()
+
+  let x = e.clientX - rect.left;
+  let y = e.clientY - rect.top;
+
+  newTrace.onScreen.height = 0
+  newTrace.onScreen.width = 0
+  
+  newTrace.drawing=true
+  newTrace.onScreen.startX = x
+  newTrace.onScreen.startY = y
+  newTrace.onScreen.x = x
+  newTrace.onScreen.y = y
+
+})
+
+const mouseMove = ((e) => {
+  //TODO implement vue3-touch-events to differentiate between clicking a trace and dragging a new one
+  if(newTrace.drawing) {
+    //let rect = e.target.getBoundingClientRect();
+    let rect = wrapper.value.getBoundingClientRect()
+
+    let currentX = e.clientX - rect.left;
+    let currentY = e.clientY - rect.top;
+    
+    if(currentX >= newTrace.onScreen.startX) {
+      newTrace.onScreen.width = currentX - newTrace.onScreen.startX
+    } else {
+      newTrace.onScreen.x = currentX
+      newTrace.onScreen.width = newTrace.onScreen.startX - currentX
+    }
+
+
+    if(currentY >= newTrace.onScreen.startY) {
+      newTrace.onScreen.height = currentY - newTrace.onScreen.startY
+    }else {
+      newTrace.onScreen.y = currentY
+      newTrace.onScreen.height = newTrace.onScreen.startY - currentY
+    }
+  }
+
+})
+
+const mouseUp = (() => {
+  newTrace.drawing=false
+  newTrace.drawn = true
+  //form.display = true
+  //newTrace.original = resizeTrace(newTrace.onScreen)
+})
+
+const setHighlight = ((id) => {
+  //if(!newTrace.drawing) {
+    traceStore.setHighlight(id)
+  //}
+})
+
+function MOUSEDOWN(event) {
+    console.log(event,"foo")
+}
+
+const highlight = computed(() => {
+  return traceStore.getHighlight
+})
+
 </script>
 
 <style scoped>
+.traces {
+    position: relative;
+}
 .traces div {
     position: absolute;
 }
@@ -95,7 +211,11 @@ img, .lights  {
 }
 
 .overlay {
-    background: rgba(0,0,0,0.2)
+    background: rgba(0,0,0,0.2);
+}
+
+.untouchable {
+    pointer-events: none;
 }
 
 .desaturated {
@@ -103,13 +223,5 @@ img, .lights  {
   opacity: .5;
 }
 
-.cat-plain {background: rgba(var(--v-theme-plain), .1); border: 2px solid rgb(var(--v-theme-plain));}
-.cat-obs {background: rgba(var(--v-theme-problem), .1); border: 2px solid rgb(var(--v-theme-problem));}
-.cat-hyp {background: rgba(var(--v-theme-hypothesis), .1); border: 2px solid rgb(var(--v-theme-hypothesis));}
-.cat-que {background: rgba(var(--v-theme-question), .1); border: 2px solid rgb(var(--v-theme-question));}
-.cat-pro {background: rgba(var(--v-theme-problem), .1); border: 2px solid rgb(var(--v-theme-problem));}
-.cat-con {background: rgba(var(--v-theme-context), .1); border: 2px solid rgb(var(--v-theme-context));}
-.cat-per {background: rgba(var(--v-theme-personal), .1); border: 2px solid rgb(var(--v-theme-personal));}
-.cat-opi {background: rgba(var(--v-theme-opinion), .1); border: 2px solid rgb(var(--v-theme-opinion));}
-.cat-cri {background: rgba(var(--v-theme-critique), .1); border: 2px solid rgb(var(--v-theme-critique));}
+
 </style>
