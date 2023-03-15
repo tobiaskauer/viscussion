@@ -38,9 +38,10 @@
                 
               >
             </div>
-            
+            <div id="newTrace" class="untouchable cat-plain" v-if="newTrace.drawing || newTrace.drawn" :style="'top: '+newTrace.onScreen.y+'px; left: '+newTrace.onScreen.x+'px; width: '+newTrace.onScreen.width+'px; height: '+newTrace.onScreen.height+'px;'"></div>
             </TransitionGroup>
-            <div id="newTrace" class="untouchable" v-if="newTrace.drawing || newTrace.drawn" :style="'top: '+newTrace.onScreen.y+'px; left: '+newTrace.onScreen.x+'px; width: '+newTrace.onScreen.width+'px; height: '+newTrace.onScreen.height+'px;'"></div>
+             
+            
     </div>
     
 </template>
@@ -53,6 +54,7 @@ const props = defineProps(['image','traces', 'lights'])
 const traceStore = useTraceStore()
 const lights = reactive({off: true}) //make this a prop
 const wrapper = ref(null)
+const emit = defineEmits(['export'])
 
 const highlightedTrace = computed(() => {
     return traceStore.getHighlight
@@ -127,13 +129,15 @@ function onEnter(el, done) {
 const newTrace = reactive({
     drawing: false,
     drawn: false,
-    onScreen: {},
+    onScreen: {}, //TODO: remove depth, this has become obsolete after making this a component
     resized: {}
 })
 
 const mouseDown = ((e) => {
   //let rect = e.target.getBoundingClientRect();
   let rect = wrapper.value.getBoundingClientRect()
+
+
 
   let x = e.clientX - rect.left;
   let y = e.clientY - rect.top;
@@ -147,12 +151,14 @@ const mouseDown = ((e) => {
   newTrace.onScreen.x = x
   newTrace.onScreen.y = y
 
+  
+
 })
 
 const mouseMove = ((e) => {
   //TODO implement vue3-touch-events to differentiate between clicking a trace and dragging a new one
   if(newTrace.drawing) {
-    //let rect = e.target.getBoundingClientRect();
+    //TODO make other traces untouchable
     let rect = wrapper.value.getBoundingClientRect()
 
     let currentX = e.clientX - rect.left;
@@ -179,8 +185,18 @@ const mouseMove = ((e) => {
 const mouseUp = (() => {
   newTrace.drawing=false
   newTrace.drawn = true
-  //form.display = true
-  //newTrace.original = resizeTrace(newTrace.onScreen)
+
+  let exportTrace = {category: ['new']}
+
+  let resizeKeys = ["x","y","width","height"]
+  
+  resizeKeys.forEach(key => {
+    exportTrace[key] = Math.round(newTrace.onScreen[key] * 1/state.scale) //in case the image was resized, make sure the trace is recorded on the original size
+  })
+
+  
+
+  emit('export',exportTrace)
 })
 
 const setHighlight = ((id) => {
@@ -188,10 +204,6 @@ const setHighlight = ((id) => {
     traceStore.setHighlight(id)
   //}
 })
-
-function MOUSEDOWN(event) {
-    console.log(event,"foo")
-}
 
 const highlight = computed(() => {
   return traceStore.getHighlight

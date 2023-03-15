@@ -16,7 +16,7 @@
             <v-col class="v-col-6" ref="avatar" >
                <Avatar :image="props.image" :trace="trace" width="300" />
             </v-col>
-            <v-col class="v-col-auto">
+            <v-col class="v-col-6">
                <v-form>
                     <v-text-field
                     block

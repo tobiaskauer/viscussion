@@ -24,19 +24,20 @@
      </v-row>
      <v-row>
           <v-col class="v-col-8">
-    <tracedImage v-if="image && traces" :image="image" :traces="traces"></tracedImage>
+    <tracedImage v-if="image && traces" :image="image" :traces="traces" @export="openTraceform"></tracedImage>
     </v-col>
           <!--<ChartCanvas v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>             -->
           <ActivityLog v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>
           
      </v-row>
+     <TraceForm :display="newTrace.displayForm" :trace="newTrace" :image="image" @close="newTrace.displayForm = false"/>
 
 </v-container>
     
 </template>
 
 <script setup>
-import ChartCanvas from './ChartCanvas.vue'
+import TraceForm from './TraceForm.vue'
 import ActivityLog from './ActivityLog.vue'
 import tracedImage from './tracedImage.vue'
 import { useImageStore } from "../stores/imgStore.js";
@@ -52,6 +53,22 @@ onMounted(() => {
      traceStore.fetchTraces(props.id);
 })
 
+
+const newTrace = reactive({
+     displayForm: false,
+     
+     
+     
+})
+
+const openTraceform = (exportTrace) => {
+     
+     Object.keys(exportTrace).forEach(key => {newTrace[key] = exportTrace[key]})
+     newTrace.displayForm = true
+     console.log(newTrace)
+
+}
+
 const image = computed(() => {     
      return imageStore.getImage
 })
@@ -65,14 +82,14 @@ const snackbar = reactive({
      message: null
 })
 
-const newTrace = computed(() => {     
+/*const newTrace = computed(() => {     
      return traceStore.getNewTrace
-})
+})*/
 
-watch(newTrace, newTrace => {
+/*watch(newTrace, newTrace => {
      snackbar.display = true
      snackbar.message = "Trace #"+newTrace.id+" has been recorded." 
-})
+})*/
 
 
 const highlight = computed(() => {     

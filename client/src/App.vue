@@ -32,6 +32,8 @@ export default {
 
 <style>
 .cat-plain {background: rgba(var(--v-theme-plain), .1); border: 2px solid rgb(var(--v-theme-plain));}
+.cat-new {background: rgba(var(--v-theme-new), .1); border: 2px solid rgb(var(--v-theme-new));}
+
 .cat-obs {background: rgba(var(--v-theme-problem), .1); border: 2px solid rgb(var(--v-theme-problem));}
 .cat-hyp {background: rgba(var(--v-theme-hypothesis), .1); border: 2px solid rgb(var(--v-theme-hypothesis));}
 .cat-que {background: rgba(var(--v-theme-question), .1); border: 2px solid rgb(var(--v-theme-question));}

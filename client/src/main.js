@@ -39,6 +39,7 @@ const myCustomLightTheme = {
     warning: '#FB8C00',
 
     plain: '#ffffff',
+    new: '#000000',
     observation: colors.indigo.base,
     critique: colors.red.base,
     hypothesis: colors.pink.base,

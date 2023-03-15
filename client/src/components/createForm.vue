@@ -30,7 +30,7 @@
 
 import { reactive, onMounted, computed, onUnmounted } from 'vue'
 import { useImageStore } from "../stores/imgStore.js";
-const store = useTraceStore();
+const store = useImageStore();
 
 const formData = reactive({
      title: null,
