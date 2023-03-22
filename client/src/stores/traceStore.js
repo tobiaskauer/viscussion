@@ -2,6 +2,7 @@ import { ref, computed, toRaw } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
+const apiUrl = import.meta.env.VITE_API
 
 
 
@@ -66,7 +67,7 @@ export const useTraceStore = defineStore('trace', {
 
   actions: {
     async fetchAllTraces() {
-      axios.get('http://localhost:8080/api/trace')
+      axios.get(apiUrl+'/trace')
       .then(traces => {
         traces.data.forEach(trace => {
           trace.category = (trace.category) ? trace.category.split(",") : []
@@ -95,7 +96,7 @@ export const useTraceStore = defineStore('trace', {
         console.log(error)
       }*/
 
-      axios.get('http://localhost:8080/api/trace/'+imageId)
+      axios.get(apiUrl+'trace/'+imageId)
       .then(traces => {
         traces.data.forEach(trace => {
           trace.category = (trace.category) ? trace.category.split(",") : []
@@ -109,7 +110,7 @@ export const useTraceStore = defineStore('trace', {
 
     async writeTrace(payload) {
       try {
-        const newTrace = await axios.post('http://localhost:8080/api/trace', payload)
+        const newTrace = await axios.post(apiUrl+'/trace', payload)
         this.newTrace = newTrace.data
         
       } catch (error) {

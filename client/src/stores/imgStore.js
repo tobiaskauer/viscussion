@@ -5,8 +5,10 @@ import { useTraceStore } from "../stores/traceStore.js";
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const server = 'http://localhost:8080/'
-const apiURL = "api/"
+const apiUrl = import.meta.env.VITE_API
+const staticUrl = import.meta.env.VITE_STATIC
+
+
 
 export const useImageStore = defineStore('image', {
   
@@ -20,14 +22,14 @@ export const useImageStore = defineStore('image', {
   getters: {
     getAllImages(state){
       let images = state.images
-      images.forEach(image =>image.url = server+image.url)
+      images.forEach(image =>image.url = staticUrl+image.url)
       return images
     },
 
     getImage(state) {
       if(!state.image) return false
         let image = state.image
-        image.url = server+state.image.url
+        image.url = staticUrl+state.image.url
        return image
     }
   },
@@ -37,7 +39,7 @@ export const useImageStore = defineStore('image', {
       const traceStore = useTraceStore()
 
 try {
-        const images = await axios.get(server+apiURL+'image')
+        const images = await axios.get(apiUrl+'/image')
         this.images = images.data
       }
       catch (error) {
@@ -46,7 +48,7 @@ try {
     }, 
     async fetchImage(id) {
       try {
-        const image = await axios.get(server+apiURL+'image/'+id)
+        const image = await axios.get(apiUrl+'/image/'+id)
         this.image = image.data
       }
       catch (error) {
@@ -63,7 +65,7 @@ try {
       
 
       const image = await axios
-      .post('http://localhost:8080/api/image', fd,{
+      .post(apiUrl+'/image', fd,{
         headers: {'Content-Type': 'multipart/form-data'}
       })
       .catch(err => {
