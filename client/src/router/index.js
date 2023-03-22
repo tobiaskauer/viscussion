@@ -22,6 +22,11 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
+      path: '/svg/',
+      name: 'svg',
+      component: () => import('../views/SvgView.vue')
+    },
+    {
       path: '/create',
       name: 'create',
       // route level code-splitting
