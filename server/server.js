@@ -3,7 +3,28 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const multer = require("multer");
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
 dotenv.config()
+
+const credentials = {} 
+const ENVIRONMENT = process.env.ENVIRONMENT || 'local';
+if(ENVIRONMENT == "STAGING" || ENVIRONMENT == "PRODUCTION") {
+  const CREDDIR = process.env.ENVIRONMENT
+  
+  const privateKey = fs.readFileSync(CREDDIR+'privkey.pem', 'utf8');
+  const certificate = fs.readFileSync(CREDDIR+'cert.pem', 'utf8');
+  const ca = fs.readFileSync(CREDDIR+'chain.pem', 'utf8');
+
+	credentials.key = privateKey,
+	credentials.cert = certificate,
+	credentials.ca = ca
+}
+
+if(credentials.cert) {
+  console.log('has credentials')
+}
 
 
 
@@ -29,16 +50,19 @@ require("./routes/image.routes")(app);
 
 app.use('/static', express.static('static'))
 
-
-
-// set port, listen for requests
-console.log(process.env)
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+var httpServer = http.createServer(app);
+httpServer.listen(8080);
+
+if(credentials.cert) {
+  const HTTPSPORT = process.env.HTTPSPORT || 8443;
+  var httpsServer = https.createServer(credentials, app);
+  httpsServer.listen(HTTPSPORT);
+}
+
 
 const db = require("./models");
+
 
 db.sequelize.sync(
   //{force:true} //dont use force in prod
@@ -50,9 +74,3 @@ db.sequelize.sync(
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
-
-  //https://www.bezkoder.com/node-js-express-sequelize-mysql/
-
-
-
-  const fs = require('fs');
