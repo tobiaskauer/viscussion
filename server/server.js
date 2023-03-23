@@ -11,7 +11,7 @@ dotenv.config()
 const credentials = {} 
 const ENVIRONMENT = process.env.ENVIRONMENT || 'local';
 if(ENVIRONMENT == "STAGING" || ENVIRONMENT == "PRODUCTION") {
-  const CREDDIR = process.env.ENVIRONMENT
+  const CREDDIR = process.env.CREDDIR
   
   const privateKey = fs.readFileSync(CREDDIR+'privkey.pem', 'utf8');
   const certificate = fs.readFileSync(CREDDIR+'cert.pem', 'utf8');
