@@ -3,6 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const multer = require("multer");
+var vhost = require('vhost')
 dotenv.config()
 
 
@@ -10,7 +11,6 @@ dotenv.config()
 const app = express();
 
 const CORS = process.env.CORS || 'http://localhost';
-console.log(CORS)
 var corsOptions = {
   origin: CORS
 };
@@ -24,12 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(multer({dest:'./static'}).single('image'))
-//app.use(bodyParser.json());
-
-/*// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});*/
 
 require("./routes/trace.routes")(app);
 require("./routes/image.routes")(app);

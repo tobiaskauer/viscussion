@@ -7,7 +7,7 @@
     <v-main>
         <router-view/>
     </v-main>
-    <v-footer>Footer</v-footer>
+    <v-footer>Footer for Prod</v-footer>
   </v-app>
 </template>
 
