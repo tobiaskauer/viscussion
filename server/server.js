@@ -52,12 +52,15 @@ app.use('/static', express.static('static'))
 
 const PORT = process.env.PORT || 8080;
 var httpServer = http.createServer(app);
-httpServer.listen(8080);
+httpServer.listen(PORT);
+console.log(`HTTPS is running on port ${PORT}.`);
 
 if(credentials.cert) {
   const HTTPSPORT = process.env.HTTPSPORT || 8443;
   var httpsServer = https.createServer(credentials, app);
   httpsServer.listen(HTTPSPORT);
+  console.log(`HTTPS is running on port ${HTTPSPORT}.`);
+
 }
 
 
