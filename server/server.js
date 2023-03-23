@@ -3,7 +3,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const multer = require("multer");
-var vhost = require('vhost')
 dotenv.config()
 
 
