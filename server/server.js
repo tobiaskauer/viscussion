@@ -32,6 +32,7 @@ app.use('/static', express.static('static'))
 
 
 // set port, listen for requests
+console.log(process.env)
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
