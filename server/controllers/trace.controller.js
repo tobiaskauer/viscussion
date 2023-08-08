@@ -29,6 +29,7 @@ exports.create = (req, res) => {
       score: req.body.score,
       anchors: req.body.anchors,
       redditCommentId: req.body.redditId,
+      parent: req.body.parent,
     },
     {
       include: [
@@ -57,21 +58,8 @@ exports.findImageTraces = (req, res) => {
   Trace.findAll({
     include: Anchor,
     where: {
-      image: image, //image id
-      //width: { [Op.gt]: 0 }, //width > 0
-      //height: { [Op.gt]: 0 },
-    } /*,
-    attributes: [
-      "id",
-      "category",
-      "text",
-      "image",
-      "anchor.x",
-      "y",
-      "width",
-      "height",
-      "createdAt",
-    ],*/,
+      image: image,
+    },
   })
     .then((data) => {
       res.send(data);
@@ -82,6 +70,11 @@ exports.findImageTraces = (req, res) => {
           err.message || "Some error occurred while retrieving tutorials.",
       });
     });
+};
+
+exports.upvote = (req, res) => {
+  console.log(req.params.id);
+  Trace.increment("score", { by: 1, where: { id: req } });
 };
 
 exports.findAll = (req, res) => {
@@ -122,4 +115,6 @@ exports.delete = (req, res) => {};
 exports.deleteAll = (req, res) => {};
 
 // Find all published Tutorials
-exports.findAllPublished = (req, res) => {};
+exports.findAllPublished = (req, res) => {
+  console.log("foobar", req);
+};

@@ -18,10 +18,25 @@ export const useRedditStore = defineStore("reddit", {
       );
 
       for (let i = currentIndex + 1; i < this.comments.length; i++) {
-        if (!this.comments[i].parent) {
-          this.currentComment = this.comments[i];
-          break;
+        //loop may be necessary to skip unwanted comments (e.g. deleted or removed ones)
+        this.currentComment = this.comments[currentIndex + 1];
+        if (this.currentComment.parent) {
+          this.currentComment.parentBody = this.comments.find(
+            (comment) => comment.id == this.currentComment.parent
+          ).body;
         }
+
+        let unwanted = ["[removed]"];
+
+        /*if (
+          !unwanted.includes(this.currentComment.body) ||
+          !unwanted.includes(this.currentComment.parentBody)
+        ) {
+          console.log(this.currentComment.parentBody);
+          //check if comment or parent are unwanted content, if not break the loop to set the comment
+          break;
+        }*/
+        break;
       }
     },
 

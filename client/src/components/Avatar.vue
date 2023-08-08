@@ -42,6 +42,8 @@ let avatar = computed(() => {
   avatar.width = width
   avatar.url = props.image.url
 
+  console.log(props)
+
   return avatar
 })
 </script>

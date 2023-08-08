@@ -10,6 +10,7 @@ export const useTraceStore = defineStore("trace", {
     traces: [], //of a single image
     allTraces: [],
     highlight: null,
+    expandedTrace: null,
     newTrace: null,
     patinas: [
       { key: "None", active: false },
@@ -198,12 +199,11 @@ export const useTraceStore = defineStore("trace", {
               ? new Date(trace.date)
               : new Date(trace.createdAt);
             trace.category = trace.category ? trace.category.split(",") : [];
+            trace.responses = traces.data.filter((x) => x.parent == trace.id);
           });
 
           this.traces = traces.data;
-
-          let dates = this.traces.map((trace) => trace.date);
-
+          const dates = this.traces.map((trace) => trace.date);
           this.fullTimeFrame = [
             Math.floor(new Date(Math.min.apply(null, dates)).getTime() / 1000),
             Math.floor(new Date(Math.max.apply(null, dates)).getTime() / 1000),
@@ -215,6 +215,17 @@ export const useTraceStore = defineStore("trace", {
     },
 
     async writeTrace(payload) {
+      if (payload.parent) {
+        //if it's a response, check if it may be to a reddit conversation and find the correct key
+        if (!this.traces.map((trace) => trace.id).includes(payload.parent)) {
+          let redditParent = this.traces.find(
+            (trace) => trace.redditCommentId == payload.parent
+          ).id;
+
+          payload.parent = redditParent ? redditParent : undefined;
+        }
+      }
+
       try {
         const newTrace = await axios.post(apiUrl + "trace", payload);
         this.newTrace = newTrace.data;
@@ -225,9 +236,15 @@ export const useTraceStore = defineStore("trace", {
       }
     },
 
+    async upvote(payload) {
+      axios.put(apiUrl + "trace", payload);
+    },
+
     setHighlight(trace) {
-      console.log(trace);
       this.highlight = trace;
+    },
+    expand(trace) {
+      this.expandedTrace = trace;
     },
     setActiveTimeFrame(array) {
       this.activeTimeFrame = array;

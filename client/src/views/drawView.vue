@@ -37,6 +37,7 @@
             <li>date: {{ comment.date }}</li>
             <li>author: {{ comment.author }}</li>
             <li>score: {{ comment.score }}</li>
+            <li>parentBody: {{ comment.parentBody }}</li>
             <li>category:
 
               <v-chip-group v-model="newTrace.category" selected-class="text-deep-purple-accent-4">
@@ -150,14 +151,8 @@ watch(comment, newComment => {
   newTrace.text = newComment.body
   newTrace.date = newComment.date
   newTrace.score = newComment.score
+  newTrace.parent = newComment.parent
   newTrace.author = newComment.author
-
-
-
-
-
-
-
 })
 
 const snackbar = reactive({

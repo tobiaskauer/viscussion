@@ -21,6 +21,9 @@ module.exports = (sequelize, Sequelize) => {
     date: {
       type: Sequelize.DATE,
     },
+    parent: {
+      type: Sequelize.INTEGER, //next time, use a proper key :)
+    },
 
     /*x: {
         type: Sequelize.INTEGER
