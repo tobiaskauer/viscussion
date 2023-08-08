@@ -1,0 +1,927 @@
+,parent,author,body,is_submitter,date,link
+0,False,PaleontologistUpbeat,This is like a masterclass in misrepresentation of data lmao,False,1661978457.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkkj4p/
+1,imkkj4p,Jooylo,"According to OP’s post history they’re also a data science manager for a large company, which is pretty amusing",False,1661987293.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml6f36/
+2,imkkj4p,straight_outta7,"I was just thinking, I’d like to see a percentage of deaths from opioids too.",False,1661990512.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imldpcp/
+3,imkkj4p,cowlinator,Why? Can you explain further?,False,1662002189.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm3o2v/
+4,imkkj4p,CaseyGuo,"I saw this post, immediately shook my head and was relieved to see this was the top comment.",False,1662008270.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immefm8/
+5,imkkj4p,scummos,If you want more of this: https://www.tylervigen.com/spurious-correlations,False,1662013034.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immlczx/
+6,imkkj4p,Coley_Flack,Could not agree more!,False,1661978880.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imklnhk/
+7,imkkj4p,energetic-dad,Are you saying there's no possible causal link between these two metrics?,False,1662004392.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm7vaq/
+8,imkkj4p,qwertykittie,next session: stretching the truth,False,1662009042.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immfmjq/
+9,imkkj4p,,"30,000 upvotes too.
+
+What is wrong with the viewers of this subreddit",False,1662015661.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immorve/
+10,imkkj4p,IRonyk,"Correlation implies causation...  
+
+Or something like that....   
+
+I dunno i am a data scientist.  /S",False,1662024391.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immzaqy/
+11,imkkj4p,Hundvd7,"Wait, I literally thought we were in r/data_irl
+
+The post reads like a meme, wtf",False,1662029631.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn6gib/
+12,imkkj4p,viperlemondemon,"Yeah we did that with my sisters obit but it wasn’t opioids, it was a dog leash in the garage, but my cousin on the other hand yeah it was a died suddenly and an opioid",False,1662033828.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imndmr3/
+13,imkkj4p,Agatzu,Care to elaborate?  Or do u mean that this data proves nothing cause there could be millions of similar graphs or better said reason for these sudden death?,False,1662035660.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnh7s1/
+14,imkkj4p,glamoroushumility,What tragedy. If only they had a basic understanding of drugs and their effects. Opioids are deadly and addictive. It's a secret kept by the government. The list innocence is heartbreaking in its entirety.,False,1662037250.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnkit8/
+15,False,svenson_26,"/r/dataisNOTbeautiful   
+  
+I don't disagree with the message this post is trying to send, but I do disagree with the methods. Showing two charts that look the same is NOT the same thing saying the data are correlated. If the data actually *are* correlated, show me that they're correlated.   
+  
+Other red flags:     
+  
+*  The first chart is ""percentages of"" and the second one is ""total number of"". Since we have a higher population in 2020 than in 2000, you'd expect a positive trend, regardless of what is happening per-capita.     
+  
+*  The range of data in the first chart is within 1 percentage point, and seems to fluctuate quite a bit even within that range. The data we're seeing may not be representative of an actual trend.  
+  
+*  The first graph is grouped by month, and the second is grouped by year. It would be easy enough to just sum up all the month-to-month data into bins of 1 year, and display the data that way. So much so that I find it suspicious why it isn't done this way.   I wonder if seasonal fluctuations in month-to-month obituaries could be artificially affecting the results. ~~For example, let's say you had 100 deaths in the first half of the year, 1 of which was sudden, and 1000 deaths in the second half of the year, 50 of which were sudden.  The former gives us a sudden rate of 1%, and the latter gives us a sudden rate of 0.5%: Both within our range.  If you put a trendline between the two points, it would fall somewhere in the 0.75% range.~~. Edit: bad example. My math doesn’t work.  
+But if you sum them together and calculate it for the whole year, you get 51 deaths in 1100 people, which works out to 0.46%; lower than both values.   
+  
+  
+   
+All that being said, I think it is a very fascinating concept to explore and I commend OP for putting the work to put this together.  I'd love to see more on the subject, maybe both as per-capita or both as percentages, in similar bin sizes, and with some sort of statistical correlation test performed.",False,1661973309.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk6qzu/
+16,imk6qzu,robin_888,https://xkcd.com/552/,False,1661976980.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkgla2/
+17,imk6qzu,Pays_in_snakes,"Thank you, ""the line looks similar"" is not the same as ""tracks closely"", especially when the scale is totally different",False,1661974537.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk9zrg/
+18,imk6qzu,,[deleted],False,1661982808.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvtke/
+19,imk6qzu,SjurEido,I wish the mods of this sub would crack down a bit more on bad data like this.,False,1661975936.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkdrac/
+20,imk6qzu,mmmsoap,Sounds like OP needs to visit [Spurious Correlations](https://www.tylervigen.com/spurious-correlations),False,1661976017.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkdz7j/
+21,imk6qzu,Jauretche,I had to scroll too much to read some common sense.,False,1661975381.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkc9iq/
+22,imk6qzu,MichelanJell-O,"> the range of data in the first chart is within 1% of each other
+
+The range of the first chart is approximately 0.3% to 1.1% of obituaries. Your wording is misleading - it would be more correct to say the range of the data is less than 1 *percentage point*.",False,1661977442.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkhu2t/
+23,imk6qzu,Cli4ordtheBRD,"Hey if you haven't read it yet, pick up a copy of Calling Bullshit: The Art of Skepticism in a Data-Driven World.
+
+But I think you might have done that already because your feedback sounds like it was lifted right from the book (not accusing plagiarism, more noting that you have internalized the authors' ideas).",False,1661981324.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imks3ep/
+24,imk6qzu,shumpitostick,"I'd also add:
+
+- y range doesn't go to zero. The overdose graph increases more than the other one but we can't see that. It's misleading.
+- Bullshit regression/smoothing lines. I have no idea how those lines were fit, it looks like OP just drew them by hand. Also misleading.",False,1661988862.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml9zb0/
+25,imk6qzu,ordinaryearthman,"[Number of people who drowned by falling into a pool is closely correlated to the number of films Nicholas Cage starred in](https://www.tylervigen.com/chart-pngs/2.png)
+
+Correlation does not always equal causation",False,1661978208.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkjvp4/
+26,imk6qzu,swankpoppy,[Here](https://www.fastcompany.com/3030529/hilarious-graphs-prove-that-correlation-isnt-causation) are some good examples of data that was carefully cherry picked to look like there was causation!,False,1661976819.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkg5k3/
+27,imk6qzu,jontseng,Another red flag is that second chart has y axis min 0 while first chart does not. Very easy to make it look as if two variables have increased by the same amount when you arbitrarily set y max/min to make them look like they have increased by the same amount… when actually they have not.,False,1661980173.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkp4hk/
+28,imk6qzu,chasmccl,"Yeah, the other thing I found odd about this is that there has actually been an explosion of overdose deaths since around 2015 due to fentanyl. This chart is only showing prescription opiate OD’s which have plateaued because they are so hard to get now.
+
+Therefore if an OD was the true causation of the “died suddenly” it doesn’t make since as we should have seen the explosion over the past 5 years. Otherwise we are saying that fentanyl deaths use some different language from oxycodone.",False,1661983743.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imky44j/
+29,imk6qzu,Needless-To-Say,"My take is the same as yours and I posted as such. My version is an analogy
+
+Here is a copy,
+
+>When my eldest was in junior high school he had a homework assignment to graph 3 math progressions
+
+	•	arithmetic progression
+	•	geometric progression
+	•	logarithmic progression
+
+>When he showed me his resulting graphs, they were all identical. He simply manipulated the x-y scales to make them so.
+
+>I learned something that day.",False,1661990265.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imld59o/
+30,imk6qzu,iliyahoo,"Thanks, I was surprised this wasn’t the top comment when I opened the comments",False,1661980196.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkp6lf/
+31,imk6qzu,Hust91,"Even if it did correlate closely, it might just correlate with deaths in general.",False,1661985395.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml21sp/
+32,imk6qzu,jordaninvictus,I came here for this comment. Thank you. Data is only beautiful when utilized correctly!,False,1661991224.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlfblw/
+33,imk6qzu,louthelou,“tl;dr - correlation is not causation.”,False,1661976693.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkftja/
+34,imk6qzu,matthias_444,"I agree with the points you are making, but the numbers in your example are incorrect:
+
+-	1 out of 100 is 1%
+-	50 out of 1000 is 5% (not 0.5%)
+-	51 out of 1100 is 4.6% (not 0.46%)
+
+>	lower than both values.
+
+This could never be correct. The average will always be between all values of samples in the set. In this case it is closer to one value, because there are a lot more samples with this value.",False,1661980931.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkr38t/
+35,imk6qzu,TrueBirch,"Thank you for the feedback! This kind of comment is a big reason I participate in this sub. It's hard to get honest feedback about data viz, and visualizing complex data in easy to understand ways is an important part of my day job.
+
+I tried a few different ways to visualize the data here. I used percentages in the top chart because the total number of obituaries available in the dataset changed over time (I'm guessing due to changing publisher agreements with NewsBank).
+
+I was limited in my choice of dataset. NewsBank maintains the only database I know that lets you get monthly aggregations of search term frequency in obituaries. The increase over the course of the timeframe being visualized is quite large, which suggests a real increase in the greater population of obituaries. In other words, I strongly believe that I would see an increase in the use of the word ""suddenly"" if I had a copy of every obituary published in the United States.
+
+Instead of combining the monthly data into yearly data, I used a loess smoother, which resulted in a line that looks very similar to the line using annualized obituary data. I wanted to make it clear that I was using different data frequencies, which is why I plotted each raw datapoint on the chart and specified the data frequencies in the caption.",True,1661974506.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk9wtd/
+36,imk6qzu,Keyon150,"50/1000 is 5%, not 0.5%. 51/1100 is 4.6%, not 0.46%. You’re trying to show a Simpson’s paradox where there is none. I agree the poor quality of the data presentation but that critique is not accurate.",False,1661980226.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkp9c4/
+37,imk6qzu,darthmeister,"Exactly, correlation is not causation.",False,1661982258.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkug60/
+38,imk6qzu,leonardicus,"I would disagree with you that your conclusions are generally on the right track but the logic is somewhat reversed.
+
+ Two similarly shaped graphs will be correlated, but correlation is not causation. OP heavily implies that risong opioid use causes rising numbers of deaths and that these deaths would be described as ""sudden."" There is no support for this conclusion, period. The rest of the complaints are valid, though less important given the logical fallacy undermining this post.",False,1661979485.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkn9cv/
+39,imk6qzu,80ninevision,"You're right but using terms wrong. These data are possibly *correlated*. They're just not necessarily *causal*.
+
+Correlation does not = causation...",False,1661980738.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkql61/
+40,imk6qzu,AphisteMe,"To be fair it's a 100% increase, although it stays below a percentage",False,1661979210.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkmiwj/
+41,imk6qzu,Lamp0blanket,"I'm not even fully sure the methods are on point. The errors in the second chart look correlated with the independent variable, so any statistics associated with that chart might be dubious.",False,1661979829.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imko7sh/
+42,imk6qzu,BradysLeap,"THIS! Came here to say this, but you explained it way better than I could have.",False,1661981304.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imks1l2/
+43,imk6qzu,chucave,"Yo. Your math is wrong. 50 out of 1k is 5%. 51 out of 1100 is 4.6%. That also implies adding them up would be 3%, not 0.75%. Adding them up like this doesn't really make any sense, but that would be the result.  
+
+I understand the point you're trying to make, but the exemple provided doesn't make sense.",False,1661982534.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkv4w4/
+44,imk6qzu,knc-,This sub is all about bad content anyway,False,1661982552.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkv6hn/
+45,imk6qzu,TacoPi,">For example, let's say you had 100 deaths in the first half of the year, 1 of which was sudden, and 1000 deaths in the second half of the year, 50 of which were sudden. The former gives us a sudden rate of 1%, and the latter gives us a sudden rate of 0.5%: Both within our range. If you put a trendline between the two points, it would fall somewhere in the 0.75% range. But if you sum them together and calculate it for the whole year, you get 51 deaths in 1100 people, which works out to 0.46%; lower than both values.
+
+This seeming paradox was breaking my head for a minute but I think this is just a math error. 
+
+50 out of 1000 is actually 5%
+
+EDIT: for better examples see [Simpson's Paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox)",False,1661982711.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvl0o/
+46,imk6qzu,NeverBeenStung,Not to mention it’s not actually beautiful at all. I’m sick of seeing stock Excel graphs on this sub.,False,1661982888.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkw0oa/
+47,imk6qzu,,Yeah isn’t there a way to assess the variance between the two correlations? I’m pretty rusty on my stat methods but I feel like that’s a tool?,False,1661983464.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkxfra/
+48,imk6qzu,nerherder911,"Yeah, it's fake data like this that makes it impossible for people like me suffering from chronic pains to get any relief. I've been living on ibuprofen, Panadol and aspirin for over three years just trying to even curb the pain. 
+
+Then people like this make these false claims and make it even harder for people like me to get anything other than store front medicine. I metabolise some medication too quickly so I dont get the effect from a slow release pain killer or anti-inflammatory. But it's now impossible for me to ask a doctor to prescribe me anything else because of shit like this, so I get given medication I know doesn't work and when I argue that I want to try something else they immediately refer to ""statistics"" like this one. 
+
+I hope the fleas of 1,000 camels infest your armpits.",False,1661984917.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml0x71/
+49,imk6qzu,bbcfoursubtitles,"This is pretty much exactly what I thought. Feels like ""The Strong Law Of Small Numbers"" at work here
+
+https://en.m.wikipedia.org/wiki/Strong_law_of_small_numbers",False,1661985516.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml2bvj/
+50,imk6qzu,EvilVargon,"My first thought when looking at this was ""how many other obscure stats can we find that follow this line"". Thank you for putting in writing exactly what is wrong with the charts!",False,1661987031.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml5thz/
+51,imk6qzu,seno2k,"Not to mention, keywords in obituaries are the last place you should be getting data from.  Coroner reports.",False,1661990493.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imldnro/
+52,imk6qzu,pineapplecatz,"Thank you for this comment! This is a classic example of implying a conclusion that ""seems"" correct when the two points in question may not be correlated at all.",False,1661992700.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlip63/
+53,imk6qzu,personallycomputing,My manager would slap me if I presented this.,False,1661992755.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlittv/
+54,imk6qzu,hey_there_kitty_cat,"I hadn't even looked before I scrolled down but immediately thought ""that's probably totally different scales, why it seems so deceptively obvious they just made me what they wanted to see"".  Percentage of obituaries seems like a really weird statistic to compare to tragic deaths.  The people I've known that have died horrible deaths usually didn't even have an obituary, or if they did it certainly doesn't seem like the place you would discuss how they died an early death.  Obituaries are usually to say nice things about people, so I'm wondering if there actually is any connection to opioid overdoses.  If your young relative/child ODs and you find them all sorts of colors in their own excrement, I really don't think it'd be appropriate to go to the newspaper and publish anything about their death.  I mean if you want to start a movement and all that, fine, but for an average overdose death I think people just want to move on, not scald the dead in the paper.",False,1661994094.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imllxjz/
+55,imk6qzu,HerpMcDerpson,Simply put: Correlation is not causation.,False,1661994662.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imln9gv/
+56,imk6qzu,OrdinalDefinable,Thank you!! My thoughts exactly!! I'm surprised this post has so many upvotes,False,1661998437.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlvsvv/
+57,imk6qzu,Valesku,"Thank you! I would like to add that, even though a correlation exists, it doesn't mean really anything If you don't have theoretical ground to claim a causal effect. Statistics are meaningless without the adequate knowledge on a field to interpret them.",False,1661999592.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlyb4h/
+58,imk6qzu,XxAndroZaxX,"Correlation and causality are very different things, and assuming one from another is very dangerous.",False,1662000226.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlzo0n/
+59,imk6qzu,karsnic,Yes and plus big pharma good now yes!? They saved the world from Covid so we can’t talk bad about them anymore.,False,1662000773.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm0t21/
+60,imk6qzu,pantsareoffrightnow,"This needs to be the top comment, or this post needs to get removed. It’s taking two data sets and *making* them similar, not finding actual correlations.",False,1662001498.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm2a8f/
+61,imk6qzu,LuisBitMe,"Even if they are correlated that doesn’t mean there’s any connection. Any two series that go up over time will be highly correlated. If they remain correlated after being differenced to achieve stationarity, then you MIGHT have a real relationship. 
+
+EDIT: Examples of correlated series between which there is now relationship. Referred to a spurious correlations https://www.tylervigen.com/spurious-correlations",False,1662004995.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm8xzl/
+62,imk6qzu,,You’re being too kind. This is the most meaningless and misleading post I’ve seen in awhile.,False,1662006515.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immbkyt/
+63,imk6qzu,Henriiyy,"Couldn't all that be fixed by putting the obituaries in monthly bins, dividing the deaths by the total population (which btw increased by way less 200% in 20 years...) and maybe also plotting a scatter plot of both against each other? If you look at the ratio of start and end values, they seem to match very well between the two graphs, which, in addition to the shapes suggests a good correlation.
+
+Also I don't agree with the amount of shit OP gets about spourius correlations. This is not an absurd correlation to expect, but one that wouldn't seem surprising considering the codes written in obituaries.",False,1662008747.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immf6f0/
+64,imk6qzu,MadnessFollowsAlways,so given the number of people is increasing and the number of opiod deaths has plateaued then the percentage of deaths is presumably decreasing... so there is no correlation comparing like for like,False,1662011923.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immjucv/
+65,imk6qzu,Honest_Foundation774,"The years on both charts lined up, has the chart been edited?",False,1662020806.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immuznv/
+66,imk6qzu,KoeiNL,"It can also simply be a change in language usage over time. Language is fluid and the way we use it changes constantly. You can probably correlate the usage of the word ""fuck"" in books with global warming or CO2 production.",False,1662021931.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immwbj9/
+67,imk6qzu,MothMan2169,Almost how the Sacklers manipulated graphs when showing doctors the “data” of how unaddictive OxyContin was,False,1662028402.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn4mse/
+68,imk6qzu,radome9,"> Since we have a higher population in 2020 than in 2000, you'd expect a positive trend, regardless of what is happening per-capita. 
+
+Yes, but the population hasn't fucking TRIPLED in 20 years.",False,1662028902.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn5czs/
+69,imk6qzu,keepthepace,"> Since we have a higher population in 2020 than in 2000, you'd expect a positive trend, regardless of what is happening per-capita. 
+
+True, but the population rose of 16%. Compared to the 300% of the number presented here, that's negligible.
+
+> The range of data in the first chart is within 1 percentage point, and seems to fluctuate quite a bit even within that range. The data we're seeing may not be representative of an actual trend. 
+
+There is some fluctuation but it is clear that the trend is much bigger than the standard deviation. drug related death in the US in that period amount to 10 to 20 per 100 000, or 0.1% to 0.2%, the scale is approximately there but if something, the biggest indictment of that post is that the trend shown in the first graph is too big. 0.5% is much more than the rise of death from drugs overdose.",False,1662035972.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnhuij/
+70,imk6qzu,jaded_fable,"I think that your first point is the important one for interpreting this ""result"". However: 
+
+>The range of data in the first chart is within 1 percentage point, and seems to fluctuate quite a bit even within that range. The data we're seeing may not be representative of an actual trend.
+
+The yaxis being a small numerical range is irrelevant to the significance of the trend. Many statistically significant trends are expressed in parts per million (e.g., transiting exoplanet detections in astronomy). We can see the month-to-month variance in the data and that this variance is much smaller than the overall trend we're seeing. The size of the trend relative to the variance is what's important.",False,1662037509.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnl2e8/
+71,imk6qzu,mgt_a,Examples here : https://www.tylervigen.com/spurious-correlations,False,1662040150.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnr06t/
+72,False,pookshuman,I would bet it tracks with an increase in suicide as well,False,1661967810.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjsdrx/
+73,imjsdrx,LowBeautiful1531,"Suicide in the United States has gone up 33% in the last 20 years.
+
+I think tracking ""deaths of despair"" as a group is very useful.",False,1661969542.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjwvb9/
+74,imjsdrx,kaisertralfaz,"Yeah, knowing someone that took their own life (almost 20 years ago at this point, so no need to say sorry for your loss), ""died suddenly"" is definitely used in that instance",False,1661968422.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjtziy/
+75,imjsdrx,XkF21WNJ,"At this point it tracks with pretty much everything that increased over the past 20 years.
+
+Suggestive graphs like these become *real* easy when you're free to choose scale, baseline and everything is monotonic.",False,1661974796.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkaoud/
+76,imjsdrx,satsugene,"Yeah, or possibly both. There have been cases where people with chronic pain have considered, or did, commit suicide when they were forcefully terminated from opioid pain management when it became legally risky or politically unpopular to prescribe them.
+
+Discussed in “[Physician Liability for Suicide after Negligent Tapering of Opioids](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3992659)” (2022) in the Journal of Law, Medicine, and Ethics.
+
+I found an alternative that works for me, but a lot of people haven’t. Their pain didn’t stop when their Rx was cut off. Many ended up on illicit narcotics to end up overdosed using substances of unknown potency or composition, some with little or no prior use of illegal drugs for recreational or therapeutic purposes.",False,1661972590.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk4ub4/
+77,imjsdrx,RiveterRigg,"I wonder what the data would look like if there was a demarcation between ""accidental overdose"" and ""suicide by overdose."" In my opinion the latter could be considered to have died of chronic pain.",False,1661971834.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk2tvl/
+78,imjsdrx,,[deleted],False,1661970569.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjziwx/
+79,imjsdrx,ds_Gardening,I bet it tracks with increases in other types of death as well.,False,1661975159.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkbobz/
+80,imjsdrx,DetroitLionsSBChamps,"my brother in law killed himself and I always used to just say he died suddenly when people asked how he died. for years it just felt hard to say that he killed himself out loud, especially if I didn't know the person well.",False,1661981389.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imks9bs/
+81,imjsdrx,JanitorKarl,I think you would find that 'died after a brief illness' will track Covid deaths as well.,False,1661978199.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkjurk/
+82,imjsdrx,10mmMasterRace,And internet usage,False,1661983649.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkxvw4/
+83,imjsdrx,2rfv,The fact that drug overdoses aren't counted as suicides bugs the shit out of me.,False,1661996281.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlqygh/
+84,imjsdrx,el-cuko,“Accidental overdose” is almost always suicide .,False,1661979789.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imko3t4/
+85,imjsdrx,luc1054,Yes… meanwhile moronic conspiracy lunatics in Germany try to put blame on Covid vaccinations whenever a sudden and unexpected death is reported…,False,1661979937.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkoi3z/
+86,imjsdrx,N00N3AT011,"I'd imagine it would track with any so called ""deaths of dispair"".",False,1661980415.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkpr02/
+87,imjsdrx,ElephantsAreHeavy,"So, opiod overdose causes suicide. I learned this in my statistics class.",False,1661981518.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imksl57/
+88,imjsdrx,ruffsnap,"That's where my head usually goes when I see an obit/new story that is very vague about the cause of death.
+
+I guess it makes sense that they keep that more under wraps, but it's usually pretty obvious that it's either suicide or drugs.",False,1661982128.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imku4f1/
+89,imjsdrx,Cheddarific,"This is a bit deceptive. The obituary percentage goes up by double while the opioid death count goes up by four times. And we don’t know how the total opioid count tracks as a percent of total deaths (or how the total count of obituaries). It’s possible that 2 million more obituaries per year used “suddenly” while only 10,000 more opioid deaths occurred, which would completely defy this apparent link. 
+
+That said, it’s very reasonable that a portion of opioid deaths are described as “died suddenly”. 
+
+https://www.tylervigen.com/spurious-correlations",False,1661982944.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkw5m4/
+90,imjsdrx,Shkeboo12,Just said this. So sadly true. There’s an alarming amount of suicides (wanna say around 50k yearly) and it’s largely being ignored. Even though that makes it one of the top causes of death in the country.,False,1661984235.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkzam9/
+91,imjsdrx,Not-a-Kitten,Died unexpectedly.,False,1661984243.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkzb8v/
+92,imjsdrx,dennythedoodle,"I've told my wife to explain how I died in the obituary. I know I'm always curious when I read an obituary and also make some assumptions. I'd rather people not make assumptions on how I died. 
+
+I doesn't need to be super detailed, but something simple like ""died while driving and looking at porn on his phone at the same time"".",False,1661984621.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml07t4/
+93,imjsdrx,CanadianKumlin,"Hehe, I see what you did there; tracks",False,1661985286.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml1sgx/
+94,imjsdrx,DiamondHyena,I bet it tracks with cell phone usage as well,False,1661987833.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml7mtc/
+95,imjsdrx,UsedToBeHot,"Yup. My dad died from suicide and I put ""passed suddenly"" in his obituary.",False,1661989019.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlac4i/
+96,imjsdrx,Sonova_Vondruke,Yeah. That's what I assume when I read that.,False,1661991252.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlfdtf/
+97,imjsdrx,hi_brett,And “died in [their] sleep.”,False,1661993664.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlkx2e/
+98,imjsdrx,OmenVi,"My neighbor committed suicide about a month ago. 
+Obit said exactly this.",False,1661994854.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlnpc8/
+99,imjsdrx,QuantumCicero,Has there been a true increase or just more accurate reporting and records?,False,1661994880.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlnrf2/
+100,imjsdrx,chrisdub84,"I've heard that suicide statistics are hard to track becuse they aren't always logged correctly. I've known someone who was asked by police if they wanted their family member's death reported as a suicide or not. They want to help shield them from the stigma, but the result is bad data.",False,1661994933.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlnvu1/
+101,imjsdrx,Used-Routine-4461,And population,False,1661996094.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlqj4e/
+102,imjsdrx,,Also with the rating in the better call saul show,False,1662030973.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn8ko6/
+103,False,bottleboy8,"I live in Appalachia in the late 80's.  I couldn't understand the obituaries.  Every week multiple people died ""cleaning their gun.""  I finally asked someone local about it.  They explained those are suicides by gun.",False,1661969898.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjxsee/
+104,imjxsee,beebewp,"My gr-gr-grandfather shot himself. His obituary said he “put the shotgun under his chin and pulled the trigger, the discharge inflicting gaping wounds in his face.” 
+
+Newspapers were very colorful back then.",False,1661981037.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkrd5k/
+105,imjxsee,DameKumquat,"I just checked my family member's obit. It says simply 'passed away on xxdate'. As good a wording as any, I guess - everyone knew once he bought his gun, it was just a matter of time.",False,1661970395.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjz2l7/
+106,imjxsee,benlucasdavee,"This is an interesting cultural thing. Slightly tangential, but I remember learning in HS that in some middle eastern countries the official suicide rate is 0.0 because they dont count suicides.",False,1661975963.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkdtug/
+107,imjxsee,Kilgore_Trout_Mask,"Same thing with train deaths. I worked at a newspaper and asked someone how so many people could possibly be getting hit by trains. The editor said ""That's because they're killing themselves.""",False,1661977757.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkionh/
+108,imjxsee,InternalBuffalo5799,I feel silly for not realising this,False,1661973901.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk8blo/
+109,imjxsee,ArcticBiologist,Why is this included in the obituary?? Why not just say 'passed away' and leave it there.,False,1661978524.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkkplj/
+110,imjxsee,Pauls2theWall,"I never caught this reference until I watched ""The Expanse"" when one of the members of the UN fleet shot himself and another person was told he died ""cleaning his gun"". She knew exactly what it meant.",False,1661980510.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkpzx3/
+111,imjxsee,KokiriEmerald,That's weird IMO. I'd rather just leave out the cause of death than make up a lie that makes them look like a moron.,False,1661978676.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkl40y/
+112,imjxsee,radicalelation,"Good to sweep it under the rug, yanno? Everyone is happier that way.",False,1661979531.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkndwk/
+113,imjxsee,League-Weird,Me: ohhhhhh. I thought they were just stupid.,False,1661986196.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml3wgl/
+114,imjxsee,stomach,"that's kinda odd, ngl
+
+as a family member i'd be pissed like, that is not hidden code",False,1661974088.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk8tam/
+115,imjxsee,sniper1rfa,"""Dying of whiteness"" is a good overview of this. Despite the title and description, it's not really about race so much. More about the socio-political landscape of (generally white) america.",False,1661980103.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkoxqv/
+116,imjxsee,Security_Six,"
+>I live in Appalachia in the late 80's
+
+I lived*
+
+You might still live in Appalachia, but you still do too, therefore, I lived, past tense works better. Also RIP Mitch",False,1661982164.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imku7m8/
+117,imjxsee,pac-men,I’m not sure I believe this because don’t we see a lot of people shooting themselves in the foot/leg while cleaning the gun too?,False,1662007379.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immd0vs/
+118,False,whenwillthefalcons,Fuck me this is Fox News level statistics,False,1661986185.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml3vjo/
+119,iml3vjo,mescaleeto,yeah i’m a little suspicious about the scale on the y axes,False,1661987199.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml67h5/
+120,iml3vjo,Karsvolcanospace,Two completely different scaled graphs that happen to visually correlate when put side by side but don’t actually correlate at all. Even high schoolers are taught better than this,False,1662039357.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnp645/
+121,False,XimbalaHu3,"OP, the opioid crisis is a serious problem but if you want to infer something at least use the same scale on both graphs, yes both seem to have similar curves but there is no actual feasible way to compare them as they are scalled differently.
+
+&#x200B;
+
+Not saying you did this out of bad faith, but if you are comparing data it's important that hey are comparable, similar curves in two different and unrelated graphs are at most mildly interesting.
+
+&#x200B;
+
+Picking 2019 and 2005 for simplicity we have 25694 deaths with suddenly in their obituary, against about 12240 in 2005, this same period saw a jump from about 10000 to some 16000 in opioid overdose, so had both curves used the same scale, the sudden one would be twice as steep in this period.
+
+&#x200B;
+
+Visualiazing data is always fun, but data honesty must always come first.",False,1661973594.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk7i7q/
+122,imk7i7q,Clever_Userfame,This post was rejected by reviewers without revisions,False,1661998013.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imluv6n/
+123,imk7i7q,DurinsBane1,"Small matter of semantics: he *implies*, you *infer*.",False,1662001124.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm1j2q/
+124,False,Dione000,https://www.tylervigen.com/spurious-correlations that sums up well,False,1661969769.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjxggy/
+125,imjxggy,,I honestly thought this post was a parody along these lines,False,1661975583.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkcswa/
+126,imjxggy,FuckyouYatch,hahaha OP asking Nicolas Cage not to appear in movies,False,1661982642.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkver6/
+127,imjxggy,KindaBWC,"I just copied this link and was going to post it if nobody beat me to it, and alas, you did. So, thank you for sharing this. Data is beautiful, but can absolutely correlate with other completely unrelated data sets. Posts like this are thought provoking, but absolutely should be taken with a grain of salt.",False,1661994033.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imllsb8/
+128,imjxggy,TrueBirch,"I love that site! I use it sometimes when mentoring junior data scientists at work.
+
+In the case of this visualization, I'd argue there's a strong enough link here to deserve further study. I'm certainly not claiming 1:1 causation, but it seems like there's evidence of a link between the two.",True,1661970062.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjy7k9/
+129,False,youmade_medothis,"""Closely tracks"", LOL. Top shows percent, bottom shows absolute numbers.",False,1661999562.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imly8rw/
+130,False,kthxb,"[https://books.google.com/ngrams/graph?content=suddenly&year\_start=1900&year\_end=2019&corpus=26&smoothing=3#](https://books.google.com/ngrams/graph?content=suddenly&year_start=1900&year_end=2019&corpus=26&smoothing=3#)
+
+Usage of the word ""suddenly"" also rose in the depicted time period, so implying a causation here is ... rough.",False,1661971624.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk2a5z/
+131,imk2a5z,JGHFunRun,"Time to meme on OP. How? By making a graph that shows “use of the word suddenly” vs deaths from prescription opioids, this should go nicely with the idea I had to make some new meme graphs",False,1661979417.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkn2pw/
+132,imk2a5z,TrueBirch,"Thank you for that comparison. I hadn't thought of looking at the ngram. Here's a chart that's closer to the approach I used. The increasing use of the word ""surprising"" in English publications could have an impact here, even though the correlation is weaker than what I found in my visualization.
+
+[https://books.google.com/ngrams/graph?content=suddenly&year\_start=1999&year\_end=2019&corpus=26&smoothing=1](https://books.google.com/ngrams/graph?content=suddenly&year_start=1999&year_end=2019&corpus=26&smoothing=0)",True,1661972372.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk49ad/
+133,False,Individual_Basil3954,I’ll just leave this here: [Spurious Correlations](https://www.tylervigen.com/spurious-correlations),False,1661974483.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk9uly/
+134,False,Jacaxagain,**correlation does not equal causation**,False,1661968513.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imju7t7/
+135,imju7t7,svenson_26,And:  **graphs that look similar does not equal correlation**,False,1661972366.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk48or/
+136,imju7t7,JackTheKing,"But, what if we correlate a percentage on one graph to a real number on the other?  
+
+I'm sure there's a random correlation in there somepl.  .  . aahh, [here](https://i.imgur.com/0OgyDLN.jpg) it is.
+
+I don't mean to be negative but in my own dark way I hope to push the presentation of this data to a point where we slow blink as capitalist oligarchs try to argue against it.",False,1661973084.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk65cx/
+137,imju7t7,,"Yes important point to always keep on mind when encountering stats. 
+
+But I don’t have a problem with how OP presented the data and labeled the post. No feelings of being mislead in any sorts.",False,1661970758.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk00c3/
+138,imju7t7,DamnImBeautiful,"I think OP's visualization is fine, since it doesn't explicitly state causal relation.",False,1661968822.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjv0th/
+139,imju7t7,,I feel like there should be a metal song called like that. Preferably one by Strapping Young Lad.,False,1661971984.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk3826/
+140,imju7t7,civilized_animal,Remember that guy that made a book of spurious correlations? I immediately thought of it when I saw this post,False,1661974108.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk8v6o/
+141,imju7t7,Rorasaurus_Prime,Glad I didn’t have to look too far to find this one,False,1661976105.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imke7so/
+142,imju7t7,ultramatt1,"It at least follows though, I’m not writing “gran-gran died from fent”",False,1661969589.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjwzoq/
+143,imju7t7,mmmfritz,But it’s a prerequisite for it. People equate causal towards all sorts of events that aren’t correlated at all.,False,1661973496.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk78z6/
+144,imju7t7,Sea-Independence6322,"A redditor's five favorite words to make their dumbass feel smart
+
+No shit. Every single graph you've ever seen works this way.",False,1661976012.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkdyqd/
+145,imju7t7,VaelinX,"Yes, but in this case, I think it's pretty clear.
+
+Increased prevalence of obituaries saying people ""died suddenly"" is the real cause of prescription opioid deaths.
+
+But really, I love [spurious correlations](https://www.tylervigen.com/spurious-correlations).",False,1661977203.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkh6x4/
+146,imju7t7,dgistkwosoo,"\*sigh\* This again. **There is no causation without correlation.** 
+
+Everybody who trots this chestnut out to show their knowledge of risk vs. cause vs. confounding, go read this article ([https://ajph.aphapublications.org/doi/full/10.2105/AJPH.2004.059204](https://ajph.aphapublications.org/doi/full/10.2105/AJPH.2004.059204)) and write me a report on it.",False,1661972890.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk5mri/
+147,imju7t7,ValyrianJedi,It certainly can be causation though. And I'd say this is a case where it very likely is.,False,1661971783.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk2p49/
+148,imju7t7,Werner_Zieglerr,It does in this situation,False,1661972879.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk5lrx/
+149,imju7t7,Astrokiwi,"Time series data is particularly dangerous for this. There's so many things that vary over a period of years or decades that will often look similar. Here for instance there are essentially two or three features that are common (depending on how you count it) - it increases at first, then transitions to flat at around the same date. For a correlation to be even a little significant, it needs to be something that's unlikely to have happened by chance. But how many arbitrary variables happen to be increasing the 2000s then flattening from 2010 onwards? Probably quite a lot.",False,1661977095.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkgwfr/
+150,False,Fishyswaze,"This is literally data 101, correlation != causation. 5th graders understand that, yet here’s a prime example of it with thousands of upvotes as if it’s some fantastic discovery lmao.",False,1661982641.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkveoe/
+151,False,Moetrump,"This feels like the graph of movies with Nicholas Cage vs number of people who drowned in pools (link here, third graph: https://www.wnycstudios.org/podcasts/otm/articles/spurious-correlations)",False,1661986171.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml3ueh/
+152,False,ObjectiveNewt333,It would be interesting to see if other causes of death also correlate and perhaps even which ones don't.,False,1661970132.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjye3c/
+153,imjye3c,SharrkBoy,"Just to be clear, this graphic absolutely does *not* indicate a correlation at all. 
+
+Not to say there isn’t one to be found — opioid use has been a huge factor in deaths for young adults in recent decades. But the scales used here are incredibly (if not intentionally) misleading",False,1661981952.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imktofe/
+154,imjye3c,Dreams000,In my mind I was thinking about how In had they taught us the example of drownings and ice cream sales have a similar line throughout the year. Correlation≠causation especially considering how many people passed cause of covid. Which I would consider something that can happen suddenly,False,1661993306.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlk2tn/
+155,False,DisjointedHuntsville,"Plot it against Nicholas cage movie releases while you’re at it.
+
+What kind of a clown implies correlation in a data sub with layover line plots with zero additional context, research or background? It is deeply disrespectful to people who have lost loved ones, or put in obituaries with standard language supplied by a copywriter or other industry norm.",False,1661975641.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkcyiq/
+156,imkcyiq,Fortune_Unique,"Wow, man's whipped up a post with data presented so poorly he literally offended people. Shocking",False,1661994966.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlnyhj/
+157,False,DragonBank,"This absolutely needs to be removed from this subreddit. First of all, the spelling errors... Come on, guys. The bare minimum should be correct spelling to be posted here. Second of all, they don't closely track at all. Since 2001, the first is up less than 80% while the second is up over 200%. Also the Y axes aren't even the same unit. One is tracking a percent and the other is tracking total numbers. This is just incredibly stupid graph manipulation(not even number manipulation because the numbers aren't similar) to visually make something appear to be similar.",False,1661970523.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjzema/
+158,imjzema,BujuArena,I agree that it sucks and I did not upvote.  I wonder why it has so many upvotes.  92% upvoted as of right now.  Should mods fight the Reddit voters or let them dictate content worthiness?,False,1661974393.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk9lzm/
+159,imjzema,RaffiTorres2515,"Also OP implies that correlation is causation, just look at their other comments. This graph is a statistical disaster and should be removed.",False,1661979160.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkmea9/
+160,imjzema,MarleyandtheWhalers,I'm stumped. Which word do you believe is misspelled?,False,1661974181.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk922h/
+161,imjzema,TrueBirch,"You're welcome to correct the issues you note and submit your own visualization. Remixing is encouraged on this sub. There's a ton of noise in the data and I did my best to account for it, which is a common problem in any social science dataset. I intentionally used two separate charts instead of plotting the lines together and putting different labels on the Y axis so people could see that they are on different scales. I tried using actual numbers in the top chart but the population size changes; in other words, the number of publications running obituaries indexed by NewsBank fluctuates in a way that is not correlated to the share of obituaries using the target word.",True,1661971055.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk0s2d/
+162,imjzema,,[deleted],False,1661971921.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk321s/
+163,imjzema,,[deleted],False,1661972988.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk5w8u/
+164,imjzema,MerberCrazyCats,"Who give af about spelling. Reddit is international and there are many non native english speakers here. You don't need to be agressive if you want to make your point, right or wrong. If you dislike someone's work or post, you can redo the study independently and post it in the way you like",False,1661979789.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imko3sv/
+165,False,kingpet100,"correlation != causality.
+
+&#x200B;
+
+Heck, i'm not even sure if it's really correlation at all.",False,1661976307.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkerxp/
+166,False,fatal_Error777,"One graph is tracking the number of opioid deaths.  The other is tracking percentage of obituaries that say die suddenly.  Is this really a good comparison?  Seems they are comparing different things, one is a total number the other is a percentage of totals.",False,1661981274.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkryto/
+167,False,stygger,How does it track with obesity among young people?,False,1661980267.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkpd8v/
+168,False,bigtim3727,"I call the opioid epidemic millennial Vietnam, just bc I knew sooooooo many people—including myself—that were heavily into some sort of opioid, and we had many that died—and are still dying way, *way* too young. Granted, the opioid crisis has effected everyone, but the *shocking* availability of them made them *extremely easy* to obtain. We barely had any money as kids, and yet, we had access to hundreds of pills.
+
+It was 2005 when I first took a Vicodin, and like most people, I fell in love instantaneously; I was 16 at the time. One kid in the group of the wanna-be-gangsta white kids, dropped a bottle of 60 Vic ES 7.5mg—the weird looking oval one with squares on the back—and my buddy picked it up, and after reading Erowid (how many of us got all our drug info from that site as kids?!) we knew what to do.
+
+Fast forward to 07’—my senior year— and a shocking amount of people are not only into pills, but selling them as well. I remember being really annoyed when the dealers would sell out, like “wtf who is buying all this shit?! There can’t be *that many* users!!” Me, along with two other friends would split a bottle of 100 Vicodin 10MG—hated that they always called them “thousands”, making so many shitbirds think they’re  actually 1000MG of Vicodin. This is before the phone internet, and bullshit was even thicker with shit like that— for $350 every so often, but the OCs— those were in highest demand. Then blues came out, etc…..Then…..
+
+Heroin. It all seemed to start with the girl I was with at the time. We did pills together, but right after HS she started using dope IV . We had broken up before that, but she shot up in front of me one day when we were hanging out, and it completely freaked me the fuck out. It really bothered me she was doing it—she was a straight up dime piece too, no shit, and very popular. Once she started, it was a domino effect that sucked in an insane amount of people in. 
+
+Although I was dead set against it at first, by feb 2008, I too was sucked in; it ended up sucking in my friend almost the same day, and then it spread from him, to one of our other friends. If you told me in 2005, about all the kids that would up being intravenous drug users by 2008, I would have never believed you in 1000000 years…..
+
+I start dating a girl I went to school with, and I was clean, but using subs. I had been prescribed subs, but I was buying them off the street bc my insurance ended. GF was an extreme control freak, said I needed to stop blah blah. I say “ok” but no way that’s gunna happen. She’s somewhat opiate naive at the time, but just sorta discovering Oxys for the first time. She pretends she doesn’t like them that much, but her actions speak otherwise. She befriends the NP that takes care of her grandmother, and she comes up some BS about her back. Guess what? Somehow, she gets the NP to prescribe her *90* oxycodone 30MG per month!! At age 21 FFS!! I knew dope was in her future, and sure enough, by 2013 she’s shootin up, and doin tricks 
+
+Fast forward to 2017; I’m clean for 6 years, but another close friend of ours passes, and this one really stings. All of them are awful, but losing her really hurts. This girl possessed a genius-level intellect; she was the valedictorian of my class, and by all means, had a bright future. Only problem is, when you start heroin at such a young age, it completely fucks that up. I’ve been clean since 2012, but I still have *many* things I need to fix, and may never fix at this point
+
+No one will prob read this shit, but I needed to type. Idk wtf the doctors were thinking prescribing that much. Out of the 500 kids  in my school, grade 9-12, from 2003-2007 about 2.5% of them have died from OD.",False,1661996293.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlqzgi/
+169,False,FishMarketStu,"Placing these curves beside each other like this without a ""zero"" reference on either vertical axis is a crime.",False,1661972253.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk3xsh/
+170,False,Oshester,"Further research is needed to make any valid claim here. If opioid deaths only account for .0001% of the died suddenly deaths for example, you could hardly claim causation",False,1661969525.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjwtp6/
+171,imjwtp6,TrueBirch,"Opioid deaths are shockingly common. Here's [an analysis based on 2017 data](https://www.cnn.com/2019/01/14/health/opioid-deaths-united-states-surpass-road-accidents/index.html). If you want to learn more about the issue, its prevalence, and the reasons the second line in my chart increased so much when it did, I highly recommend the books *Dopesick* and *Empire of Pain*.",True,1661970313.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjyuwh/
+172,False,ziggycoco385,"Sometimes, its accidental ingestion that leads to death. Fentanyl is in most drugs right now. Pills and powders where people dont expect it to be. Fentanyl poisoning is the leading cause of death for 18-45 yr olds in the states. Not every person dying is shooting herioin or even intending to take an opioid.",False,1661970230.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjyn99/
+173,imjyn99,BeChazzled,"Fentanyl is the problem. 1 pill, 1 line. Test your shit",False,1662004078.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm7afz/
+174,imjyn99,WhittlingDan,"Fentanyl overdose users are intending to take a drug bought on the street, though not always getting the drug they expect. Touching fentanyl powder was fear mongering. It would take inhalation or licking your fingers. All the drugs should be legal and regulated. Alcohol prohibition birthed Organized Crime and the drug war does the same.",False,1661979567.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imknhks/
+175,False,newbies13,"As people eat more ice cream, murders increase.",False,1661979604.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imknld6/
+176,False,Guinness,"This only tracks prescription opioids. This doesn’t make sense because opioid deaths skyrocketed after they schedule II’d commonly prescribed opioids. As users turned to the illicit market instead of quitting. The illicit market is all fentanyl these days which is incredibly dangerous. 
+
+So no, this does not track prescription opioids deaths as “dying suddenly” would include ALL opiods. There is no way to differentiate sudden death from prescription opioids vs illicit opioids. So this is a great example of correlation does not equal causation.
+
+See this chart, [here](https://i.imgur.com/BWVhy67.jpg). The government cracked down on prescriptions and pill mills in the 2012/2013/2014 time period in various ways.",False,1661982610.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvbry/
+177,imkvbry,chasmccl,Thank you!!! I made this exact same comment already on this thread! This chart makes no sense.,False,1661983862.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkyeiw/
+178,False,stlslayerac,"""correlation does not imply causation"" refers to the inability to legitimately deduce a cause-and-effect relationship between two events or variables solely on the basis of an observed association or correlation between them.",False,1661972316.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk43vz/
+179,imk43vz,Shieidy,thank you,False,1661972766.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk5b3u/
+180,imk43vz,TrueBirch,"Certainly, and I'm not claiming a 1:1 causative relationship here. There's anecdotal evidence from [sources like this](https://www.legacy.com/news/culture-and-history/addiction-suicide-and-obituaries/) that people use ""died suddenly"" as a euphemism, so I found a way to run the numbers. I found a strong correlation. When you have a strong thesis and strong correlation, the next step is to try to find a cause. I'd love to see a researcher match death certificates to obituaries to establish causation.",True,1661973228.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk6j8e/
+181,False,TrueBirch,"It is common for survivors not to explicitly name the cause of death when a loved on dies from a prescription opioid overdose. These overdoses have become tragically common in the United States.
+
+I created the charts using ggplot2 and combined them with cowplot. For death announcements, I used my public library to access NewsBank's America's Obituaries & Death Notices database, which conveniently aggregates the number of results by month and year. I gathered the prescription overdose data from this CDC website (see Figure 4): https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates  
+  
+The death announcements are aggregated by month and the prescription overdose data is aggregated by year. I included each individual datapoint on the chart from both datasets (gray dots) and applied a loess regression line in red.",True,1661967646.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjryaa/
+182,imjryaa,DigNitty,"A guy I went to highschool was described as “a victim of the opioid epidemic” 
+
+Thought that was a good way to let people know while remaining respectful.",False,1661973059.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk6303/
+183,imjryaa,seejordan3,"Prince, Philip Seymour Hoffman, Kate Spade, Robin Williams.. all long term benzo users. Not one obit talks about PAWS (post acute withdrawal syndrome).",False,1661970422.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjz56b/
+184,imjryaa,turtle4499,"A few glaring issues. I don't think you are really understanding the dataset all that well. 
+
+Using prescription opioids is going to be either casting too big a net or too small a net depending on what you wanted to measure. If you wanted to measure actual prescriptions you should have used the prescription without synthetic numbers. Which has a very different shape. 
+
+If you just wanted to measure the effects of opioid deaths in general you should have used the any opioid deaths. 
+
+You picked a rather arbitrary measure because it fit your data. It is especially glaring when you understand the drug overdose death rate has DOUBLED since 2010. I am unsure if you did this on purpose or because you simply don't understand the dataset all that well.",False,1661973322.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk6sb6/
+185,imjryaa,tuscaloser,"In the 80s/90s when a lot more people were dying from AIDS, it was a dead giveaway when a 35 year old was listed as dying from ""complications due to pneumonia.""",False,1661976817.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkg5cm/
+186,imjryaa,drumttocs8,And the red lines looked similar enough over completely different ranges for you to call it correlation?,False,1662039563.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnpmzf/
+187,False,shapesize,You can graph the same with shark attacks and ice cream,False,1661970011.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjy2ss/
+188,False,MoenTheSink,"""Unexpected"" is the other one. Sadly seen a lot of those....sigh.",False,1661971839.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk2ug8/
+189,False,OhRiLee,"2 lads I used to hang out with died suddenly last year within a week of each other. 2 brothers. The first was probably an overdose, the second was probably a suicide.",False,1661972478.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk4jl3/
+190,imk4jl3,TrueBirch,"I'm sorry to hear that, that's awful.",True,1661973348.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk6upj/
+191,False,violetdaze,"By the time I was 25, I had (still have..) more dead friends than my parents did their whole lives. Heroin is the fucking worst.",False,1661973350.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk6uvn/
+192,imk6uvn,TrueBirch,"I absolutely agree with you, I'm sorry for your losses",True,1661974642.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imka9q5/
+193,False,mylittlewallaby,"My cousin ""died suddenly"" today. 
+😪
+Fuck the sacklers in particular.",False,1661980537.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkq2g5/
+194,imkq2g5,TrueBirch,I'm so sorry to hear that,True,1661980839.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkquj5/
+195,False,ZachAttackonTitan,Shouldn’t you compare with percentage of all deaths that opioids make up?,False,1661981299.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imks15y/
+196,False,Shkeboo12,Probably suicide too. Suicide deaths account for some of the highest in this country. It’s a mind blowing problem that is being swept under the rug and unreported.,False,1661984130.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkz1kf/
+197,False,andrewjhesse,"This hits a little close to home.  When my brother ""died suddenly"" from a heroin overdose 7 years ago, we made it a point to include the reason in his obituary.  Apparently this was so uncommon that it when viral and ended with my parents being interview by local news with the story being picked up by some national news aggregators.
+
+ www.wlwt.com/amp/article/family-uses-man-s-obituary-as-warning-about-dangers-of-heroin-addiction/3551114
+
+https://news.yahoo.com/2015-04-30-family-uses-mans-obituary-as-warning-about-dangers-of-heroin-ad-21138544.html
+
+I understand why people are reluctant to share the real cause of death but our attitude was that if we could prevent one addiction by sharing the details, we felt an obligation to do so.",False,1661984643.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml09n1/
+198,False,AnalyticsMaster,"This is not beautiful data, this is ugly data.",False,1661985803.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml2zmt/
+199,False,mikasakoa,Say it with me - “correlation is not causation”,False,1661988313.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml8q9w/
+200,False,NediaMaster,"Anyone else just see this and scream out loud? Literally learn in 6th grade science that correlation is not causation, and the graphs barely even line up 😂",False,1661989612.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlboed/
+201,False,seno2k,"Eek. Thanks for posting, but there are a lot of problems here that I think have to be pointed out.  First, one chart uses “% of deaths” whereas the other uses “number of deaths,” so it’s not really comparing apples to apples.  Also, one is looking at an overall population (i.e., “all deaths”) whereas the other is only looking at a much smaller population (i.e., overdose deaths from prescription opioids).  To that end, you can’t really draw a causative effect this way.  Finally, obituaries really have no place in a comparison like this. I mean, we’re talking about subjective write ups that family members prepare (or don’t) in newspapers after a loved one dies.  These aren’t being prepared with any objective consistency.  They’re written to tell a story that paints a loved one in a positive light.  It really should be coroner reports.",False,1661989659.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlbsa1/
+202,False,smile_politely,"This is a classic how to lie with visuals. There confounding variable is death. 
+
+You can add death related data points and it’ll still look like it’s correlated.",False,1661989851.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlc7zn/
+203,False,,You need to control for other causes of death. It could be all cause mortality follows the same trend. Correlation is not causation.,False,1661989883.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlcana/
+204,False,,You shouldn't be comparing sudden deaths *per capita* to net annual opioid deaths. They should both either be in absolute or proportional terms.,False,1661989891.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlcbb9/
+205,False,ChaiSpy,"Huh? You posted two graphs that happen to look similar… I’m not understanding what you’re trying to prove here. The graphs are not even to the same scale, so no way to prove correlation, and even then - correlation does not equal causation. There’s nothing of value here.",False,1661990481.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imldmt8/
+206,False,Calgrei,Correlation is not causation OP,False,1661994416.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlmoy7/
+207,False,khrnbn,Correlation =/= causation. Not pro pharmaceuticals but this is inaccurate in implication.,False,1661997250.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlt5ld/
+208,False,rikik098,"I think this is a bit misleading because the driver of overdose deaths is not prescription opioids. Yes it is happening, but the main issue is fentanyl and how the drug supply in this country is extremely unsafe and unstable. People don't know what they're getting anymore. Focusing on prescription opioids detracts us from the real problem",False,1661998118.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlv3kl/
+209,False,Somebodys,"I have to say it, correlation does not equal causation.",False,1661999221.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlxih4/
+210,False,BloodyKitskune,"Anyone that's confused go and read ""How to lie with Statistics"".",False,1662000596.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm0fsr/
+211,False,lavenderowid,"Correlation does not imply causation. Each tragedy represented here is personally relevant to my experience of loss; however, a clear hypothesis must be established alongside robust statistical analysis in such comparisons. You can't just plot slopes against slopes and draw a conspiratorial conclusion.",False,1662000908.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm134f/
+212,False,smp006,"Interesting graphs, but important to remember correlation does not equal causation",False,1662001132.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm1jmg/
+213,False,dis6wood,What an awful representation,False,1662001399.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm230z/
+214,False,SonicFan1524,Correlation is not causation,False,1662006258.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immb53z/
+215,False,,"The scale on your Y axis is misleading. Your “deaths” Y axis goes in 5k increments from 0 to 15k (essentially it triples) yet the Y axis for your “Obituaries” graph goes 0.5 in the same spot as the 5k and the data only goes to 0.9 in the spot that the 15k would be in.
+
+In other words, the line for Obituary graph is a lot flatter than your axis makes it appear.",False,1662008328.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immeiqk/
+216,False,,"If I showed this plot at my job, I would be fired.",False,1662012567.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immkq9w/
+217,False,Taolan13,Correlation does not equal causation.,False,1662034936.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnfs3v/
+218,False,,"Ice cream consumption and murder rate increases in the summer, so it can be concluded ice cream makes you a murder.",False,1662034951.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnft9u/
+219,False,freerangetacos,"There is something off about depicting the overdose deaths as leveling around 2010.  They have been notably \*spiking\*.  See here for another source:
+
+[https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates](https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates)",False,1661970048.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjy67y/
+220,imjy67y,Slow_drift412,The key here is that it's using prescription overdose deaths. 2010 is right around when they started cracking down on prescribing opiates. The majority of overdose deaths nowadays are from using street drugs cut with fentanyl.,False,1661991880.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlgtbp/
+221,False,MateoDoge,"Dont know that much about statistics, but isnt this one of those cases where correlation doesnt mean causation?",False,1661970795.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk03sx/
+222,imk03sx,TrueBirch,"I intentionally said the numbers ""closely track"" each other rather than saying they were 100% related. There are various causes for the increases in both numbers and I'm sure part of the correlation could be noise. But I strongly believe that there's a real relationship here, even if it isn't absolute.",True,1661971215.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk174e/
+223,False,Vandstar,"Just now seeing this? Obviously from the beginning what was afoot here. Regulation allowed and even promoted the over prescription of Oxycodone. Ohh noo we have a national crisis, whatever shall we do? Well you are looking dead on at it, and people still argue causation. Looks like the industry shills are out in force. How many that died of covid related symptoms were either an addict before or even durring the pandemic? We probably won't see that data, but it sure is a neat way for the medical industry to rid itself of such nasty lawsuits and visibility.",False,1661970202.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjykma/
+224,False,mnicolella,"Everyone dies suddenly... You're alive, then suddenly you're dead.",False,1661971115.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk0xok/
+225,imk0xok,Branzilla91,"Many journalism schools/editors tell people to instead write ""died unexpectedly"" for this reason.",False,1661983315.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkx2oq/
+226,imk0xok,TrueBirch,"I guess that sounds better in an obituary than ""Last Thursday, Birch finally died. His family and loved ones are all very relieved.""",True,1661971283.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk1dnn/
+227,False,fredy31,"I would put the guess out there that if an obituary doesn't state a cause of death, it probably means the cause of death is not something to be proud about.",False,1661973602.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk7iyp/
+228,False,Impossible_Hunter_39,"Eight thousand people a day die, 450,000 people die every year; from life in the first case, and tobacco in the second.   Terrible stats; horrible.",False,1661972691.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk53zw/
+229,False,ebscott21,I’ve noticed these kinds of obits frequently have the suicide hotline included (when on-line). It’s such a tragic correlation.,False,1661974389.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk9llj/
+230,False,thecactusblender,"No. Causation does not equal correlation, not by a long shot.",False,1661974743.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkajja/
+231,False,Cygnus__A,Does this track population growth as well? I'm sure this curve fits a lot of data.,False,1661975724.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkd6ix/
+232,False,WhittlingDan,"Now these deaths are only for prescription opioids? No heroin or fentanyl correct?
+           
+Is there data separating people who had a prescription for the drug currently or ever before vs simple street use?",False,1661976612.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkflqr/
+233,imkflqr,mcflycasual,"A lot of people assume prescribed opioids are the cause of overdoses when it's actually heroin and street fentanyl. Exactly what you mentioned.
+
+Pain patients definitely don't take their meds to get high. And they don't sell them on the streets because you have to be regularly seen by pain management and drug tested to continue treatment. Plus they actually need them to live a somewhat tolerance life. And that's if they're lucky enough to get prescribed pain killers. 
+
+It's a whole new epidemic just not as ""sexy"" as people overdosing, I guess. (Meaning it doesn't catch people's interest or make headlines.)",False,1661981266.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkry1r/
+234,False,Motiv3z,I love the morons that say “iTs ThE vAx”,False,1661976790.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkg2s9/
+235,imkg2s9,FridayBakery,"We're all going to die of something someday, but for those who didn't take the injection, they at least they won't have the extremely small possible chance of dying from that.",False,1661985010.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml153v/
+236,False,Living_Roll1367,"""Correlation is not causation""",False,1661976862.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkg9mp/
+237,False,bigburner95,"A guy I grew up with recently passed away. No obituary for about a week. Then when it did come out it was something along the ""died suddenly""  line. He was a combat vet.",False,1661977180.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkh4pv/
+238,False,_forum_mod,Always wondered what that meant.,False,1661977211.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkh7pb/
+239,False,O1_O1,"I'd think in this sub people would have engraved in their skulls that ""correlation does not equal causation"". So what different about this one?
+
+I mean, if I remembering this correctly I saw a video where they showed two graphs. One was suicides and another one was people who went to see a Nicholas Cage movie and they were both very close as well, doesn't mean anyone who watches a Nicholas Cage movie is gonna kill themselves.",False,1661977894.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkj21y/
+240,False,DefaultSubsAreTerrib,"Maybe also a scatter plot: horizontal axis is 'overdose deaths' and vertical axis is 'died suddenly', then color the points by year.
+
+If there was a perfect correlation, this scatter plot would show a straight line.",False,1661978146.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkjpwf/
+241,False,TenuousOgre,"Would also love to see a second chart on the same timescale, this one showing income inequality. Just how much does being broke, poor, having to work multiple jobs with inadequate pay result in choices like opioid use or suicide or both.",False,1661978737.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkl9wo/
+242,False,Ivotedforher,Always write your own obit and eulogy. Otherwise the  obit ends up nebulous and the eulogy is a time share presentation for heaven.,False,1661978877.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkln6n/
+243,False,Corporal_Tax,Deliberate misrepresentation. Data is not beautiful in this case,False,1661979950.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkojcv/
+244,False,VeterinarianUsual541,I have no idea what I'm supposed  to  get from this😅,False,1661979993.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkoneo/
+245,False,okwaitno,"Decedent? TIL a new word for ‘dead person’. 
+
+Which, being so close to ‘decadent’, makes me think they all died by eating too much pheasant, caviar and champagne.",False,1661980050.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkossk/
+246,False,Pjarker,"If you scale any graph out, they can look similar lmao. The y-axis aren’t even related at all.",False,1661980516.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkq0hf/
+247,False,4thelasttimeIMNOTGAY,One is percent the other is total. Smells like bullshit to me.,False,1661980930.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkr320/
+248,False,beargrease_sandwich,That's cute but the y axis are completing different forms of measurement. I see a correlation because the manipulator of the data made one present itself. That is all.,False,1661980959.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkr5sk/
+249,False,underredit,"That's spurious correlation. It might look correlated, but they aren't:
+
+  
+
+
+https://www.tylervigen.com/spurious-correlations",False,1661981054.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkrerb/
+250,False,TheoristDa13th,Perfect example of inductive reasoning good sir,False,1661981348.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imks5l5/
+251,False,leftarmacross,"come one, come all to see the horror show that is crimes against the y-axis",False,1661981795.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkta99/
+252,False,amglasgow,https://www.tylervigen.com/spurious-correlations,False,1661982746.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvo0t/
+253,False,FuckyouYatch,"We know OP on inferences, but have you seen OP in extrapolations?  
+https://xkcd.com/605/",False,1661982939.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkw564/
+254,False,WouldntBPrudent,". . . He said he wanted heaven, but praying was too slow. So, he took a one-way ticket on an airline made of snow. Did you say you saw a good friend flying low, dying slow, flying low . . .
+
+Hoyt Axton",False,1661984107.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkyzlp/
+255,False,PFChangsFryer,Correlation is not causation,False,1661984828.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml0ple/
+256,False,EngineZeronine,Well there's a meaningless bit of nothing. Probably could be sold to the daily mail,False,1661985201.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml1l8g/
+257,False,kensho28,"Legalize marijuana, it's the best way to stop this.",False,1661985711.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml2s25/
+258,False,arzen221,"Oh data visualization guy. Don't you know about this thing where correlation does not imply causation.
+
+It might not be wrong but like you need to do actual science to make that data truly sing.",False,1661985721.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml2sxm/
+259,False,tbariusTFE,My brother died at 19 years old from overdosing pills after my mother got him hooked on them. Opioids ruined my entire life.,False,1661985780.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml2xsm/
+260,False,PTMD25,"Either means overdose or suicide. Every. Single. Time. 
+
+It’s brutal 😔😔😔",False,1661985878.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml35vc/
+261,False,The_Cat420,"Work in the funeral business, can confirm",False,1661986871.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml5gce/
+262,False,NowGoodbyeForever,"Former journalist here. ""Died suddenly"" is also the most common euphemism for ""suicide."" This is especially true for any transit-related deaths. There is a quiet agreement across media outlets that reporting suicide-by-train/subway will encourage more copycat events. I disagreed vehemently, and argued for transparency about the real reasons people die.
+
+Like I said, *former* journalist.",False,1661987232.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml6a68/
+263,False,sawyouoverthere,"If you liked this graph, you're going to love this website
+https://www.tylervigen.com/spurious-correlations",False,1661987431.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml6qdv/
+264,False,Familiar-Party-6739,"I don't find this data particularly beautiful, but I do find it pretty irresponsible.",False,1661987797.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml7jwg/
+265,False,jstam26,I'd be interested to see the one for heart failure and/or suicide. I'm guessing they would be similar which means that this graph is meaningless,False,1661988785.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml9swp/
+266,False,50-Lucky,Why is one lateral percentage and the other a sum?,False,1661989045.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlae8l/
+267,False,Turtle-testicles,A lot of people who have loved ones who overdose do not want people to know what happened out of shame. Many folks I've known personally overdosed their funeral and obituary says something about dying suddenly or unexpectedly,False,1661989164.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlanyv/
+268,False,Needless-To-Say,"When my eldest was in junior high school he had a homework assignment to graph 3 math progressions
+
+-	arithmetic progression
+-	geometric progression
+-	logarithmic progression
+
+When he showed me his resulting graphs, they were all identical. 
+He simply manipulated the x-y scales to make them so. 
+
+I learned something that day.",False,1661989933.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlceon/
+269,False,geteum,Spurious correlation at its finest,False,1661990023.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlcm0e/
+270,False,Ilikethufootball,"I'm going to guess the comparison to any drug overdoses would track about the same, not just prescription opioids.",False,1661990391.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imldfeo/
+271,False,Quarter120,There are other correlations,False,1661990955.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlepi1/
+272,False,Lefty_22,Correlation does not imply causation,False,1661991084.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlf06t/
+273,False,FridayBakery,Life insurance companies are seeing a massive increase in payouts. Im sure most drug addicts and suicidal people dont have life insurance and 401ks.,False,1661991132.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlf41o/
+274,False,Kharons_Wrath,Where was this empathy with the crack epidemic in the 80’s to the African-American communities effected?,False,1661991374.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlfnr0/
+275,False,CmdrRyser01,"""Mysterious circumstances"" = ""auto-erotic asphyxiation """,False,1661991546.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlg1wr/
+276,False,redditjoda,Probably correlates with putting butter in coffee too.,False,1661991711.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlgfkx/
+277,False,blasticon,This is lacking any type control whatsoever. At the bare minimum it needs a plot for total obituaries included in the database by year.,False,1661992108.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlhbw8/
+278,False,kajones57,More like murdered from Fentanyl not oxy,False,1661992804.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlixv1/
+279,False,,20k upvotes.. people are stupid,False,1661993057.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imljigs/
+280,False,FiftyCalReaper,"I've been to a funeral of a 26 year old that died ""suddenly"" and it was from opioids. Was a very sad service, because he had 3 kids and everybody was crying intensely. It wasn't suicide though. His addiction just got way out of his control.",False,1661993058.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imljiks/
+281,False,Licensed_Ignorance,"Makes sense though, publicly announcing someone died from an opioid overdose is basically opening the door for all sorts of judgement and just generally terrible things that people will say.",False,1661993064.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imljj1n/
+282,False,,Looks like confirmation bias,False,1661994820.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlnmis/
+283,False,Oapish,"This data inexplicably excludes all non-prescription opioids, which make up the overwhelming majority of OD deaths (https://www.cdc.gov/drugoverdose/images/3-waves-2019.PNG). Overall opioid overdoses have increased at a much faster rate *since* the early 2010s, well after the prevalence of ""suddenly"" in obituaries peaked.  
+
+Unless there's a reason why there would be such a drastic difference in the obituaries of those who die by taking the massive quantities of prescription opioids needed to OD and those who die by taking non-prescription opioids, this is almost certainly a spurious correlation.",False,1661995249.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlolql/
+284,False,LinkinLinks,If only there were statistical methods to evaluate correlation between two data sets...,False,1661997652.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlu1x7/
+285,False,Vprbite,"The only thing that gets me is the ""prescription"" part. I'm a paramedic and the only time I've seen an OD on prescription is when like, say there is an older couple and the wife has cancer and the husband doesn't but they both put their pills in those containers, and he accidentally takes the wife's pills. Otherwise, for years, it's been the counterfeit pills made of fentanyl. But everyone is aware they aren't oxycodone. The dealers and the buyers are aware it's fentwnyl",False,1661998567.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlw364/
+286,False,KillahHills10304,"I know in more conservative states they're logging overdoses as various types of ""heart failure"" and ""sudden respiratory arrest"" so the statistics won't look awful. I've had 3 friends OD in the Carolinas and 1 in Michigan and all 4 were labeled as heart failures. Up here in the northeast we do the ""proper"" ""acute drug overdose"".
+
+It's sad the one kids mom still tells herself ""his heart was just too big for this world"" so she doesn't have to come to terms with him falling out.",False,1661998924.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlwv8r/
+287,False,,"One more time, and this time everybody repeat after me:  Correlation is NOT causation.",False,1662002539.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm4dgv/
+288,False,swng,How do the two charts correlate?,False,1662002799.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm4vtv/
+289,False,sbear37,"Repeat after me. Correlation is not causation.
+
+
+Also, this is barely correlated anyway
+
+
+*Facepalm*",False,1662003216.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm5omb/
+290,False,unknownz_123,I am severely confused how these two graphs correlate with each other excepts the shapes,False,1662003520.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm69cm/
+291,False,keithgabryelski,"This is the type of stuff that only keeps the status quo of stigma …
+It’s important for our society to recognize the problems with opioids (and suicide).
+These should be apart of the obituary.
+
+FYI: my 25 year old son died of an overdose nearly seven years ago — it was tough even understanding what our options were when we found he was using. It was impossible to get the information we needed to help him without physically going to an emergency room with a dope-sick kid and get the inside scoop from the nurses as to where there were beds available either temporary or long term 
+
+Things have changed in six years… but I still believe there isn’t a “taking care of an addict for dummies” that would help a lot of parents who haven’t dealt with this and/or don’t know anyone that has dealt with the situation.",False,1662003852.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm6vhp/
+292,False,Pyramyth,These are just too lines that look similar they’re not even measuring the same metric lol…,False,1662005803.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immackz/
+293,False,kygah0902,Dude this screams cherry picked data,False,1662007573.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immdc41/
+294,False,drmantis-t,I’ll just leave this here: [Spurious Correlations](http://www.tylervigen.com/spurious-correlations),False,1662008364.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immekue/
+295,False,DrinkMoreCodeMore,OP if you made this you are an idiot,False,1662008415.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immenl2/
+296,False,cevn89,Spurious correlations much?,False,1662009491.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immgap2/
+297,False,pls_send_subway,Now add in number of tvs in households over the years too,False,1662009986.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immh21w/
+298,False,DarkRedDiscomfort,"Insanely bad data, two completely different charts, this doesn't even imply correlation.",False,1662014133.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immmtua/
+299,False,Theepot80,Correlation doesn’t mean causation,False,1662017771.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immre5h/
+300,False,Old_Gringo,"Maybe. But the 2 graphs use different variables on the Y axis and its easy enough to adjust the units of, say, % of ""died suddenly"" mentions to match the slope of the opioid overdose curve (or the other way around). Correlation is not necessarily causation.",False,1662018067.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immrr16/
+301,False,Hot_Dog_Cobbler,"Just like when someone dies ""cleaning their gun.""",False,1662019511.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immtgv2/
+302,False,Rumpleshite,I’m just going to leave this here https://www.tylervigen.com/spurious-correlations,False,1662019890.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immtwue/
+303,False,Lordsaxon73,Funny the media doing stories about the drop in average US life expectancy…but equating it to poor health care as opposed to the shipload of young people dying from Fentonol,False,1662030780.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn89aw/
+304,False,CursedMael,"0.6% increase in use of ""suddenly,"" but opioid deaths tripled? I don't see the correlation. It really just looks like the slope of the graph is similar but not related at all.",False,1662035164.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imng8h2/
+305,False,keepthepace,"Where do you get these figures from in the CDC? That plateau is surprising/
+
+[Drug related death rates have almost doubled between 2010 and 2020](https://www.cdc.gov/nchs/data/nvsr/nvsr70/nvsr70-08-tables-508.pdf#I02) according to the CDC.",False,1662035571.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnh1g5/
+306,False,TheOmniverse_,"Remember kids, correlation implies causation.",False,1662038516.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnna0e/
+307,False,LargeSackOfNuts,"This is dubious at best. 
+
+Why didn’t you align the statistics with either: both percentages or both numbers",False,1662038604.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnnh1v/
+308,False,YourMother16,"Why's the top graph in percentage from 0.3 to 1.1 while the bottom graph is in 5000 deaths from 5000 to 15000
+
+Edit: added a zero",False,1661982373.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkuqdr/
+309,imkuqdr,leagueisbetter,"Because it’s completely manipulated and trash data. I wonder how many times OP “adjusted” those numbers until the line looked similar
+
+What a joke",False,1661982805.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvt93/
+310,False,Acceptable-Writing70,"Notice how the trend chart line finishes in 2020, yet the 'events' dots skyrocket after that time. 'Simething' else is occurring in the last two years and it's not from narcotic abuse or suicide. The fact that most people are oblivious to the possibility that excess deaths may be attributed to 'some other' cause, is mind-blowing. Personally, I know of several under 55's who have died suddenly and unexpectedly during the last two years. All healthy with no warning signs. All died from stroke or heart failure. One walking down stairs fell and was dead by the time he hit the ground.",False,1661984994.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml13p5/
+311,iml13p5,backhand_sauce,"One look at your comment history and you're pure conspiracy theorist - even subscribed to UFO's 
+
+Anyways, I'd rather trust science than someone who gets their info from tarot cards
+
+Also ""dead before he even hit the ground"" - there is zero chance you can possibly know this unless you were tracking brain actively and pulse during his entire fall
+
+Your comment chain is more likely lies than truth",False,1661997795.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imludm2/
+312,False,pconwell,You can draw the same conclusions from a chart showing ice cream sales and high sea piracy.,False,1661996887.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlsbxw/
+313,False,,"At first I read this as ""covid deaths"" rather than ""opioid deaths"" because in many small towns in America, covid deaths are announed as ""brief illnesses.""",False,1661970125.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjydi3/
+314,imjydi3,WhittlingDan,"Well you can't put Covid because all the neighbors would call you a liar ""cuz it was a hoax"".  Lol. More projection from well....",False,1661980055.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkot9v/
+315,False,,Overdose deaths are currently trending down. “Died suddenly” is currently trending up. Seems as though there is something else causing sudden deaths… maybe vaccine adverse reactions?,False,1661978143.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkjpn3/
+316,imkjpn3,ivanlost,Most likely,False,1661995946.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlq6ri/
+317,imkjpn3,backhand_sauce,"This comment looks like a copy pasta for and MSN comment section 
+
+Then later when we find out the sudden death was a suicide or something you morons just ignore it and go back to your cave",False,1661997603.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imltxxg/
+318,False,Hifen,"Could this be population based, because the bottom one doesn't look like it's by capita.",False,1661974947.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkb3qp/
+319,False,TheBestGuru,We all know why the last dots are higher.,False,1661979730.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkny2h/
+320,False,Bad_Prophet,Prob tracks even better with % of population who received the experimental covid vaccine,False,1661982792.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvs40/
+321,False,Nightxxshade,Now overlay the time line of “I got the jab”,False,1661988880.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imla0rb/
+322,False,Mobile-Ad-9929,"""Hmm these unrelated lines look pretty similar, must be related"" Job done!",False,1661992470.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imli5vl/
+323,False,dano8675309,"Sooo, I've definitely seen this phenomenon of purposely not mentioning the cause of death in a younger person's obituary when it was obviously a drug overdose situation. Basically anyone from my highschool that died young fell into this category.
+
+However, as others have pointed out, this data doesn't mean anything other than ""look at two charts with a similar curve"".",False,1662041093.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnt8kf/
+324,False,,[removed],False,1661977969.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkj975/
+325,imkj975,derglingrush,How many people do you imagine have died from COVID vaccines?,False,1661985286.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml1sfd/
+326,False,Fisher9001,"This sub doesn't have mods, does it?",False,1661973050.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk625r/
+327,False,decoy777,"Oh oh now do the ""died suddenly"" with covid jabs and boosters!",False,1661978349.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkk8t4/
+328,imkk8t4,TrueBirch,I doubt there's a correlation there.,True,1661979027.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkm1j0/
+329,False,Sketchelder,"Show this to r/conspiracy, ""died suddenly"" seems to mean murdered by the vaccine to those idiots",False,1661971088.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk0v59/
+330,imk0v59,Wanderstand,Look at the data points on the chart and not just the trend line. Sudden deaths jump up dramatically in 2021 which could suggest that the idiots were a little bit right.,False,1661982731.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvmpw/
+331,False,,[removed],False,1661974358.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk9iq1/
+332,imk9iq1,TrueBirch,Do you have evidence that vaccination has increased mortality rates? The data I've seen suggests that people are *less* likely to die after receiving the recommended vaccines.,True,1661974606.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imka6dy/
+333,imk9iq1,istigkeit,Wowwww you said this genuinely. May god have mercy on your soul.,False,1661980754.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkqmlb/
+334,imk9iq1,,[removed],False,1661985852.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml33n9/
+335,False,Rounder057,Fentanyl ain’t no joke y’all,False,1661971294.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk1en0/
+336,False,goosebattle,"1 min of googling results: 
+~2.5 million deaths /yr in USA in 2010. 0.9% of that is 22500 deaths. 'Twould  seem opiod deaths (~15000/yr) are a substantial proportion of sudden deaths.
+
+Also, with population increases, opiod deaths per capita are going down by this chart.",False,1661974713.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkagkr/
+337,False,LiathAnam,That's not a lot of data points for the opioid overdose,False,1661977984.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkjao9/
+338,False,,the pharm industry is a money printing machine.,False,1661989050.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlaelr/
+339,False,twitch1982,"I thought that was a well accepted obituary euphemism. Did people not know that was what it meant?
+
+
+Theres a lot of these: 
+
+""Did not suffer fools lightly"" = intolerant dick
+
+""Affable and cheerfull at every hour"" = total drunk
+
+""Gave colorfull accounts of his exploits"" = liar",False,1661989798.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlc3pr/
+340,False,hduransa,So much tragedy. If only those people knew what drugs were and how they affected you. Opioids are addictive and lethal. The government keeps it a secret. All of the list innocence is heartbreaking.,False,1661991836.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlgpqn/
+341,False,changeofbehavior,This should closely track strokes heart issues and other blood related issues with the Covid vaccine,False,1661997804.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlueas/
+342,False,,[removed],False,1661975140.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkbmkn/
+343,imkbmkn,TrueBirch,I don't think I would find any correlation there.,True,1661975306.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkc2fs/
+344,imkbmkn,Malpraxiss,"Don't think those have anything to do with each other, especially when covid has been shown time and time again to primarily be a concern to old people.",False,1661975701.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkd4cl/
+345,False,hahahayeahrightdood,It also tracks with a product released last year.,False,1661995094.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlo90t/
+346,False,ChannelUnusual5146,This is simply one of Life's ways of filtering undesirable people out of the gene pool.,False,1662000784.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm0twc/
+347,imm0twc,Tidezen,"Wow, hot take there.
+
+Would you consider yourself a desirable person, if I might ask?",False,1662001880.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm31y8/
+348,False,draypresct,"Neat finding! I'm honestly surprised at how closely these track in terms of the initial rise and the later levelling-off. 
+
+These certainly nudge me in the direction of a causal conclusion. I'm trying to think of another  possible explanation (the financial crisis in 2008? Demographic shifts - e.g. if 'suddenly' is a term used primarily for people who died within a certain age group?), and not coming up with anything solid.",False,1661969329.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjwbto/
+349,imjwbto,TrueBirch,"That's a useful way to think about the data. Younger people are more likely to ""die suddenly"" and there are other causes of death among young adults than just prescription opioid overdoses. But sadly that's a big cause of death in that group, so ""deaths among young adults"" is strongly correlated with ""deaths from opioid overdose.""",True,1661970472.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imjz9tc/
+350,False,adamhanson,"Correlation is not Causation
+
+But yeah it actually could account for a lot of the sudden deaths.",False,1661989846.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlc7l5/
+351,False,,[deleted],False,1661987821.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml7lve/
+352,iml7lve,TrueBirch,"The COVID-19 vaccines reduce mortality, they do not increase it.",True,1661989011.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlabj2/
+353,False,ThermobaricFart,"I know too many people who died suddenly of overdose or suicide in the past few years. China has succeeded in their funnel of fentanyl and then the dispair of covid to do more damage to the youth than the virus ever would have. I had reached out to an ex in July 2021 via email then found out she had died just months prior. She would have been 32 this month and I still don't know if it was drugs or suicide, but I damn sure blame the politicians and will never forget how much bullshit their caused during their pandemic.",False,1661994889.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlns7b/
+354,False,Pleasant-Cricket-129,"In Deleware County, PA (just outside Philly) someone between ages of 20-35 dies every other day it seems ‘suddenly’. My 32 year old brother passed 6 months ago ‘suddenly’ from a genetic heart issue. He NEVER used drugs. When i see people i havent seen in a while and they ask how my brother is doing and i tell them he passed, their first question is ‘was it drugs’. Its frustrating and saddening.",False,1661975481.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkcj3f/
+355,False,LoopUtilULoveMe,I’m sick of hearing about trump. If you’re somewhat intelligent you’ll realize how absurd him becoming president is. It’s a f’ing joke at this point. Can we move on and stop talking about him and seeing these stupid posts that mention his name? It’s an absolute joke at this point.,False,1662007150.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immcndl/
+356,False,Cryostatica,"One of my uncles died of an overdose. One of the paramedics told my grandmother that it was an open can of paint thinner in the room that killed him. I don't recall what the coroner put it as officially. I was in my teens at the time but I knew the kind of shit he was into and I knew damn well an uncapped can of paint thinner just sitting there existing in a room isn't killing anyone. 
+
+The mother of a friend of mine recent died of an overdose. Long, long history of substance abuse. Coroner ruled it a heart attack. One of her brothers started demanding an autopsy because she didn't have a history of heart problems. Like dude. They're trying to spare otherwise ignorant family members grief when they do this shit, they're not trying to cover up some nefarious deed.",False,1661973178.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk6ei8/
+357,False,koozler,Just like they did with covid to make trump look bad... weird,False,1661993221.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imljvtu/
+358,False,Amourofzedoute,https://www.tylervigen.com/spurious-correlations,False,1661971490.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk1xbj/
+359,False,krufk,Relation and causality are different things,False,1661972425.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk4edd/
+360,False,radical_0ptimist,OP did you get inspiration for this graph because od the actress which died yesterday? Because this is the first thing that came to mind when i read the news.,False,1661973358.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imk6vom/
+361,False,fun-slinger,"""Unexpectedly"" is the other term I'd check",False,1661975063.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkbevt/
+362,False,masterpharos,"Global heat increase correlates with reduction in pirate numbers, so let's not jump to conclusions about this data",False,1661975072.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkbfuu/
+363,False,james2003,"No it says ""suddenly"" nothing about died suddenly.
+
+Also, why is there a rapid rise, and tapering off",False,1661975248.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkbwzl/
+364,False,StorytellerGG,Can someone explain the purpose of obits? Who’s actually reading through those? Are we suppose to go through it just in case some one we know passed?,False,1661975607.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkcv78/
+365,imkcv78,MerberCrazyCats,Old people do and find names of people they known but haven't talked to in a while. Young people usually don't read them since the likelihood of seeing a known name is way smaller,False,1661980459.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkpv6m/
+366,False,NowAlexYT,"Because you made the charts look similar, but one is in % and increases by .2 every mark
+
+and the other is in units and increases by 5000 every mark",False,1661975849.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkdisj/
+367,False,PoisonedJD,"Insurance doesn’t payout if ruled an overdose. I may be wrong, but I think this is classified similar to suicide.",False,1661975937.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkdrej/
+368,False,timperman,"Prescription opioides, aka Mass Murder by Corporate America. Fueled by Afghani opium as well.",False,1661975963.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkdtte/
+369,False,Bigjuicydickinurear,Died suddenly of what people? Unless they’re infant and sids or they spontaneously combusted people don’t just die suddenly for no reason,False,1661976043.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imke1rj/
+370,False,,The Sackler Family should be in prison.,False,1661976448.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkf617/
+371,False,pwn3dbyth3n00b,Kinda misleading wouldn't say it correlation equals causation. Suicide graphs could bring the same conclusion,False,1661976547.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkffku/
+372,False,DupontPFAs,"Nobody said ""suddenly"" before 9/11",False,1661976896.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkgcw6/
+373,False,Teraconic,Your y axis have almost 0 relation to each other. This is misrepresented data at worst and uncorrelated at best.,False,1661977168.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkh3ka/
+374,False,SkipperFab,Obituaries should have a cause of death,False,1661977188.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkh5j6/
+375,imkh5j6,Cominginbladey,People have a right of privacy in medical information. Even in death.,False,1661977281.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkhenk/
+376,False,bigburner95,"Another version is ""passed after a brief illness""",False,1661977306.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkhh3j/
+377,False,,[deleted],False,1661977479.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkhxl5/
+378,imkhxl5,Coley_Flack,"Funny, this does not sound like any correlational research design I’ve come across before?",False,1661978963.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imklvdu/
+379,False,Lonely_Set1376,Funny because death from opiate overdose is not sudden. You suffocate slowly because the muscles that move your lungs are too relaxed to take in a full breath.,False,1661977530.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imki2gz/
+380,False,Tshoe77,I thought it was common knowledge that obituaries use that phrase as a catch all for deaths that may embarrass the family?,False,1661977690.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkii73/
+381,False,Chronox2040,"What a bad graph. What’s the intent, given the Y axis are not even on scale. They were just drawn to appear similar.
+
+Also, for the obituaries, that’s a fucking big dispersion, but because the data is monthly is not clear if it correlates or not with opioid deaths.
+
+The only correlation seems to be both increased at different rates on that time period. The fit lines seem as if they were just there for the sake of it.",False,1661977762.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkip3z/
+382,False,DingleberryToast,Thanks Purdue Pharma! Convinced people it was safe and necessary for all kinds of things. Owners will never face responsibility or lose the billions they made from poisoning america on OxyContin,False,1661978246.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkjz7o/
+383,False,Complete_Hold_6575,"Obituaries are also becoming increasingly unpopular and ""natural causes"", ""sudden death"", ""untimely death"", etc have become placeholders for a wide variety of causes of death ranging from addiction to illness. It all basically means ""mind your business"". 
+
+Source: family owns funeral parlors for past 70 years and part of that involves authoring and communicating obits to local / regional media - usually printed newspapers and local community focused sites.",False,1661978995.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imklyfm/
+384,False,TweektheGeek,I bet it tracks with obituaries as well,False,1661979025.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkm1bv/
+385,False,jbland0909,"Wait until this guy find out that there’s a correlation between Ms. America’s age, and deaths due to steam or hot vapor inhalation",False,1661979187.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkmgp6/
+386,False,kevin_k,One chart is a percentage that almost has its X axis at 0 Y and the other one  is actual numbers with a pretty scrunched up Y axis.,False,1661979260.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkmnq0/
+387,False,PFhelpmePlan,How to mislead with data 101.,False,1661979288.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkmqdu/
+388,False,rs07life,I wonder how it compares to total deaths per capita,False,1661979348.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkmw1j/
+389,False,Inevitable_Surprise4,Legalize drugs and give doctors the power to treat addiction in a compassionate and reasonable way and these deaths will dry up. It happened in other places where they did just that. We don't need to suffer like this.,False,1661979418.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkn2u7/
+390,imkn2u7,wallyworld96,Like California right...right?,False,1661980979.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkr7sj/
+391,False,frogvscrab,"Doesn't entirely make sense though, simply because while prescription OD deaths rose until 2012~ then steadied, other forms of overdoses (including non-xr opiates) rapidly rose well into 2020. 
+
+In 2012, when the 'sudden death' certificate leveled off, around 45k died from overdose deaths. By 2020 it was over 100k.",False,1661979568.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imknhph/
+392,False,RoseAboveKing,"This is interesting, but Malcolm Gladwell levels of idiotic correlation = causation if you draw definitive conclusions from it",False,1661979689.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkntzv/
+393,False,sillymansam,"Correlation does not imply causation
+
+https://images.app.goo.gl/u2aNv6diSETVCxmx5",False,1661979946.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkoiy7/
+394,False,madkeepz,Yeah but without knowing the actual cause of death this is very difficult to attribute to actual overdoses,False,1661980106.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkoy1o/
+395,False,Slim_Joe_The_Villain,See also https://www.tylervigen.com/spurious-correlations,False,1661980122.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkozjz/
+396,False,oneultralamewhiteboy,Reported for misinformation. People are very rarely dying of prescription opioids these days. Most deaths are from **illicit** fentanyl and involve more than one drug as well.,False,1661980199.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkp6w0/
+397,False,SKPY123,More than likely the Fentanyl getting into everything. I doubt that it's JUST prescription.,False,1661980400.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkpplp/
+398,False,brazys,"To be fair, an OD is awfully sudden.",False,1661980777.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkqor4/
+399,False,MemeTeamMarine,I'd like to see how it tracks with overall death rate and population before we draw conclusions,False,1661980968.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkr6lu/
+400,False,leagueisbetter,"You can’t just use different Y axis measuring and then compare the two. What an ugly as fuck data chart, complete horseshit 
+
+You can make graphs measuring anything in the world look the exact same if you use different units on the graphs…",False,1661981132.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkrlzc/
+401,False,spacecadetAlsoWizard,https://www.tylervigen.com/spurious-correlations,False,1661981184.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkrqoh/
+402,False,GuyYouMetOnline,I wonder what other things might make a graph that looks like that.,False,1661981625.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imksurj/
+403,False,Etourdie1,"Close correlation, but correlation≠causation",False,1661981750.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkt654/
+404,False,the_azure_sky,I just witnessed a man die on the 9th of August from opioids. He was given five doses of narcan.,False,1661981812.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imktbsr/
+405,False,INCEL_ANDY,Id like to see these graphed compared to a graph of Naruto Hentai search population over the same period,False,1661981950.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imktoa8/
+406,False,suluamus,"Apart from the other problems listed, just because you die doesn't mean you get an obituary. You have to pay for a paper to run one. And you have to have someone who will write it.",False,1661982071.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imktzdo/
+407,False,sohmeho,It even tracks closely with ln(x). Wow!,False,1661982075.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imktzqi/
+408,False,triggerfingerfetish,"If drugs kill people then guns kill people.
+
+But if guns don't kill people, then drugs don't kill people either.",False,1661982090.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imku14b/
+409,imku14b,sgtapone87,"Your first sentence is accurate, not sure why you needed to add the demonstrably false counterargument there",False,1661982290.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkuiyj/
+410,False,appropriate-username,www.spuriouscorrelations.com,False,1661982162.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imku7gu/
+411,False,quad64bit,"Someone said on a thread a few weeks ago that the fan deaths in Asia were invented as a way to not list suicide on the death certificate. That certainly makes more sense than moving air being fatal to Asians in the dark. I’d imagine this is exactly the same thing, no one wants to report that their loved one was a junkie to friends and family.",False,1661982233.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkudue/
+412,False,Duckdog2022,"I mean, for now it's just correlation. Causation might be plausible here but it's no proof of it.",False,1661982583.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkv9b3/
+413,False,ChattyKathysCunt,They say that for suicide too don't they?,False,1661982757.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvoyy/
+414,False,Actormd,Won't it track with ANYTHING that kills you quickly?,False,1661982778.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkvqvz/
+415,False,Wanderstand,Why do the data points for sudden deaths begin to spike up starting in 2021?,False,1661982909.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkw2in/
+416,False,WindChimeFrank,But the good guys at the pharma companies wouldn't produce products that are bad for us!,False,1661982955.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkw6lj/
+417,False,Fionnathos,"While others have noted that correlation does not imply causation, its worth noting that:
+
+0.5% increase in the number of obituaries x 3 million deaths per year x 2/3 proprtion of deaths that have obituaries (complete guess but seems plausible) = c10,000 extra deaths (as per 2nd chart)
+
+So the numbers do seem to stack up",False,1661983048.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkwewy/
+418,False,pinkfootthegoose,"there is a correlation but I am not convinced of the connection.
+
+phrases become more and less popular over time. Just like baby names.",False,1661983136.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkwmsd/
+419,False,ProfitInitial3041,Can someone explain to me what I’m looking at? I’m missing something.,False,1661983260.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkwxu2/
+420,False,pvghdz,Correlation does not imply causation!,False,1661983364.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkx739/
+421,False,Kernel_Corn78,"The prescription opioid deaths have gone up five times.
+
+The 'died suddenly' has gone up, but by about half that.",False,1661983375.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkx7yx/
+422,False,EmphaticRAGE16,Correlation does not equal causation,False,1661983421.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkxc1z/
+423,False,ken28e,Heart attacks always kill you suddenly,False,1661983440.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkxdp5/
+424,False,danistheman77,"Sackler's should feel responsible, but they don't.  Money maker for them, no regard for the lives they destroyed.",False,1661983712.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imky1g9/
+425,False,Definitive__Plumage,"I saw an obituary from an old friend on Facebook, absolutely nobody mentioned in the article or comments how he died.  Still sont know, I assume  it was drugs or suicide.",False,1661983729.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imky2vx/
+426,False,imaginaryferret,"I know someone whose brother “died suddenly in his sleep” in his 20s, and I found out later it was really a fentanyl overdose but the family didn’t want to mention it",False,1661983759.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imky5j5/
+427,False,pete728415,"I've been clean nearly four years now and could have easily been a person on that graph. My heart hurts for everyone that ended up there, and their families. 
+
+The space I've put between addiction and how I feel today leaves me feeling disconnected from the physical pain, which is something I never thought I'd be able to feel. You can get clean, if you're reading this.",False,1661984182.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkz63x/
+428,False,BigBill58,"I don’t know, based on a few Facebook acquaintances “research” the only cause of “sudden deaths” is the Covid vaccine, this here must be one of them co-winkydinks.",False,1661984330.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkzitb/
+429,False,Shkeboo12,Suicide deaths nearly 50k in 2020 with drug overdoses (some actually being suicide) around 100k,False,1661984389.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkznu7/
+430,False,Sumbodygonegethertz,Does it track with the other thing we aren't allowed to acknowledge or talk about?,False,1661984406.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imkzp81/
+431,False,zanzabar12,correlation not causation id guess,False,1661984625.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml084u/
+432,False,authoruk,What about vaccine deaths?,False,1661984756.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml0jdm/
+433,iml0jdm,,[deleted],False,1661993439.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlkdzf/
+434,False,Theavy,"Lockdown for drugs, can't do drugs if you can't leave the house",False,1661984802.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml0nb9/
+435,False,Matt_Bunchboigehs,Wow you should try one for antipsychotics as well. I have schizophrenia and I won't take any of those medications. Just raw-dogging life with booze and cigarettes. My father on the other hand drank heavily and also mixed it with his antipsychotic medications for his schizophrenia. Ended up hanging himself with an extension cord on a garage door track back in February of 2015.,False,1661984945.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml0zms/
+436,False,chickenstalker,"\>Legalise drugs! 
+
+This is what can happen if you legalise hard drugs and let capitalism run unchecked.",False,1661985102.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml1cxv/
+437,iml1cxv,Slow_drift412,Except overdose deaths have skyrocketed in the past ten years precisely because the government cracked down on opioid prescriptions. A lot of people turned to heroin and it was right around that same time that fentanyl began to show up everywhere. When drugs are made illegal and the black market takes over production there is no way to control purity and quality and that's when things become very dangerous.,False,1661993174.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imljrzs/
+438,False,cptwott,"I can search for a graph that will fit better than this. Like amount of crypto-coins traded. Or sea level.  
+I mean, this is no serious suggestion unless you make a decent research of this.",False,1661985102.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml1cxw/
+439,False,holleighh,"Everyone can get free Narcan online. I lost my best friend two years ago and it never stops hurting. Stay prepared, loved ones and addicts, stay alive.",False,1661985147.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml1gr3/
+440,False,Xem1337,Isn't this an indirect correlation?  Just because two sets of data seem related doesn't mean they are.,False,1661985204.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml1lha/
+441,False,TikkiTakiTomtom,We need more curves to avoid confirmation bias on concluding results,False,1661985387.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml2148/
+442,False,Valendr0s,"bla bla correlation bla bla causation.
+
+Be funner to find ridiculous graphs that couldn't possibly be causative to show next to it.",False,1661985524.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml2cic/
+443,False,ketchupthree,This is the same logic the antivaxxers use to say that vaccines cause autism.,False,1661985599.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml2ipn/
+444,False,Kingdavid100,Is this from prescription opioids or street Chinese made opioids?,False,1661985810.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml307f/
+445,False,savageseal_18,I want to see the number and not the percentage of the top graph or give the total obituary number.,False,1661985826.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml31jg/
+446,False,kerbal91,"Graphs are great until you can literally put two graphs together like ""3g networks in your area"" against ""cancer in your area"" and just draw whatever conclusions you want. Two graphs next to one another mean shit without any sort of explanation.",False,1661986038.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml3j5z/
+447,False,gcaledonian,I’ve known a number of young people who have “died in their sleep” 🤔,False,1661986056.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml3kpm/
+448,iml3kpm,sawyouoverthere,"So do I.  Unknown heart conditions aren't uncommon in young men in particular, and no opioids were involved.
+
+Correlation is not causation and this graph is a terrible example of correlation with no indication the two lines are at all related.",False,1661987375.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml6lrs/
+449,False,amomentafter,"Makes sense. My mom died of an opioid overdose almost two years ago, and my sisters and I said sudden death. We didn’t everything she was to be whittled down to that one demon that haunted her.",False,1661986137.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml3rip/
+450,False,zomgitsduke,"I always assume ""unexpected death"" means something I shouldn't know, and should just honor the memories they left us all with.",False,1661986170.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml3ucl/
+451,False,chadnorman,This is ironically sobering,False,1661986187.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml3vpw/
+452,False,IdeaFuzzy,Hmm interesting it appears to be picking up recently and is almost inversely correlated with opioid deaths now.,False,1661986496.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml4lo1/
+453,False,InfernalOrgasm,I bet traffic accident deaths follow a similar trend,False,1661986700.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml52dt/
+454,False,vaniljestang,When analyzing time series you want to work with stationary data by removing trends and seasonality. This can’t really be used for anything.,False,1661986718.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml53vh/
+455,False,,"I wonder if the correlation would look similar for choking to death on marshmallows or falling drunk down a manhole. I think this comparison might be valid, but it might be a coincidence.",False,1661986829.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml5cx4/
+456,False,,"Good thing healthcare is about people and not profits, right gang?",False,1661986849.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml5el6/
+457,False,wormwoodscrub,I automatically assume it's OD whenever I hear someone died young and the circumstances aren't known. 90% of the time I'm right. I've known so many people who have died from that shit.,False,1661986870.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml5gbe/
+458,False,annaeatscupcakes,"Based on my own personal acquaintances, I'd be interested to the correlation with suicide deaths.",False,1661986962.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml5nt6/
+459,False,,I've also noticed that date rape closely tracks tomato prices.,False,1661987048.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml5uy0/
+460,False,zombienekers,"NAODN: ""Quick Facts
+
+Consolidates more than 66 million U.S. obituaries and death notices in a single database
+
+""
+
+0.9% of that is about 6 million obituaries= 6 million deaths. If this has anything to do with it, that number would need to be a lot larger. Correlation≠ causation",False,1661987103.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml5zje/
+461,False,brotherbandit,"Correlation doesn’t mean causation. Plus the y axes
+Aren’t even the same.",False,1661987315.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml6gx0/
+462,False,Lostdogdabley,"plot “count of obituaries per year”
+
+it will look the same
+
+ALWAYS normalize for your dataset’s flaws",False,1661987454.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml6sav/
+463,False,,"Maybe I’m not very smart, but why are there so many fewer data points in the scatter plot for the overdose deaths?",False,1661987548.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml6zs9/
+464,False,Lovehatepassionpain,"As someone who was addicted to heroin for almost 2 decades, this makes perfect sense.  I have lost soooo many people close to me.
+
+The last time I did heroin was January 21, 2012.  I can honestly say that today, I don't miss it.",False,1661988116.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml8a5k/
+465,False,somtimesTILanswers,"'Aspirated behind a dumpster"" doesn't have the same ring to it.",False,1661988158.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml8dj0/
+466,False,uvero,"So, the comments aren't going the way you expected, huh, OP?",False,1661988164.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml8dzp/
+467,False,EmberCat42,"I worked for a pharmacy for a year and heard of several people dying this way. I'll never forget one customer who was a little crazy but always brightened our days. We didn't see him for a few days, which was weird, so we called his home and anyone we knew he associated with. He didn't pick up the phone and no one has seen him. We sent a welfare check to his house and unfortunately they found him passed away. He had taken his meds, taken a nap, forgot he had taken them so he took them again and overdosed. So sad. He is missed!",False,1661988200.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml8gzk/
+468,False,vashaunp,correlation is not causation,False,1661988384.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml8w4l/
+469,False,Any-Smile-5341,Correlation ( parallel activity) is  not not an explanation of why.,False,1661988858.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/iml9yzn/
+470,False,Relevium,I can see the correlation here. Seems death isn't very good for life.,False,1661989210.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlarnf/
+471,False,Nerdicane,"My ex roommates boyfriend “died suddenly” this year at age 29. He’d been using opioids since age 15 so he had a pretty good run. 
+
+The death isn’t the part that baffles me, everyone who was around him could see that coming. It’s my ex roomies reverence for him that I find delusional. I can remember distinctly her having to hide out in her room due to bruises he caused on her, a black eye and she has a permanent dent scar on her forehead from him. Still he’s “the love of her life.”.",False,1661989313.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlb05h/
+472,False,KrIsPy_Kr3m3,Heroin is a hell of a drug,False,1661990832.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlefk5/
+473,False,BrainwashedApes,Can confirm my mother was one in 2005.,False,1661992026.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlh5cn/
+474,False,PmMeYourLadyLumps,All of the  5 friends I lost to overdoses obituaries said that.,False,1661992939.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlj8u1/
+475,False,MeltAway421,"There are replies with credible concerns about the representation of data and suggestion of a correlation, and I respect that, but it's also something we all innately know to be true on some level.",False,1661993774.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imll6b0/
+476,False,Brock_Way,"Opioid deaths closely track increase in CO2.
+
+Stop starving those poor polar bear cubs, opioids!",False,1661993936.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlljzw/
+477,False,i_cum_marshmallows,"Look, I use opiates. If and when i eventually overdose, or if i die of suicide, i do not want people glossing over it. Put it in my fucking obituary. Say it at my funeral. Ik people will be sad. Ik thats not necessarily how they want to remember me, but its a bitter truth about drugs and mental illness. Im human, and i want to be remembered as a real person, with flaws, not as this angelic image created by grief.",False,1661994783.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlnjfo/
+478,False,MJpeacok,My dad OD of prescription overdose and his family said he died of natural causes. :'(,False,1661994919.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlnul7/
+479,False,,Correlation is not causation.,False,1661995868.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlq0c9/
+480,False,chevymonza,"Hmm, I have a relative who was addicted, and did in fact die suddenly (heart attack.) Always figured it had to do with ongoing heart problems/health issues. Never thought it was due to the addiction itself. Maybe it wasn't though it probably sped things along.",False,1661996110.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlqkej/
+481,False,Gimmethejooce,Calculate correlation with similar variables for both data sets and talk to me,False,1661996845.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imls8j4/
+482,False,rhyynno,Tracks well with something more obvious as well.,False,1661997076.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlsrlu/
+483,False,thedevilsyogurt,"I wish we could all stop the shame of addiction. I’m not just a junkie, I’m a mother, a wife, daughter, sister, friend. I’m a cat lover, and I like to write. Poetry is my knack, but I’m resentful because I wish I was good at stories. I like music and painting, most of my photos are of sunsets or sunrises when I’m strung out. I try to be polite in every interaction, I like to help people and make them happy. Idk, I’m not a bad person. I don’t rob people, or give drugs to kids or whatever. I’ve worked for years to support my son and myself, lived in the same place for nearly 7 years now. It would be simple to get help if I people didn’t think I was worthless. We hear the emts talk about how they’re sick of all the narcan calls. We know Cps will take our children before they help us find resources for rehab and therapy. I’m not a bad person I just made a bad decision and got in over my head before I truly understood what it meant to be addicted to something.",False,1661997159.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlsy7t/
+484,False,AdShoddy4565,"Correlation doesn’t imply causation 
+
+-Stats",False,1661997175.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlszkp/
+485,False,benstillersghost,Whenever I see this wording I always assumed suicide or OD. Usually you can confirm if the family is asking for donations to mental health/addiction related charities.,False,1661997422.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imltjb8/
+486,False,Witty_Storage3210,Whenever I read died unexpectedly I always assume overdose as well,False,1661997668.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlu38q/
+487,False,BrovaloneSandwich,"My ex died of an overdose at 38 at the obit said ""natural causes"" because he had a heart attack from it.",False,1661997736.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlu8wd/
+488,False,,"Ah, the old correlation is causation blunder.",False,1661997809.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imluer5/
+489,False,Opening_Corner1899,"I mean if someone died suddenly of overdose, you can easily prove it in a blood test or autopsy. No need to use data when you literally have proof.",False,1661997838.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imluh0e/
+490,False,Clever_Userfame,If only there was a statistic that could both plot and compare two different measures with the same samples,False,1661997903.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlumcr/
+491,False,,"I mean what person would write a obit saying 
+
+“Jack shot up too much and OD’d”",False,1661998179.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlv8ek/
+492,False,nosquares725,"Interesting, it also strongly correlated with a sharp increase in the use of the word ""suddenly.""",False,1661998256.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlveey/
+493,False,ymmotvomit,There is a different way to die?,False,1661998673.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlwbi4/
+494,False,follydude,"What about a ""brief illness""?
+That term appears in obituaries of people in their 50's.",False,1661998831.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlwo02/
+495,False,emotta34,Post hoc ergo propter hoc,False,1661998975.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlwza4/
+496,False,bindaredundat,self-inficted wounds --not my problem,False,1661999101.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlx91v/
+497,False,,"My mom died suddenly and unexpectedly at 52. She was an addict. In the three years since, my dad has turned in over 10,000 pills he's found stashed all over the house. In furniture. Wrapped up in her old clothes. Hidden inside old rubbish in the basement. There was even a bottle tucked underneath the stairs to their back porch. It's people like her that are causing doctors to be scared to prescribe meds to people who need it and won't abuse it. 
+
+My dad says it was natural causes. But she'd been trying to kill herself for years. I'm happy for her eventual success. Now we are all free. 
+
+Oh. And a bottle in a birdhouse out back by the tomatoes. Like... Just in case she had a hankering while she gardened? Addicts are the worst.",False,1662000142.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlzhm8/
+498,False,imnotLebronJames,"Unfortunately I just learned a childhood friend had passed suddenly, I automatically went to this assumption. Which isn’t fair but demographics fit.",False,1662000189.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imlzl63/
+499,False,DurinsBane1,"Uhhhh correlation ≠ causation, that’s stats 101",False,1662000946.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm15wu/
+500,False,ryckae,It's a little hard to tell because you have numbers vs percentage. Can you show us graphs where that info is the same?,False,1662002531.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm4cwe/
+501,False,Cuntillious,"Damn, I really thought this post was satire until I saw all the comments taking it seriously.
+
+I miss thinking it was satire.",False,1662003864.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm6was/
+502,False,_qst2o91_,OP I am scared that you're apparently a data scientist oh dear,False,1662004407.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm7w98/
+503,False,,https://www.tylervigen.com/spurious-correlations,False,1662004655.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm8c9g/
+504,False,LuisBitMe,OP needs to learn about spurious correlation. Here are some examples. https://www.tylervigen.com/spurious-correlations,False,1662004674.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm8dfs/
+505,False,superasianpersuasion,I believe the adage “correlation does not imply causation” would be fitting for this situation,False,1662004941.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm8uke/
+506,False,xenona22,Careful for spurious correlations,False,1662005103.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imm94x3/
+507,False,floormorebeers,"Oh hell yeah. Is this specific correlation, causation?",False,1662006212.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immb28o/
+508,False,Krononz,"This just looks like someone deliberately fudging with the scale of a graph to get the results they want, instead of mapping data points into a common coordinate system to show an actual 1:1 relationship.",False,1662006748.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immbz9d/
+509,False,Adventurous_Light_85,"Interestingly it lines up almost perfectly with rates of c-section births in the US. [link](https://www.birthbythenumbers.org/cesarean-sections-2/)
+
+And the increase in type 1 diabetes[link](https://www.cdc.gov/diabetes/research/reports/cdc-research-20yr-report.html)
+
+I have no idea if there is a correlation but these are all things that affect my life and it’s interesting that they have a similar pattern",False,1662007372.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immd0hz/
+510,False,TheChurchOfDonovan,"OP, How dare you post your R^2 > .9 finding on Reddit",False,1662007404.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immd2ea/
+511,False,kakhaev,"the thing looks like another thing, amazing (not)",False,1662007720.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immdkje/
+512,False,jennytime,My friend that I’ve known since we were 12 (we are 32 now) died from a fentanyl overdose today. I’m in disbelief. It feels weird that this would show up on my main page today. :(,False,1662008651.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immf0xm/
+513,False,headloser,"It simple, one is no choice when death come.  The second one you have a CHOICE not to used drugs.",False,1662009244.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immfxd5/
+514,False,collinoeight,"Wonder what it would look like it you normalize it, or account for.....uh....a bunch of things.",False,1662010096.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immh7x4/
+515,False,smartUtuber317,"Doctors know things that we can never comprehend.
+I believe they have a lot of mental burdens.",False,1662010096.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immh7ye/
+516,False,panzercampingwagen,"And still this thrash gets  73% upvoted. There are just too many morons. We need a second, more efficient plague.",False,1662010557.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immhwfv/
+517,False,SpiralSD,The number of scammers that appartly have my phone number,False,1662011854.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immjqvb/
+518,False,GreenKangaroo3,"Is this the same phenomenon like how most heat maps of whatever data are basically just population maps?
+
+More people = more deaths?",False,1662012138.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immk4xx/
+519,False,HackedPasta1245,https://www.tylervigen.com/spurious-correlations,False,1662014371.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immn4wr/
+520,False,seamama,"In my area ""died suddenly"" usually means suicide which is also on the rise. Whoever put this together needs more research.",False,1662014996.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immnxtz/
+521,immnxtz,notCRAZYenough,Can you not also die suddenly because of accidents or crime?,False,1662020773.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immuy9t/
+522,False,,"When Icecream sales go up crime goes up
+
+
+Icecream and crime are closely related",False,1662016287.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immpk44/
+523,False,mrfluffles300,"correlation =/= causation, buuuuuut i see your point",False,1662017043.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immqhu8/
+524,False,The_Dynasty_Group,This totally changes the whole opioids are totally overprescribed and lead to so many overdose deaths each year argument! I can’t wait to use this in an argument,False,1662017997.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immrnzo/
+525,False,TrapNT,Similar posts to this is why I dropped this sub. Every fucking idiot who can draw charts claiming idiotic stuff with no justification.,False,1662018456.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imms7ql/
+526,False,innofuel,"this is proven by research: 
+
+https://www.acpjournals.org/doi/abs/10.7326/M20-0977
+
+Overdose deaths have increased dramatically in the past decade to become the leading cause of injury-related death nationally (1). Although many overdose cases are obvious, with history of ingestion or evidence of drug use at the scene, others may present occultly as out-of-hospital cardiac arrest (OHCA), with an emergency medical services (EMS) primary impression of cardiac arrest but no history or overt signs of overdose. Recognition and characterization of these occult deaths are critical for accurate estimates of overdose mortality and to inform public health measures, especially in the context of the ongoing opioid epidemic.",False,1662020414.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immuizr/
+527,False,JokePeterNotIndia,let me fix that title for you: ug ug two graph look similar (frantic monkey noises),False,1662021746.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immw3wr/
+528,False,plant_bass,This is a causal fallacy. Every time a rooster crows the sun comes up. Therefore roosters make the sun come up. It may well be related but you can’t make any conclusions from these charts.,False,1662022337.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immwso6/
+529,False,DavIantt,Look where the tails are pointing - opposite directions.,False,1662024057.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immyvs9/
+530,False,IameIion,Now lets see one of pedestrians who were hit and killed by cars while going about their day. I think an autopsy should be performed just to make sure their sudden deaths weren’t caused by opioids.,False,1662024317.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immz7g2/
+531,False,ciciplum,I could do the same with consumption of ice cream and amount of people drowning.,False,1662024639.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immzlzn/
+532,False,Defnotimetraveler,"brooooo, come on; comments say you’re a data guy….you should of known better on how to do this. SMH you should know this is wrong",False,1662024849.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/immzvf8/
+533,False,Chatman101,Yeah this isn’t correct the Y title don’t correlate well. Also there are so many factors that can lead to increase death as many prescriptions medications became available,False,1662026637.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn26od/
+534,False,,And how are those lines correlated?,False,1662027909.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn3xq6/
+535,False,Nwcray,"My favorite part is how he manipulated the graphs to make the data look the same. 
+
+Then again, OP *does* work in data science for some corporation that’s probably run by lunkheads who would see this and go “oh! We know what we need to do now!”. I’ve been around enough to know that sometimes middle management saves the company just by controlling the flow of information. Not saying it’s right, but I am saying it’s real. 
+
+I can now infer a lot about the place OP works.",False,1662028248.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn4f2c/
+536,False,StarMasher,Throw in a graph for the profit made off of opioids,False,1662028673.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn5117/
+537,False,art_mor_,I don’t get what’s happening,False,1662029295.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn5y82/
+538,False,WetspotInspector,"Between Covid mishandling, expensive isulin and opioid deaths, I'm starting to think these drug folks are shady people!",False,1662029531.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn6b35/
+539,False,architektur,Trust reddit to upvote this insanely braindead post to infinity. Jesus christ,False,1662029932.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn6wyk/
+540,False,BrokenMan4225,Dude I’m not a data analyst but even I know that correlation does NOT IMPLY CAUSATION,False,1662030593.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn7yjf/
+541,False,,"This is the most BS attempt I have seen in a while, lol...and you are a data science manager?!?!",False,1662031096.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imn8rx4/
+542,False,pitcrane,"Yeah when a 23 year old ""dies suddenly"" it isnt hard to figure out",False,1662032240.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnaqvl/
+543,False,Christian4423,Uhm I see no correlation data,False,1662033239.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imncjmy/
+544,False,Nytim,"nowadays they just say ""died from covid"" instead of overdose",False,1662033980.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imndxcu/
+545,False,cakeresurfacer,"Like, yeah, I lived in an area with an awful heroine problem and any time the obituary was phrased like that, we all knew what it was, but man that is some horrible data to “prove” it.",False,1662034584.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnf35i/
+546,False,,This is like the average r/wallstreetbets posts,False,1662034907.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnfq1t/
+547,False,bearssuperfan,Because correlation = causation of course,False,1662038932.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imno7ok/
+548,False,CuteTootsTwenny,My first husband is a dot on that line. His own meds accidentally killed him,False,1662039469.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnpfa3/
+549,False,DeerAndBeer,"This is an embarrassment to this sub. The fact that you posted this with the assumption anyone would gain value from viewing it is shocking. The folks in WSB make fun of dumb graphs like this all the time with the stock market. I’ll give you the benefit of the doubt that your not trying to actively deceive, but I don’t know what your trying to do with this.",False,1662039621.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnprqk/
+550,False,tigerslices,so you're saying it's like in the dark crystal where a mystic dies when a skeksi does?,False,1662039854.0,/r/dataisbeautiful/comments/x2jj3s/obituaries_saying_someone_died_suddenly_closely/imnqb4k/
