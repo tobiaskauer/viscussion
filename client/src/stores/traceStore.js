@@ -12,6 +12,7 @@ export const useTraceStore = defineStore("trace", {
     highlight: null,
     expandedTrace: null,
     newTrace: null,
+    author: null, //null, //save author for the ongoing session
     patinas: [
       { key: "None", active: false },
       { key: "Activity", active: true },
@@ -202,7 +203,7 @@ export const useTraceStore = defineStore("trace", {
             trace.responses = traces.data.filter((x) => x.parent == trace.id);
           });
 
-          this.traces = traces.data;
+          this.traces = traces.data.filter((trace) => !trace.parent);
           const dates = this.traces.map((trace) => trace.date);
           this.fullTimeFrame = [
             Math.floor(new Date(Math.min.apply(null, dates)).getTime() / 1000),
@@ -226,11 +227,23 @@ export const useTraceStore = defineStore("trace", {
         }
       }
 
+      this.author = payload.author;
+
       try {
         const newTrace = await axios.post(apiUrl + "trace", payload);
-        this.newTrace = newTrace.data;
+        //this.newTrace = newTrace.data;
+
+        newTrace.date = newTrace.date
+          ? new Date(newTrace.date)
+          : new Date(newTrace.createdAt);
+
+        if (newTrace.data.parent) {
+          this.traces
+            .find((trace) => trace.id == payload.parent)
+            .responses.push(newTrace.data);
+        }
       } catch (error) {
-        console.log(error.response);
+        console.log(error);
         // let the form component display the error
         return error;
       }

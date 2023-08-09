@@ -8,17 +8,19 @@
         <div class="overlay" :style="`width: ${dimensions.width}px; height: ${dimensions.height}px`"></div>
       </div>
     </transition>
+
+
     <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false" @before-enter="onBeforeEnter"
       @enter="onEnter">
       <div v-for="(trace, index) in resizedTraces" :data-index="index" :key="'trace-' + trace.id"
         :class="traceClass[index]" :style="traceStyle(trace, patina)" @mouseenter="setHighlight(trace)"
-        @click="showResponses(trace)">
+        @mouseout="setHighlight()" @click="expand(trace)">
       </div>
     </TransitionGroup>
 
     <div class="highlightedTrace" :style="highlightStyle(highlightedTrace)"
       v-if="highlightedTrace && highlightedTrace.embedded">
-      <CommentCard :avatar="true" :image="props.image" :width="cardWidth" :trace="highlightedTrace" />
+      <CommentCard :avatar="false" :image="props.image" :width="cardWidth" :trace="highlightedTrace" />
       <!--v-card :width="`${cardWidth}px`"><v-card-text>{{ highlightedTrace.text }}</v-card-text></v-card>-->
     </div>
     <div id="newTrace" class="untouchable cat-plain" v-if="cursor.drawing"
@@ -74,7 +76,7 @@ const resizedTraces = computed(() => {
         category: trace.category,
         author: trace.author,
         date: trace.date,
-        anchor: anchor,
+        anchors: [anchor],
         text: trace.text,
         x: Math.round(anchor.x * dimensions.value.scale),
         y: Math.round(anchor.y * dimensions.value.scale),
@@ -212,11 +214,11 @@ const highlightStyle = (trace) => {
     left = dimensions.value.offsetX + trace.x - cardWidth.value
   }
 
-  return `top: ${top}px; left: ${left}px;`
+  return `top: ${top}px; left: ${left}px; width: ${cardWidth}px;`
 }
 
-const showResponses = (trace) => {
-  console.log(trace)
+const expand = (trace) => {
+  traceStore.expand(trace)
 }
 
 function onBeforeEnter(el) {
@@ -380,6 +382,7 @@ const setHighlight = ((trace) => {
 
   if (!newTrace.drawing) {
     if (trace) trace.embedded = true
+
     traceStore.setHighlight(trace)
   }
 })

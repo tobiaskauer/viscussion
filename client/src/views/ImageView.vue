@@ -30,11 +30,8 @@
           </div>
         </v-col>
         <v-col class="v-col-4 pt-0">
-          <ActivityLog v-if="image && traces" :image="image" :highlight="highlight" :traces="traces" />
-
-
+          <ActivityLog v-if="image && traces" :image="image" :traces="traces" />
         </v-col>
-
       </v-row>
       <TraceForm :display="newTrace.displayForm" :trace="newTrace" :image="image" @close="newTrace.displayForm = false" />
 
@@ -49,7 +46,7 @@ import tracedImage from '../components/tracedImage.vue'
 import PatinaSelector from '../components/patinaSelector.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
 //import svgOverlay from '../components/svgOverlay.vue'
-//import TimeFilter from '../components/TimeFilter.vue'
+import TimeFilter from '../components/TimeFilter.vue'
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
 import { reactive, nextTick, onMounted, computed, watch, ref, onUnmounted } from 'vue'
@@ -102,7 +99,7 @@ const openTraceform = (exportTrace) => {
 
   Object.keys(exportTrace).forEach(key => { newTrace[key] = exportTrace[key] })
   newTrace.displayForm = true
-  console.log(newTrace)
+
 
 }
 

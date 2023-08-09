@@ -1,5 +1,5 @@
 <template>
-  <div :class="avatarClass" :style="'width: ' + (width) + 'px;'">
+  <div :style="'width: ' + (width) + 'px;'">
     <div class="traceAvatar"
       :style="`background-image: url(${avatar.url}); background-size: ${avatar.zoom}px; background-position-x: ${avatar.x}%; background-position-y: ${avatar.y}%; height: ${avatar.height}px; width: ${avatar.width}px;`">
     </div>
@@ -41,8 +41,6 @@ let avatar = computed(() => {
 
   avatar.width = width
   avatar.url = props.image.url
-
-  console.log(props)
 
   return avatar
 })

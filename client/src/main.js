@@ -10,7 +10,7 @@ import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import timeago from "vue-timeago3";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
-import "@mdi/font/css/materialdesignicons.css";
+import "@mdi/font/css/materialdesignicons.css"; //toggle this in case of loading issues on dev
 
 //import colors from "vuetify/lib/util/colors";
 
