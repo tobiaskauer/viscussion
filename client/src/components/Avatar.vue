@@ -1,47 +1,56 @@
 <template>
   <div :style="'width: ' + (width) + 'px;'">
-    <div class="traceAvatar"
+
+    <div class="traceAvatar" @mouseDown="mousedown" @mousemove="mousemove"
       :style="`background-image: url(${avatar.url}); background-size: ${avatar.zoom}px; background-position-x: ${avatar.x}%; background-position-y: ${avatar.y}%; height: ${avatar.height}px; width: ${avatar.width}px;`">
     </div>
   </div>
+
+  <div v-if="props.trace.length > 1">
+    <ul :style="`text-align: center; position: absolute; top: 20px; left: 10%;`">
+      <li v-for="anchor, i in props.trace" :key="'anchor' + i" style="display: inline-block" @click="avatarIndex = i">
+        <v-icon color="white" style="opacity: .8; text-shadow: 0 0 5px black;" icon="mdi-circle"
+          v-if="avatarIndex == i" />
+        <v-icon v-else color="white" style="opacity: .8; text-shadow: 0 0 5px black;" icon="mdi-circle-outline" />
+      </li>
+    </ul>
+  </div>
 </template>
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 const props = defineProps(['trace', 'image', 'width', 'height'])
 
-const avatarClass = computed(() => {
+/*const avatarClass = computed(() => {
   if (!props.trace) return false
   let avatarClass = "cat-"
   avatarClass += props.trace.category && props.trace.category.length > 0 ? props.trace.category[0] : 'plain'
   return avatarClass
-})
+})*/
 
-let padding = 2
+const avatarIndex = ref(0)
 
 let avatar = computed(() => {
   if (!props.trace) return null
-  let trace = props.trace
+  let trace = props.trace[avatarIndex.value]
   let image = props.image
-  let width = props.width - (padding * 2) //
-  let height = props.height
-  let avatar = {}
-
+  let width = props.width
   let zoomFactor = width / trace.width
   let aspectRatio = trace.height / trace.width
 
-  avatar.height = width * aspectRatio
   //TODO: check if height is over props.height and resize accordingly
-  if (avatar.height > height) { console.log('reverse it') }
-  avatar.zoom = zoomFactor * image.width * 0.9 //zoom out to correct for some errors
+  let height = props.height
+  //if (avatar.height > height) { console.log('reverse it') }
+  //avatar.zoom = zoomFactor * image.width * 0.9 //zoom out to correct for some errors
+  //zoom out to correct for some errors
 
-
-
-  avatar.x = trace.x / image.width * 107 //this should be 100 but css is a wild language
-  avatar.y = trace.y / image.height * 110
-
-  avatar.width = width
-  avatar.url = props.image.url
-
+  let avatar = {
+    height: width * aspectRatio,
+    zoom: zoomFactor * image.width,
+    x: (trace.x + trace.width / 2) / image.width * 100,
+    y: (trace.y + trace.height / 2) / image.height * 100,
+    width: width,
+    url: props.image.url
+  }
   return avatar
 })
 </script>

@@ -1,7 +1,7 @@
 <template>
      <v-row>
           <v-col>
-               <v-btn v-for="patina in patinas" :key="patina.key" :active="patina.active"
+               <v-btn class="mr-1" v-for="patina in patinas" :key="patina.key" :active="patina.active"
                     @click="traceStore.setActivePatina(patina.key)">
                     {{ patina.key }}
                </v-btn>

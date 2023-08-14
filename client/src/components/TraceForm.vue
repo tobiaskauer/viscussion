@@ -72,14 +72,15 @@ const writeTrace = (() => {
           text: input.comment,
           author: input.author,
           image: props.image.id,
-          x: props.trace.x,
-          y: props.trace.y,
-          width: props.trace.width,
-          height: props.trace.height,
+          anchors: [{
+               x: props.trace.x,
+               y: props.trace.y,
+               width: props.trace.width,
+               height: props.trace.height,
+          }]
+
      })
      close()
-
-
 })
 
 </script>

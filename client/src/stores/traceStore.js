@@ -9,20 +9,20 @@ export const useTraceStore = defineStore("trace", {
   state: () => ({
     traces: [], //of a single image
     allTraces: [],
-    highlight: null,
-    expandedTrace: null,
+    highlight: null, //currently hovered Trace
+    expandedTrace: null, //root trace for threaded (detailed) view on Activity Log
+    traceLinks: null, //for relation view
     newTrace: null,
-    author: null, //null, //save author for the ongoing session
+    author: null, //save author for the ongoing session
+    timeControls: {},
     patinas: [
       { key: "None", active: false },
-      { key: "Activity", active: true },
+      { key: "Activity", active: false },
       { key: "Responses", active: false },
       { key: "Category", active: false },
-      //{ key: "temporal", active: false },
       { key: "Popularity", active: false },
       { key: "Temporal", active: false },
-      //{ key: "relation", active: false },
-      //{ key: "response", active: false },
+      { key: "Relation", active: true },
     ],
     cardWidth: 250,
     categories: [
@@ -115,8 +115,23 @@ export const useTraceStore = defineStore("trace", {
         });
       }
 
+      //filter multiple anchors
+      if (this.activePatina.key == "Relation") {
+        traces = this.traces.filter((trace) => trace.anchors.length >= 2);
+
+        this.traceLinks = traces.map((trace) => {
+          return {
+            //trace: trace,
+            x1: trace.anchors[0].x + trace.anchors[0].width / 2,
+            x2: trace.anchors[1].x + trace.anchors[1].width / 2,
+            y1: trace.anchors[0].y + trace.anchors[0].height / 2,
+            y2: trace.anchors[1].y + trace.anchors[1].height / 2,
+          };
+        });
+      }
+
       //filter by active categories (if present)
-      if (this.activeCategories.length > 0) {
+      if (this.activeCategories.length > 0 && this.activeCategories[0]) {
         traces = traces.filter((trace) => {
           let bools = this.activeCategories.map((activeCategory) =>
             toRaw(trace.category).includes(activeCategory)
@@ -234,13 +249,16 @@ export const useTraceStore = defineStore("trace", {
         //this.newTrace = newTrace.data;
 
         newTrace.date = newTrace.date
-          ? new Date(newTrace.date)
+          ? new Date(newTrace.date) //use reddit date if possible
           : new Date(newTrace.createdAt);
 
         if (newTrace.data.parent) {
           this.traces
             .find((trace) => trace.id == payload.parent)
             .responses.push(newTrace.data);
+        } else {
+          console.log(newTrace.data);
+          this.traces.push(newTrace.data);
         }
       } catch (error) {
         console.log(error);
@@ -256,6 +274,7 @@ export const useTraceStore = defineStore("trace", {
     setHighlight(trace) {
       this.highlight = trace;
     },
+
     expand(trace) {
       this.expandedTrace = trace;
     },
@@ -265,6 +284,11 @@ export const useTraceStore = defineStore("trace", {
     setDimensions(object) {
       Object.keys(object).forEach((key) => {
         this.dimensions[key] = object[key];
+      });
+    },
+    setTimeControls(object) {
+      Object.keys(object).forEach((key) => {
+        this.timeControls[key] = object[key];
       });
     },
 
@@ -278,8 +302,13 @@ export const useTraceStore = defineStore("trace", {
 
     setActivePatina: function (payload) {
       this.activeCategories = []; //dont activate any category
+      this.activeTimeFrame = this.fullTimeFrame.map(
+        (time) => new Date(time * 1000) //don't filter by time
+      );
+      this.traceLinks = null; //don't show linked traces
+
       this.patinas.forEach((patina) => (patina.active = false)); //reset all
-      this.patinas.find((patina) => patina.key == payload).active = true;
+      this.patinas.find((patina) => patina.key == payload).active = true; //set currently selected
     },
   },
 });

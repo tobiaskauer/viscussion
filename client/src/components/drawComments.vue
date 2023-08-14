@@ -176,8 +176,6 @@ const mouseUp = (() => {
     exportTrace[key] = Math.round(newTrace.onScreen[key] * 1 / state.scale) //in case the image was resized, make sure the trace is recorded on the original size
   })
 
-
-
   emit('export', exportTrace)
 })
 
@@ -187,9 +185,9 @@ const setHighlight = ((id) => {
   //}
 })
 
-const highlight = computed(() => {
+/*const highlight = computed(() => {
   return traceStore.getHighlight
-})
+})*/
 
 </script>
 

@@ -21,7 +21,7 @@
       <PatinaSelector />
 
       <CategoryFilter v-if="patina.key == 'Category'" />
-      <timeFilter />
+      <timeFilter v-if="patina.key == 'Temporal'" />
 
       <v-row>
         <v-col class="v-col-8 pa-0">
@@ -99,8 +99,6 @@ const openTraceform = (exportTrace) => {
 
   Object.keys(exportTrace).forEach(key => { newTrace[key] = exportTrace[key] })
   newTrace.displayForm = true
-
-
 }
 
 

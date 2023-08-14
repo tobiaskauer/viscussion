@@ -1,11 +1,11 @@
 <template>
   <v-card :color="(trace.id == highlight) ? 'primary' : 'surface'" :id="'card-' + trace.id"
-    :class="{ 'ml-5': props.response }" @click="expand(trace)">
+    :class="{ 'ml-5': props.response }">
 
     <v-card-text class="pa-0">
       <v-row no-gutters="">
         <v-col class="v-col-4" style="border-right: 1px solid lightgrey" v-if="props.avatar">
-          <Avatar v-if="trace.anchors && trace.anchors.length > 0" :image="props.image" :trace="trace.anchors[0]"
+          <Avatar v-if="trace.anchors && trace.anchors.length > 0" :image="props.image" :trace="trace.anchors"
             :width="props.width" />
         </v-col>
         <v-col class="pl-5 pa-3" :class="['v-col-8' ? props.avatar : 'v-col-12']">
@@ -18,9 +18,10 @@
                 <Timeago :datetime="trace.createdAt" />
               </small>
             </v-col>
-            <v-col class="v-col-5" align="right"><v-chip v-if="category" :color="category.color" size="x-small">{{
-              category.name
-            }}</v-chip></v-col>
+            <v-col class="v-col-5" align="right"><v-chip @click="traceStore.setActivePatina('Category')" v-if="category"
+                :color="category.color" size="x-small">{{
+                  category.name
+                }}</v-chip></v-col>
           </v-row>
 
 
@@ -71,6 +72,14 @@ const category = computed(() => {
 const highlight = computed(() => {
 
   return traceStore.getHighlight
+})
+
+const play = () => {
+
+}
+
+onMounted(() => {
+
 })
 
 

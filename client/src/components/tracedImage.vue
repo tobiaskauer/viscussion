@@ -10,13 +10,24 @@
     </transition>
 
 
+
     <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false" @before-enter="onBeforeEnter"
-      @enter="onEnter">
+      @enter="onEnter" @leave="onLeave">
       <div v-for="(trace, index) in resizedTraces" :data-index="index" :key="'trace-' + trace.id"
         :class="traceClass[index]" :style="traceStyle(trace, patina)" @mouseenter="setHighlight(trace)"
         @mouseout="setHighlight()" @click="expand(trace)">
       </div>
     </TransitionGroup>
+
+
+    <svg v-if="traceLinks" class="links"
+      :style="`width: ${dimensions.width}px; position: absolute; height: ${dimensions.height}px; pointer-events: none;`">
+      <line v-for="link, i in traceLinks" :key="'link-' + i" :x1="link.x1" :x2="link.x2" :y1="link.y1" :y2="link.y2"
+        stroke="red" stroke-width="2px" stroke-dasharray="4 2">
+      </line>
+    </svg>
+
+
 
     <div class="highlightedTrace" :style="highlightStyle(highlightedTrace)"
       v-if="highlightedTrace && highlightedTrace.embedded">
@@ -26,6 +37,7 @@
     <div id="newTrace" class="untouchable cat-plain" v-if="cursor.drawing"
       :style="`top: ${newTrace.y}px; left: ${newTrace.x}px; width: ${newTrace.width}px; height: ${newTrace.height}px`">
     </div>
+
   </div>
 </template>
 
@@ -44,6 +56,13 @@ const traceStore = useTraceStore()
 
 const patina = computed(() => traceStore.activePatina)
 const categories = computed(() => traceStore.getCategories)
+const traceLinks = computed(() => {
+  if (!dimensions.value.scale || !traceStore.traceLinks) return null
+
+  return traceStore.traceLinks.forEach(link => {
+    Object.keys(link).forEach(key => link[key] = link[key] * dimensions.value.scale) //resize accordig to scale facotr of source image
+  })
+})
 
 const lights = reactive({ off: true }) //make this a prop
 //const wrapper = ref(null)
@@ -78,6 +97,7 @@ const resizedTraces = computed(() => {
         date: trace.date,
         anchors: [anchor],
         text: trace.text,
+        score: trace.score,
         x: Math.round(anchor.x * dimensions.value.scale),
         y: Math.round(anchor.y * dimensions.value.scale),
         width: Math.round(anchor.width * dimensions.value.scale),
@@ -91,7 +111,7 @@ const resizedTraces = computed(() => {
 })
 
 
-const temporalScale = computed(() => {
+/*const temporalScale = computed(() => {
   if (!props.traces) return false;
 
   let dates = props.traces.map(trace => trace.date)
@@ -100,8 +120,26 @@ const temporalScale = computed(() => {
   let range = [0, 10] //blur
   let scale = d3.scaleTime().range(range).domain(domain)
 
-  return dates.map(date => scale(date))
+  return dates.map(date => scale(date)) //returning the scale is not a function, so just return an array with all values in them (need to compute all anyway)
+})*/
+
+const popularityScale = computed(() => {
+  if (!props.traces) return false;
+
+  let scores = props.traces.map(trace => trace.score)
+  let domain = d3.extent(scores)
+  let colorRange = ["blue", "red"]
+  let strokeRange = [2, 20]
+  let colorScale = d3.scaleLog().range(colorRange).domain(domain)
+  let strokeScale = d3.scaleLinear().range(strokeRange).domain(domain)
+
+  return {
+    color: scores.map(score => colorScale(score)),
+    stroke: scores.map(score => strokeScale(score)),
+  }
 })
+
+
 
 
 const traceClass = computed(() => {
@@ -144,8 +182,8 @@ const traceStyle = (trace, patinReactivity) => {
     opacity: null
   }
 
-
-  if (highlightedTrace.value && highlightedTrace.value.id == trace.id) {
+  if (highlightedTrace.value && String(trace.id).startsWith(String(highlightedTrace.value.id))) {
+    //if (highlightedTrace.value && trace.id.startsWith(`${highlightedTrace.value.id}`)) {
     style.opacity = 1
   } else if (highlightedTrace.value && highlightedTrace.value.id != trace.id) {
     style.opacity = .1
@@ -153,16 +191,18 @@ const traceStyle = (trace, patinReactivity) => {
     style.opacity = .3
   }
 
+  let traceIndex = props.traces.findIndex(propTrace => propTrace.id == trace.id) //need to pass an array of scaled colors and then find it (because function can not be passed in computed array for some reason)
 
   switch (patina.value.key) {
     case "Temporal":
-      let traceIndex = props.traces.findIndex(propTrace => propTrace.id == trace.id) //need to pass an array of scaled colors and then find it (because function can not be passed in computed array for some reason)
       if (!traceIndex) {
         style.fillOpacity = 0.2
-        style.fill = d3.rgb("#000000")
+        style.fill = d3.rgb("#ff0000")
       } else {
-        style.fill = d3.rgb(temporalScale.value[traceIndex])
-        style.filter = `blur(${temporalScale.value[traceIndex]}px)`
+        style.fill = d3.rgb("#ff0000")
+        style.fillOpacity = 1
+        //style.fill = d3.rgb(temporalScale.value[traceIndex])
+        //style.filter = `blur(${temporalScale.value[traceIndex]}px)`
       }
       break;
 
@@ -172,10 +212,26 @@ const traceStyle = (trace, patinReactivity) => {
       style.border = "2px solid white"
       break;
 
-    case "Responses"://color.opacity = opacity
+    case "Responses":
       style.fill = d3.color("#ff0000")
       style.border = "2px solid white"
       style.fillOpacity = .8
+      break;
+
+    case "Relation":
+      style.fill = d3.color("#ff0000")
+      style.border = "2px solid white"
+      style.fillOpacity = .8
+      break;
+
+    case "Popularity":
+      style.opacity = .5
+      style.fillOpacity = 1
+
+      let color = traceIndex >= 0 ? d3.rgb(popularityScale.value.color[traceIndex]) : d3.rgb("#000000")
+      let stroke = traceIndex ? popularityScale.value.stroke[traceIndex] : 0
+      style.border = `${stroke}px solid ${color}`
+      style.fill = d3.rgb("#ffffff")
       break;
 
     case "Category":
@@ -183,7 +239,9 @@ const traceStyle = (trace, patinReactivity) => {
       if (category) {
         style.border = '5px solid ' + d3.color(category.color)
       }
-      style.fillOpacity = 0
+      style.fill = d3.rgb("#fff")
+      style.fillOpacity = 0.5
+      style.opacity = 0.6
       break;
 
     default:
@@ -226,9 +284,23 @@ function onBeforeEnter(el) {
 }
 
 function onEnter(el, done) {
-  gsap.to(el, {
-    opacity: 1,
-    delay: el.dataset.index * 0.001,
+  gsap.timeline({
+    defaults: { duration: 1 }
+  }).to(el, {
+    opacity: .3,
+    delay: el.dataset.index * 0.01,
+    //rotation: -120,
+    onComplete: done
+  })
+}
+
+function onLeave(el, done) {
+  gsap.timeline({
+    defaults: { duration: 1 }
+  }).to(el, {
+    opacity: 0,
+    delay: el.dataset.index * 0.01,
+    //rotation: 0,
     onComplete: done
   })
 }
@@ -307,6 +379,8 @@ watch(cursor, newCursor => {
     }
   }
 })
+
+
 
 
 
@@ -404,6 +478,7 @@ const setHighlight = ((trace) => {
 .traces div {
   position: absolute;
   mix-blend-mode: darken;
+  border-radius: 5px;
 }
 
 img,
