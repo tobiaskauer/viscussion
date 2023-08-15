@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <svgOverlay /> -->
-    <v-container v-resize="getDimensions">
+    <v-container>
       <v-snackbar v-model="snackbar.display">
         {{ snackbar.message }}
 
@@ -25,15 +25,16 @@
 
       <v-row>
         <v-col class="v-col-8 pa-0">
-          <div ref="wrapper">
-            <tracedImage v-if="image && traces" :image="image" :traces="traces" @export="openTraceform" />
-          </div>
+
+          <tracedImage v-if="image && traces" :image="image" :traces="traces" :touchable="true" @export="openTraceform" />
+
         </v-col>
         <v-col class="v-col-4 pt-0">
           <ActivityLog v-if="image && traces" :image="image" :traces="traces" />
         </v-col>
       </v-row>
-      <TraceForm :display="newTrace.displayForm" :trace="newTrace" :image="image" @close="newTrace.displayForm = false" />
+      <TraceForm :display="displayForm.bool" :trace="newTraces" :image="image" @addAnchor="addAnchor"
+        @close="displayForm.bool = false" />
 
     </v-container>
   </div>
@@ -59,46 +60,38 @@ imageStore.fetchImage(props.id)
 traceStore.fetchTraces(props.id);
 
 const props = defineProps(['id'])
-const wrapper = ref(null)
 
 const image = computed(() => {
   return imageStore.getImage
 })
 
-watch(image, newImage => {
+/*watch(image, newImage => {
   getDimensions()
-})
+})*/
 
-const getDimensions = () => {
-  let bBox = wrapper.value.getBoundingClientRect()
-  let scale = bBox.width / image.value.width
 
-  let dimensions = {
-    offsetX: bBox.x,
-    offsetY: bBox.y,
-    width: bBox.width,
-    scale: scale,
-    height: image.value.height * scale
-  }
-  traceStore.setDimensions(dimensions)
-}
 
 const patina = computed(() => {
   return traceStore.activePatina
 })
 
+const newTraces = ref([])
 
-const newTrace = reactive({
-  displayForm: false,
+const displayForm = reactive({
+  bool: false,
 
 
 
 })
 
 const openTraceform = (exportTrace) => {
+  newTraces.value = exportTrace.value
+  displayForm.bool = true
+}
 
-  Object.keys(exportTrace).forEach(key => { newTrace[key] = exportTrace[key] })
-  newTrace.displayForm = true
+const addAnchor = () => {
+  console.log("add anchor")
+  displayForm.bool = false
 }
 
 

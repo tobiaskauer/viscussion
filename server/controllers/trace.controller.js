@@ -79,17 +79,7 @@ exports.upvote = (req, res) => {
 
 exports.findAll = (req, res) => {
   Trace.findAll({
-    attributes: [
-      "id",
-      "category",
-      "text",
-      "image",
-      "x",
-      "y",
-      "width",
-      "height",
-      "createdAt",
-    ],
+    include: Anchor,
   })
     .then((data) => {
       res.send(data);
@@ -110,6 +100,23 @@ exports.update = (req, res) => {};
 
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {};
+
+exports.delete = (req, res) => {
+  if (!req.params.id) {
+    res.status(400).send({
+      message: "please pass an image id!",
+    });
+    return;
+  }
+
+  Trace.destroy({
+    where: {
+      id: req.params.id,
+    },
+  }).then((u) => {
+    res.status(200).send({ message: `deleted ${req.params.id}... hopefully` });
+  });
+};
 
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {};

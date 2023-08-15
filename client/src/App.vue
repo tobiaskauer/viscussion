@@ -7,7 +7,7 @@
     <v-main>
       <router-view />
     </v-main>
-    <v-footer>Footer</v-footer>
+    <v-footer>Tobias Kauer, Marian Dörk, Benjamin Bach</v-footer>
   </v-app>
 </template>
 

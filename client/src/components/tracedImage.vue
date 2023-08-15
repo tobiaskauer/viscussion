@@ -1,43 +1,51 @@
 <template>
-  <div v-if="traceClass" ref="container" class="wrapper" @mousedown="mouseDown" @mouseup="mouseUp" @mousemove="mouseMove"
-    :style="`height: ${dimensions.height}px`">
-    <img class="untouchable" ref="tracedImage" :src="props.image.url" :style="'width: ' + dimensions.width + 'px'" />
-    <transition name="lights">
-      <div class="lights untouchable" v-if="lights.off">
-        <img :src="props.image.url" class="desaturated" :style="'width: ' + dimensions.width + 'px'" />
-        <div class="overlay" :style="`width: ${dimensions.width}px; height: ${dimensions.height}px`"></div>
+  <div ref="wrapper" v-resize="getDimensions" :class="{ untouchable: !props.touchable }">
+    <div v-if="traceClass" ref="container" class="wrapper" @mousedown="mouseDown" @mouseup="mouseUp"
+      @mousemove="mouseMove" :style="`height: ${dimensions.height}px`">
+
+      <img class="untouchable" ref="tracedImage" :src="props.image.url" :style="'width: ' + dimensions.width + 'px'" />
+      <transition name="lights">
+        <div class="lights untouchable" v-if="lights.off">
+          <img :src="props.image.url" class="desaturated" :style="'width: ' + dimensions.width + 'px'" />
+          <div class="overlay" :style="`width: ${dimensions.width}px; height: ${dimensions.height}px`"></div>
+        </div>
+      </transition>
+
+
+
+      <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false" @before-enter="onBeforeEnter"
+        @enter="onEnter" @leave="onLeave">
+        <div v-for="(trace, index) in resizedTraces" :data-index="index" :key="'trace-' + trace.id"
+          :class="traceClass[index]" :style="traceStyle(trace, patina)" @mouseenter="setHighlight(trace)"
+          @mouseout="setHighlight()" @click="expand(trace)">
+        </div>
+      </TransitionGroup>
+
+
+      <svg v-if="traceLinks" class="links"
+        :style="`width: ${dimensions.width}px; position: absolute; height: ${dimensions.height}px; pointer-events: none;`">
+        <line v-for="link, i in traceLinks" :key="'link-' + i" :x1="link.x1" :x2="link.x2" :y1="link.y1" :y2="link.y2"
+          stroke="red" stroke-width="2px" stroke-dasharray="4 2">
+        </line>
+      </svg>
+
+
+
+      <div class="highlightedTrace" :style="highlightStyle(highlightedTrace)"
+        v-if="highlightedTrace && highlightedTrace.embedded">
+        <CommentCard :avatar="false" :image="props.image" :width="cardWidth" :trace="highlightedTrace" />
+        <!--v-card :width="`${cardWidth}px`"><v-card-text>{{ highlightedTrace.text }}</v-card-text></v-card>-->
       </div>
-    </transition>
-
-
-
-    <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false" @before-enter="onBeforeEnter"
-      @enter="onEnter" @leave="onLeave">
-      <div v-for="(trace, index) in resizedTraces" :data-index="index" :key="'trace-' + trace.id"
-        :class="traceClass[index]" :style="traceStyle(trace, patina)" @mouseenter="setHighlight(trace)"
-        @mouseout="setHighlight()" @click="expand(trace)">
+      <div id="newTrace" class="untouchable cat-plain" v-if="cursor.drawing"
+        :style="`top: ${newTrace.y}px; left: ${newTrace.x}px; width: ${newTrace.width}px; height: ${newTrace.height}px`">
       </div>
-    </TransitionGroup>
+      <div id="allAnchors" class="untouchable cat-plain" v-if="allAnchors.length > 0"
+        :style="`top: ${allAnchors[0].y * dimensions.scale}px; left: ${allAnchors[0].x * dimensions.scale}px; width: ${allAnchors[0].width * dimensions.scale}px; height: ${allAnchors[0].height * dimensions.scale}px`">
+
+      </div>
 
 
-    <svg v-if="traceLinks" class="links"
-      :style="`width: ${dimensions.width}px; position: absolute; height: ${dimensions.height}px; pointer-events: none;`">
-      <line v-for="link, i in traceLinks" :key="'link-' + i" :x1="link.x1" :x2="link.x2" :y1="link.y1" :y2="link.y2"
-        stroke="red" stroke-width="2px" stroke-dasharray="4 2">
-      </line>
-    </svg>
-
-
-
-    <div class="highlightedTrace" :style="highlightStyle(highlightedTrace)"
-      v-if="highlightedTrace && highlightedTrace.embedded">
-      <CommentCard :avatar="false" :image="props.image" :width="cardWidth" :trace="highlightedTrace" />
-      <!--v-card :width="`${cardWidth}px`"><v-card-text>{{ highlightedTrace.text }}</v-card-text></v-card>-->
     </div>
-    <div id="newTrace" class="untouchable cat-plain" v-if="cursor.drawing"
-      :style="`top: ${newTrace.y}px; left: ${newTrace.x}px; width: ${newTrace.width}px; height: ${newTrace.height}px`">
-    </div>
-
   </div>
 </template>
 
@@ -45,24 +53,37 @@
 import { ref, reactive, onMounted, onUpdated, computed, toRaw, watch, onUnmounted } from 'vue'
 import { gsap } from 'gsap';
 import { useTraceStore } from '../stores/traceStore';
-
 import CommentCard from './CommentCard.vue'
 import * as d3 from 'd3'
 
-
-
-const props = defineProps(['image', 'traces', 'lights'])
+const props = defineProps(['image', 'traces', 'lights', 'touchable'])
 const traceStore = useTraceStore()
 
 const patina = computed(() => traceStore.activePatina)
 const categories = computed(() => traceStore.getCategories)
 const traceLinks = computed(() => {
   if (!dimensions.value.scale || !traceStore.traceLinks) return null
-
-  return traceStore.traceLinks.forEach(link => {
+  let links = traceStore.traceLinks
+  links.forEach(link => {
     Object.keys(link).forEach(key => link[key] = link[key] * dimensions.value.scale) //resize accordig to scale facotr of source image
   })
+  return links
 })
+
+const wrapper = ref(null)
+const getDimensions = () => {
+  let bBox = wrapper.value.getBoundingClientRect()
+  let scale = bBox.width / props.image.width
+
+  let dimensions = {
+    offsetX: bBox.x,
+    offsetY: bBox.y,
+    width: bBox.width,
+    scale: scale,
+    height: props.image.height * scale
+  }
+  traceStore.setDimensions(dimensions)
+}
 
 const lights = reactive({ off: true }) //make this a prop
 //const wrapper = ref(null)
@@ -77,11 +98,16 @@ const cursor = reactive({
   down: false,
 })
 
+const allAnchors = ref([])
+
 const highlightedTrace = computed(() => {
   return traceStore.getHighlight
 })
 
-const dimensions = computed(() => traceStore.dimensions)
+const dimensions = computed(() => {
+  console.log(traceStore.dimensions)
+  return traceStore.dimensions
+})
 const cardWidth = computed(() => traceStore.cardWidth)
 
 const resizedTraces = computed(() => {
@@ -346,7 +372,10 @@ const mouseUp = ((e) => {
       exportTrace[key] = Math.round(newTrace[key] * 1 / dimensions.value.scale) //in case the image was resized, make sure the trace is recorded on the original size
     })
 
-    emit('export', exportTrace)
+    allAnchors.value.push(exportTrace) //this is a bit hacky and inconsistent in terminology, but i need an array of new traces to support multiple anchors
+    emit('export', allAnchors)
+
+
     newTrace.width = 0
     newTrace.height = 0
     newTrace.x = 0
@@ -381,72 +410,6 @@ watch(cursor, newCursor => {
 })
 
 
-
-
-
-
-
-/*const mouseDown = ((e) => {
-
-  let rect = wrapper.value.getBoundingClientRect()
-
-  let x = e.clientX - dimensions.left;
-  let y = e.clientY - dimensions.top;
-
-  newTrace.onScreen.height = 0
-  newTrace.onScreen.width = 0
-
-  newTrace.drawing = true
-  newTrace.onScreen.startX = x
-  newTrace.onScreen.startY = y
-  newTrace.onScreen.x = x
-  newTrace.onScreen.y = y
-})
-
-const mouseMove = ((e) => {
-  if (newTrace.drawing) {
-    //TODO make other traces untouchable
-    let rect = wrapper.value.getBoundingClientRect()
-
-    let currentX = e.clientX - rect.left;
-    let currentY = e.clientY - rect.top;
-
-    if (currentX >= newTrace.onScreen.startX) {
-      newTrace.onScreen.width = currentX - newTrace.onScreen.startX
-    } else {
-      newTrace.onScreen.x = currentX
-      newTrace.onScreen.width = newTrace.onScreen.startX - currentX
-    }
-
-    if (currentY >= newTrace.onScreen.startY) {
-      newTrace.onScreen.height = currentY - newTrace.onScreen.startY
-    } else {
-      newTrace.onScreen.y = currentY
-      newTrace.onScreen.height = newTrace.onScreen.startY - currentY
-    }
-  }
-})
-
-
-
-
-
-const mouseUp = (() => {
-  newTrace.drawing = false
-  newTrace.drawn = true
-
-  let exportTrace = { category: ['new'] }
-
-  let resizeKeys = ["x", "y", "width", "height"]
-
-  resizeKeys.forEach(key => {
-    exportTrace[key] = Math.round(newTrace.onScreen[key] * 1 / dimensions.scale) //in case the image was resized, make sure the trace is recorded on the original size
-  })
-  emit('export', exportTrace)
-})*/
-
-
-
 watch(patina, newPatina => {
   lights.off = !(newPatina.key == "None")
 })
@@ -469,7 +432,8 @@ const setHighlight = ((trace) => {
   opacity: 85%;
 }
 
-#newTrace {
+#newTrace,
+#allAnchors {
   border: 2px solid black;
   position: absolute;
   overflow: hidden

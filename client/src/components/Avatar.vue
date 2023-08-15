@@ -7,11 +7,12 @@
   </div>
 
   <div v-if="props.trace.length > 1">
-    <ul :style="`text-align: center; position: absolute; top: 20px; left: 10%;`">
+    <ul :style="`text-align: center; position: relative; margin-top: -30px; padding-bottom: 30px;`">
       <li v-for="anchor, i in props.trace" :key="'anchor' + i" style="display: inline-block" @click="avatarIndex = i">
-        <v-icon color="white" style="opacity: .8; text-shadow: 0 0 5px black;" icon="mdi-circle"
+        <v-icon color="white" size="small" style="opacity: .8; text-shadow: 0 0 5px black;" icon="mdi-circle"
           v-if="avatarIndex == i" />
-        <v-icon v-else color="white" style="opacity: .8; text-shadow: 0 0 5px black;" icon="mdi-circle-outline" />
+        <v-icon v-else color="white" size="small" style="opacity: .8; text-shadow: 0 0 5px black;"
+          icon="mdi-circle-outline" />
       </li>
     </ul>
   </div>
@@ -45,12 +46,13 @@ let avatar = computed(() => {
 
   let avatar = {
     height: width * aspectRatio,
-    zoom: zoomFactor * image.width,
+    zoom: zoomFactor * image.width * 1,
     x: (trace.x + trace.width / 2) / image.width * 100,
     y: (trace.y + trace.height / 2) / image.height * 100,
     width: width,
     url: props.image.url
   }
+  console.log(props)
   return avatar
 })
 </script>

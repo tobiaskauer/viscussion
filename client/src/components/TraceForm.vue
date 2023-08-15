@@ -4,12 +4,15 @@
           <v-card color="surface" height="auto">
 
                <v-toolbar density="compact"><span class="text-h6 pl-4">Add a new trace</span><v-spacer /><v-btn size="small"
-                         @click="close">close</v-btn></v-toolbar>
+                         @click="emit('addAnchor')">close</v-btn></v-toolbar>
 
                <v-card-text>
                     <v-row>
                          <v-col class="v-col-6" ref="avatar">
                               <Avatar :image="props.image" :trace="trace" width="300" />
+                              <v-btn v-if="trace.length < 2" @click="emit('addAnchor')" block
+                                   size="small"><v-icon>mdi-plus</v-icon>Add
+                                   another</v-btn>
                          </v-col>
                          <v-col class="v-col-6">
                               <v-form>
@@ -44,15 +47,13 @@
 import { reactive, onMounted, ref, watch, computed, onUnmounted } from 'vue'
 import { useTraceStore } from "../stores/traceStore.js";
 import Avatar from './Avatar.vue'
-import { easeExpInOut } from 'd3';
 
 const traceStore = useTraceStore()
 const props = defineProps(['display', 'trace', 'image'])
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'addAnchor'])
 const close = (() => {
      emit('close')
      Object.assign(input, initialInput)
-
 })
 
 const categories = computed(() => traceStore.getCategories)
@@ -67,17 +68,19 @@ let input = reactive({ ...initialInput })
 
 
 const writeTrace = (() => {
+     console.log(props.trace)
      traceStore.writeTrace({
           category: input.category.join(","),
           text: input.comment,
           author: input.author,
           image: props.image.id,
-          anchors: [{
+          anchors: props.trace
+          /*anchors: [{
                x: props.trace.x,
                y: props.trace.y,
                width: props.trace.width,
                height: props.trace.height,
-          }]
+          }]*/
 
      })
      close()

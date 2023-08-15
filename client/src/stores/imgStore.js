@@ -11,13 +11,12 @@ export const useImageStore = defineStore("image", {
   state: () => ({
     images: [],
     image: null,
+    deleted: null,
   }),
 
   getters: {
     getAllImages(state) {
-      let images = state.images;
-      images.forEach((image) => (image.url = staticUrl + image.url));
-      return images;
+      return state.images;
     },
 
     getImage(state) {
@@ -30,10 +29,11 @@ export const useImageStore = defineStore("image", {
 
   actions: {
     async fetchAllImages() {
-      const traceStore = useTraceStore();
-
       try {
         const images = await axios.get(apiUrl + "image");
+
+        images.data.forEach((image) => (image.url = staticUrl + image.url));
+
         this.images = images.data;
       } catch (error) {
         console.log(error);
@@ -63,6 +63,19 @@ export const useImageStore = defineStore("image", {
         });
 
       this.image = image;
+      return this.image;
+    },
+
+    async deleteImage(id) {
+      try {
+        const response = await axios.delete(apiUrl + "image/" + id);
+        this.deleted = response.data;
+        let deleteIndex = this.images.findIndex((image) => image.id == id);
+        this.images.splice(deleteIndex, 1);
+        console.log(this.deleted);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 });

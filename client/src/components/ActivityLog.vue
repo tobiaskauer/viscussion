@@ -35,8 +35,20 @@
 
   <!-- TEMPLATE FOR ANNOTATION OVERVIEW-->
   <template v-else>
+    <div class="pb-5">
+      <small>Sort by:</small>
+
+      <v-btn @click="sort(facet)" size="x-small" :variant="facet.active ? 'elevated' : 'plain'"
+        v-for="facet, i in sorting">
+        <v-icon>{{ facet.icon }}</v-icon>
+        {{ facet.key }}
+        <v-icon v-if="facet.descending">mdi-chevron-down</v-icon>
+        <v-icon v-else>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </div>
     <TransitionGroup tag="ul" name="list" ref="list" id="annotationList">
-      <li v-for="(trace, index) in props.traces" :key="'tracelog-' + trace.id" @mouseenter="setHighlight(trace)"
+      <li v-for="(trace, index) in sortedTraces" :key="'tracelog-' + trace.id" @mouseenter="setHighlight(trace)"
         @mouseleave="setHighlight(null)">
         <CommentCard avatar="true" :trace="trace" :image="props.image" :width="avatar.width" />
       </li>
@@ -63,6 +75,53 @@ const initialInput = {
   parent: null
 }
 
+const sorting = ref([
+  { key: 'Date', active: true, descending: true, icon: 'mdi-clock-outline' },
+  { key: 'Popularity', active: false, descending: true, icon: 'mdi-heart-outline' },
+  { key: 'Responses', active: false, descending: true, icon: 'mdi-comment-outline' },
+])
+
+const sort = (facet) => {
+  let currentlyActive = sorting.value.find(x => x.active)
+
+
+  if (currentlyActive.key === facet.key) {
+    sorting.value.find(x => x.active).descending = !sorting.value.find(x => x.active).descending
+  } else {
+    currentlyActive.active = false
+    sorting.value.find(x => x.key == facet.key).active = true
+  }
+}
+
+const sortedTraces = computed(() => {
+  if (!props.traces) return false
+  let activeSorting = sorting.value.find(x => x.active)
+  let sorted
+
+  switch (activeSorting.key) {
+    case "Date":
+      sorted = props.traces.sort((a, b) => a.date - b.date)
+      break;
+    case "Popularity":
+      sorted = props.traces.sort((a, b) => a.score - b.score)
+      break;
+    case "Responses":
+      sorted = props.traces.sort((a, b) => {
+        let lengthA = a.responses && a.responses.length ? a.responses.length : 0
+        let lengthB = b.responses && b.responses.length ? b.responses.length : 0
+        return lengthA - lengthB
+      })
+      break;
+    default:
+      sorted = props.traces
+      break;
+
+  }
+
+  if (activeSorting.descending) sorted.reverse()
+  return sorted
+})
+
 const response = reactive({ ...initialInput })
 
 
@@ -81,24 +140,10 @@ watch(expandedTrace, newExpandedTrace => {
 })
 
 
-
 const writeTrace = (() => {
   traceStore.writeTrace(response)
 
 })
-
-/*const conversation = computed(() => {
-  if (!traceStore.expandedTrace) return false
-  let root = traceStore.expandedTrace
-  let conversation = [root]
-  response.parent = root.id
-  root.responses.forEach(response => {
-    conversation.push(response)
-  })
-  return conversation
-})*/
-
-
 
 onMounted(() => {
   avatar.width = getWidth()
@@ -107,6 +152,8 @@ onMounted(() => {
 const resetExpand = () => {
   traceStore.expand(null)
 }
+
+
 
 
 const setHighlight = ((trace) => {

@@ -74,7 +74,25 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {};
 
 // Delete a Tutorial with the specified id in the request
-exports.delete = (req, res) => {};
+exports.delete = (req, res) => {
+  if (!req.params.id) {
+    res.status(400).send({
+      message: "please pass an image id!",
+    });
+    return;
+  }
+
+  Image.destroy({
+    where: {
+      id: req.params.id,
+    },
+  }).then((u) => {
+    res.status(200).send({ message: `deleted ${req.params.id}... hopefully` });
+    Trace.destroy({
+      where: { image: req.params.id },
+    });
+  });
+};
 
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {};

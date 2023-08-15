@@ -26,6 +26,11 @@ const router = createRouter({
       name: "about",
       component: () => import("../views/AboutView.vue"),
     },
+    {
+      path: "/control",
+      name: "control",
+      component: () => import("../views/ControlView.vue"),
+    },
     /* {
       path: '/svg/',
       name: 'svg',

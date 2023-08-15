@@ -19,7 +19,7 @@ module.exports = (app) => {
   router.post("/:id", traces.upvote);
 
   // Delete a Trace with id
-  // router.delete("/:id", traces.delete);
+  router.delete("/:id", traces.delete);
 
   // Delete all Traces
   // router.delete("/", traces.deleteAll);

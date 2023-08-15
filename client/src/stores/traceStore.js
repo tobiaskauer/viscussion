@@ -17,12 +17,12 @@ export const useTraceStore = defineStore("trace", {
     timeControls: {},
     patinas: [
       { key: "None", active: false },
-      { key: "Activity", active: false },
+      { key: "Activity", active: true },
       { key: "Responses", active: false },
       { key: "Category", active: false },
       { key: "Popularity", active: false },
       { key: "Temporal", active: false },
-      { key: "Relation", active: true },
+      { key: "Relation", active: false },
     ],
     cardWidth: 250,
     categories: [
@@ -264,6 +264,18 @@ export const useTraceStore = defineStore("trace", {
         console.log(error);
         // let the form component display the error
         return error;
+      }
+    },
+
+    async deleteTrace(id) {
+      try {
+        const response = await axios.delete(apiUrl + "trace/" + id);
+        this.deleted = response.data;
+        let deleteIndex = this.traces.findIndex((image) => image.id == id);
+        this.traces.splice(deleteIndex, 1);
+        console.log(this.deleted);
+      } catch (error) {
+        console.log(error);
       }
     },
 
