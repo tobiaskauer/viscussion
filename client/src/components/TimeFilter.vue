@@ -1,17 +1,19 @@
 <template>
-     <v-row class="px-0">
-          <v-col class="v-col-8">
+     <v-row class="pa-0 ma-0">
+
+          <v-col class="v-col-4 ma-0">
                <v-slider show-ticks="always" :step="timeFrameSection / 2" tick-size="2" v-model="currentDate"
                     :min="timeFrame[0]" strict :max="timeFrame[1]">
                </v-slider>
           </v-col>
-          <v-col class="v-col-4">
+          <v-col class="ma-0">
                <v-btn rounded="xl" @click="play">
                     <v-icon v-if="timeControls.play">mdi-pause</v-icon>
                     <v-icon v-else>mdi-play</v-icon>
                </v-btn>
                <v-btn density="comfortable" @click="reset" icon="mdi-restart"></v-btn>
           </v-col>
+
      </v-row>
 </template>
 

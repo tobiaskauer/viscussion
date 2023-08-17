@@ -75,6 +75,28 @@ const initialInput = {
   parent: null
 }
 
+const patina = computed(() => traceStore.activePatina)
+watch(patina, newPatina => {
+
+
+  if (newPatina.key == "Popularity") {
+    sorting.value.find(x => x.active).active = false
+    let facet = sorting.value.find(x => x.key == 'Popularity')
+    facet.active = true
+    facet.descending = true
+  } else if (newPatina.key == "Temporal") {
+    sorting.value.find(x => x.active).active = false
+    let facet = sorting.value.find(x => x.key == 'Date')
+    facet.active = true
+    facet.descending = true
+  } else if (newPatina.key == "Responses") {
+    sorting.value.find(x => x.active).active = false
+    let facet = sorting.value.find(x => x.key == 'Responses')
+    facet.active = true
+    facet.descending = true
+  }
+})
+
 const sorting = ref([
   { key: 'Date', active: true, descending: true, icon: 'mdi-clock-outline' },
   { key: 'Popularity', active: false, descending: true, icon: 'mdi-heart-outline' },

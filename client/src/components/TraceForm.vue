@@ -4,7 +4,7 @@
           <v-card color="surface" height="auto">
 
                <v-toolbar density="compact"><span class="text-h6 pl-4">Add a new trace</span><v-spacer /><v-btn size="small"
-                         @click="emit('addAnchor')">close</v-btn></v-toolbar>
+                         @click="close">close</v-btn></v-toolbar>
 
                <v-card-text>
                     <v-row>

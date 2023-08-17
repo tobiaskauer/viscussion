@@ -1,9 +1,13 @@
 <template>
-     <v-row class="px-0">
-          <v-col class="p2-0">
-               <v-chip-group v-model="selectedCategory.key" selected-class="text-deep-purple-accent-4">
-                    <v-chip v-for="category in categories" :key="category.key" :value="category.key">{{ category.name
-                    }}</v-chip>
+     <v-row class="pa-0 ma-0">
+
+          <v-col class="pa-0 ma-0">
+               <v-chip-group v-model="selectedCategory.key" selected-class="selected">
+                    <v-chip v-for="category in categories" :key="category.key"
+                         :style="`background-color: ${category.color}; border: 2px solid ${category.color}; color: white;`"
+                         :value="category.key">{{
+                              category.name
+                         }}</v-chip>
                </v-chip-group>
           </v-col>
      </v-row>
@@ -24,4 +28,14 @@ watch(selectedCategory, updated => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.selected {
+     background: white !important;
+     font-weight: bold;
+     color: black !important;
+}
+
+.v-chip__underlay {
+     opacity: .5 !important;
+}
+</style>

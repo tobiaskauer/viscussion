@@ -1,5 +1,6 @@
 <template>
   <div ref="wrapper" v-resize="getDimensions" :class="{ untouchable: !props.touchable }">
+
     <div v-if="traceClass" ref="container" class="wrapper" @mousedown="mouseDown" @mouseup="mouseUp"
       @mousemove="mouseMove" :style="`height: ${dimensions.height}px`">
 
@@ -70,6 +71,14 @@ const traceLinks = computed(() => {
   return links
 })
 
+/*watch(props.image, newImage => {
+  getDimensions()
+})*/
+
+onMounted(() => {
+  getDimensions()
+})
+
 const wrapper = ref(null)
 const getDimensions = () => {
   let bBox = wrapper.value.getBoundingClientRect()
@@ -105,9 +114,10 @@ const highlightedTrace = computed(() => {
 })
 
 const dimensions = computed(() => {
-  console.log(traceStore.dimensions)
   return traceStore.dimensions
 })
+
+
 const cardWidth = computed(() => traceStore.cardWidth)
 
 const resizedTraces = computed(() => {
@@ -166,6 +176,21 @@ const popularityScale = computed(() => {
 })
 
 
+const responseScale = computed(() => {
+  if (!props.traces) return false;
+
+  let responses = props.traces.map(trace => trace.responses && trace.responses.length ? trace.responses.length : 0)
+
+  let domain = d3.extent(responses)
+
+  let range = [0, 10]
+  let scale = d3.scaleLinear().range(range).domain(domain)
+
+  return responses.map(response => Math.floor(scale(response)))
+})
+
+
+
 
 
 const traceClass = computed(() => {
@@ -174,13 +199,15 @@ const traceClass = computed(() => {
   return resizedTraces.value.map(trace => {
     let classes = []
 
-    //let category = trace.category && trace.category.length > 0 ? 'cat-' + trace.category[0] : 'cat-plain' //TODO adapt this for multiple categories
-    //classes.push(category)
-
-    let randomShake = Math.floor(Math.random() * 10) + 2
 
     if (patina.value.key == 'Responses') {
-      classes.push("shake-" + randomShake)
+
+
+      let traceIndex = props.traces.findIndex(propTrace => propTrace.id == trace.id)
+
+      if (traceIndex >= 0) {
+        classes.push("shake-" + responseScale.value[traceIndex])
+      }
     }
 
     if (highlightedTrace.value && highlightedTrace.value.id == trace.id) {
@@ -331,6 +358,11 @@ function onLeave(el, done) {
   })
 }
 
+
+onUnmounted(() => {
+  traceStore.setActivePatina("Activity")
+})
+
 const newTrace = reactive({
   drawing: false,
   drawn: false,
@@ -417,8 +449,9 @@ watch(patina, newPatina => {
 
 const setHighlight = ((trace) => {
 
-  if (!newTrace.drawing) {
+  if (!newTrace.drawing && patina.value.key != "None") {
     if (trace) trace.embedded = true
+
 
     traceStore.setHighlight(trace)
   }
@@ -489,39 +522,47 @@ img,
 }
 
 .shake-0 {
-  animation: shake .0s ease 0s infinite normal forwards;
+  //animation: shake .0s ease 0s infinite normal forwards;
+}
+
+.shake-1 {
+  animation: shake .2s ease 0s infinite normal forwards;
+}
+
+.shake-2 {
+  animation: shake .18s ease 0s infinite normal forwards;
 }
 
 .shake-3 {
-  animation: shake .5s ease 0s infinite normal forwards;
+  animation: shake 1.6s ease 0s infinite normal forwards;
 }
 
 .shake-4 {
-  animation: shake .7s ease 0s infinite normal forwards;
+  animation: shake 1.4s ease 0s infinite normal forwards;
 }
 
 .shake-5 {
-  animation: shake .9s ease 0s infinite normal forwards;
+  animation: shake 1.2s ease 0s infinite normal forwards;
 }
 
 .shake-6 {
-  animation: shake 1.1s ease 0s infinite normal forwards;
+  animation: shake 1s ease 0s infinite normal forwards;
 }
 
 .shake-7 {
-  animation: shake 1.3s ease 0s infinite normal forwards;
+  animation: shake .8s ease 0s infinite normal forwards;
 }
 
 .shake-8 {
-  animation: shake 1.5s ease 0s infinite normal forwards;
+  animation: shake .6s ease 0s infinite normal forwards;
 }
 
 .shake-9 {
-  animation: shake 1.7s ease 0s infinite normal forwards;
+  animation: shake .4s ease 0s infinite normal forwards;
 }
 
 .shake-10 {
-  animation: shake 1.9s ease 0s infinite normal forwards;
+  animation: shake .2s ease 0s infinite normal forwards;
 }
 
 .wrapper {
@@ -534,20 +575,12 @@ img,
     transform: translate(0) rotate(0deg);
   }
 
-  20% {
-    transform: translate(0px, 2px) rotate(0deg);
-  }
-
   40% {
-    transform: translate(-0px, -2px) rotate(-0deg);
-  }
-
-  60% {
-    transform: translate(0px, 2px) rotate(0deg);
+    transform: translate(0px, 3px) rotate(0deg);
   }
 
   80% {
-    transform: translate(0px, -2px) rotate(-0deg);
+    transform: translate(-0px, -3px) rotate(-0deg);
   }
 
   100% {

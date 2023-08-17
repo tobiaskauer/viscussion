@@ -11,6 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     score: {
       type: Sequelize.INTEGER,
+      defaultValue: 0,
     },
     redditCommentId: {
       type: Sequelize.STRING,
@@ -30,7 +31,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       y: {
         type: Sequelize.INTEGER
-      },
+      },2
       width: {
         type: Sequelize.INTEGER
       },

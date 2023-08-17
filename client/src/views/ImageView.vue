@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- <svgOverlay /> -->
-    <v-container>
-      <v-snackbar v-model="snackbar.display">
+    <v-container :container="false">
+      <!--<v-snackbar v-model="snackbar.display">
         {{ snackbar.message }}
 
         <template v-slot:actions>
@@ -10,12 +10,14 @@
             Close
           </v-btn>
         </template>
-      </v-snackbar>
+      </v-snackbar>-->
       <v-row>
-        <v-col>
+        <v-col class="v-col-12">
           <h2 class="mr-2">{{ image.title }}</h2>
           <v-btn size="x-small" color="primary" target="_blank" :href="image.source">source</v-btn>
         </v-col>
+        <!--<v-col align="right" class="v-col-1">
+          <v-switch v-model="fluid" color="primary" label="large screen" hide-details></v-switch></v-col>-->
       </v-row>
 
       <PatinaSelector />
@@ -24,7 +26,7 @@
       <timeFilter v-if="patina.key == 'Temporal'" />
 
       <v-row>
-        <v-col class="v-col-8 pa-0">
+        <v-col class="v-col-6 pa-0">
 
           <tracedImage v-if="image && traces" :image="image" :traces="traces" :touchable="true" @export="openTraceform" />
 
@@ -33,8 +35,7 @@
           <ActivityLog v-if="image && traces" :image="image" :traces="traces" />
         </v-col>
       </v-row>
-      <TraceForm :display="displayForm.bool" :trace="newTraces" :image="image" @addAnchor="addAnchor"
-        @close="displayForm.bool = false" />
+      <TraceForm :display="displayForm.bool" :trace="newTraces" :image="image" @addAnchor="addAnchor" @close="close" />
 
     </v-container>
   </div>
@@ -50,39 +51,57 @@ import CategoryFilter from '../components/CategoryFilter.vue'
 import TimeFilter from '../components/TimeFilter.vue'
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
-import { reactive, nextTick, onMounted, computed, watch, ref, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { reactive, nextTick, onMounted, computed, watch, ref, onUnmounted, onBeforeMount } from 'vue'
 
 
 const traceStore = useTraceStore();
 const imageStore = useImageStore();
 
-imageStore.fetchImage(props.id)
-traceStore.fetchTraces(props.id);
+
+const router = useRouter()
 
 const props = defineProps(['id'])
+
+
 
 const image = computed(() => {
   return imageStore.getImage
 })
 
-/*watch(image, newImage => {
-  getDimensions()
-})*/
-
-
-
 const patina = computed(() => {
   return traceStore.activePatina
+})
+
+onBeforeMount(() => {
+  //traceStore.$reset()
+  //traceStore.setDimensions()
+  imageStore.fetchImage(props.id)
+  traceStore.fetchTraces(props.id);
+})
+
+onMounted(() => {
+  setTimeout(() => {
+
+    if (traces.value.length < 1) {
+      router.go() //if traces aren't loaded after 200ms, reload the page --> What about images without traces?
+    }
+  }, 200)
+
+})
+
+onUnmounted(() => {
+  //console.log(image.value)
+  //console.log(traces.value)
 })
 
 const newTraces = ref([])
 
 const displayForm = reactive({
   bool: false,
-
-
-
 })
+
+
 
 const openTraceform = (exportTrace) => {
   newTraces.value = exportTrace.value
@@ -91,6 +110,10 @@ const openTraceform = (exportTrace) => {
 
 const addAnchor = () => {
   console.log("add anchor")
+  displayForm.bool = false
+}
+
+const close = () => {
   displayForm.bool = false
 }
 
@@ -105,19 +128,10 @@ const snackbar = reactive({
   message: null
 })
 
-/*const newTrace = computed(() => {     
-     return traceStore.getNewTrace
-})*/
 
-/*watch(newTrace, newTrace => {
-     snackbar.display = true
-     snackbar.message = "Trace #"+newTrace.id+" has been recorded." 
-})*/
-
-
-const highlight = computed(() => {
+/*const highlight = computed(() => {
   return traceStore.getHighlight
-})
+})*/
 </script>
 
 <style scoped>

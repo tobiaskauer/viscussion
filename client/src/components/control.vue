@@ -46,7 +46,8 @@
                               <tr v-for="trace in traces" :key="trace.id">
                                    <td v-for="head in traceHeaders" :key="'td-' + head.key" :style="`width: ${head.width}%`">
                                         <template v-if="head.key == 'anchors'">
-                                             <Avatar :image="trace.image" :trace="trace.anchors" width="300" />
+                                             {{ trace.anchors.length }}
+                                             <!--<Avatar :image="trace.image" :trace="trace.anchors" width="300" />-->
                                         </template>
 
                                         <template v-else-if="head.key == 'delete'">
@@ -99,6 +100,7 @@ const traceHeaders = [
      //{ key: 'anchors', width: 10 },
      { key: 'text', width: 10 },
      { key: 'category', width: 10 },
+     { key: 'anchors', width: 10 },
      { key: 'author', width: 10 },
      { key: 'image', width: 10 },
      { key: 'score', width: 10 },

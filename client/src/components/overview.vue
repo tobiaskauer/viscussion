@@ -1,4 +1,16 @@
 <template>
+     <v-container fluid style="background: #ddd">
+          <v-container>
+               <v-row>
+                    <v-col>
+                         <h1>Let's talk <span style="text-decoration:line-through;"> about</span>
+                              <span style="font-weight: 900; font-style: italic;"> with</span> data
+                              visualization.
+                         </h1>
+                    </v-col>
+               </v-row>
+          </v-container>
+     </v-container>
      <v-container>
           <v-row v-if="images">
 
@@ -65,6 +77,7 @@ const images = computed(() => {
 onMounted(() => {
      imageStore.fetchAllImages()
      traceStore.fetchAllTraces()
+     traceStore.fetchTraces(null) //reset existing traces
 })
 
 

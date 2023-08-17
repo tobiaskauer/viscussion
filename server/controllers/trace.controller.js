@@ -1,4 +1,5 @@
 const db = require("../models");
+const { sequelize } = require("../models/index");
 
 const Trace = db.traces;
 const Anchor = db.anchors;
@@ -73,8 +74,31 @@ exports.findImageTraces = (req, res) => {
 };
 
 exports.upvote = (req, res) => {
-  console.log(req.params.id);
-  Trace.increment("score", { by: 1, where: { id: req } });
+  if (!req.params.id) {
+    res.status(400).send({
+      message: "Trace ID can not be empty!",
+    });
+    return;
+  }
+  //Trace.increment("score", {by: 1, where: { id: req.params.id } })
+  Trace.update(
+    { score: sequelize.literal("score + 1") },
+    { where: { id: req.params.id } }
+  )
+    .then((data) => {
+      if (data[0]) {
+        console.log("success");
+        res.status(200).send(data);
+      } else {
+        console.log("fail");
+        res.status(500).send(data);
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while upvoting.",
+      });
+    });
 };
 
 exports.findAll = (req, res) => {

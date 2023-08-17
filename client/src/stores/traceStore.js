@@ -15,14 +15,15 @@ export const useTraceStore = defineStore("trace", {
     newTrace: null,
     author: null, //save author for the ongoing session
     timeControls: {},
+    sorting: {},
     patinas: [
-      { key: "None", active: false },
-      { key: "Activity", active: true },
-      { key: "Responses", active: false },
-      { key: "Category", active: false },
-      { key: "Popularity", active: false },
-      { key: "Temporal", active: false },
-      { key: "Relation", active: false },
+      { key: "None", active: true, icon: "" },
+      { key: "Activity", active: false, icon: "mdi-layers-triple-outline" },
+      //{ key: "Responses", active: false, icon: "mdi-comment-outline" },
+      { key: "Category", active: false, icon: "mdi-label-outline" },
+      { key: "Popularity", active: false, icon: "mdi-heart-outline" },
+      { key: "Temporal", active: false, icon: "mdi-clock-outline" },
+      { key: "Relation", active: false, icon: "mdi-vector-line" },
     ],
     cardWidth: 250,
     categories: [
@@ -101,7 +102,7 @@ export const useTraceStore = defineStore("trace", {
     getTraces(state) {
       //push new trace to state after it is created but not yet retrieved from the api
       let traces = state.traces;
-      if (state.newTrace) traces.push(this.newTrace);
+      //if (state.newTrace) traces.push(this.newTrace);
 
       //filter traces by timeFilter (if present)
       if (this.activeTimeFrame.length > 0) {
@@ -118,6 +119,7 @@ export const useTraceStore = defineStore("trace", {
       //filter multiple anchors
       if (this.activePatina.key == "Relation") {
         traces = this.traces.filter((trace) => trace.anchors.length >= 2);
+        console.log(traces);
 
         this.traceLinks = traces.map((trace) => {
           return {
@@ -207,18 +209,31 @@ export const useTraceStore = defineStore("trace", {
         });
     },
     async fetchTraces(imageId) {
+      if (!imageId) this.traces = [];
       axios
         .get(apiUrl + "trace/" + imageId)
         .then((traces) => {
-          traces.data.forEach((trace) => {
-            trace.date = trace.date
-              ? new Date(trace.date)
-              : new Date(trace.createdAt);
-            trace.category = trace.category ? trace.category.split(",") : [];
-            trace.responses = traces.data.filter((x) => x.parent == trace.id);
-          });
+          if (traces.data.length > 0) {
+            traces.data.forEach((trace) => {
+              trace.date = trace.date
+                ? new Date(trace.date)
+                : new Date(trace.createdAt);
+              trace.category = trace.category ? trace.category.split(",") : [];
+              trace.responses = traces.data.filter((x) => x.parent == trace.id);
+            });
 
-          this.traces = traces.data.filter((trace) => !trace.parent);
+            this.traces = traces.data.filter((trace) => !trace.parent);
+          } else {
+            this.traces = [
+              {
+                id: 0,
+                author: "viscussion admin",
+                date: new Date(),
+                text: "Be the first to respond",
+                anchors: [],
+              },
+            ];
+          }
           const dates = this.traces.map((trace) => trace.date);
           this.fullTimeFrame = [
             Math.floor(new Date(Math.min.apply(null, dates)).getTime() / 1000),
@@ -242,8 +257,6 @@ export const useTraceStore = defineStore("trace", {
         }
       }
 
-      this.author = payload.author;
-
       try {
         const newTrace = await axios.post(apiUrl + "trace", payload);
         //this.newTrace = newTrace.data;
@@ -265,6 +278,8 @@ export const useTraceStore = defineStore("trace", {
         // let the form component display the error
         return error;
       }
+
+      this.author = payload.author;
     },
 
     async deleteTrace(id) {
@@ -280,7 +295,32 @@ export const useTraceStore = defineStore("trace", {
     },
 
     async upvote(payload) {
-      axios.put(apiUrl + "trace", payload);
+      axios
+        .post(apiUrl + "trace/" + payload.id)
+        .then((response) => {
+          //we're just doing that without checking in with the db in the frontend.
+          /*      let upvotedTrace = this.traces.find(
+            (trace) => trace.id == payload.id
+          );
+
+          if (!upvotedTrace && payload.parent) {
+            let parent = this.traces.find(
+              (trace) => (trace.id = payload.parent)
+            );
+            upvotedTrace = parent.responses.find(
+              (response) => response.id == payload.id
+            );
+            parent.updated = true;
+            console.log(upvotedTrace);
+
+            //search in responses
+          }
+
+          upvotedTrace.score++;*/
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
 
     setHighlight(trace) {
@@ -290,13 +330,22 @@ export const useTraceStore = defineStore("trace", {
     expand(trace) {
       this.expandedTrace = trace;
     },
+
+    setSorting(object) {
+      this.sorting = object;
+    },
+
     setActiveTimeFrame(array) {
       this.activeTimeFrame = array;
     },
     setDimensions(object) {
-      Object.keys(object).forEach((key) => {
-        this.dimensions[key] = object[key];
-      });
+      if (!object) {
+        this.dimensions = {};
+      } else {
+        Object.keys(object).forEach((key) => {
+          this.dimensions[key] = object[key];
+        });
+      }
     },
     setTimeControls(object) {
       Object.keys(object).forEach((key) => {
@@ -318,6 +367,7 @@ export const useTraceStore = defineStore("trace", {
         (time) => new Date(time * 1000) //don't filter by time
       );
       this.traceLinks = null; //don't show linked traces
+      this.expandedTrace = null; //exit detail view
 
       this.patinas.forEach((patina) => (patina.active = false)); //reset all
       this.patinas.find((patina) => patina.key == payload).active = true; //set currently selected
