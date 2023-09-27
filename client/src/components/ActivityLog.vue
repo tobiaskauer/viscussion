@@ -172,6 +172,10 @@ onMounted(() => {
 })
 
 const resetExpand = () => {
+  traceStore.writeInteraction({
+    action: "resetExpand",
+    target: expandedTrace.id
+  })
   traceStore.expand(null)
 }
 
@@ -179,7 +183,14 @@ const resetExpand = () => {
 
 
 const setHighlight = ((trace) => {
-  if (trace) trace.embedded = false //not sure why i put this
+  if (trace) {
+    traceStore.writeInteraction({
+      action: "hoverSeparatedTrace",
+      target: trace.id
+    })
+
+    trace.embedded = false //not sure why i put this
+  }
   if (trace && trace.parent) {//if element has a parent, highlight that one
     trace = props.traces.find(x => x.id == trace.parent)
   }

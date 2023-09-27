@@ -2,7 +2,7 @@
      <v-row>
           <v-col>
                <v-btn size="small" class="mr-3" v-for="patina in patinas" :key="patina.key" :active="patina.active"
-                    @click="traceStore.setActivePatina(patina.key)">
+                    @click="select(patina.key)">
                     <v-icon v-if="patina.icon">{{ patina.icon }}</v-icon>
                     {{ patina.key }}
                </v-btn>
@@ -12,7 +12,7 @@
           <v-col class="ma-0">
                <template v-if="activePatina.key == 'None'">
                     The accumulation of people's comments gives visualizations a distinct look. We call this look
-                    <strong><code>Patina</code></strong>Select a patina above to see how people commented on this
+                    <strong><code>Patina</code></strong>. Select a patina above to see how people commented on this
                     visualization.</template>
                <template v-if="activePatina.key == 'Activity'">Each layer indicates a comment. Areas with a thick patina have
                     the highest activity.</template>
@@ -39,6 +39,13 @@ const traceStore = useTraceStore();
 const patinas = computed(() => traceStore.patinas)
 const activePatina = computed(() => traceStore.activePatina)
 
+const select = (key) => {
+     traceStore.writeInteraction({
+          action: "switchPatina",
+          target: key
+     })
+     traceStore.setActivePatina(key)
+}
 
 </script>
 

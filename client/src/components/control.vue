@@ -4,6 +4,7 @@
           <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="center">
                <v-tab value="Images">Images</v-tab>
                <v-tab value="Traces">Traces</v-tab>
+               <v-tab value="Interactions">Interactions</v-tab>
           </v-tabs>
           <v-window v-model="tab">
                <v-window-item value="Images">
@@ -23,6 +24,13 @@
                                         <template v-else-if="head.key == 'delete'">
                                              <v-btn size="small"
                                                   @click="deleteImage(image)"><v-icon>mdi-delete-outline</v-icon>delete</v-btn>
+                                        </template>
+                                        <template v-else-if="head.key == 'visible'">
+                                             <v-btn size="small" @click="toggleVisibility(image)">
+                                                  <span v-if="image[head.key]">hide</span>
+                                                  <span v-else>show</span>
+                                             </v-btn>
+
                                         </template>
                                         <template v-else>{{ image[head.key] }}</template>
 
@@ -64,6 +72,39 @@
                     </v-table>
 
                </v-window-item>
+               <v-window-item value="Interactions">
+                    <!--<v-checkbox v-model="filterTobi" label="filter Tobi's sessions"></v-checkbox>-->
+
+                    <v-table v-if="interactions">
+                         <thead>
+                              <tr>
+                                   <th v-for="head in interactionHeaders" :key="'th-' + head.key"
+                                        :style="`width: ${head.width}%`">
+                                        {{
+                                             head.key }}
+                                   </th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              <tr v-for="interaction in interactions" :key="interaction.id">
+                                   <td v-for="head in interactionHeaders" :key="'td-' + head.key"
+                                        :style="`width: ${head.width}%`">
+                                        <template v-if="head.key == 'createdAt'">
+                                             <v-tooltip :text="interaction.createdAt">
+                                                  <template v-slot:activator="{ props }">
+                                                       <Timeago v-bind="props" :datetime="interaction.createdAt" />
+                                                  </template>
+                                             </v-tooltip>
+                                        </template>
+                                        <template v-else>
+                                             <div style="max-width: 200px;">{{ interaction[head.key] }}</div>
+                                        </template>
+
+                                   </td>
+                              </tr>
+                         </tbody>
+                    </v-table>
+               </v-window-item>
           </v-window>
      </v-container>
 </template>
@@ -76,13 +117,32 @@ import { reactive, onMounted, computed, ref } from 'vue'
 const traceStore = useTraceStore();
 const imageStore = useImageStore();
 
-let tab = ref("Traces")
+onMounted(() => {
+     traceStore.fetchAllInteractions()
+})
+
+const interactions = computed(() => {
+     return traceStore.interactions
+          .sort((a, b) => { return new Date(b.createdAt) - new Date(a.createdAt) })
+})
+const interactionHeaders = [
+     { key: 'session', width: 15 },
+     { key: 'image', width: 15 },
+     { key: 'createdAt', width: 15 },
+     { key: 'patina', width: 15 },
+     { key: 'action', width: 15 },
+     { key: 'target', width: 15 },
+]
+
+
+let tab = ref("Interactions")
 
 const images = computed(() => imageStore.getAllImages)
 const imageHeaders = [
      { key: 'id', width: 5 },
      { key: 'url', width: 20 },
      { key: 'title', width: 60 },
+     { key: 'visible', width: 15 },
      { key: 'delete', width: 15 },
 ]
 const deleteImage = (image) => {
@@ -111,6 +171,9 @@ const deleteTrace = (trace) => {
      traceStore.deleteTrace(trace.id)
 }
 
+const toggleVisibility = (image) => {
+     imageStore.toggleVisibility(image.id, image.visible)
+}
 
 onMounted(() => {
      imageStore.fetchAllImages()

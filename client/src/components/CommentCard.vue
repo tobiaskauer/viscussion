@@ -66,9 +66,18 @@ let newScore = ref(false)
 const upvote = (e) => {
   traceStore.upvote(e)
   newScore.value = !newScore.value ? e.score + 1 : newScore.value++
+  traceStore.writeInteraction({
+    action: "upvote",
+    target: e.id
+  })
 }
 const expand = (e) => {
   traceStore.expand(e)
+  traceStore.writeInteraction({
+    action: "expand",
+    target: e.id
+  })
+
 }
 
 const patina = computed(() => traceStore.activePatina)
@@ -80,16 +89,7 @@ const category = computed(() => {
 })
 
 const highlight = computed(() => {
-
   return traceStore.getHighlight
-})
-
-const play = () => {
-
-}
-
-onMounted(() => {
-
 })
 
 

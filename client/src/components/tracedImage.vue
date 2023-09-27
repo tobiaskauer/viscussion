@@ -94,7 +94,7 @@ const getDimensions = () => {
   traceStore.setDimensions(dimensions)
 }
 
-const lights = reactive({ off: true }) //make this a prop
+const lights = reactive({ off: false }) //make this a prop
 //const wrapper = ref(null)
 const emit = defineEmits(['export'])
 
@@ -329,6 +329,10 @@ const highlightStyle = (trace) => {
 }
 
 const expand = (trace) => {
+  traceStore.writeInteraction({
+    action: "expandTrace",
+    target: trace.id
+  })
   traceStore.expand(trace)
 }
 
@@ -446,14 +450,18 @@ watch(patina, newPatina => {
   lights.off = !(newPatina.key == "None")
 })
 
-
 const setHighlight = ((trace) => {
 
   if (!newTrace.drawing && patina.value.key != "None") {
     if (trace) trace.embedded = true
 
-
     traceStore.setHighlight(trace)
+    if (trace) {
+      traceStore.writeInteraction({
+        action: "hoverEmbeddedTrace",
+        target: trace.id
+      })
+    }
   }
 })
 

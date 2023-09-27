@@ -9,6 +9,11 @@
                          </h1>
                     </v-col>
                </v-row>
+               <v-row>
+                    <v-col class="v-col-6">
+                         <p></p>
+                    </v-col>
+               </v-row>
           </v-container>
      </v-container>
      <v-container>
@@ -55,18 +60,22 @@
 </template>
 
 <script setup>
+import { image } from "d3";
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
 import tracedImage from "./tracedImage.vue";
 
-import { reactive, onMounted, computed, onUnmounted } from 'vue'
+import { reactive, onMounted, watch, computed, onUnmounted, callWithAsyncErrorHandling } from 'vue'
 const traceStore = useTraceStore();
 const imageStore = useImageStore();
+
 
 const images = computed(() => {
      let images = imageStore.getAllImages
      let traces = traceStore.getAllTraces
      if (!images || !traces) return false
+     images = images.filter(image => image.visible)
+     //TODO: SORT: image = images.sort
      images.forEach(image => {
           image.traces = traces.filter(trace => trace.image == image.id)
      })

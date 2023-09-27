@@ -24,6 +24,10 @@ const categories = computed(() => traceStore.getCategories)
 const selectedCategory = reactive({ key: null })
 watch(selectedCategory, updated => {
      traceStore.setActiveCategories([updated.key])
+     traceStore.writeInteraction({
+          action: "changeCategory",
+          target: updated.key
+     })
 })
 
 </script>

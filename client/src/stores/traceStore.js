@@ -4,9 +4,11 @@ import axios from "axios";
 import * as d3 from "d3";
 
 const apiUrl = import.meta.env.VITE_API;
+const envSession = import.meta.env.VITE_SESSION;
 
 export const useTraceStore = defineStore("trace", {
   state: () => ({
+    session: envSession ? envSession : "",
     traces: [], //of a single image
     allTraces: [],
     highlight: null, //currently hovered Trace
@@ -16,10 +18,11 @@ export const useTraceStore = defineStore("trace", {
     author: null, //save author for the ongoing session
     timeControls: {},
     sorting: {},
+    interactions: [],
     patinas: [
-      { key: "None", active: true, icon: "" },
-      { key: "Activity", active: false, icon: "mdi-layers-triple-outline" },
-      //{ key: "Responses", active: false, icon: "mdi-comment-outline" },
+      { key: "None", active: false, icon: "" },
+      { key: "Activity", active: true, icon: "mdi-layers-triple-outline" },
+      { key: "Responses", active: false, icon: "mdi-comment-outline" },
       { key: "Category", active: false, icon: "mdi-label-outline" },
       { key: "Popularity", active: false, icon: "mdi-heart-outline" },
       { key: "Temporal", active: false, icon: "mdi-clock-outline" },
@@ -195,6 +198,9 @@ export const useTraceStore = defineStore("trace", {
   },
 
   actions: {
+    setSession(session) {
+      this.session = session;
+    },
     async fetchAllTraces() {
       axios
         .get(apiUrl + "trace")
@@ -244,6 +250,16 @@ export const useTraceStore = defineStore("trace", {
           console.log(error);
         });
     },
+    async fetchAllInteractions() {
+      axios
+        .get(apiUrl + "interaction")
+        .then((interaction) => {
+          this.interactions = interaction.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
     async writeTrace(payload) {
       if (payload.parent) {
@@ -288,7 +304,6 @@ export const useTraceStore = defineStore("trace", {
         this.deleted = response.data;
         let deleteIndex = this.traces.findIndex((image) => image.id == id);
         this.traces.splice(deleteIndex, 1);
-        console.log(this.deleted);
       } catch (error) {
         console.log(error);
       }
@@ -371,6 +386,22 @@ export const useTraceStore = defineStore("trace", {
 
       this.patinas.forEach((patina) => (patina.active = false)); //reset all
       this.patinas.find((patina) => patina.key == payload).active = true; //set currently selected
+    },
+
+    async writeInteraction(payload) {
+      let currentRoute = this.router.currentRoute.value;
+      payload.image =
+        currentRoute && currentRoute.name == "image"
+          ? currentRoute.params.id
+          : null;
+      payload.session = localStorage.getItem("session");
+      payload.patina = this.patinas.find((patina) => patina.active).key;
+      try {
+        const response = await axios.post(apiUrl + "interaction", payload);
+        console.log("recorded interaction:", response.data);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 });

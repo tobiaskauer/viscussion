@@ -16,11 +16,10 @@ module.exports = (app) => {
   router.get("/:id", images.findOne);
 
   /*// Retrieve a single Trace with id
-    router.get("/:id", traces.findOne);
-  
-    // Update a Trace with id
-    router.put("/:id", traces.update);
-    */
+    router.get("/:id", traces.findOne);*/
+
+  // Update a Trace with id
+  router.put("/:id", images.update);
 
   // Delete a Trace with id
   router.delete("/:id", images.delete);

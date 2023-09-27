@@ -59,11 +59,15 @@ const run = () => {
 }
 
 const play = () => {
+
      timeControls.value.play = !timeControls.value.play
      if (timeControls.value.play) {
           console.log("play")
           run()
      }
+     traceStore.writeInteraction({
+          action: "playTemporalPatina",
+     })
 }
 
 const reset = () => {
@@ -71,6 +75,9 @@ const reset = () => {
      currentDate.value = timeFrame.value[0]
      timeControls.value.play = true
      run()
+     traceStore.writeInteraction({
+          action: "resetTemporalPatina",
+     })
 }
 
 watch(currentDate, newDate => {

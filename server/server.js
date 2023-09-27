@@ -42,6 +42,7 @@ app.use(multer({ dest: "./static" }).single("image"));
 
 require("./routes/trace.routes")(app);
 require("./routes/image.routes")(app);
+require("./routes/interaction.routes")(app);
 
 app.use("/static", express.static("static"));
 
@@ -61,7 +62,7 @@ const db = require("./models");
 
 db.sequelize
   .sync
-  // { force: true } //dont use force in prod
+  //   { force: true } //dont use force in prod
   ()
 
   .then(() => {

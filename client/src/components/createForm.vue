@@ -40,6 +40,10 @@ const upload = () => {
      router.push({
           path: '/'
      })
+
+     traceStore.writeInteraction({
+          action: "uploadNewImage",
+     })
 }
 
 

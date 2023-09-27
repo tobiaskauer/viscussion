@@ -83,6 +83,9 @@ const writeTrace = (() => {
           }]*/
 
      })
+     traceStore.writeInteraction({
+          action: "submitTrace"
+     })
      close()
 })
 

@@ -11,23 +11,41 @@
   </v-app>
 </template>
 
-<script>
+<script setup>
+import { watch } from 'vue';
+import { useRoute } from 'vue-router'
+import { nanoid } from 'nanoid'
+//import { useLocalStorage } from "@vueuse/core"
+import { useTraceStore } from "./stores/traceStore.js";
 
-export default {
-  name: 'App',
+const route = useRoute();
+const traceStore = useTraceStore()
 
-  data: () => ({
-    //
-  }),
+if (!localStorage.getItem("session")) {
+  let session = nanoid()
+  localStorage.setItem('session', session);
+  traceStore.writeInteraction({
+    action: "startSession",
+    session: session,
+    target: route.fullPath
+  })
 }
+
+watch(
+  () => route.fullPath,
+  async () => {
+    traceStore.writeInteraction({
+      action: "changePath",
+      target: route.fullPath
+    })
+  });
 </script>
 
-<style scoped>
-a {
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-}
+<style scoped> a {
+   font-weight: bold;
+   color: white;
+   text-decoration: none;
+ }
 </style>
 
 <style>

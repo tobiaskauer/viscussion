@@ -31,9 +31,7 @@ export const useImageStore = defineStore("image", {
     async fetchAllImages() {
       try {
         const images = await axios.get(apiUrl + "image");
-
         images.data.forEach((image) => (image.url = staticUrl + image.url));
-
         this.images = images.data;
       } catch (error) {
         console.log(error);
@@ -64,6 +62,15 @@ export const useImageStore = defineStore("image", {
 
       this.image = image;
       return this.image;
+    },
+
+    async toggleVisibility(id, visibility) {
+      let newValue = visibility ? { visible: 0 } : { visible: 1 };
+      try {
+        response = await axios.put(apiUrl + "image/" + id, newValue);
+      } catch (error) {
+        console.log(error);
+      }
     },
 
     async deleteImage(id) {

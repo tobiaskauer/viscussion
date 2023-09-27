@@ -28,5 +28,6 @@ db.Sequelize = Sequelize;
 db.traces = require("./trace.model.js")(sequelize, Sequelize);
 db.images = require("./image.model.js")(sequelize, Sequelize);
 db.anchors = require("./anchor.model.js")(sequelize, Sequelize);
+db.interactions = require("./interaction.model.js")(sequelize, Sequelize);
 
 module.exports = db;

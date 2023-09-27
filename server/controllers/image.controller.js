@@ -71,7 +71,15 @@ exports.findOne = (req, res) => {
 };
 
 // Update a Tutorial by the id in the request
-exports.update = (req, res) => {};
+exports.update = (req, res) => {
+  console.log(req.params);
+  Image.update(
+    { visible: req.body.visible },
+    { where: { id: +req.params.id } }
+  ).then((result) => {
+    console.log(result);
+  });
+};
 
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {

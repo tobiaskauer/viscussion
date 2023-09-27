@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- <svgOverlay /> -->
-    <v-container :container="false">
+    <v-container :fluid="true">
+
       <!--<v-snackbar v-model="snackbar.display">
         {{ snackbar.message }}
 
@@ -16,8 +17,8 @@
           <h2 class="mr-2">{{ image.title }}</h2>
           <v-btn size="x-small" color="primary" target="_blank" :href="image.source">source</v-btn>
         </v-col>
-        <!--<v-col align="right" class="v-col-1">
-          <v-switch v-model="fluid" color="primary" label="large screen" hide-details></v-switch></v-col>-->
+        <!-- <v-col align="right" class="v-col-1">
+          <v-switch v-model="large" color="primary" label="large screen" hide-details></v-switch></v-col>-->
       </v-row>
 
       <PatinaSelector />
@@ -26,7 +27,7 @@
       <timeFilter v-if="patina.key == 'Temporal'" />
 
       <v-row>
-        <v-col class="v-col-6 pa-0">
+        <v-col class="pa-0" :class="large ? 'v-col-8 ' : 'v-col-4 '">
 
           <tracedImage v-if="image && traces" :image="image" :traces="traces" :touchable="true" @export="openTraceform" />
 
@@ -63,6 +64,7 @@ const router = useRouter()
 
 const props = defineProps(['id'])
 
+let large = ref(true)
 
 
 const image = computed(() => {
@@ -106,6 +108,10 @@ const displayForm = reactive({
 const openTraceform = (exportTrace) => {
   newTraces.value = exportTrace.value
   displayForm.bool = true
+  traceStore.writeInteraction({
+    action: "openTraceForm",
+    target: trace.id
+  })
 }
 
 const addAnchor = () => {
@@ -115,6 +121,7 @@ const addAnchor = () => {
 
 const close = () => {
   displayForm.bool = false
+  router.go()
 }
 
 
