@@ -74,7 +74,7 @@ const upvote = (e) => {
 const expand = (e) => {
   traceStore.expand(e)
   traceStore.writeInteraction({
-    action: "expand",
+    action: "expandTrace",
     target: e.id
   })
 
