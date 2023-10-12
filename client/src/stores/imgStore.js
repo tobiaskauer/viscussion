@@ -4,8 +4,13 @@ import { useTraceStore } from "../stores/traceStore.js";
 import { defineStore } from "pinia";
 import axios from "axios";
 
-const apiUrl = import.meta.env.VITE_API;
-const staticUrl = import.meta.env.VITE_STATIC;
+let apiUrl = import.meta.env.VITE_API;
+let staticUrl = import.meta.env.VITE_STATIC;
+const overrideEnv = import.meta.env.VITE_OVERRIDE;
+if (overrideEnv) {
+  apiUrl = "https://viscussion.de:8844/api/";
+  staticUrl = "https://viscussion.de:8844/";
+}
 
 export const useImageStore = defineStore("image", {
   state: () => ({
