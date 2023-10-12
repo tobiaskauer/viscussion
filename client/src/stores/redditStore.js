@@ -4,8 +4,6 @@ import axios from "axios";
 import * as d3 from "d3";
 
 const apiUrl = import.meta.env.VITE_API;
-/*const overrideEnv = true;
-if (overrideEnv) apiUrl = "https://viscussion.de:8844/api/";*/
 
 export const useRedditStore = defineStore("reddit", {
   state: () => ({

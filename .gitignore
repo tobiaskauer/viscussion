@@ -1,6 +1,5 @@
 node_modules
 .sqlite
-*.sqlite
 .DS_Store
 .vscode/
 .gitattributes

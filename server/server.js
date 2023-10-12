@@ -27,7 +27,7 @@ const app = express();
 
 const CORS = process.env.CORS || "http://localhost";
 var corsOptions = {
-  //origin: false,
+  origin: CORS,
 };
 
 app.use(cors(corsOptions));
