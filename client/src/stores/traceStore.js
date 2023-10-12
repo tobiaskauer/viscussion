@@ -5,9 +5,9 @@ import * as d3 from "d3";
 
 let apiUrl = import.meta.env.VITE_API;
 const envSession = import.meta.env.VITE_SESSION;
+const overrideEnv = import.meta.env.VITE_OVERRIDE;
 
-const overrideEnv = true;
-if (overrideEnv) apiUrl = "https://viscussion.de:8844/api/";
+//if (+overrideEnv != 0) apiUrl = "https://viscussion.de:8844/api/";
 
 export const useTraceStore = defineStore("trace", {
   state: () => ({
