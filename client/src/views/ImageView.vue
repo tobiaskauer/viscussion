@@ -109,7 +109,7 @@ const addAnchor = () => {
 
 const close = () => {
   displayForm.bool = false
-  router.go()
+  router.go() //reload whole page to make sure traces you submitted are visible. (traffic horror.) //deactivate for debugging
 }
 
 

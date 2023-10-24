@@ -59,14 +59,13 @@ const categories = computed(() => traceStore.getCategories)
 const initialInput = {
      author: "",
      comment: "",
-     category: [],
+     category: "",
 }
 
 let input = reactive({ ...initialInput })
 
 
 const writeTrace = (() => {
-     console.log(props.trace)
      traceStore.writeTrace({
           category: input.category,//.join(","),
           text: input.comment,

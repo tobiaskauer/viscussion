@@ -9,14 +9,9 @@
                          </h1>-->
 
                          <h1>Data visualization is a canvas. <span style="font-weight: 900; font-style: italic;"><br>Let's
-                                   paint
-                                   pictures.</span></h1>
+                                   paint a
+                                   picture.</span></h1>
 
-                    </v-col>
-               </v-row>
-               <v-row>
-                    <v-col class="v-col-6">
-                         <p></p>
                     </v-col>
                </v-row>
           </v-container>
