@@ -10,8 +10,7 @@
                     <v-row>
                          <v-col class="v-col-6" ref="avatar">
                               <Avatar :image="props.image" :trace="trace" width="300" />
-                              <v-btn v-if="trace.length < 2" @click="emit('addAnchor')" block
-                                   size="small"><v-icon>mdi-plus</v-icon>Add
+                              <v-btn @click="emit('addAnchor')" block size="small"><v-icon>mdi-plus</v-icon>Add
                                    another</v-btn>
                          </v-col>
                          <v-col class="v-col-6">
@@ -19,8 +18,7 @@
                                    <v-text-field block v-model="input.author" label="Your name (optional)"></v-text-field>
                                    <v-textarea block v-model="input.comment" label="Your comment (optional)"></v-textarea>
                                    What best describes your trace? (optional)
-                                   <v-chip-group v-model="input.category" multiple
-                                        selected-class="text-deep-purple-accent-4">
+                                   <v-chip-group v-model="input.category" selected-class="text-deep-purple-accent-4">
                                         <v-chip v-for="category in categories" :key="category.key" :value="category.key">{{
                                              category.name }}</v-chip>
                                    </v-chip-group>
@@ -70,7 +68,7 @@ let input = reactive({ ...initialInput })
 const writeTrace = (() => {
      console.log(props.trace)
      traceStore.writeTrace({
-          category: input.category.join(","),
+          category: input.category,//.join(","),
           text: input.comment,
           author: input.author,
           image: props.image.id,

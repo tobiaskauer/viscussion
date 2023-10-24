@@ -4,7 +4,7 @@
           <v-col class="pa-0 ma-0">
                <v-chip-group v-model="selectedCategory.key" selected-class="selected">
                     <v-chip v-for="category in categories" :key="category.key"
-                         :style="`background-color: ${category.color}; border: 2px solid ${category.color}; color: white;`"
+                         :style="`background-color: rgba(${category.color},0); border: 2px solid ${category.color}; color: white;`"
                          :value="category.key">{{
                               category.name
                          }}</v-chip>
@@ -28,6 +28,8 @@ watch(selectedCategory, updated => {
           action: "changeCategory",
           target: updated.key
      })
+
+     console.log(selectedCategory)
 })
 
 </script>

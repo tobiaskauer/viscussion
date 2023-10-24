@@ -20,13 +20,43 @@ export const useTraceStore = defineStore("trace", {
     sorting: {},
     interactions: [],
     patinas: [
-      { key: "None", active: false, icon: "" },
-      { key: "Activity", active: true, icon: "mdi-layers-triple-outline" },
-      { key: "Responses", active: false, icon: "mdi-comment-outline" },
-      { key: "Category", active: false, icon: "mdi-label-outline" },
-      { key: "Popularity", active: false, icon: "mdi-heart-outline" },
-      { key: "Temporal", active: false, icon: "mdi-clock-outline" },
-      { key: "Relation", active: false, icon: "mdi-vector-line" },
+      {
+        key: "Activity",
+        active: true,
+        icon: "mdi-layers-triple-outline",
+        desc: "What are hot areas?",
+      },
+      {
+        key: "Responses",
+        active: false,
+        icon: "mdi-comment-outline",
+        desc: "Where are the discussions?",
+      },
+      {
+        key: "Category",
+        active: false,
+        icon: "mdi-label-outline",
+        desc: "What is talked about?",
+      },
+      {
+        key: "Popularity",
+        active: false,
+        icon: "mdi-heart-outline",
+        desc: "What's liked often?",
+      },
+      //{ key: "Temporal", active: false, icon: "mdi-clock-outline", desc:"" },
+      {
+        key: "Relation",
+        active: false,
+        icon: "mdi-vector-line",
+        desc: "What areas are connected to each other?",
+      },
+      {
+        key: "None",
+        active: false,
+        icon: "mdi-square-outline",
+        desc: "Show just the visualization.",
+      },
     ],
     cardWidth: 250,
     categories: [
@@ -122,17 +152,25 @@ export const useTraceStore = defineStore("trace", {
       //filter multiple anchors
       if (this.activePatina.key == "Relation") {
         traces = this.traces.filter((trace) => trace.anchors.length >= 2);
-        console.log(traces);
 
-        this.traceLinks = traces.map((trace) => {
-          return {
-            //trace: trace,
-            x1: trace.anchors[0].x + trace.anchors[0].width / 2,
-            x2: trace.anchors[1].x + trace.anchors[1].width / 2,
-            y1: trace.anchors[0].y + trace.anchors[0].height / 2,
-            y2: trace.anchors[1].y + trace.anchors[1].height / 2,
-          };
+        let links = [];
+        traces.forEach((trace) => {
+          //connect all traces with each other
+          trace.anchors.forEach((start, i) => {
+            trace.anchors.forEach((stop, j) => {
+              if (j >= i && i != j) {
+                links.push({
+                  x1: start.x + start.width / 2,
+                  x2: stop.x + stop.width / 2,
+                  y1: start.y + start.height / 2,
+                  y2: stop.y + stop.height / 2,
+                });
+              }
+            });
+          });
         });
+
+        this.traceLinks = links;
       }
 
       //filter by active categories (if present)
@@ -398,7 +436,7 @@ export const useTraceStore = defineStore("trace", {
       payload.patina = this.patinas.find((patina) => patina.active).key;
       try {
         const response = await axios.post(apiUrl + "interaction", payload);
-        console.log("recorded interaction:", response.data);
+        //console.log("recorded interaction:", response.data);
       } catch (error) {
         console.log(error);
       }

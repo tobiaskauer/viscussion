@@ -2,7 +2,7 @@
   <div ref="wrapper" v-resize="getDimensions" :class="{ untouchable: !props.touchable }">
 
     <div v-if="traceClass" ref="container" class="wrapper" @mousedown="mouseDown" @mouseup="mouseUp"
-      @mousemove="mouseMove" :style="`height: ${dimensions.height}px`">
+      @mousemove="mouseMove" @mouseleave="mouseleave" @mouseenter="mouseenter" :style="`height: ${dimensions.height}px`">
 
       <img class="untouchable" ref="tracedImage" :src="props.image.url" :style="'width: ' + dimensions.width + 'px'" />
       <transition name="lights">
@@ -65,6 +65,8 @@ const categories = computed(() => traceStore.getCategories)
 const traceLinks = computed(() => {
   if (!dimensions.value.scale || !traceStore.traceLinks) return null
   let links = traceStore.traceLinks
+
+
   links.forEach(link => {
     Object.keys(link).forEach(key => link[key] = link[key] * dimensions.value.scale) //resize accordig to scale facotr of source image
   })
@@ -91,6 +93,7 @@ const getDimensions = () => {
     scale: scale,
     height: props.image.height * scale
   }
+
   traceStore.setDimensions(dimensions)
 }
 
@@ -398,6 +401,10 @@ const mouseMove = ((e) => {
 })
 
 const mouseUp = ((e) => {
+  fromTraceToForm(e)
+})
+
+const fromTraceToForm = (e) => {
   if (cursor.drawing) {
     cursor.drawing = false
     cursor.drawn = true
@@ -418,7 +425,11 @@ const mouseUp = ((e) => {
     newTrace.y = 0
   }
   cursor.down = false
-})
+}
+
+const mouseleave = ((e) => {
+  fromTraceToForm(e)
+}) //prevent buggy behavior when mouse leave canvas - still not perfect
 
 watch(cursor, newCursor => {
   let threshold = 5

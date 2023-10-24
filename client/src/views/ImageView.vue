@@ -1,38 +1,29 @@
 <template>
   <div>
-    <!-- <svgOverlay /> -->
-    <v-container :fluid="true">
+    <!--<v-container :fluid="true">-->
+    <v-container>
+      <v-row class="py-5">
+        <v-col class="v-col-8">
 
-      <!--<v-snackbar v-model="snackbar.display">
-        {{ snackbar.message }}
+          <div class="mb-5">
 
-        <template v-slot:actions>
-          <v-btn color="primary" variant="text" @click="snackbar.display = false">
-            Close
-          </v-btn>
-        </template>
-      </v-snackbar>-->
-      <v-row>
-        <v-col class="v-col-12">
-          <h2 class="mr-2">{{ image.title }}</h2>
-          <v-btn size="x-small" color="primary" target="_blank" :href="image.source">source</v-btn>
-        </v-col>
-        <!-- <v-col align="right" class="v-col-1">
-          <v-switch v-model="large" color="primary" label="large screen" hide-details></v-switch></v-col>-->
-      </v-row>
+            <h2>{{ image.title }}</h2>
+            <v-btn size="x-small" color="primary" target="_blank" :href="image.source">source</v-btn>
+          </div>
 
-      <PatinaSelector />
-
-      <CategoryFilter v-if="patina.key == 'Category'" />
-      <timeFilter v-if="patina.key == 'Temporal'" />
-
-      <v-row>
-        <v-col class="pa-0" :class="large ? 'v-col-8 ' : 'v-col-4 '">
 
           <tracedImage v-if="image && traces" :image="image" :traces="traces" :touchable="true" @export="openTraceform" />
 
+
+
+
         </v-col>
-        <v-col class="v-col-4 pt-0">
+        <v-col class="v-col-4">
+          <div class="patinaSelector mb-4">
+            <PatinaSelector />
+            <CategoryFilter v-if="patina.key == 'Category'" />
+            <timeFilter v-if="patina.key == 'Temporal'" />
+          </div>
           <ActivityLog v-if="image && traces" :image="image" :traces="traces" />
         </v-col>
       </v-row>
@@ -48,7 +39,6 @@ import ActivityLog from '../components/ActivityLog.vue'
 import tracedImage from '../components/tracedImage.vue'
 import PatinaSelector from '../components/patinaSelector.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
-//import svgOverlay from '../components/svgOverlay.vue'
 import TimeFilter from '../components/TimeFilter.vue'
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
@@ -109,13 +99,11 @@ const openTraceform = (exportTrace) => {
   newTraces.value = exportTrace.value
   displayForm.bool = true
   traceStore.writeInteraction({
-    action: "openTraceForm",
-    target: trace.id
+    action: "openTraceForm"
   })
 }
 
 const addAnchor = () => {
-  console.log("add anchor")
   displayForm.bool = false
 }
 
@@ -136,6 +124,7 @@ const snackbar = reactive({
 })
 
 
+
 /*const highlight = computed(() => {
   return traceStore.getHighlight
 })*/
@@ -144,5 +133,12 @@ const snackbar = reactive({
 <style scoped>
 h2 {
   display: inline;
+}
+
+.patinaSelector {
+  background: rgba(var(--v-theme-primary));
+  border-radius: 5px;
+  margin: 0;
+  padding: 10px;
 }
 </style>

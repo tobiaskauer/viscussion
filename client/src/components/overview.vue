@@ -3,10 +3,15 @@
           <v-container>
                <v-row>
                     <v-col>
-                         <h1>Let's talk <span style="text-decoration:line-through;"> about</span>
+                         <!--<h1>Let's talk <span style="text-decoration:line-through;"> about</span>
                               <span style="font-weight: 900; font-style: italic;"> with</span> data
                               visualization.
-                         </h1>
+                         </h1>-->
+
+                         <h1>Data visualization is a canvas. <span style="font-weight: 900; font-style: italic;"><br>Let's
+                                   paint
+                                   pictures.</span></h1>
+
                     </v-col>
                </v-row>
                <v-row>
@@ -18,7 +23,6 @@
      </v-container>
      <v-container>
           <v-row v-if="images">
-
                <v-col class="v-col-3" v-for="image in images" :key="image.id">
                     <router-link :to="'/view/' + image.id">
                          <v-hover>
@@ -26,7 +30,9 @@
                                    <v-card v-bind="props" :color="isHovering ? 'primary' : undefined">
                                         <!--<v-img :src="image.url" contain></v-img>-->
                                         <div style="overflow:hidden">
-                                             <tracedImage :image="image" :traces="image.traces" :touchable="false" />
+
+                                             <img :src="image.url" style="width: 100%;" />
+                                             <!--<tracedImage :image="image" :traces="image.traces" :touchable="false" />-->
                                         </div>
 
                                         <v-card-item>
@@ -75,7 +81,7 @@ const images = computed(() => {
      let traces = traceStore.getAllTraces
      if (!images || !traces) return false
      images = images.filter(image => image.visible)
-     //TODO: SORT: image = images.sort
+
      images.forEach(image => {
           image.traces = traces.filter(trace => trace.image == image.id)
      })

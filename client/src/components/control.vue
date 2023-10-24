@@ -214,9 +214,10 @@ const sessions = computed(() => {
 
      sessions.forEach(session => {
           session.interactions.sort((a, b) => b.createdAt - a.createdAt)
-          session.duration = Math.floor((session.interactions[0].createdAt - session.interactions[session.interactions.length - 1].createdAt) / 1000 / 60)
+          let durationMs = session.interactions[0].createdAt.valueOf() - session.interactions[session.interactions.length - 1].createdAt.valueOf()
+          session.duration = Math.round(durationMs / 60000)
      })
-     console.log(sessions)
+
      return sessions
 })
 const sessionHeaders = [

@@ -1,15 +1,15 @@
 <template>
-  <div :style="'width: ' + (width) + 'px;'">
-
+  <div class="avatar" :style="'width: ' + (width) + 'px'">
     <div class="traceAvatar" @mouseDown="mousedown" @mousemove="mousemove"
-      :style="`background-image: url(${avatar.url}); background-size: ${avatar.zoom}px; background-position-x: ${avatar.x}%; background-position-y: ${avatar.y}%; height: ${avatar.height}px; width: ${avatar.width}px;`">
+      :style="`
+background-image: url(${avatar.url});background-size: ${avatar.zoom}px;background-position-x: ${avatar.x}%;background-position-y: ${avatar.y}%;height: ${avatar.height}px;width: ${avatar.width}px;`">
     </div>
   </div>
 
   <div v-if="props.trace.length > 1">
     <ul :style="`text-align: center; position: relative; margin-top: -30px; padding-bottom: 30px;`">
       <li v-for="anchor, i in props.trace" :key="'anchor' + i" style="display: inline-block" @click="avatarIndex = i">
-        <v-icon color="white" size="small" style="opacity: .8; text-shadow: 0 0 5px black;" icon="mdi-circle"
+        <v-icon color="white" size="small" style="opacity: 0.8; text-shadow: 0 0 5px black;" icon="mdi-circle"
           v-if="avatarIndex == i" />
         <v-icon v-else color="white" size="small" style="opacity: .8; text-shadow: 0 0 5px black;"
           icon="mdi-circle-outline" />
@@ -18,8 +18,8 @@
   </div>
 </template>
 <script setup>
-import { computed, ref } from 'vue'
-const props = defineProps(['trace', 'image', 'width', 'height'])
+import { computed, ref, onMounted } from 'vue'
+const props = defineProps(['trace', 'image', 'width'])
 
 /*const avatarClass = computed(() => {
   if (!props.trace) return false
@@ -28,38 +28,107 @@ const props = defineProps(['trace', 'image', 'width', 'height'])
   return avatarClass
 })*/
 
+
+
+
 const avatarIndex = ref(0)
 
 let avatar = computed(() => {
   if (!props.trace) return null
   let trace = props.trace[avatarIndex.value]
   let image = props.image
-  let width = props.width
-  let zoomFactor = width / trace.width
   let aspectRatio = trace.height / trace.width
 
-  //TODO: check if height is over props.height and resize accordingly
-  let height = props.height
-  //if (avatar.height > height) { console.log('reverse it') }
-  //avatar.zoom = zoomFactor * image.width * 0.9 //zoom out to correct for some errors
-  //zoom out to correct for some errors
+  let width = props.width
+  let height = width * aspectRatio
+
+  //adapt height and width when height is very large (width is controlled by col width anyway)
+  if (height > 200) {
+    let decreaseFactor = height / 200
+    width = width / decreaseFactor
+    height = height / decreaseFactor
+  }
+
+  let zoomFactor = width / trace.width
+
+  if (zoomFactor > 1) {
+    let zoomRatio = zoomFactor / 1
+    width = width / zoomRatio
+    height = height / zoomRatio
+    zoomFactor = 1
+  }
+
+  let backgroundPosition = {
+    x: (trace.x + trace.width / 2) / image.width * 100,
+    y: (trace.y + trace.height / 2) / image.height * 100,
+  }
+
+
+  Object.keys(backgroundPosition).forEach(value => {
+    //oh my god. this is the hackiest bit in this project...yet
+    let aRandomNagicNumber = value == 'x' ? 16 : 10 //this umber may differ from image to image (and maybe even dimension to dimension)
+    let difference = backgroundPosition[value] - 50 //is it below or above center
+    backgroundPosition[value] = backgroundPosition[value] + difference / aRandomNagicNumber //add a fraction of that difference 
+
+  })
+
 
   let avatar = {
     height: width * aspectRatio,
-    zoom: zoomFactor * image.width * 1,
-    x: (trace.x + trace.width / 2) / image.width * 100,
-    y: (trace.y + trace.height / 2) / image.height * 100,
+    zoom: zoomFactor * image.width,
+    //x: (trace.x) / image.width * 100,
+    //y: (trace.y) / image.height * 100,
+    x: backgroundPosition.x,
+    y: backgroundPosition.y,
+
     width: width,
     url: props.image.url
   }
+
+  if (props.trace[0].traceId == 282) {
+    //console.log("trace.y:", trace.y, " - trace.height:", trace.height, " - image.height:", image.height)
+
+    //console.log((trace.y) / image.height * 100, "better closer to 49,86") //281
+    //console.log((trace.x + trace.width / 2) / image.width * 100, "shpuld be 100") //282 (Morocco)
+    //console.log(trace.x + trace.width)
+    //console.log(image.width)
+
+
+  }
+
   return avatar
 })
+
+/*onMounted(() => {
+  const canvas = document.getElementById("canvas");
+  const context = canvas.getContext('2d');
+
+  let trace = props.trace[avatarIndex.value]
+  console.log(trace)
+
+  const img = new Image(); // Create new img element
+  img.src = props.image.url; // Set source path
+
+  img.onload = function () {
+    let sourceX = trace.x
+    let sourceY = trace.y
+    let sourceW = trace.width
+    let sourceH = trace.height
+    let destinationX = 0
+    let destinationY = 0
+    let destinationW = 140
+    let destinationH = 149
+
+    context.drawImage(img, sourceX, sourceY, sourceW, sourceH, destinationX, destinationY, destinationW, destinationH)
+  }
+})*/
 </script>
 
 
 <style scoped>
-.traceAvatar {
-  padding: 0;
-  margin: 0;
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
