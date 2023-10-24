@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   Interaction.create(req.body)
     .then((data) => {
       res.send(data);
-      console.log(req.body);
+      //console.log(req.body);
     })
     .catch((err) => {
       res.status(500).send({

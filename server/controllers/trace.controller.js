@@ -42,6 +42,7 @@ exports.create = (req, res) => {
   )
     .then((data) => {
       res.send(data);
+      console.log(data);
     })
     .catch((err) => {
       console.log(err);
