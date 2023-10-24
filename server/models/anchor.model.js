@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
     traceId: {
       type: Sequelize.INTEGER,
       references: {
-        model: Trace, // 'Traces' would also work
+        model: Trace,
         key: "id",
       },
     },

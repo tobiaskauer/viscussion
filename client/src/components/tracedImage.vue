@@ -43,6 +43,7 @@
       <div id="allAnchors" class="untouchable cat-plain" v-if="allAnchors.length > 0"
         :style="`top: ${allAnchors[0].y * dimensions.scale}px; left: ${allAnchors[0].x * dimensions.scale}px; width: ${allAnchors[0].width * dimensions.scale}px; height: ${allAnchors[0].height * dimensions.scale}px`">
 
+
       </div>
 
 
@@ -62,6 +63,7 @@ const traceStore = useTraceStore()
 
 const patina = computed(() => traceStore.activePatina)
 const categories = computed(() => traceStore.getCategories)
+const tracesSubmitted = computed(() => traceStore.tracesSubmitted)
 const traceLinks = computed(() => {
   if (!dimensions.value.scale || !traceStore.traceLinks) return null
   let links = traceStore.traceLinks
@@ -73,12 +75,25 @@ const traceLinks = computed(() => {
   return links
 })
 
-/*watch(props.image, newImage => {
-  getDimensions()
-})*/
 
 onMounted(() => {
   getDimensions()
+})
+
+watch(tracesSubmitted, newTrace => {
+  newTrace
+  cursor.startX = null
+  cursor.startY = null
+  cursor.currentY = null
+  cursor.currentX = null
+  cursor.drag = false
+  cursor.down = false
+  cursor.drawn = false
+  cursor.drawing = false
+
+  allAnchors.value.splice(0)
+
+  console.log(allAnchors)
 })
 
 const wrapper = ref(null)

@@ -16,6 +16,7 @@ export const useTraceStore = defineStore("trace", {
     traceLinks: null, //for relation view
     newTrace: null,
     author: null, //save author for the ongoing session
+    tracesSubmitted: 0,
     timeControls: {},
     sorting: {},
     interactions: [],
@@ -312,8 +313,11 @@ export const useTraceStore = defineStore("trace", {
       }
 
       try {
-        const newTrace = await axios.post(apiUrl + "trace", payload);
-        //this.newTrace = newTrace.data;
+        const newTrace = await axios.post(apiUrl + "trace", payload, {
+          timeout: 1000,
+        });
+        //this.newTrace = newTrace.data;+
+        this.tracesSubmitted++;
 
         newTrace.date = newTrace.date
           ? new Date(newTrace.date) //use reddit date if possible
@@ -329,8 +333,7 @@ export const useTraceStore = defineStore("trace", {
         }
       } catch (error) {
         console.log(error);
-        console.log(error.config);
-        // let the form component display the error
+        console.log(error.request);
         return error;
       }
 
@@ -379,6 +382,10 @@ export const useTraceStore = defineStore("trace", {
 
     setHighlight(trace) {
       this.highlight = trace;
+    },
+
+    closeTrace() {
+      this.tracesSubmitted++;
     },
 
     expand(trace) {

@@ -12,7 +12,8 @@
           </div>
 
 
-          <tracedImage v-if="image && traces" :image="image" :traces="traces" :touchable="true" @export="openTraceform" />
+          <tracedImage v-if="image && traces" :image="image" :traces="traces" :touchable="true"
+            :tracesSubmitted="tracesSubmitted" light="" @export="openTraceform" />
 
 
 
@@ -54,7 +55,7 @@ const router = useRouter()
 
 const props = defineProps(['id'])
 
-let large = ref(true)
+let tracesSubmitted = ref(0)
 
 
 const image = computed(() => {
@@ -108,8 +109,11 @@ const addAnchor = () => {
 }
 
 const close = () => {
+  traceStore.closeTrace()
   displayForm.bool = false
-  router.go() //reload whole page to make sure traces you submitted are visible. (traffic horror.) //deactivate for debugging
+  //setTimeout(router.go(), 10000);
+
+  //router.go() //reload whole page to make sure traces you submitted are visible. (traffic horror.) //deactivate for debugging
 }
 
 

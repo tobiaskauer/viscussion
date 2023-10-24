@@ -66,7 +66,7 @@ let input = reactive({ ...initialInput })
 
 
 const writeTrace = ((e) => {
-     if (e) e.preventDefault()
+     //if (e) e.preventDefault()
      traceStore.writeTrace({
           category: input.category,//.join(","),
           text: input.comment,
