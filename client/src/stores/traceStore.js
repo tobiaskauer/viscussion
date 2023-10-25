@@ -324,9 +324,9 @@ export const useTraceStore = defineStore("trace", {
           : new Date(newTrace.createdAt);
 
         if (newTrace.data.parent) {
-          this.traces
-            .find((trace) => trace.id == payload.parent)
-            .responses.push(newTrace.data);
+          let parent = this.traces.find((trace) => trace.id == payload.parent);
+          if (!parent.responses) parent.responses = [];
+          parent.responses.push(newTrace.data);
         } else {
           console.log(newTrace.data);
           this.traces.push(newTrace.data);
@@ -381,6 +381,18 @@ export const useTraceStore = defineStore("trace", {
     },
 
     setHighlight(trace) {
+      if (trace) {
+        //traces in canvas dont have responses attached to them. if you pass an id, look for them on the main trace array to correctly display the number of responses on the highlight
+        let traceWithResponse = this.traces.find(
+          (traceWithResponse) => traceWithResponse.id == trace.id
+        );
+
+        trace.responses =
+          traceWithResponse && traceWithResponse.responses
+            ? traceWithResponse.responses
+            : [];
+      }
+
       this.highlight = trace;
     },
 

@@ -42,11 +42,7 @@
       </div>
       <div id="allAnchors" class="untouchable cat-plain" v-if="allAnchors.length > 0"
         :style="`top: ${allAnchors[0].y * dimensions.scale}px; left: ${allAnchors[0].x * dimensions.scale}px; width: ${allAnchors[0].width * dimensions.scale}px; height: ${allAnchors[0].height * dimensions.scale}px`">
-
-
       </div>
-
-
     </div>
   </div>
 </template>
@@ -67,7 +63,6 @@ const tracesSubmitted = computed(() => traceStore.tracesSubmitted)
 const traceLinks = computed(() => {
   if (!dimensions.value.scale || !traceStore.traceLinks) return null
   let links = traceStore.traceLinks
-
 
   links.forEach(link => {
     Object.keys(link).forEach(key => link[key] = link[key] * dimensions.value.scale) //resize accordig to scale facotr of source image
@@ -149,6 +144,7 @@ const resizedTraces = computed(() => {
         category: trace.category,
         author: trace.author,
         date: trace.date,
+        responses: trace.responses,
         anchors: [anchor],
         text: trace.text,
         score: trace.score,
@@ -184,12 +180,16 @@ const popularityScale = computed(() => {
   let domain = d3.extent(scores)
   let colorRange = ["blue", "red"]
   let strokeRange = [2, 20]
-  let colorScale = d3.scaleLog().range(colorRange).domain(domain)
+  let colorScale = d3.scaleLinear().range(colorRange).domain(domain)
   let strokeScale = d3.scaleLinear().range(strokeRange).domain(domain)
-
   return {
-    color: scores.map(score => colorScale(score)),
-    stroke: scores.map(score => strokeScale(score)),
+    color: scores.map(score => {
+      return { score: score, color: colorScale(score) }
+    }),
+    stroke: scores.map(score => {
+      return { score: score, stroke: strokeScale(score) }
+    }
+    )
   }
 })
 
@@ -198,18 +198,18 @@ const responseScale = computed(() => {
   if (!props.traces) return false;
 
   let responses = props.traces.map(trace => trace.responses && trace.responses.length ? trace.responses.length : 0)
-
   let domain = d3.extent(responses)
-
   let range = [0, 10]
   let scale = d3.scaleLinear().range(range).domain(domain)
 
-  return responses.map(response => Math.floor(scale(response)))
+  //return responses.map(response => Math.floor(scale(response)))
+  return responses.map(response => {
+    return {
+      responses: response,
+      strength: Math.floor(scale(response))
+    }
+  })
 })
-
-
-
-
 
 const traceClass = computed(() => {
   if (!resizedTraces) return false
@@ -217,20 +217,22 @@ const traceClass = computed(() => {
   return resizedTraces.value.map(trace => {
     let classes = []
 
-
     if (patina.value.key == 'Responses') {
 
-
       let traceIndex = props.traces.findIndex(propTrace => propTrace.id == trace.id)
+      //if (trace.responses) console.log(trace)
 
-      if (traceIndex >= 0) {
-        classes.push("shake-" + responseScale.value[traceIndex])
+      let elementInScale = responseScale.value.find(scaleElement => scaleElement.responses == trace.responses.length)
+      let strength = elementInScale ? elementInScale.strength : null
+
+      if (strength) {
+        classes.push("shake-" + strength)
       }
     }
 
     if (highlightedTrace.value && highlightedTrace.value.id == trace.id) {
       classes.push('elevation-5')
-      classes.push('noBlur')
+      classes.push('fullOpacity')
 
     } else {
       classes.push("blur")
@@ -299,8 +301,11 @@ const traceStyle = (trace, patinReactivity) => {
       style.opacity = .5
       style.fillOpacity = 1
 
-      let color = traceIndex >= 0 ? d3.rgb(popularityScale.value.color[traceIndex]) : d3.rgb("#000000")
-      let stroke = traceIndex ? popularityScale.value.stroke[traceIndex] : 0
+      //let color = traceIndex >= 0 ? d3.rgb(popularityScale.value.color[traceIndex]) : d3.rgb("#000000")
+      //let stroke = traceIndex ? popularityScale.value.stroke[traceIndex] : 0
+      let color = popularityScale.value.color.find(scaleElement => scaleElement.score == trace.score).color
+      let stroke = popularityScale.value.stroke.find(scaleElement => scaleElement.score == trace.score).stroke
+
       style.border = `${stroke}px solid ${color}`
       style.fill = d3.rgb("#ffffff")
       break;
@@ -309,9 +314,9 @@ const traceStyle = (trace, patinReactivity) => {
       let category = categories.value.find(category => trace.category[0] == category.key)
       if (category) {
         style.border = '5px solid ' + d3.color(category.color)
+        style.fill = d3.color(category.color)
       }
-      style.fill = d3.rgb("#fff")
-      style.fillOpacity = 0.5
+      style.fillOpacity = 0.1
       style.opacity = 0.6
       break;
 
@@ -477,7 +482,6 @@ watch(patina, newPatina => {
 })
 
 const setHighlight = ((trace) => {
-
   if (!newTrace.drawing && patina.value.key != "None") {
     if (trace) trace.embedded = true
 
@@ -523,6 +527,10 @@ img,
   -o-filter: blur(0.5px);
   -ms-filter: blur(0.5px);
   filter: blur(0.5px);
+}
+
+.fullOpacity {
+  opacity: 1 !important;
 }
 
 .noBlur {

@@ -18,7 +18,7 @@
      </v-container>
      <v-container>
           <v-row v-if="images">
-               <v-col class="v-col-3" v-for="image in images" :key="image.id">
+               <v-col class="v-col-4" v-for="image in images" :key="image.id">
                     <router-link :to="'/view/' + image.id">
                          <v-hover>
                               <template v-slot:default="{ isHovering, props }">
@@ -31,7 +31,7 @@
                                         </div>
 
                                         <v-card-item>
-                                             <v-card-text class="">
+                                             <v-card-text>
                                                   <strong>{{ image.title }}</strong>
                                                   (
                                                   <Timeago :datetime="image.createdAt" />)

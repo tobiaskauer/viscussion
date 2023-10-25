@@ -28,8 +28,6 @@ watch(selectedCategory, updated => {
           action: "changeCategory",
           target: updated.key
      })
-
-     console.log(selectedCategory)
 })
 
 </script>
