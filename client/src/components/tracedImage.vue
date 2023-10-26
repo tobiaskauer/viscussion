@@ -35,13 +35,19 @@
       <div class="highlightedTrace" :style="highlightStyle(highlightedTrace)"
         v-if="highlightedTrace && highlightedTrace.embedded">
         <CommentCard :avatar="false" :image="props.image" :width="cardWidth" :trace="highlightedTrace" />
-        <!--v-card :width="`${cardWidth}px`"><v-card-text>{{ highlightedTrace.text }}</v-card-text></v-card>-->
       </div>
       <div id="newTrace" class="untouchable cat-plain" v-if="cursor.drawing"
         :style="`top: ${newTrace.y}px; left: ${newTrace.x}px; width: ${newTrace.width}px; height: ${newTrace.height}px`">
       </div>
-      <div id="allAnchors" class="untouchable cat-plain" v-if="allAnchors.length > 0"
+
+      <!--     <div id="allAnchors" class="untouchable cat-plain" div v-if="allAnchors.length > 0"
         :style="`top: ${allAnchors[0].y * dimensions.scale}px; left: ${allAnchors[0].x * dimensions.scale}px; width: ${allAnchors[0].width * dimensions.scale}px; height: ${allAnchors[0].height * dimensions.scale}px`">
+      </div>-->
+
+      <div v-if="allAnchors.length > 0">
+        <div id="allAnchors" class="untouchable cat-plain" v-for="anchor, index in allAnchors" :key="index"
+          :style="`top: ${anchor.y * dimensions.scale}px; left: ${anchor.x * dimensions.scale}px; width: ${anchor.width * dimensions.scale}px; height: ${anchor.height * dimensions.scale}px`">
+        </div>
       </div>
     </div>
   </div>
@@ -87,8 +93,6 @@ watch(tracesSubmitted, newTrace => {
   cursor.drawing = false
 
   allAnchors.value.splice(0)
-
-  console.log(allAnchors)
 })
 
 const wrapper = ref(null)
@@ -439,12 +443,14 @@ const fromTraceToForm = (e) => {
     emit('export', allAnchors)
 
 
+
     newTrace.width = 0
     newTrace.height = 0
     newTrace.x = 0
     newTrace.y = 0
   }
   cursor.down = false
+  console.log(allAnchors.value)
 }
 
 const mouseleave = ((e) => {

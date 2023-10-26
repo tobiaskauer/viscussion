@@ -133,6 +133,9 @@ export const useTraceStore = defineStore("trace", {
   }),
 
   getters: {
+    getTotalTracesNumber(state) {
+      return this.traces.length;
+    },
     getTraces(state) {
       //push new trace to state after it is created but not yet retrieved from the api
       let traces = state.traces;
@@ -172,6 +175,11 @@ export const useTraceStore = defineStore("trace", {
         });
 
         this.traceLinks = links;
+      }
+
+      //filter no liked
+      if (this.activePatina.key == "Popularity") {
+        traces = this.traces.filter((trace) => trace.score > 0);
       }
 
       //filter by active categories (if present)
@@ -328,12 +336,10 @@ export const useTraceStore = defineStore("trace", {
           if (!parent.responses) parent.responses = [];
           parent.responses.push(newTrace.data);
         } else {
-          console.log(newTrace.data);
           this.traces.push(newTrace.data);
         }
       } catch (error) {
         console.log(error);
-        console.log(error.request);
         return error;
       }
 

@@ -33,18 +33,19 @@
 
           <p class="my-3"><strong style="padding-right: 5px">{{ trace.author }}</strong>{{
             trace.text }}</p>
-
           <div align="right">
             <v-btn v-if="!props.response" size="small" density="compact" variant="text" @click="expand(trace)">
               <v-icon>mdi-comment-outline</v-icon>
               <span v-if="trace.responses && trace.responses.length">{{ trace.responses.length }}</span>
               <span v-else>0</span>
+              <span class="pl-1">Respond</span>
             </v-btn>
             <v-btn :class="{ activePopularity: patina.key == 'Popularity' }" size="small" density="compact" variant="text"
               @click="upvote(trace)">
               <v-icon>mdi-heart-outline</v-icon>
               <span v-if="trace.score">{{ trace.score }}</span>
               <span v-else>0</span>
+              <span class="pl-1">Like</span>
             </v-btn>
 
           </div>

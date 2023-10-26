@@ -109,15 +109,32 @@
                <template v-if="activePatina.key == 'Responses'">The faster a <span class="shork"
                          style="border: 1px solid red; background: rgba(255,0,0,.1); font-weight: bold;  border-radius: 2px; padding: 3px;">square</span>
                     moves, the more responses were written to
-                    it.</template>
+                    it.<br>
+                    <v-icon size="x-small" class="pr-2">mdi-information</v-icon>
+                    <small v-if="filteredTracesLength > 0">({{ filteredTracesLength }} of {{ totalTracesNumber }} comments in
+                         this visualization have responses)</small>
+                    <small v-else>None of the comments has been responded to yet. Feel free to start!</small>
+               </template>
                <template v-if="activePatina.key == 'Category'">Filter comments by category:</template>
                <template v-if="activePatina.key == 'Popularity'"><span
                          style="border: 1px solid red; background: rgba(255,0,0,.1); font-weight: bold;  border-radius: 2px; padding: 3px;">Red
                          comments</span> are more
-                    popular according to their <v-icon>mdi-heart-outline</v-icon> score.</template>
+                    popular according to their <v-icon>mdi-heart-outline</v-icon> score.<br>
+                    <v-icon size="x-small" class="pr-2">mdi-information</v-icon>
+                    <small v-if="filteredTracesLength > 0">({{ totalTracesNumber - filteredTracesLength }} of {{
+                         totalTracesNumber
+                    }} comments have no score
+                         and are hidden)</small>
+                    <small v-else>This visualization has no likes yet. Feel free to start!</small></template>
+
                <template v-if="activePatina.key == 'Temporal'">Replay, how the center of attention has shifted over
                     time:</template>
-               <template v-if="activePatina.key == 'Relation'">Linked comments are mentioned together</template>
+               <template v-if="activePatina.key == 'Relation'">Comments that relate to multiple areas are linked.<br>
+                    <v-icon size="x-small" class="pr-2">mdi-information</v-icon>
+                    <small v-if="filteredTracesLength > 0">({{ filteredTracesLength }} of {{ totalTracesNumber }} comments in
+                         this visualization have links)</small>
+                    <small v-else>The current visualization does not yet have linked areas. Feel free to start!</small>
+               </template>
           </v-col>
      </v-row>
 </template>
@@ -130,6 +147,8 @@ const traceStore = useTraceStore();
 
 const patinas = computed(() => traceStore.patinas)
 const activePatina = computed(() => traceStore.activePatina)
+const totalTracesNumber = computed(() => traceStore.getTotalTracesNumber)
+const filteredTracesLength = computed(() => traceStore.getTraces.length)
 
 const select = (key) => {
      traceStore.writeInteraction({
