@@ -182,6 +182,11 @@ export const useTraceStore = defineStore("trace", {
         traces = this.traces.filter((trace) => trace.score > 0);
       }
 
+      //filter no responses
+      if (this.activePatina.key == "Responses") {
+        traces = this.traces.filter((trace) => trace.responses.length > 0);
+      }
+
       //filter by active categories (if present)
       if (this.activeCategories.length > 0 && this.activeCategories[0]) {
         traces = traces.filter((trace) => {
