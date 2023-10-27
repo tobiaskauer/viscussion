@@ -7,7 +7,8 @@
                          <v-text-field v-model="formData.title" label="Image Title"></v-text-field>
                          <v-text-field v-model="formData.source" label="Image Source"></v-text-field>
                          <!--<v-text-field v-model="formData.imgUrl" label="Image Url (on db server)"></v-text-field>-->
-                         <v-file-input @change="selectFile" show-size accept="image/png, image/jpeg, image/bmp, image/webp">
+                         <v-file-input @change="selectFile" show-size
+                              accept="image/png, image/jpeg, image/bmp, image/webp, image/gif">
                          </v-file-input>
                          <v-btn @click="upload" block class="mt-2">Upload</v-btn>
 
