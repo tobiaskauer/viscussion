@@ -58,6 +58,11 @@ export const useTraceStore = defineStore("trace", {
         icon: "mdi-square-outline",
         desc: "Show just the visualization.",
       },
+      /*{
+        key: "Everything",
+        active: false,
+        desc: "And ketchup on top.",
+      },*/
     ],
     cardWidth: 250,
     categories: [
@@ -154,8 +159,12 @@ export const useTraceStore = defineStore("trace", {
       }
 
       //filter multiple anchors
-      if (this.activePatina.key == "Relation") {
-        traces = this.traces.filter((trace) => trace.anchors.length >= 2);
+      if (
+        this.activePatina.key == "Relation" ||
+        this.activePatina.key == "Everything"
+      ) {
+        if (this.activePatina.key == "Relation")
+          traces = this.traces.filter((trace) => trace.anchors.length >= 2); //don't filter for everything bagel
 
         let links = [];
         traces.forEach((trace) => {

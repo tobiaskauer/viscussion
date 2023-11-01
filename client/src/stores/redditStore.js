@@ -2,6 +2,8 @@ import { ref, computed, toRaw } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
 import * as d3 from "d3";
+import { useTraceStore } from "./traceStore.js";
+const traceStore = useTraceStore();
 
 const apiUrl = import.meta.env.VITE_API;
 
@@ -13,13 +15,18 @@ export const useRedditStore = defineStore("reddit", {
 
   actions: {
     findNextComment: function () {
+      const existingTraces = traceStore.getTraces;
       let currentIndex = this.comments.findIndex(
         (comment) => comment.id == this.currentComment.id
       );
 
+      console.log();
+
       for (let i = currentIndex + 1; i < this.comments.length; i++) {
         //loop may be necessary to skip unwanted comments (e.g. deleted or removed ones)
+
         this.currentComment = this.comments[currentIndex + 1];
+
         if (this.currentComment.parent) {
           this.currentComment.parentBody = this.comments.find(
             (comment) => comment.id == this.currentComment.parent
@@ -27,6 +34,18 @@ export const useRedditStore = defineStore("reddit", {
         }
 
         let unwanted = ["[removed]"];
+
+        let existingTrace = existingTraces.find(
+          (comment) => comment.redditCommentId == this.currentComment.id
+        );
+
+        console.log(existingTrace);
+
+        if (existingTrace) {
+          console.log(existingTrace);
+        } else {
+          break;
+        }
 
         /*if (
           !unwanted.includes(this.currentComment.body) ||
@@ -36,7 +55,7 @@ export const useRedditStore = defineStore("reddit", {
           //check if comment or parent are unwanted content, if not break the loop to set the comment
           break;
         }*/
-        break;
+        // break;
       }
     },
 

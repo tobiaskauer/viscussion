@@ -116,10 +116,14 @@
                     <small v-else>None of the comments has been responded to yet. Feel free to start!</small>
                </template>
                <template v-if="activePatina.key == 'Category'">Filter comments by category:</template>
-               <template v-if="activePatina.key == 'Popularity'"><span
+               <template v-if="activePatina.key == 'Popularity'">
+                    <!--<span
                          style="border: 1px solid red; background: rgba(255,0,0,.1); font-weight: bold;  border-radius: 2px; padding: 3px;">Red
                          comments</span> are more
-                    popular according to their <v-icon>mdi-heart-outline</v-icon> score.<br>
+                    popular according to their <v-icon>mdi-heart-outline</v-icon> score.-->
+                    Comments with a thick<span class="pa-1 mx-1"
+                         style="background: rgba(255,0,0,.1);    border: 3px solid white;  border-radius: 2px;">
+                         border</span> have more likes than others.<br>
                     <v-icon size="x-small" class="pr-2">mdi-information</v-icon>
                     <small v-if="filteredTracesLength > 0">({{ totalTracesNumber - filteredTracesLength }} of {{
                          totalTracesNumber

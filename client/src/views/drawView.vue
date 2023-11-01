@@ -37,7 +37,8 @@
             <li>date: {{ comment.date }}</li>
             <li>author: {{ comment.author }}</li>
             <li>score: {{ comment.score }}</li>
-            <li>parentBody: {{ comment.parentBody }}</li>
+            <li v-if="comment.parentBody" style="font-weight: bold; color: green">parentBody: {{ comment.parentBody }}
+            </li>
             <li>category:
 
               <v-chip-group v-model="newTrace.category" selected-class="text-deep-purple-accent-4">
@@ -51,6 +52,8 @@
         </v-col>
       </v-row>
 
+      {{ traces }}
+
       <!--     <CommentForm :display="newTrace.displayForm" :trace="newTrace" :image="image"
         @close="newTrace.displayForm = false" />-->
 
@@ -62,7 +65,7 @@
 //import CommentForm from '../components/CommentForm.vue'
 import ActivityLog from '../components/ActivityLog.vue'
 import drawComments from '../components/drawComments.vue'
-import comments from '../components/comments.vue'
+//import comments from '../components/comments.vue'
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
 
@@ -96,7 +99,7 @@ const categories = computed(() => traceStore.getCategories)
 onMounted(() => {
   imageStore.fetchImage(props.id)
   traceStore.fetchTraces(props.id);
-  redditStore.storeCSV("/14pcygp.csv")
+  redditStore.storeCSV("/12ejldf.csv")
 })
 
 
@@ -113,7 +116,6 @@ const saveTrace = (exportTrace) => {
 }
 
 const save = () => {
-  console.log(newTrace)
   //SVE
 
   traceStore.writeTrace(newTrace)

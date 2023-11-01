@@ -1,6 +1,6 @@
 <template>
   <v-card :color="(trace.id == highlight) ? 'primary' : 'surface'" :id="'card-' + trace.id"
-    :class="{ 'ml-5': props.response }">
+    :class="{ 'ml-5': props.response }" @click="expand(trace)">
 
     <v-card-text class="pa-0">
       <v-row no-gutters="">
@@ -38,14 +38,12 @@
               <v-icon>mdi-comment-outline</v-icon>
               <span v-if="trace.responses && trace.responses.length">{{ trace.responses.length }}</span>
               <span v-else>0</span>
-              <span class="pl-1">Respond</span>
             </v-btn>
             <v-btn :class="{ activePopularity: patina.key == 'Popularity' }" size="small" density="compact" variant="text"
-              @click="upvote(trace)">
+              :disabled="state.disableLike" @click="upvote(trace)">
               <v-icon>mdi-heart-outline</v-icon>
               <span v-if="trace.score">{{ trace.score }}</span>
               <span v-else>0</span>
-              <span class="pl-1">Like</span>
             </v-btn>
 
           </div>
@@ -62,11 +60,15 @@ import { useTraceStore } from "../stores/traceStore.js";
 const traceStore = useTraceStore();
 const props = defineProps(['trace', 'image', 'width', 'avatar', 'response'])
 
-let newScore = ref(false)
+const state = reactive({
+  disableLike: false
+})
 
 const upvote = (e) => {
   traceStore.upvote(e)
-  newScore.value = !newScore.value ? e.score + 1 : newScore.value++
+  state.disableLike = true
+  e.score++
+
   traceStore.writeInteraction({
     action: "upvote",
     target: e.id

@@ -107,7 +107,7 @@ const getDimensions = () => {
     scale: scale,
     height: props.image.height * scale
   }
-
+  console.log(dimensions)
   traceStore.setDimensions(dimensions)
 }
 
@@ -182,14 +182,14 @@ const popularityScale = computed(() => {
 
   let scores = props.traces.map(trace => trace.score)
   let domain = d3.extent(scores)
-  let colorRange = ["blue", "red"]
+  //let colorRange = ["blue", "red"]
   let strokeRange = [2, 20]
-  let colorScale = d3.scaleLinear().range(colorRange).domain(domain)
+  //let colorScale = d3.scaleLinear().range(colorRange).domain(domain)
   let strokeScale = d3.scaleLinear().range(strokeRange).domain(domain)
   return {
-    color: scores.map(score => {
+    /*color: scores.map(score => {
       return { score: score, color: colorScale(score) }
-    }),
+    }),*/
     stroke: scores.map(score => {
       return { score: score, stroke: strokeScale(score) }
     }
@@ -221,9 +221,9 @@ const traceClass = computed(() => {
   return resizedTraces.value.map(trace => {
     let classes = []
 
-    if (patina.value.key == 'Responses') {
+    if (patina.value.key == 'Responses' || patina.value.key == 'Everything') {
 
-      let traceIndex = props.traces.findIndex(propTrace => propTrace.id == trace.id)
+      //let traceIndex = props.traces.findIndex(propTrace => propTrace.id == trace.id)
       //if (trace.responses) console.log(trace)
 
       let elementInScale = responseScale.value.find(scaleElement => scaleElement.responses == trace.responses.length)
@@ -268,7 +268,7 @@ const traceStyle = (trace, patinReactivity) => {
     style.opacity = .3
   }
 
-  let traceIndex = props.traces.findIndex(propTrace => propTrace.id == trace.id) //need to pass an array of scaled colors and then find it (because function can not be passed in computed array for some reason)
+  //let traceIndex = props.traces.findIndex(propTrace => propTrace.id == trace.id) //need to pass an array of scaled colors and then find it (because function can not be passed in computed array for some reason)
 
   switch (patina.value.key) {
     case "Temporal":
@@ -302,15 +302,17 @@ const traceStyle = (trace, patinReactivity) => {
       break;
 
     case "Popularity":
-      style.opacity = .5
-      style.fillOpacity = 1
+      style.opacity = .9
+      style.fillOpacity = .5
 
       //let color = traceIndex >= 0 ? d3.rgb(popularityScale.value.color[traceIndex]) : d3.rgb("#000000")
       //let stroke = traceIndex ? popularityScale.value.stroke[traceIndex] : 0
-      let color = popularityScale.value.color.find(scaleElement => scaleElement.score == trace.score).color
+
+      //let color = popularityScale.value.color.find(scaleElement => scaleElement.score == trace.score).color //no more color
       let stroke = popularityScale.value.stroke.find(scaleElement => scaleElement.score == trace.score).stroke
 
-      style.border = `${stroke}px solid ${color}`
+      //style.border = `${stroke}px solid ${color}`
+      style.border = `${stroke}px solid rgba(237,106,99,1)`
       style.fill = d3.rgb("#ffffff")
       break;
 
@@ -322,6 +324,20 @@ const traceStyle = (trace, patinReactivity) => {
       }
       style.fillOpacity = 0.1
       style.opacity = 0.6
+      break;
+
+    case "Everything":
+      style.fillOpacity = .2
+      style.opacity = 1
+      let evCategory = categories.value.find(category => trace.category[0] == category.key)
+      let evStroke = popularityScale.value.stroke.find(scaleElement => scaleElement.score == trace.score).stroke
+      let strokeColor = evCategory ? evCategory.color : "white"
+      let strokeWidth = evStroke ? evStroke : 2
+
+      style.border = `${strokeWidth}px solid ${d3.color(strokeColor)}`
+      style.fill = d3.color(strokeColor)
+
+
       break;
 
     default:
@@ -450,7 +466,6 @@ const fromTraceToForm = (e) => {
     newTrace.y = 0
   }
   cursor.down = false
-  console.log(allAnchors.value)
 }
 
 const mouseleave = ((e) => {
