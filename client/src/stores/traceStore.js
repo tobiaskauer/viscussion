@@ -256,6 +256,9 @@ export const useTraceStore = defineStore("trace", {
     getActiveCategories(state) {
       return state.activeCategories;
     },
+    getAuthorName() {
+      return localStorage.getItem("author");
+    },
   },
 
   actions: {
@@ -352,12 +355,15 @@ export const useTraceStore = defineStore("trace", {
         } else {
           this.traces.push(newTrace.data);
         }
+        return newTrace;
       } catch (error) {
         console.log(error);
         return error;
       }
+    },
 
-      this.author = payload.author;
+    saveAuthor(payload) {
+      localStorage.setItem("author", payload);
     },
 
     async deleteTrace(id) {

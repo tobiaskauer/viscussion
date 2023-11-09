@@ -107,7 +107,7 @@ const getDimensions = () => {
     scale: scale,
     height: props.image.height * scale
   }
-  console.log(dimensions)
+
   traceStore.setDimensions(dimensions)
 }
 

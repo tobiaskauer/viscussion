@@ -14,8 +14,9 @@
                                    another</v-btn>
                          </v-col>
                          <v-col class="v-col-6">
-                              <v-form>
-                                   <v-text-field block v-model="input.author" label="Your name (optional)"></v-text-field>
+                              <v-form v-on:submit.prevent v-on:keydown="handleCmdEnter($event)">
+                                   <v-text-field block @change="updateName" v-model="input.author"
+                                        label="Your name (optional)"></v-text-field>
                                    <v-textarea block v-model="input.comment" label="Your comment (optional)"></v-textarea>
                                    What best describes your trace? (optional)
                                    <v-chip-group v-model="input.category" selected-class="text-deep-purple-accent-4">
@@ -54,15 +55,44 @@ const close = (() => {
      Object.assign(input, initialInput)
 })
 
-const categories = computed(() => traceStore.getCategories)
+const handleCmdEnter = (e) => {
+     if ((e.metaKey || e.ctrlKey) && e.keyCode == 13) {
+          writeTrace()
+          //e.target.form.submit();
+     }
+}
+
+
 
 const initialInput = {
-     author: "",
      comment: "",
      category: "",
+     //author: traceStore.author
 }
 
 let input = reactive({ ...initialInput })
+
+const authorName = computed(() => {
+     let name = traceStore.getAuthorName
+     input.author = name
+     return name
+})
+
+watch(authorName, newName => {
+     console.log("watch:", newName)
+     input.author = newName
+})
+
+const updateName = () => {
+     traceStore.saveAuthor(input.author)
+}
+
+
+const categories = computed(() => traceStore.getCategories)
+
+
+
+
 
 
 const writeTrace = ((e) => {

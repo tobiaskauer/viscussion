@@ -18,11 +18,10 @@
       <li class="pl-5 mt-5" key="form">
 
         <v-form @submit.prevent>
+          <v-text-field v-model="response.author" @change="updateName" variant="solo" label="Name" density="compact"
+            hide-details="auto"></v-text-field>
           <v-textarea v-model="response.text" :rules="rules" class="mb-2" label="Your response" variant="solo"
             hide-details="auto"></v-textarea>
-          <v-text-field v-model="response.author" variant="solo" label="Name" density="compact"
-            hide-details="auto"></v-text-field>
-
           <v-btn type="submit" @click="writeTrace" block class="mt-2" hide-details="auto">Submit</v-btn>
         </v-form>
       </li>
@@ -146,7 +145,19 @@ const sortedTraces = computed(() => {
 
 const response = reactive({ ...initialInput })
 
+const authorName = computed(() => {
+  let name = traceStore.getAuthorName
+  response.author = name
+  return name
+})
 
+watch(authorName, newName => {
+  response.author = newName
+})
+
+const updateName = () => {
+  traceStore.saveAuthor(response.author)
+}
 const expandedTrace = computed(() => traceStore.expandedTrace)
 const rules = [
   value => !!value || 'Required.',
@@ -163,8 +174,10 @@ watch(expandedTrace, newExpandedTrace => {
 
 
 const writeTrace = (() => {
-  traceStore.writeTrace(response)
-
+  let foo = traceStore.writeTrace(response)
+  foo.then(x => {
+    if (x.status == 200) response.text = "   "
+  })
 })
 
 onMounted(() => {
