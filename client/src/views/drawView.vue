@@ -46,13 +46,19 @@
                   category.name }}</v-chip>
               </v-chip-group>
             </li>
+            <div v-if="comment.responses">
+              <li>responses ({{ comment.responses.length }}):
+                <ul style="overflow-x: hidden;">
+                  <li v-for="response in comment.responses" :key="response.id"><span style="font-style: italic">{{
+                    response.author }}</span>:&nbsp;&nbsp;{{ response.body }}</li>
+                </ul>
+              </li>
+            </div>
             <li>anchor(s): {{ newTrace.anchors }}</li>
           </ul>
 
         </v-col>
       </v-row>
-
-      {{ traces }}
 
       <!--     <CommentForm :display="newTrace.displayForm" :trace="newTrace" :image="image"
         @close="newTrace.displayForm = false" />-->
@@ -99,7 +105,7 @@ const categories = computed(() => traceStore.getCategories)
 onMounted(() => {
   imageStore.fetchImage(props.id)
   traceStore.fetchTraces(props.id);
-  redditStore.storeCSV("/12ejldf.csv")
+  redditStore.storeCSV("/16fzts6.csv")
 })
 
 
@@ -117,7 +123,7 @@ const saveTrace = (exportTrace) => {
 
 const save = () => {
   //SVE
-
+  console.log(newTrace)
   traceStore.writeTrace(newTrace)
   redditStore.findNextComment()
   reset()
@@ -148,13 +154,15 @@ watch(comment, newComment => {
   let needle = raw.value.find(trace => trace.text == newComment.body)
   if (needle) redditStore.findNextComment()
 
-  newComment.date = new Date(newComment.date * 1000).toISOString();
+  // newComment.date = new Date(newComment.date * 1000).toISOString();
   newTrace.redditId = newComment.id
   newTrace.text = newComment.body
   newTrace.date = newComment.date
   newTrace.score = newComment.score
   newTrace.parent = newComment.parent
   newTrace.author = newComment.author
+  newTrace.responses = newComment.responses
+
 })
 
 const snackbar = reactive({
@@ -162,9 +170,9 @@ const snackbar = reactive({
   message: null
 })
 
-const highlight = computed(() => {
+/*const highlight = computed(() => {
   return traceStore.getHighlight
-})
+})*/
 </script>
 
 <style scoped>

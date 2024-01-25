@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!--<v-container :fluid="true">-->
-    <v-container>
+    <v-container :fluid="true">
+      <!--<v-container>-->
       <v-row class="py-5">
         <v-col class="v-col-8">
 
@@ -14,6 +14,8 @@
 
           <tracedImage v-if="image && traces" :image="image" :traces="traces" :touchable="true"
             :tracesSubmitted="tracesSubmitted" light="" @export="openTraceform" />
+
+          <!--<panTraceImage v-if="image && traces" :image="image" :traces="traces" @export="openTraceform" />-->
 
 
 
@@ -38,6 +40,7 @@
 import TraceForm from '../components/TraceForm.vue'
 import ActivityLog from '../components/ActivityLog.vue'
 import tracedImage from '../components/tracedImage.vue'
+import panTraceImage from '../components/panTraceImage.vue'
 import PatinaSelector from '../components/patinaSelector.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
 import TimeFilter from '../components/TimeFilter.vue'

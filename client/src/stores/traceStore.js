@@ -45,7 +45,7 @@ export const useTraceStore = defineStore("trace", {
         icon: "mdi-heart-outline",
         desc: "What's liked often?",
       },
-      //{ key: "Temporal", active: false, icon: "mdi-clock-outline", desc:"" },
+      //{ key: "Temporal", active: false, icon: "mdi-clock-outline", desc: "" },
       {
         key: "Relation",
         active: false,
@@ -150,8 +150,8 @@ export const useTraceStore = defineStore("trace", {
       if (this.activeTimeFrame.length > 0) {
         traces = traces.filter((trace) => {
           if (
-            trace.date >= this.activeTimeFrame[0] &&
-            trace.date <= this.activeTimeFrame[1]
+            trace.date >= this.activeTimeFrame[0] //&&
+            //trace.date <= this.activeTimeFrame[1]
           ) {
             return true;
           }
@@ -326,7 +326,7 @@ export const useTraceStore = defineStore("trace", {
     },
 
     async writeTrace(payload) {
-      if (payload.parent) {
+      /*if (payload.parent) {
         //if it's a response, check if it may be to a reddit conversation and find the correct key
         if (!this.traces.map((trace) => trace.id).includes(payload.parent)) {
           let redditParent = this.traces.find(
@@ -335,7 +335,7 @@ export const useTraceStore = defineStore("trace", {
 
           payload.parent = redditParent ? redditParent : undefined;
         }
-      }
+      }*/
 
       try {
         const newTrace = await axios.post(apiUrl + "trace", payload, {
@@ -355,6 +355,20 @@ export const useTraceStore = defineStore("trace", {
         } else {
           this.traces.push(newTrace.data);
         }
+
+        //write reddit responses
+        if (payload.responses) {
+          let parentId = newTrace.data.id;
+          let parentImage = newTrace.data.image;
+          payload.responses.forEach((response) => {
+            response.parent = parentId;
+            response.image = parentImage;
+            response.text = response.body;
+            console.log(response);
+            this.writeTrace(response);
+          });
+        }
+
         return newTrace;
       } catch (error) {
         console.log(error);

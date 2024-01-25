@@ -34,9 +34,9 @@ const lights = reactive({ off: true }) //make this a prop
 const wrapper = ref(null)
 const emit = defineEmits(['export'])
 
-const highlightedTrace = computed(() => {
+/*const highlightedTrace = computed(() => {
   return traceStore.getHighlight
-})
+})*/
 
 const state = reactive({
   width: 0,
@@ -73,7 +73,7 @@ const traceClass = computed(() => {
     let category = trace.category && trace.category.length > 0 ? 'cat-' + trace.category[0] : 'cat-plain' //TODO adapt this for multiple categories
     classes.push(category)
 
-    if (highlightedTrace.value == trace.id) classes.push('elevation-10')
+    //if (highlightedTrace.value == trace.id) classes.push('elevation-10')
 
     return classes.join(" ")
 
@@ -181,13 +181,15 @@ const mouseUp = (() => {
 
 const setHighlight = ((id) => {
   //if(!newTrace.drawing) {
-  traceStore.setHighlight(id)
+  //traceStore.setHighlight(id)
   //}
+
 })
 
-/*const highlight = computed(() => {
-  return traceStore.getHighlight
-})*/
+const highlight = computed(() => {
+  return null
+  //return traceStore.getHighlight
+})
 
 </script>
 

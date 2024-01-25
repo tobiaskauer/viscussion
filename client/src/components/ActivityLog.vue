@@ -225,7 +225,7 @@ window.onresize = function () {
 <style scoped>
 ul {
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
 }
 
 h5 {

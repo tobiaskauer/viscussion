@@ -20,9 +20,9 @@ export const useRedditStore = defineStore("reddit", {
         (comment) => comment.id == this.currentComment.id
       );
 
-      console.log();
+      this.currentComment = this.comments[currentIndex + 1];
 
-      for (let i = currentIndex + 1; i < this.comments.length; i++) {
+      /*for (let i = currentIndex + 1; i < this.comments.length; i++) {
         //loop may be necessary to skip unwanted comments (e.g. deleted or removed ones)
 
         this.currentComment = this.comments[currentIndex + 1];
@@ -39,35 +39,53 @@ export const useRedditStore = defineStore("reddit", {
           (comment) => comment.redditCommentId == this.currentComment.id
         );
 
-        console.log(existingTrace);
-
         if (existingTrace) {
-          console.log(existingTrace);
+          //console.log(existingTrace);
         } else {
           break;
         }
-
-        /*if (
-          !unwanted.includes(this.currentComment.body) ||
-          !unwanted.includes(this.currentComment.parentBody)
-        ) {
-          console.log(this.currentComment.parentBody);
-          //check if comment or parent are unwanted content, if not break the loop to set the comment
-          break;
-        }*/
-        // break;
-      }
+      }*/
     },
 
     storeCSV: function (payload) {
       d3.csv(payload).then((data) => {
         this.comments = data.map((row) => {
-          row.parent = row.parent == "false" ? false : row.parent;
+          row.parent =
+            row.parent == "false" || row.parent == "False" ? false : row.parent; //make sure false is false
+          row.date = new Date(row.date * 1000).toISOString();
           return row;
         });
+
+        //console.log(this.comments);
+
+        let commentTree = [];
+        this.comments.forEach((comment) => {
+          if (!comment.parent) {
+            comment.responses = [];
+            commentTree.push(comment);
+          }
+        });
+
+        this.comments.forEach((comment) => {
+          if (comment.parent) {
+            let parent = commentTree.find((root) => root.id == comment.parent);
+            parent.responses.push(comment);
+          }
+        });
+
+        //filter comments that are already in db
+        const existingTraces = traceStore.getTraces;
+        this.comments = commentTree.filter(
+          (newComment) =>
+            !existingTraces
+              .map((existing) => existing.redditCommentId) //compare with reddit id, because csv wouldnt know the id in the db
+              .includes(newComment.id)
+        );
+
         this.currentComment = this.comments[0];
       });
     },
+
     async writeTrace(payload) {
       try {
         const newTrace = await axios.post(apiUrl + "trace", payload);

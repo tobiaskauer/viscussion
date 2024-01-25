@@ -55,7 +55,7 @@ const run = () => {
                clearInterval(interval)
           }
           currentDate.value = currentDate.value + timeFrameSection.value
-     }, 350)
+     }, 1000)
 }
 
 const play = () => {
