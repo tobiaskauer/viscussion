@@ -522,7 +522,7 @@ const setHighlight = ((trace) => {
 <style scoped>
 .traces {
   position: relative;
-  opacity: 85%;
+  opacity: 50%;
 }
 
 #newTrace,
@@ -534,7 +534,7 @@ const setHighlight = ((trace) => {
 
 .traces div {
   position: absolute;
-  mix-blend-mode: darken;
+  //mix-blend-mode: darken;
   border-radius: 5px;
 }
 
