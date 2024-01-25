@@ -25,6 +25,7 @@
           <!--<ChartCanvas v-if="image && traces" :image="image" :highlight="highlight" :traces="traces"/>             -->
           <!--<ActivityLog v-if="image && traces" :image="image" :highlight="highlight" :traces="traces" />-->
           <!--<comments id="12ejldf" />-->
+          {{ commentsLength }} comments left, {{ traces.length }} mapped
           <div class="controls mb-5">
             <v-btn class="mr-2" @click="save">Save</v-btn>
             <v-btn class="mr-2" @click="skip">Skip</v-btn>
@@ -32,11 +33,13 @@
           </div>
 
           <ul>
-            <li>redditID: {{ comment.id }}</li>
-            <li>body: <em> {{ comment.body }}</em></li>
-            <li>date: {{ comment.date }}</li>
+            <!--<li>redditID: {{ comment.id }}</li>-->
+            <li><span style="font-weight: bold">{{ comment.author }} </span> ({{ comment.score }}): {{ comment.body }}
+            </li>
+
+            <!--<li>date: {{ comment.date }}</li>
             <li>author: {{ comment.author }}</li>
-            <li>score: {{ comment.score }}</li>
+            <li>score: {{ comment.score }}</li>-->
             <li v-if="comment.parentBody" style="font-weight: bold; color: green">parentBody: {{ comment.parentBody }}
             </li>
             <li>category:
@@ -87,6 +90,10 @@ const props = defineProps(['id'])
 
 const comment = computed(() => {
   return redditStore.currentComment
+})
+
+const commentsLength = computed(() => {
+  return redditStore.comments.length
 })
 
 const newTrace = reactive({

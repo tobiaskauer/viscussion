@@ -4,7 +4,7 @@
     <img class="untouchable" :src="props.image.url" :style="'width: ' + state.width + 'px'" />
     <transition name="lights">
       <div class="lights untouchable" v-if="lights.off">
-        <img :src="props.image.url" class="desaturated" :style="'width: ' + state.width + 'px'" />
+        <img :src="props.image.url" class="" :style="'width: ' + state.width + 'px'" />
         <div class="overlay" :style="`width: ${state.width}px; height: ${state.height}px`"></div>
       </div>
     </transition>
