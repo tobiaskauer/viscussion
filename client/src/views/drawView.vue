@@ -105,7 +105,7 @@ const categories = computed(() => traceStore.getCategories)
 onMounted(() => {
   imageStore.fetchImage(props.id)
   traceStore.fetchTraces(props.id);
-  redditStore.storeCSV("/16fzts6.csv")
+  redditStore.storeCSV("/11l31kd.csv")
 })
 
 
