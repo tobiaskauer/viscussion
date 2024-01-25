@@ -16,6 +16,12 @@ const router = createRouter({
       component: () => import("../views/ImageView.vue"),
     },
     {
+      path: "/comment/:id",
+      name: "comment",
+      props: true,
+      component: () => import("../views/CommentView.vue"),
+    },
+    {
       path: "/draw/:id",
       name: "draw",
       props: true,
