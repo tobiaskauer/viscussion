@@ -26,7 +26,7 @@
         <v-col class="v-col-4">
           <div class="patinaSelector mb-4">
             <!---<PatinaSelector />-->
-
+            Filter comments by category:
             <CategoryFilter />
             <timeFilter v-if="patina.key == 'Temporal'" />
           </div>
