@@ -286,8 +286,8 @@ const traceStyle = (trace, patinReactivity) => {
 
     case "Activity":
       style.fill = d3.color("#ff0000")
-      style.fillOpacity = .8
-      style.border = "2px solid white"
+      style.fillOpacity = .2
+      style.border = "2px solid rgba(255,0,0,1)"
       break;
 
     case "Responses":
