@@ -4,29 +4,29 @@
     <div v-if="traceClass" ref="container" class="wrapper" @mousedown="mouseDown" @mouseup="mouseUp"
       @mousemove="mouseMove" @mouseleave="mouseleave" @mouseenter="mouseenter" :style="`height: ${dimensions.height}px`">
 
-      <img class="untouchable" ref="tracedImage" :src="props.image.url" :style="'width: ' + dimensions.width + 'px'" />
-      <transition name="lights">
+      <img class="untouchable" ref="tracedImage" :class="{ 'desaturated': patina.key != 'None' }" :src="props.image.url"
+        :style="'width: ' + dimensions.width + 'px'" />
+      <!--<transition name="lights">
         <div class="lights untouchable" v-if="lights.off">
           <img :src="props.image.url" class="desaturated" :style="'width: ' + dimensions.width + 'px'" />
           <div class="overlay" :style="`width: ${dimensions.width}px; height: ${dimensions.height}px`"></div>
         </div>
-      </transition>
+      </transition>-->
 
 
 
       <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false" @before-enter="onBeforeEnter"
         @enter="onEnter" @leave="onLeave">
-        <div v-for="(trace, index) in resizedTraces" :data-index="index" :key="'trace-' + trace.id"
+        <div v-for="(   trace, index   ) in    resizedTraces   " :data-index="index" :key="'trace-' + trace.id"
           :class="traceClass[index]" :style="traceStyle(trace, patina)" @mouseenter="setHighlight(trace)"
           @mouseout="setHighlight()" @click="expand(trace)">
         </div>
       </TransitionGroup>
 
-
       <svg v-if="traceLinks" class="links"
         :style="`width: ${dimensions.width}px; position: absolute; height: ${dimensions.height}px; pointer-events: none;`">
-        <line v-for="link, i in traceLinks" :key="'link-' + i" :x1="link.x1" :x2="link.x2" :y1="link.y1" :y2="link.y2"
-          stroke="red" stroke-width="2px" stroke-dasharray="4 2">
+        <line v-for="   link, i    in    traceLinks   " :key="'link-' + i" :x1="link.x1" :x2="link.x2" :y1="link.y1"
+          :y2="link.y2" stroke="red" :style="linkStyle(link)" stroke-width="2px" stroke-dasharray="4 2">
         </line>
       </svg>
 
@@ -45,7 +45,7 @@
       </div>-->
 
       <div v-if="allAnchors.length > 0">
-        <div id="allAnchors" class="untouchable cat-plain" v-for="anchor, index in allAnchors" :key="index"
+        <div id="allAnchors" class="untouchable cat-plain" v-for="   anchor, index    in    allAnchors   " :key="index"
           :style="`top: ${anchor.y * dimensions.scale}px; left: ${anchor.x * dimensions.scale}px; width: ${anchor.width * dimensions.scale}px; height: ${anchor.height * dimensions.scale}px`">
         </div>
       </div>
@@ -71,7 +71,9 @@ const traceLinks = computed(() => {
   let links = traceStore.traceLinks
 
   links.forEach(link => {
-    Object.keys(link).forEach(key => link[key] = link[key] * dimensions.value.scale) //resize accordig to scale facotr of source image
+    Object.keys(link).forEach(key => {
+      return link[key] = key == 'id' ? link[key] : link[key] * dimensions.value.scale
+    }) //resize accordig to scale facotr of source image
   })
   return links
 })
@@ -95,6 +97,8 @@ watch(tracesSubmitted, newTrace => {
   allAnchors.value.splice(0)
 })
 
+const opacityScale = d3.scaleLog().range([.5, .1])
+
 const wrapper = ref(null)
 const getDimensions = () => {
   let bBox = wrapper.value.getBoundingClientRect()
@@ -108,7 +112,7 @@ const getDimensions = () => {
     height: props.image.height * scale
   }
 
-
+  opacityScale.domain([1, dimensions.width * dimensions.height])
   traceStore.setDimensions(dimensions)
 }
 
@@ -138,31 +142,41 @@ const dimensions = computed(() => {
 
 const cardWidth = computed(() => traceStore.cardWidth)
 
+
 const resizedTraces = computed(() => {
   if (!props.traces) return false
   let traces = []
 
   props.traces.forEach(trace => {
     trace.anchors.forEach((anchor, i) => {
-      traces.push({
-        id: !i ? trace.id : trace.id + "-" + i,
-        category: trace.category,
-        author: trace.author,
-        date: trace.date,
-        responses: trace.responses,
-        anchors: [anchor],
-        text: trace.text,
-        score: trace.score,
-        x: Math.round(anchor.x * dimensions.value.scale),
-        y: Math.round(anchor.y * dimensions.value.scale),
-        width: Math.round(anchor.width * dimensions.value.scale),
-        height: Math.round(anchor.height * dimensions.value.scale)
-      })
+      let x = Math.round(anchor.x * dimensions.value.scale)
+      let y = Math.round(anchor.y * dimensions.value.scale)
+      let width = Math.round(anchor.width * dimensions.value.scale)
+      let height = Math.round(anchor.height * dimensions.value.scale)
+      let size = width * height
+
+      if (anchor.width != 0 && anchor.height != 0) { //filter invisible traces (maybe an artifact from creation)
+        traces.push({
+          id: !i ? trace.id : trace.id + "-" + i,
+          category: trace.category,
+          author: trace.author,
+          date: trace.date,
+          responses: trace.responses,
+          anchors: [anchor],
+          text: trace.text,
+          score: trace.score,
+          x: x,
+          y: y,
+          width: width,
+          height: height,
+          size: size
+        })
+      }
     })
-
   })
+  traces = traces.sort((a, b) => b.size - a.size)//sort by size //three monhts later i realize, this is just wrong and should be computed from width/height, not x/y
 
-  return traces.sort((a, b) => a.x * a.y - b.x * b.y)//sort by size
+  return traces
 })
 
 
@@ -286,8 +300,9 @@ const traceStyle = (trace, patinReactivity) => {
 
     case "Activity":
       style.fill = d3.color("#ff0000")
-      style.fillOpacity = .2
+      style.fillOpacity = opacityScale(trace.size)
       style.border = "2px solid rgba(255,0,0,1)"
+      // console.log(opacityScale(trace.size))
       break;
 
     case "Responses":
@@ -298,8 +313,8 @@ const traceStyle = (trace, patinReactivity) => {
 
     case "Relation":
       style.fill = d3.color("#ff0000")
-      style.border = "2px solid white"
       style.fillOpacity = .8
+      style.border = "2px solid rgba(255,0,0,1)"
       break;
 
     case "Popularity":
@@ -357,6 +372,19 @@ const traceStyle = (trace, patinReactivity) => {
     border: ${style.border};
     opacity: ${style.opacity}
     `
+}
+
+const linkStyle = (link) => {
+  let opacity = 1
+  if (highlightedTrace.value) {
+    console.log("highlightedtrace:", highlightedTrace)
+    //console.log(highlightedTrace, trace)
+    opacity = .1 // all other are less visibile
+    if (highlightedTrace.value.id == link.id) {
+      opacity = 1 // except for the highlighted one
+    }
+  }
+  return `opacity: ${opacity}`
 }
 
 
@@ -534,7 +562,7 @@ const setHighlight = ((trace) => {
 
 .traces div {
   position: absolute;
-  //mix-blend-mode: darken;
+  mix-blend-mode: multiply;
   border-radius: 5px;
 }
 

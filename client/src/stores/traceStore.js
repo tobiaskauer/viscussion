@@ -177,6 +177,7 @@ export const useTraceStore = defineStore("trace", {
                   x2: stop.x + stop.width / 2,
                   y1: start.y + start.height / 2,
                   y2: stop.y + stop.height / 2,
+                  id: trace.id,
                 });
               }
             });
@@ -311,6 +312,9 @@ export const useTraceStore = defineStore("trace", {
             this.traces = this.traces.filter(
               (trace) => !trace.createdSeparately
             );
+          } else {
+            //filter traces with no size
+            console.log(trace);
           }
 
           const dates = this.traces.map((trace) => trace.date);
