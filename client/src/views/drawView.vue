@@ -86,7 +86,14 @@ import { useRedditStore } from '../stores/redditStore';
 const traceStore = useTraceStore();
 const imageStore = useImageStore();
 const redditStore = useRedditStore();
-const props = defineProps(['id'])
+//const props = defineProps(['id', 'csv'])
+const props = defineProps({
+  id: Number,
+  csv: {
+    type: String,
+    required: false
+  }
+})
 
 const comment = computed(() => {
   return redditStore.currentComment
@@ -112,7 +119,7 @@ const categories = computed(() => traceStore.getCategories)
 onMounted(() => {
   imageStore.fetchImage(props.id)
   traceStore.fetchTraces(props.id);
-  redditStore.storeCSV("/11l31kd.csv")
+  redditStore.storeCSV(`/${props.csv}.csv`)
 })
 
 

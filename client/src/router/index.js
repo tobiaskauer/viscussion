@@ -22,7 +22,7 @@ const router = createRouter({
       component: () => import("../views/CommentView.vue"),
     },
     {
-      path: "/draw/:id",
+      path: "/draw/:id/:csv",
       name: "draw",
       props: true,
       component: () => import("../views/drawView.vue"),

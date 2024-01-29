@@ -18,11 +18,11 @@
       <li class="pl-5 mt-5" key="form">
 
         <v-form @submit.prevent>
-          <v-text-field v-model="response.author" @change="updateName" variant="solo" label="Name" density="compact"
-            hide-details="auto"></v-text-field>
+          <v-text-field v-model="response.author" class="mb-2" @change="updateName" variant="solo" label="Name"
+            density="compact" hide-details="auto"></v-text-field>
           <v-textarea v-model="response.text" :rules="rules" class="mb-2" label="Your response" variant="solo"
             hide-details="auto"></v-textarea>
-          <v-btn type="submit" @click="writeTrace" block class="mt-2" hide-details="auto">Submit</v-btn>
+          <v-btn type="submit" @click="writeTrace" block class="my-2" hide-details="auto">Submit</v-btn>
         </v-form>
       </li>
     </TransitionGroup>

@@ -192,8 +192,8 @@ const mouseDown = ((e) => {
 const mouseMove = ((e) => {
   if (newTrace.drawing) {
 
-    newTrace.traceArray[newTrace.traceIndex].currentX = (e.clientX - canvas.value.getBoundingClientRect().left) * state.zoomInstance.content.currentScale;
-    newTrace.traceArray[newTrace.traceIndex].currentY = (e.clientY - canvas.value.getBoundingClientRect().top) * state.zoomInstance.content.currentScale;
+    newTrace.traceArray[newTrace.traceIndex].currentX = (e.clientX - canvas.value.getBoundingClientRect().left);
+    newTrace.traceArray[newTrace.traceIndex].currentY = e.clientY - canvas.value.getBoundingClientRect().top;
     newTrace.drawing = true
 
     traceStore.setHighlight(null)

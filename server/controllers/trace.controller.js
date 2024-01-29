@@ -30,6 +30,7 @@ exports.create = (req, res) => {
       score: req.body.score,
       anchors: req.body.anchors,
       redditCommentId: req.body.redditId,
+      createdSeparately: req.body.createdSeparately,
       parent: req.body.parent,
     },
     {

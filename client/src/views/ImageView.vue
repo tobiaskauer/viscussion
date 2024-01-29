@@ -73,7 +73,7 @@ onBeforeMount(() => {
   //traceStore.$reset()
   //traceStore.setDimensions()
   imageStore.fetchImage(props.id)
-  traceStore.fetchTraces(props.id);
+  traceStore.fetchTraces(props.id, { excludeSeparatedTraces: true });
 })
 
 onMounted(() => {

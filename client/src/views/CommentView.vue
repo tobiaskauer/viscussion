@@ -26,27 +26,46 @@
         <v-col class="v-col-4">
           <div class="patinaSelector mb-4">
             <!---<PatinaSelector />-->
-            Filter comments by category:
+            <span style="color: white">Filter comments by category</span>
             <CategoryFilter />
-            <timeFilter v-if="patina.key == 'Temporal'" />
+            <!--<timeFilter v-if="patina.key == 'Temporal'" />-->
           </div>
+
+
+
+          <v-expansion-panels variant="accordion" class="mb-5" v-if="!expandedTrace">
+            <v-expansion-panel title="Write a comment">
+              <v-expansion-panel-text>
+                <v-form @submit.prevent>
+                  <v-text-field v-model="input.author" class="mb-2" @change="updateName" variant="solo" label="Name"
+                    density="compact" hide-details="auto"></v-text-field>
+                  <v-textarea v-model="input.text" :rules="rules" class="mb-2" label="Your response" variant="solo"
+                    hide-details="auto"></v-textarea>
+                  <v-select label="Category (optional)" :items="categories" item-title="name" item-value="key"
+                    v-model="input.category"></v-select>
+                  <v-alert type="success" v-model="feedback" density="compact" closable>Your comment has been
+                    recorded</v-alert>
+                  <v-btn type="submit" @click="writeTrace" block class="mt-2" hide-details="auto">Submit</v-btn>
+                </v-form>
+              </v-expansion-panel-text>
+
+            </v-expansion-panel>
+          </v-expansion-panels>
+
           <ActivityLog v-if="image && traces" :image="image" :traces="traces" :avatar="false" />
         </v-col>
       </v-row>
-      <TraceForm :display="displayForm.bool" :trace="newTraces" :image="image" @addAnchor="addAnchor" @close="close" />
+
+
 
     </v-container>
   </div>
 </template>
 
 <script setup>
-import TraceForm from '../components/TraceForm.vue'
+
 import ActivityLog from '../components/ActivityLog.vue'
-import tracedImage from '../components/tracedImage.vue'
-import panTraceImage from '../components/panTraceImage.vue'
-import PatinaSelector from '../components/patinaSelector.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
-import TimeFilter from '../components/TimeFilter.vue'
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
 import { useRouter } from 'vue-router'
@@ -61,15 +80,71 @@ const router = useRouter()
 
 const props = defineProps(['id'])
 
-let tracesSubmitted = ref(0)
+
+
+const input = reactive({
+  redditId: null,
+  image: props.id,
+  createdSeparately: 1,
+  text: null,
+  date: null,
+  score: null,
+  category: null,
+  author: null,
+  anchors: []
+})
+
+
+const writeTrace = ((e) => {
+  //if (e) e.preventDefault()
+  traceStore.writeTrace(input)
+  traceStore.writeInteraction({
+    action: "submitTrace",
+    target: "separateView"
+  })
+})
+
+const feedback = ref(null)
+const tracesSubmitted = computed(() => traceStore.tracesSubmitted)
+watch(tracesSubmitted, newSubmissionNumber => {
+  console.log("watch:", newSubmissionNumber)
+  //feebdack needs to be displayed!
+  feedback.value = true
+  input.text = null
+  input.category = null
+})
+
+const categories = computed(() => {
+  let categories = traceStore.getCategories
+  categories.push({ key: null, name: "No category" })
+  return categories
+})
+
+const authorName = computed(() => {
+  let name = traceStore.getAuthorName
+  input.author = name
+  return name
+})
+
+watch(authorName, newName => {
+  console.log("watch:", newName)
+  input.author = newName
+})
+
+const updateName = () => {
+  traceStore.saveAuthor(input.author)
+}
+
+//let tracesSubmitted = ref(0)
+
+const rules = [
+  value => !!value || 'Required.',
+  value => (value && value.length >= 3) || 'Min 3 characters',
+]
 
 
 const image = computed(() => {
   return imageStore.getImage
-})
-
-const patina = computed(() => {
-  return traceStore.activePatina
 })
 
 onBeforeMount(() => {
@@ -135,9 +210,9 @@ const snackbar = reactive({
 
 
 
-/*const highlight = computed(() => {
-  return traceStore.getHighlight
-})*/
+const expandedTrace = computed(() => {
+  return traceStore.expandedTrace
+})
 </script>
 
 <style scoped>

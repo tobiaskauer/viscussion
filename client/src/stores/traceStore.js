@@ -278,7 +278,7 @@ export const useTraceStore = defineStore("trace", {
           console.log(error);
         });
     },
-    async fetchTraces(imageId) {
+    async fetchTraces(imageId, params) {
       if (!imageId) this.traces = [];
       axios
         .get(apiUrl + "trace/" + imageId)
@@ -304,6 +304,15 @@ export const useTraceStore = defineStore("trace", {
               },
             ];
           }
+
+          //filter comments that were created in separated view. (ideally this would be done with an api parameter but... who's got the time?)
+
+          if (params && params.excludeSeparatedTraces) {
+            this.traces = this.traces.filter(
+              (trace) => !trace.createdSeparately
+            );
+          }
+
           const dates = this.traces.map((trace) => trace.date);
           this.fullTimeFrame = [
             Math.floor(new Date(Math.min.apply(null, dates)).getTime() / 1000),
@@ -341,6 +350,7 @@ export const useTraceStore = defineStore("trace", {
         const newTrace = await axios.post(apiUrl + "trace", payload, {
           timeout: 1000,
         });
+
         //this.newTrace = newTrace.data;+
         this.tracesSubmitted++;
 
