@@ -36,6 +36,9 @@
         v-if="highlightedTrace && highlightedTrace.embedded">
         <CommentCard :avatar="false" :image="props.image" :width="cardWidth" :trace="highlightedTrace" />
       </div>
+
+
+
       <div id="newTrace" class="untouchable cat-plain" v-if="cursor.drawing"
         :style="`top: ${newTrace.y}px; left: ${newTrace.x}px; width: ${newTrace.width}px; height: ${newTrace.height}px`">
       </div>
@@ -392,12 +395,24 @@ const highlightStyle = (trace) => {
 
   let top = trace.y + (trace.height / 2) // + dimensions.value.offsetY 
   let left = trace.x + trace.width// + dimensions.value.offsetX
+  //let right = dimensions.value.width - trace.x - cardWidth.value
 
-  if (trace.x + trace.width + cardWidth.value > dimensions.value.width) {
-    left = dimensions.value.offsetX + trace.x - cardWidth.value
+
+
+
+
+  if (trace.x + trace.width + cardWidth.value - 200 > dimensions.value.width) {
+    left = dimensions.value.offsetX + trace.x
   }
 
-  return `top: ${top}px; left: ${left}px; width: ${cardWidth}px;`
+
+
+  if (left + cardWidth.value > dimensions.value.width) {
+    left = dimensions.value.width - cardWidth.value - 20
+  }
+
+  return `top: ${top}px; left: ${left}px; width: ${cardWidth.value}px;`
+  //return `top: ${top}px; right: ${right}px; width: ${cardWidth.value}px;`
 }
 
 const expand = (trace) => {
