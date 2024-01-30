@@ -105,7 +105,13 @@ const opacityScale = d3.scaleLog().range([.5, .1])
 const wrapper = ref(null)
 const getDimensions = () => {
   let bBox = wrapper.value.getBoundingClientRect()
+
+
+
+
+  //start with image width, get other values from that.
   let scale = bBox.width / props.image.width
+
 
   let dimensions = {
     offsetX: bBox.x,
@@ -114,6 +120,16 @@ const getDimensions = () => {
     scale: scale,
     height: props.image.height * scale
   }
+
+  //start with available height, infer other values from that
+  let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+  let availableHeight = vh - bBox.top
+  //dimensions = {}
+
+
+
+
+
 
   opacityScale.domain([1, dimensions.width * dimensions.height])
   traceStore.setDimensions(dimensions)
@@ -398,14 +414,9 @@ const highlightStyle = (trace) => {
   //let right = dimensions.value.width - trace.x - cardWidth.value
 
 
-
-
-
   if (trace.x + trace.width + cardWidth.value - 200 > dimensions.value.width) {
     left = dimensions.value.offsetX + trace.x
   }
-
-
 
   if (left + cardWidth.value > dimensions.value.width) {
     left = dimensions.value.width - cardWidth.value - 20

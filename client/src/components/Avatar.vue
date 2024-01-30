@@ -1,9 +1,10 @@
 <template>
-  <div class="avatar" :style="'width: ' + (width) + 'px'">
-    <div class="traceAvatar" @mouseDown="mousedown" @mousemove="mousemove"
+  <div class="avatar" ref="container">
+    <!--<div class="traceAvatar" @mouseDown="mousedown" @mousemove="mousemove"
       :style="`
 background-image: url(${avatar.url});background-size: ${avatar.zoom}px;background-position-x: ${avatar.x}%;background-position-y: ${avatar.y}%;height: ${avatar.height}px;width: ${avatar.width}px;`">
-    </div>
+    </div>-->
+    <canvas id="mycanvas" ref="canvas" :width="dimensions.width" :height="dimensions.height"></canvas>
   </div>
 
   <div v-if="props.trace.length > 1">
@@ -18,7 +19,7 @@ background-image: url(${avatar.url});background-size: ${avatar.zoom}px;backgroun
   </div>
 </template>
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, onMounted, watch } from 'vue'
 const props = defineProps(['trace', 'image', 'width'])
 
 /*const avatarClass = computed(() => {
@@ -28,17 +29,85 @@ const props = defineProps(['trace', 'image', 'width'])
   return avatarClass
 })*/
 
-
-
-
+const container = ref(null)
+const canvas = ref(null)
 const avatarIndex = ref(0)
+const dimensions = ref({
+  width: 120,
+  height: 120 //lets just do these fixed. only downside is that very long comments don't get to use the full height
+})
 
-let avatar = computed(() => {
+const cropImage = (index) => {
+  const context = canvas.value.getContext("2d")
+
+  //smooth things
+
+  context.clearRect(0, 0, dimensions.value.width, dimensions.value.height);
+  const croppedImage = new Image();
+  croppedImage.src = props.image.url
+
+  let currentAnchor = props.trace[index]
+  let scale = dimensions.value.width / currentAnchor.width
+  let scaledHeight = currentAnchor.height * scale
+  let scaledWidth = dimensions.value.width
+
+  if (scaledHeight > dimensions.value.height) {
+    scale = dimensions.value.height / currentAnchor.height
+    scaledHeight = currentAnchor.height * scale
+    scaledWidth = currentAnchor.width * scale
+  }
+
+  //center align
+  let dx = scaledWidth < dimensions.value.width ? dimensions.value.width / 2 - scaledWidth / 2 : 0
+  let dy = scaledHeight < dimensions.value.height ? dimensions.value.height / 2 - scaledHeight / 2 : 0
+
+  let a = {
+    image: croppedImage,//
+    sx: currentAnchor.x,//x position of anchor
+    sy: currentAnchor.y,//y position of anchor
+    sWidth: currentAnchor.width, //width of anchor,
+    sHeight: currentAnchor.height,//height of anchor,
+    dx: dx, //x translation in avatar
+    dy: dy, //y translation in avatar
+    dWidth: scaledWidth, //avatar width
+    dHeight: scaledHeight, //avatar height
+  }
+
+  croppedImage.onload = function () {
+    context.antialias = 'subpixel';
+    context.imageSmoothingEnabled = true;
+    context.filter = 'bilinear'
+    context.patternQuality = 'best';
+    context.drawImage(a.image, a.sx, a.sy, a.sWidth, a.sHeight, a.dx, a.dy, a.dWidth, a.dHeight)
+
+  }
+}
+
+onMounted(() => {
+  cropImage(0)
+})
+
+watch(avatarIndex, newIndex => {
+  cropImage(newIndex)
+})
+
+
+
+
+
+
+
+
+/*let avatar = computed(() => {
   if (!props.trace) return null
+
   let trace = props.trace[avatarIndex.value]
+  if (!trace) return null
+
+
+
   let image = props.image
   let aspectRatio = trace.height / trace.width
-
   let width = props.width
   let height = width * aspectRatio
 
@@ -97,7 +166,7 @@ let avatar = computed(() => {
   }
 
   return avatar
-})
+})*/
 
 /*onMounted(() => {
   const canvas = document.getElementById("canvas");

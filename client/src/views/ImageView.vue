@@ -27,7 +27,7 @@
             <CategoryFilter v-if="patina.key == 'Category'" />
             <timeFilter v-if="patina.key == 'Temporal'" />
           </div>
-          <ActivityLog v-if="image && traces" :image="image" :traces="traces" />
+          <ActivityLog v-if="image && traces" :image="image" :traces="traces" :avatar="true" />
         </v-col>
       </v-row>
       <TraceForm :display="displayForm.bool" :trace="newTraces" :image="image" @addAnchor="addAnchor" @close="close" />

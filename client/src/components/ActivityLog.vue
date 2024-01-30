@@ -7,13 +7,13 @@
     <TransitionGroup tag="ul" name="list" ref="list" id="annotationList">
       <li key="root">
         <CommentCard :response="false" :avatar="props.avatar" :trace="expandedTrace" :image="props.image"
-          :width="avatar.width" @mouseenter="setHighlight(expandedTrace)" @mouseleave="setHighlight(null)" />
+          @mouseenter="setHighlight(expandedTrace)" @mouseleave="setHighlight(null)" />
       </li>
       <li key="button" align="right"> <v-btn size="small" variant="text">Responses</v-btn></li>
 
       <li v-for="(trace, index) in expandedTrace.responses" :key="'tracelog-' + trace.id"
         @mouseenter="setHighlight(trace)" @mouseleave="setHighlight(null)">
-        <CommentCard :response="true" :avatar="!trace.parent" :trace="trace" :image="props.image" :width="avatar.width" />
+        <CommentCard :response="true" :avatar="!trace.parent" :trace="trace" :image="props.image" />
       </li>
       <li class="pl-5 mt-5" key="form">
 
@@ -49,7 +49,7 @@
     <TransitionGroup tag="ul" name="list" ref="list" id="annotationList">
       <li v-for="(trace, index) in sortedTraces" :key="'tracelog-' + trace.id" @mouseenter="setHighlight(trace)"
         @mouseleave="setHighlight(null)">
-        <CommentCard :avatar="props.avatar" :trace="trace" :image="props.image" :width="avatar.width" />
+        <CommentCard :avatar="props.avatar" :trace="trace" :image="props.image" />
       </li>
 
     </TransitionGroup>
@@ -62,9 +62,9 @@ import { reactive, onMounted, computed, ref, watch, nextTick, onUnmounted } from
 import CommentCard from './CommentCard.vue'
 import { useTraceStore } from "../stores/traceStore.js";
 const traceStore = useTraceStore();
-const props = defineProps(['image', 'traces', 'view'])
+const props = defineProps(['image', 'traces', 'view', 'avatar'])
 
-const avatar = reactive({ width: null })
+//const avatar = reactive({ width: null })
 const list = ref(null)
 
 const initialInput = {
@@ -180,9 +180,9 @@ const writeTrace = (() => {
   })
 })
 
-onMounted(() => {
+/*onMounted(() => {
   avatar.width = getWidth()
-})
+})*/
 
 const resetExpand = () => {
   traceStore.writeInteraction({
@@ -211,14 +211,14 @@ const setHighlight = ((trace) => {
 })
 
 
-const getWidth = (() => {
+/*const getWidth = (() => {
   let width = Math.round(list.value.$el.clientWidth * .33333)
   return width
 })
 
 window.onresize = function () {
   avatar.width = getWidth()
-}
+}*/
 
 </script>
 

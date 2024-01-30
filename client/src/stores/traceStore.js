@@ -312,10 +312,10 @@ export const useTraceStore = defineStore("trace", {
             this.traces = this.traces.filter(
               (trace) => !trace.createdSeparately
             );
-          } else {
+          } /* else {
             //filter traces with no size
             console.log(trace);
-          }
+          }*/
 
           const dates = this.traces.map((trace) => trace.date);
           this.fullTimeFrame = [
