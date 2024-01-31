@@ -22,13 +22,6 @@ background-image: url(${avatar.url});background-size: ${avatar.zoom}px;backgroun
 import { computed, ref, onMounted, watch } from 'vue'
 const props = defineProps(['trace', 'image', 'width'])
 
-/*const avatarClass = computed(() => {
-  if (!props.trace) return false
-  let avatarClass = "cat-"
-  avatarClass += props.trace.category && props.trace.category.length > 0 ? props.trace.category[0] : 'plain'
-  return avatarClass
-})*/
-
 const container = ref(null)
 const canvas = ref(null)
 const avatarIndex = ref(0)
@@ -39,8 +32,6 @@ const dimensions = ref({
 
 const cropImage = (index) => {
   const context = canvas.value.getContext("2d")
-
-  //smooth things
 
   context.clearRect(0, 0, dimensions.value.width, dimensions.value.height);
   const croppedImage = new Image();
@@ -63,22 +54,30 @@ const cropImage = (index) => {
 
   let a = {
     image: croppedImage,//
-    sx: currentAnchor.x,//x position of anchor
-    sy: currentAnchor.y,//y position of anchor
-    sWidth: currentAnchor.width, //width of anchor,
-    sHeight: currentAnchor.height,//height of anchor,
-    dx: dx, //x translation in avatar
-    dy: dy, //y translation in avatar
-    dWidth: scaledWidth, //avatar width
-    dHeight: scaledHeight, //avatar height
+    sx: parseInt(currentAnchor.x),//x position of anchor
+    sy: parseInt(currentAnchor.y),//y position of anchor
+    sWidth: parseInt(currentAnchor.width), //width of anchor,
+    sHeight: parseInt(currentAnchor.height),//height of anchor,
+    dx: parseInt(dx), //x translation in avatar
+    dy: parseInt(dy), //y translation in avatar
+    dWidth: parseInt(scaledWidth), //avatar width
+    dHeight: parseInt(scaledHeight), //avatar height
   }
 
   croppedImage.onload = function () {
-    context.antialias = 'subpixel';
-    context.imageSmoothingEnabled = true;
-    context.imageSmoothingQuality = "high"
-    context.filter = 'bilinear'
-    context.patternQuality = 'best';
+    //fix screen resolution for better downsampling
+    const dpr = window.devicePixelRatio;
+    const rect = canvas.value.getBoundingClientRect();
+
+    canvas.value.width = rect.width * dpr;
+    canvas.value.height = rect.height * dpr;
+
+    context.scale(dpr, dpr);
+
+    // Set the "drawn" size of the canvas
+    canvas.value.style.width = `${rect.width}px`;
+    canvas.value.style.height = `${rect.height}px`;
+
     context.drawImage(a.image, a.sx, a.sy, a.sWidth, a.sHeight, a.dx, a.dy, a.dWidth, a.dHeight)
 
   }
@@ -91,11 +90,6 @@ onMounted(() => {
 watch(avatarIndex, newIndex => {
   cropImage(newIndex)
 })
-
-
-
-
-
 
 
 
@@ -195,10 +189,4 @@ watch(avatarIndex, newIndex => {
 </script>
 
 
-<style scoped>
-.avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>
+<style scoped></style>

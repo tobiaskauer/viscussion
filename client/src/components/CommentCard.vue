@@ -6,7 +6,7 @@
       <v-card-text class="pa-0">
 
         <v-row no-gutters="">
-          <v-col class="v-col-4" v-if="props.avatar">
+          <v-col style="width: 120px" v-if="props.avatar">
             <Avatar v-if="trace.anchors && trace.anchors.length > 0" :image="props.image" :trace="trace.anchors" />
           </v-col>
           <v-col class="pl-5 pa-3" :class="['v-col-8' ? props.avatar : 'v-col-12']">
