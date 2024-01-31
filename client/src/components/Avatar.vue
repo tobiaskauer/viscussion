@@ -76,6 +76,7 @@ const cropImage = (index) => {
   croppedImage.onload = function () {
     context.antialias = 'subpixel';
     context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high"
     context.filter = 'bilinear'
     context.patternQuality = 'best';
     context.drawImage(a.image, a.sx, a.sy, a.sWidth, a.sHeight, a.dx, a.dy, a.dWidth, a.dHeight)
