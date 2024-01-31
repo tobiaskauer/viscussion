@@ -152,6 +152,7 @@ const skip = () => {
 
 const reset = () => {
   newTrace.category = null
+  newTrace.createdSeparately = null
   newTrace.anchors = []
 }
 
