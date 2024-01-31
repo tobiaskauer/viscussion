@@ -100,7 +100,7 @@ watch(tracesSubmitted, newTrace => {
   allAnchors.value.splice(0)
 })
 
-const opacityScale = d3.scaleLog().range([.5, .1])
+const opacityScale = d3.scaleLog().range([1, .1])
 
 const wrapper = ref(null)
 const getDimensions = () => {

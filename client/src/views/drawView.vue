@@ -49,6 +49,8 @@
                   category.name }}</v-chip>
               </v-chip-group>
             </li>
+            <li><v-checkbox class="ma-0 pa-0" hide-details="true" density="compact" @click="clickNoAnchors"
+                v-model="newTrace.createdSeparately" label="no anchors"></v-checkbox></li>
             <div v-if="comment.responses">
               <li>responses ({{ comment.responses.length }}):
                 <ul style="overflow-x: hidden;">
@@ -111,7 +113,8 @@ const newTrace = reactive({
   score: null,
   category: null,
   author: null,
-  anchors: []
+  anchors: [],
+  createdSeparately: false
 })
 
 const categories = computed(() => traceStore.getCategories)
@@ -160,7 +163,9 @@ const traces = computed(() => {
   return traceStore.getTraces
 })
 
-
+const clickNoAnchors = (event) => {
+  newTrace.anchors = []
+}
 
 watch(comment, newComment => {
 
