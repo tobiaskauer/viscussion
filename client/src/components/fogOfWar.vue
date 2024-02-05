@@ -4,8 +4,8 @@
     <div v-if="traceClass" ref="container" class="wrapper" @mousedown="mouseDown" @mouseup="mouseUp"
       @mousemove="mouseMove" @mouseleave="mouseleave" @mouseenter="mouseenter" :style="`height: ${dimensions.height}px`">
 
-      <img class="untouchable" ref="tracedImage" :class="{ 'desaturated': patina.key != 'None' }" :src="props.image.url"
-        :style="'width: ' + dimensions.width + 'px'" />
+      <!--<img class="untouchable" ref="tracedImage" :class="{ 'desaturated': patina.key != 'None' }" :src="props.image.url"
+        :style="'width: ' + dimensions.width + 'px'" />-->
       <!--<transition name="lights">
         <div class="lights untouchable" v-if="lights.off">
           <img :src="props.image.url" class="desaturated" :style="'width: ' + dimensions.width + 'px'" />
@@ -13,15 +13,27 @@
         </div>
       </transition>-->
 
+      <div v-if="resizedTraces" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
 
 
-      <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false" @before-enter="onBeforeEnter"
+        <canvas v-for="(   trace, index   ) in    resizedTraces   " :data-index="index" :id="'canvas-' + trace.id"
+          :key="'trace-' + trace.id" :class="traceClass[index]" :style="traceStyle(trace, patina)"
+          @mouseenter="setHighlight(trace)" @mouseout="setHighlight()" @click="expand(trace)" id="mycanvas"
+          :ref="(el) => setCanvasRef(el, trace)"></canvas>
+
+
+
+      </div>
+
+
+
+      <!--<TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false" @before-enter="onBeforeEnter"
         @enter="onEnter" @leave="onLeave">
         <div v-for="(   trace, index   ) in    resizedTraces   " :data-index="index" :key="'trace-' + trace.id"
           :class="traceClass[index]" :style="traceStyle(trace, patina)" @mouseenter="setHighlight(trace)"
           @mouseout="setHighlight()" @click="expand(trace)">
         </div>
-      </TransitionGroup>
+      </TransitionGroup>-->
 
       <svg v-if="traceLinks" class="links"
         :style="`width: ${dimensions.width}px; position: absolute; height: ${dimensions.height}px; pointer-events: none;`">
@@ -29,6 +41,7 @@
           :y2="link.y2" stroke="red" :style="linkStyle(link)" stroke-width="2px" stroke-dasharray="4 2">
         </line>
       </svg>
+
 
 
 
@@ -57,7 +70,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onUpdated, computed, toRaw, watch, onUnmounted } from 'vue'
+import { ref, reactive, onMounted, onBeforeUpdate, onUpdated, computed, toRaw, watch, onUnmounted } from 'vue'
 import { gsap } from 'gsap';
 import { useTraceStore } from '../stores/traceStore';
 import CommentCard from './CommentCard.vue'
@@ -86,6 +99,83 @@ onMounted(() => {
   getDimensions()
 })
 
+onBeforeUpdate(() => {
+  canvasRefs.value = []
+})
+
+const canvasRefs = ref([]);
+const setCanvasRef = (canvas, trace) => {
+  if (canvas && trace) {
+
+    //canvasRefs.value.push(el)
+
+    //let ids = canvas.id.replace("canvas-", "").split("-")
+    //let index = ids[1] ? ids[1] : 0
+
+    const context = canvas.getContext("2d")
+
+    context.clearRect(0, 0, dimensions.value.width, dimensions.value.height);
+    const croppedImage = new Image();
+    croppedImage.src = props.image.url
+
+    //let currentAnchor = props.trace[index]
+    let scale = dimensions.value.width / trace.width
+    scale = dimensions.value.scale
+    let scaledHeight = trace.height * scale
+    let scaledWidth = trace.width * scale //dimensions.value.width
+
+
+
+    if (scaledHeight > dimensions.value.height) {
+      scale = dimensions.value.height / trace.height
+      scaledHeight = trace.height * scale
+      scaledWidth = trace.width * scale
+    }
+
+
+
+
+
+    //center align
+    let dx = scaledWidth < dimensions.value.width ? dimensions.value.width / 2 - scaledWidth / 2 : 0
+    let dy = scaledHeight < dimensions.value.height ? dimensions.value.height / 2 - scaledHeight / 2 : 0
+
+    let a = {
+      image: croppedImage,//
+      sx: parseInt(trace.x),//x position of anchor
+      sy: parseInt(trace.y),//y position of anchor
+      sWidth: parseInt(trace.width), //width of anchor,
+      sHeight: parseInt(trace.height),//height of anchor,
+      dx: parseInt(dx), //x translation in avatar
+      dy: parseInt(dy), //y translation in avatar
+      //dWidth: parseInt(scaledWidth), //avatar width
+      //dHeight: parseInt(scaledHeight), //avatar height
+      dWidth: trace.originalWidth, //width of anchor,
+      dHeight: trace.originalHeight,//height of anchor,
+    }
+
+    console.log(a)
+
+    croppedImage.onload = function () {
+      //fix screen resolution for better downsampling
+      const dpr = window.devicePixelRatio;
+      const rect = canvas.getBoundingClientRect();
+
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+
+      context.scale(dpr, dpr);
+
+      // Set the "drawn" size of the canvas
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+
+      context.drawImage(a.image, a.sx, a.sy, a.sWidth, a.sHeight, a.dx, a.dy, a.dWidth, a.dHeight)
+
+    }
+  }
+}
+
 watch(tracesSubmitted, newTrace => {
   newTrace
   cursor.startX = null
@@ -100,18 +190,13 @@ watch(tracesSubmitted, newTrace => {
   allAnchors.value.splice(0)
 })
 
-const opacityScale = d3.scaleLog().range([1, .5])
+const opacityScale = d3.scaleLog().range([1, .1])
 
 const wrapper = ref(null)
 const getDimensions = () => {
   let bBox = wrapper.value.getBoundingClientRect()
-
-
-
-
   //start with image width, get other values from that.
   let scale = bBox.width / props.image.width
-
 
   let dimensions = {
     offsetX: bBox.x,
@@ -124,11 +209,6 @@ const getDimensions = () => {
   //start with available height, infer other values from that
   let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
   let availableHeight = vh - bBox.top
-  //dimensions = {}
-
-
-
-
 
 
   opacityScale.domain([1, dimensions.width * dimensions.height])
@@ -174,6 +254,7 @@ const resizedTraces = computed(() => {
       let height = Math.round(anchor.height * dimensions.value.scale)
       let size = width * height
 
+
       if (anchor.width != 0 && anchor.height != 0) { //filter invisible traces (maybe an artifact from creation)
         traces.push({
           id: !i ? trace.id : trace.id + "-" + i,
@@ -188,7 +269,11 @@ const resizedTraces = computed(() => {
           y: y,
           width: width,
           height: height,
-          size: size
+          size: size,
+          originalX: parseInt(anchor.x),
+          originalY: parseInt(anchor.y),
+          originalWidth: parseInt(anchor.width),
+          originalHeight: parseInt(anchor.height),
         })
       }
     })
@@ -201,13 +286,13 @@ const resizedTraces = computed(() => {
 
 /*const temporalScale = computed(() => {
   if (!props.traces) return false;
-
+ 
   let dates = props.traces.map(trace => trace.date)
   let domain = d3.extent(dates)
   //let range = ["red", "blue"]
   let range = [0, 10] //blur
   let scale = d3.scaleTime().range(range).domain(domain)
-
+ 
   return dates.map(date => scale(date)) //returning the scale is not a function, so just return an array with all values in them (need to compute all anyway)
 })*/
 
@@ -383,7 +468,7 @@ const traceStyle = (trace, patinReactivity) => {
   if (style.fill) style.fill.opacity = style.fillOpacity
 
   return `
-    background: ${style.fill.rgb()};
+    //background: ${style.fill.rgb()};
     top: ${trace.y}px;
     left: ${trace.x}px;
     width: ${trace.width}px;
@@ -579,6 +664,11 @@ const setHighlight = ((trace) => {
   opacity: 50%;
 }
 
+canvas {
+  position: absolute;
+  overflow: hidden;
+}
+
 #newTrace,
 #allAnchors {
   border: 2px solid black;
@@ -586,7 +676,8 @@ const setHighlight = ((trace) => {
   overflow: hidden
 }
 
-.traces div {
+.traces div,
+.traces canvas {
   position: absolute;
   mix-blend-mode: multiply;
   border-radius: 5px;
