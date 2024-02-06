@@ -254,7 +254,7 @@ export const useTraceStore = defineStore("trace", {
         category.number = present.filter((cat) => category.key == cat).length;
       });
 
-      return categories;
+      return categories.sort((a, b) => b.number - a.number);
     },
 
     getAllTraces(state) {

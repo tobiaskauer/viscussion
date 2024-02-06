@@ -1,6 +1,5 @@
 <template>
      <v-row class="pa-0 ma-0">
-
           <v-col class="pa-0 ma-0">
                <v-chip-group v-model="selectedCategory.key" selected-class="selected">
                     <v-chip v-for="category in categories" :key="category.key"
