@@ -576,7 +576,7 @@ const setHighlight = ((trace) => {
 <style scoped>
 .traces {
   position: relative;
-  opacity: 50%;
+  opacity: 70%;
 }
 
 #newTrace,
