@@ -25,7 +25,6 @@ import { computed, ref, onMounted, watch } from 'vue'
 const props = defineProps(['trace', 'image', 'width'])
 
 watch(() => props.trace, (first, second) => {
-  console.log(first, second)
   cropImage(0)
 })
 

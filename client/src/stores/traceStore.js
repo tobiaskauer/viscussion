@@ -240,6 +240,23 @@ export const useTraceStore = defineStore("trace", {
       });
       return categories;
     },
+
+    getPresentCategories(state) {
+      //filter by categories that are present
+      let present = state.traces.map((trace) => trace.category[0]);
+
+      let categories = state.categories.filter(
+        (category) => category.display && present.includes(category.key)
+      );
+      categories.forEach((category, i) => {
+        //category.color = d3.schemePastel1[i];
+        category.color = d3.schemeCategory10[i];
+        category.number = present.filter((cat) => category.key == cat).length;
+      });
+
+      return categories;
+    },
+
     getAllTraces(state) {
       return state.allTraces;
     },

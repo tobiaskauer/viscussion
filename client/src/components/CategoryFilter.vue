@@ -7,7 +7,9 @@
                          :style="`background-color: rgba(${category.color},0); border: 2px solid ${category.color}; color: white;`"
                          :value="category.key">{{
                               category.name
-                         }}</v-chip>
+
+                         }}
+                         <template v-if="category.number">({{ category.number }})</template></v-chip>
                </v-chip-group>
           </v-col>
      </v-row>
@@ -20,7 +22,7 @@ import { useTraceStore } from "../stores/traceStore.js";
 const traceStore = useTraceStore();
 
 
-const categories = computed(() => traceStore.getCategories)
+const categories = computed(() => traceStore.getPresentCategories)
 const selectedCategory = reactive({ key: null })
 watch(selectedCategory, updated => {
      traceStore.setActiveCategories([updated.key])

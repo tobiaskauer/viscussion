@@ -1,8 +1,8 @@
 
 <template>
   <div>
-    <v-container :fluid="true">
-      <!--<v-container>-->
+    <!--<v-container :fluid="true">-->
+    <v-container>
       <v-row class="py-5">
         <v-col class="v-col-8">
 
