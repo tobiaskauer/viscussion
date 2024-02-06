@@ -455,6 +455,7 @@ export const useTraceStore = defineStore("trace", {
     },
 
     expand(trace) {
+      //console.log(trace);
       this.expandedTrace = trace;
     },
 

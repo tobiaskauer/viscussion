@@ -8,6 +8,7 @@
         <v-row no-gutters="">
 
           <div style="width: 120px" v-if="props.avatar">
+
             <Avatar v-if="trace.anchors && trace.anchors.length > 0" :image="props.image" :trace="trace.anchors" />
 
           </div>
@@ -63,11 +64,15 @@
 </template>
 
 <script setup>
-import { reactive, onMounted, computed, ref, watch, onActivated } from 'vue'
+import { reactive, onMounted, computed, ref, watch, onActivated, onUpdated } from 'vue'
 import Avatar from './Avatar.vue'
 import { useTraceStore } from "../stores/traceStore.js";
 const traceStore = useTraceStore();
 const props = defineProps(['trace', 'image', 'avatar', 'response'])
+
+onUpdated(() => {
+  //console.log(props.trace.anchors)
+})
 
 const state = reactive({
   disableLike: false

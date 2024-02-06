@@ -1,11 +1,13 @@
 <template>
   <div class="avatar" ref="container" style="width: 120px;">
+
     <!--<div class="traceAvatar" @mouseDown="mousedown" @mousemove="mousemove"
       :style="`
 background-image: url(${avatar.url});background-size: ${avatar.zoom}px;background-position-x: ${avatar.x}%;background-position-y: ${avatar.y}%;height: ${avatar.height}px;width: ${avatar.width}px;`">
     </div>-->
     <canvas id="mycanvas" ref="canvas" :width="dimensions.width" :height="dimensions.height"></canvas>
   </div>
+
 
   <div v-if="props.trace.length > 1">
     <ul :style="`text-align: center; position: relative; margin-top: -30px; padding-bottom: 30px;`">
@@ -21,6 +23,11 @@ background-image: url(${avatar.url});background-size: ${avatar.zoom}px;backgroun
 <script setup>
 import { computed, ref, onMounted, watch } from 'vue'
 const props = defineProps(['trace', 'image', 'width'])
+
+watch(() => props.trace, (first, second) => {
+  console.log(first, second)
+  cropImage(0)
+})
 
 const container = ref(null)
 const canvas = ref(null)
@@ -38,49 +45,57 @@ const cropImage = (index) => {
   croppedImage.src = props.image.url
 
   let currentAnchor = props.trace[index]
-  let scale = dimensions.value.width / currentAnchor.width
-  let scaledHeight = currentAnchor.height * scale
-  let scaledWidth = dimensions.value.width
+  //console.log(typeof currentAnchor, currentAnchor) //this somestimes is wrapped in an array. why?
 
-  if (scaledHeight > dimensions.value.height) {
-    scale = dimensions.value.height / currentAnchor.height
-    scaledHeight = currentAnchor.height * scale
-    scaledWidth = currentAnchor.width * scale
+  if (currentAnchor) {
+    let scale = dimensions.value.width / currentAnchor.width
+    let scaledHeight = currentAnchor.height * scale
+    let scaledWidth = dimensions.value.width
+
+
+
+
+    if (scaledHeight > dimensions.value.height) {
+      scale = dimensions.value.height / currentAnchor.height
+      scaledHeight = currentAnchor.height * scale
+      scaledWidth = currentAnchor.width * scale
+    }
+
+    //center align
+    let dx = scaledWidth < dimensions.value.width ? dimensions.value.width / 2 - scaledWidth / 2 : 0
+    let dy = scaledHeight < dimensions.value.height ? dimensions.value.height / 2 - scaledHeight / 2 : 0
+
+    let a = {
+      image: croppedImage,//
+      sx: parseInt(currentAnchor.x),//x position of anchor
+      sy: parseInt(currentAnchor.y),//y position of anchor
+      sWidth: parseInt(currentAnchor.width), //width of anchor,
+      sHeight: parseInt(currentAnchor.height),//height of anchor,
+      dx: parseInt(dx), //x translation in avatar
+      dy: parseInt(dy), //y translation in avatar
+      dWidth: parseInt(scaledWidth), //avatar width
+      dHeight: parseInt(scaledHeight), //avatar height
+    }
+
+    croppedImage.onload = function () {
+      //fix screen resolution for better downsampling
+      const dpr = window.devicePixelRatio;
+      const rect = canvas.value.getBoundingClientRect();
+
+      canvas.value.width = rect.width * dpr;
+      canvas.value.height = rect.height * dpr;
+
+      context.scale(dpr, dpr);
+
+      // Set the "drawn" size of the canvas
+      canvas.value.style.width = `${rect.width}px`;
+      canvas.value.style.height = `${rect.height}px`;
+
+      context.drawImage(a.image, a.sx, a.sy, a.sWidth, a.sHeight, a.dx, a.dy, a.dWidth, a.dHeight)
+    }
+
   }
 
-  //center align
-  let dx = scaledWidth < dimensions.value.width ? dimensions.value.width / 2 - scaledWidth / 2 : 0
-  let dy = scaledHeight < dimensions.value.height ? dimensions.value.height / 2 - scaledHeight / 2 : 0
-
-  let a = {
-    image: croppedImage,//
-    sx: parseInt(currentAnchor.x),//x position of anchor
-    sy: parseInt(currentAnchor.y),//y position of anchor
-    sWidth: parseInt(currentAnchor.width), //width of anchor,
-    sHeight: parseInt(currentAnchor.height),//height of anchor,
-    dx: parseInt(dx), //x translation in avatar
-    dy: parseInt(dy), //y translation in avatar
-    dWidth: parseInt(scaledWidth), //avatar width
-    dHeight: parseInt(scaledHeight), //avatar height
-  }
-
-  croppedImage.onload = function () {
-    //fix screen resolution for better downsampling
-    const dpr = window.devicePixelRatio;
-    const rect = canvas.value.getBoundingClientRect();
-
-    canvas.value.width = rect.width * dpr;
-    canvas.value.height = rect.height * dpr;
-
-    context.scale(dpr, dpr);
-
-    // Set the "drawn" size of the canvas
-    canvas.value.style.width = `${rect.width}px`;
-    canvas.value.style.height = `${rect.height}px`;
-
-    context.drawImage(a.image, a.sx, a.sy, a.sWidth, a.sHeight, a.dx, a.dy, a.dWidth, a.dHeight)
-
-  }
 }
 
 onMounted(() => {
