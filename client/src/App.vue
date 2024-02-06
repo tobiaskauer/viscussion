@@ -7,7 +7,30 @@
     <v-main>
       <router-view />
     </v-main>
-    <v-footer>Tobias Kauer, Marian Dörk, Benjamin Bach</v-footer>
+    <v-footer>
+      <div class="mt-5">
+        <v-container>
+          <v-row>
+            <v-col class="v-col-sm-12 v-col-md-6">2024 by <a href="https://tobiaskauer.org">Tobias&nbsp;Kauer</a>, <a
+                href="https://gotdairyya.github.io/">Derya&nbsp;Akbaba</a>, <a
+                href="https://mariandoerk.de/">Marian&nbsp;Dörk</a>,
+              <a href="https://groups.inf.ed.ac.uk/vishub/bbach/index-homepage.html">Benjamin&nbsp;Bach</a><br>
+              <router-link to="/about"><v-icon>mdi-information</v-icon> Learn more
+                about our research</router-link></v-col>
+            <v-col class="v-col-sm-4 v-col-md-2"><a href="https://liu.se/"><img src="@/assets/liu.png"
+                  style="width:80%" /></a></v-col>
+            <v-col class="v-col-sm-4 v-col-md-2"><a href="https://vishub.net/"><img src="@/assets/uoe.png"
+                  style="width:80%" /></a></v-col>
+            <v-col class="v-col-sm-4 v-col-md-2"><a href="https://uclab.fh-potsdam.de/"><img src="@/assets/fhp.png"
+                  style="width:80%" /></a></v-col>
+          </v-row>
+        </v-container>
+
+
+
+      </div>
+
+    </v-footer>
   </v-app>
 </template>
 
@@ -41,7 +64,7 @@ watch(
   });
 </script>
 
-<style scoped> a {
+<style scoped> .v-toolbar a {
    font-weight: bold;
    color: white;
    text-decoration: none;

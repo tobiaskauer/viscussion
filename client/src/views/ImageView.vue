@@ -9,6 +9,7 @@
 
             <h2>{{ image.title }}</h2>
             <v-btn size="x-small" color="primary" target="_blank" :href="image.source">source</v-btn>
+            <p><v-icon>mdi-crop</v-icon> Drag on the visualization to place a comment.</p>
           </div>
 
 
