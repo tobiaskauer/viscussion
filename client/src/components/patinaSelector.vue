@@ -46,29 +46,35 @@
                                         </template>
 
                                         <template v-slot:default="{ isActive }">
-                                             <v-card title="What's a patina?">
+                                             <!--<v-card title="What's a patina?">
+                                                  <v-card-text>
+                                                       <p>The accumulation of people's comments gives visualizations a distinct look. We call this look <em>patina</em>.</p>
+                                                       <p class="pt-2">Patinas are visually dynamic traces of people's engagement with visualizations. Selecting a patina in the menu allows you to explore the discourse in various ways:</p>
+                                                       <v-list lines="one">
+                                                            <v-list-item v-for="(item, index) in patinas" :key="index">{{ item.key }}:
+                                                                 <em>{{ item.desc }}</em></v-list-item>
+                                                       </v-list>
+                                                  </v-card-text>
+                                                  <v-card-actions>
+                                                       <v-spacer></v-spacer>
+                                                       <v-btn text="Close" @click="isActive.value = false"></v-btn>
+                                                  </v-card-actions>
+                                             </v-card>-->
+                                             <v-card title="What am I looking at?">
                                                   <v-card-text>
                                                        <p>The accumulation of people's comments gives visualizations a
-                                                            distinct look.
-                                                            We call this look <em>patina</em>.</p>
-                                                       <p class="pt-2">Patinas are visually dynamic traces of people's
-                                                            engagement with
-                                                            visualizations.
-                                                            Selecting a patina in the menu allows you to explore the
-                                                            discourse in
-                                                            various ways:</p>
+                                                            distinct look. Looking at different aspects of the discourse can
+                                                            influence this look. <strong>Select an aspect in the menu to
+                                                                 explore
+                                                                 the discourse:</strong></p>
                                                        <v-list lines="one">
-
                                                             <v-list-item v-for="(item, index) in patinas" :key="index">{{
                                                                  item.key }}:
                                                                  <em>{{ item.desc }}</em></v-list-item>
                                                        </v-list>
-
                                                   </v-card-text>
-
                                                   <v-card-actions>
                                                        <v-spacer></v-spacer>
-
                                                        <v-btn text="Close" @click="isActive.value = false"></v-btn>
                                                   </v-card-actions>
                                              </v-card>
@@ -101,9 +107,9 @@
      <v-row class="ma-0">
           <v-col class="ma-2 pa-0" style="color: white">
                <template v-if="activePatina.key == 'None'">
-                    The accumulation of people's comments gives visualizations a distinct look. We call this look
-                    <strong><code>Patina</code></strong>. Select a patina above to see how people commented on this
-                    visualization.</template>
+                    The accumulation of people's comments gives visualizations a distinct look.
+                    <!--We call this look <strong><code>Patina</code></strong>.-->
+                    Select a view above to see how people commented on this visualization.</template>
                <template v-if="activePatina.key == 'Activity'">Each red square indicates a comment. Areas with lots of
                     squares have the highest activity.</template>
                <template v-if="activePatina.key == 'Responses'">The faster a <span class="shork"

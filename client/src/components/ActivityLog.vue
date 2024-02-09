@@ -6,6 +6,7 @@
     </v-btn>
     <TransitionGroup tag="ul" name="list" ref="list" id="annotationList">
       <li key="root">
+
         <CommentCard :response="false" :avatar="props.avatar" :trace="expandedTrace" :image="props.image"
           @mouseenter="setHighlight(expandedTrace)" @mouseleave="setHighlight(null)" />
       </li>

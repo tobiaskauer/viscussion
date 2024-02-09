@@ -5,7 +5,7 @@
       <v-row class="py-5">
         <v-col class="v-col-8">
 
-          <div class="mb-5">
+          <div class="">
 
             <h2>{{ image.title }}</h2>
             <v-btn size="x-small" color="primary" target="_blank" :href="image.source">source</v-btn>
@@ -21,7 +21,8 @@
           <!--<panTraceImage v-if="image && traces" :image="image" :traces="traces" @export="openTraceform" />-->
 
 
-
+          <v-checkbox v-model="hideComments" hide-details class="ml-0 pl-0 shrink" density="compact"
+            label="Hide Comments"></v-checkbox>
 
         </v-col>
         <v-col class="v-col-4">
@@ -63,6 +64,8 @@ const router = useRouter()
 const props = defineProps(['id'])
 
 let tracesSubmitted = ref(0)
+let hideComments = ref(false)
+let priorPatina = ref(null)
 
 
 const image = computed(() => {
@@ -134,6 +137,15 @@ const snackbar = reactive({
   message: null
 })
 
+watch(hideComments, newStatus => {
+  if (newStatus) {
+    priorPatina.value = patina.value.key
+    traceStore.setActivePatina("None")
+  } else {
+    traceStore.setActivePatina(priorPatina.value)
+  }
+})
+
 
 
 /*const highlight = computed(() => {
@@ -152,4 +164,11 @@ h2 {
   margin: 0;
   padding: 10px;
 }
+
+.v-selection-control {
+  display: none;
+  min-height: none;
+}
+
+.v-selection-control--density-default {}
 </style>

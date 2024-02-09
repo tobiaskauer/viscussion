@@ -15,8 +15,8 @@
 
 
 
-      <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false" @before-enter="onBeforeEnter"
-        @enter="onEnter" @leave="onLeave">
+      <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false">
+        <!--@before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave"-->
         <div v-for="(   trace, index   ) in    resizedTraces   " :data-index="index" :key="'trace-' + trace.id"
           :class="traceClass[index]" :style="traceStyle(trace, patina)" @mouseenter="setHighlight(trace)"
           @mouseout="setHighlight()" @click="expand(trace)">
@@ -396,7 +396,6 @@ const traceStyle = (trace, patinReactivity) => {
 const linkStyle = (link) => {
   let opacity = 1
   if (highlightedTrace.value) {
-    console.log("highlightedtrace:", highlightedTrace)
     //console.log(highlightedTrace, trace)
     opacity = .1 // all other are less visibile
     if (highlightedTrace.value.id == link.id) {
@@ -440,16 +439,16 @@ function onBeforeEnter(el) {
 
 function onEnter(el, done) {
   gsap.timeline({
-    defaults: { duration: 1 }
+    defaults: { duration: .1 }
   }).to(el, {
-    opacity: .3,
-    delay: el.dataset.index * 0.01,
+    opacity: 1,
+    delay: +el.dataset.index * 0.03 + 1,
     //rotation: -120,
     onComplete: done
   })
 }
 
-function onLeave(el, done) {
+/*function onLeave(el, done) {
   gsap.timeline({
     defaults: { duration: 1 }
   }).to(el, {
@@ -458,7 +457,7 @@ function onLeave(el, done) {
     //rotation: 0,
     onComplete: done
   })
-}
+}*/
 
 
 onUnmounted(() => {

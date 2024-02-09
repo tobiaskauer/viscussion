@@ -3,16 +3,11 @@
           <v-container>
                <v-row>
                     <v-col>
-                         <!--<h1>Let's talk <span style="text-decoration:line-through;"> about</span>
-                              <span style="font-weight: 900; font-style: italic;"> with</span> data
-                              visualization.
-                         </h1>-->
-
-                         <h1>Data visualization is a canvas. <span style="font-weight: 900; font-style: italic;"><br>Let's
-                                   paint a
-                                   picture.</span></h1>
-
+                         <!--<h1>Let's talk <span style="text-decoration:line-through;"> about</span> <span style="font-weight: 900; font-style: italic;"> with</span> data visualization.</h1>-->
+                         <!--<h1>Data visualization is a canvas. <span style="font-weight: 900; font-style: italic;"><br>Let's paint a picture.</span></h1>-->
+                         <img src="../@assets/userstudy.png" />
                     </v-col>
+                    <v-col></v-col>
                </v-row>
           </v-container>
      </v-container>
