@@ -2,12 +2,12 @@
   <v-container fluid style="background: #ddd">
     <v-container>
       <v-row>
-        <v-col class="v-col-6">
+        <v-col class="v-col-5 offset-1">
           <!--<h1>Let's talk <span style="text-decoration:line-through;"> about</span> <span style="font-weight: 900; font-style: italic;"> with</span> data visualization.</h1>-->
           <!--<h1>Data visualization is a canvas. <span style="font-weight: 900; font-style: italic;"><br>Let's paint a picture.</span></h1>-->
           <img src="@/assets/userstudy.png" style="width: 100%" />
         </v-col>
-        <v-col class="v-col-6">
+        <v-col class="v-col-5">
           <p style="font-size: 1.3em"><strong>Participate in our user study</strong> and help us understand how we can
             integrate discussions into
             data
@@ -53,7 +53,7 @@
         </router-link>
       </v-col>
     </v-row>
-    <v-row>
+    <!--<v-row>
       <v-col class="v-col-3">
         <router-link to="create">
           <v-btn>
@@ -63,7 +63,7 @@
         </router-link>
       </v-col>
 
-    </v-row>
+    </v-row>-->
   </v-container>
 </template>
 

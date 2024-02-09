@@ -4,9 +4,7 @@
     <v-container>
       <v-row class="py-5">
         <v-col class="v-col-8">
-
           <div class="">
-
             <h2>{{ image.title }}</h2>
             <v-btn size="x-small" color="primary" target="_blank" :href="image.source">source</v-btn>
             <p><v-icon>mdi-crop</v-icon> Drag on the visualization to place a comment.</p>
@@ -17,9 +15,7 @@
             :tracesSubmitted="tracesSubmitted" light="" @export="openTraceform" />
           <!--<fogOfWar v-if="image && traces" :image="image" :traces="traces" :touchable="true"
             :tracesSubmitted="tracesSubmitted" light="" @export="openTraceform" />-->
-
           <!--<panTraceImage v-if="image && traces" :image="image" :traces="traces" @export="openTraceform" />-->
-
 
           <v-checkbox v-model="hideComments" hide-details class="ml-0 pl-0 shrink" density="compact"
             label="Hide Comments"></v-checkbox>
@@ -29,7 +25,7 @@
           <div class="patinaSelector mb-4">
             <PatinaSelector />
             <CategoryFilter v-if="patina.key == 'Category'" />
-            <timeFilter v-if="patina.key == 'Temporal'" />
+            <!--<timeFilter v-if="patina.key == 'Temporal'" />-->
           </div>
           <ActivityLog v-if="image && traces" :image="image" :traces="traces" :avatar="true" />
         </v-col>
@@ -44,15 +40,15 @@
 import TraceForm from '../components/TraceForm.vue'
 import ActivityLog from '../components/ActivityLog.vue'
 import tracedImage from '../components/tracedImage.vue'
-import fogOfWar from '../components/fogOfWar.vue'
-import panTraceImage from '../components/panTraceImage.vue'
+//import fogOfWar from '../components/fogOfWar.vue'
+//import panTraceImage from '../components/panTraceImage.vue'
 import PatinaSelector from '../components/patinaSelector.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
-import TimeFilter from '../components/TimeFilter.vue'
+//import TimeFilter from '../components/TimeFilter.vue'
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
 import { useRouter } from 'vue-router'
-import { reactive, nextTick, onMounted, computed, watch, ref, onUnmounted, onBeforeMount } from 'vue'
+import { reactive, onMounted, computed, watch, ref, onBeforeMount } from 'vue'
 
 
 const traceStore = useTraceStore();
@@ -60,7 +56,6 @@ const imageStore = useImageStore();
 
 
 const router = useRouter()
-
 const props = defineProps(['id'])
 
 let tracesSubmitted = ref(0)
@@ -77,15 +72,12 @@ const patina = computed(() => {
 })
 
 onBeforeMount(() => {
-  //traceStore.$reset()
-  //traceStore.setDimensions()
   imageStore.fetchImage(props.id)
   traceStore.fetchTraces(props.id, { excludeSeparatedTraces: true });
 })
 
 onMounted(() => {
   setTimeout(() => {
-
     if (traces.value.length < 1) {
       router.go() //if traces aren't loaded after 200ms, reload the page --> What about images without traces?
     }
@@ -93,18 +85,11 @@ onMounted(() => {
 
 })
 
-onUnmounted(() => {
-  //console.log(image.value)
-  //console.log(traces.value)
-})
-
 const newTraces = ref([])
 
 const displayForm = reactive({
   bool: false,
 })
-
-
 
 const openTraceform = (exportTrace) => {
   newTraces.value = exportTrace.value
@@ -121,20 +106,10 @@ const addAnchor = () => {
 const close = () => {
   traceStore.closeTrace()
   displayForm.bool = false
-  //setTimeout(router.go(), 10000);
-
-  //router.go() //reload whole page to make sure traces you submitted are visible. (traffic horror.) //deactivate for debugging
 }
-
-
 
 const traces = computed(() => {
   return traceStore.getTraces
-})
-
-const snackbar = reactive({
-  display: false,
-  message: null
 })
 
 watch(hideComments, newStatus => {
@@ -145,12 +120,6 @@ watch(hideComments, newStatus => {
     traceStore.setActivePatina(priorPatina.value)
   }
 })
-
-
-
-/*const highlight = computed(() => {
-  return traceStore.getHighlight
-})*/
 </script>
 
 <style scoped>
