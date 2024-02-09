@@ -15,8 +15,8 @@
 
 
 
-      <TransitionGroup tag="div" class="traces" v-if="resizedTraces" :css="false">
-        <!--@before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave"-->
+      <TransitionGroup tag="div" class="traces" :class="patina.key" v-if="resizedTraces" :css="false">
+        <!--@before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">-->
         <div v-for="(   trace, index   ) in    resizedTraces   " :data-index="index" :key="'trace-' + trace.id"
           :class="traceClass[index]" :style="traceStyle(trace, patina)" @mouseenter="setHighlight(trace)"
           @mouseout="setHighlight()" @click="expand(trace)">
@@ -357,8 +357,8 @@ const traceStyle = (trace, patinReactivity) => {
         style.border = '5px solid ' + d3.color(category.color)
         style.fill = d3.color(category.color)
       }
-      style.fillOpacity = 0.1
-      style.opacity = 0.6
+      style.fillOpacity = .1
+      style.opacity = .8
       break;
 
     case "Everything":
@@ -441,7 +441,7 @@ function onEnter(el, done) {
   gsap.timeline({
     defaults: { duration: .1 }
   }).to(el, {
-    opacity: 1,
+    opacity: .3,
     delay: +el.dataset.index * 0.03 + 1,
     //rotation: -120,
     onComplete: done
@@ -587,8 +587,12 @@ const setHighlight = ((trace) => {
 
 .traces div {
   position: absolute;
-  mix-blend-mode: multiply;
+  //mix-blend-mode: multiply;
   border-radius: 5px;
+}
+
+.Category .trace {
+  opacity: 1
 }
 
 img,
