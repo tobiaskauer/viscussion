@@ -13,8 +13,11 @@
                   <v-icon>mdi-crop</v-icon> Drag on the visualization to place a comment.
                 </v-col>
                 <v-col cols="auto" class="ma-0 pa-0">
-                  <v-checkbox v-model="hideComments" hide-details class="ml-0 pl-0 shrink" density="compact"
-                    label="Hide Comments"></v-checkbox></v-col>
+                  <!--<v-checkbox v-model="hideComments" hide-details class="ml-0 pl-0 shrink" density="compact"
+                    label="Hide Comments"></v-checkbox>-->
+                  <v-switch v-model="showComments" color="#ED6A63" class="ml-0 pl-0 shrink" density="compact"
+                    label="Show Comments"></v-switch>
+                </v-col>
               </v-row>
             </v-container>
           </div>
@@ -67,7 +70,7 @@ const router = useRouter()
 const props = defineProps(['id'])
 
 let tracesSubmitted = ref(0)
-let hideComments = ref(false)
+let showComments = ref(true)
 let priorPatina = ref(null)
 
 
@@ -120,8 +123,8 @@ const traces = computed(() => {
   return traceStore.getTraces
 })
 
-watch(hideComments, newStatus => {
-  if (newStatus) {
+watch(showComments, newStatus => {
+  if (!newStatus) {
     priorPatina.value = patina.value.key
     traceStore.setActivePatina("None")
   } else {
