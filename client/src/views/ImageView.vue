@@ -6,8 +6,17 @@
         <v-col class="v-col-8">
           <div class="">
             <h2>{{ image.title }}</h2>
-            <v-btn size="x-small" color="primary" target="_blank" :href="image.source">source</v-btn>
-            <p><v-icon>mdi-crop</v-icon> Drag on the visualization to place a comment.</p>
+            <v-btn size="x-small" class="ml-1" color="primary" target="_blank" :href="image.source">source</v-btn>
+            <v-container class="ma-0 pa-0">
+              <v-row class="ma-0 pa-0">
+                <v-col class="ma-0 pa-0">
+                  <v-icon>mdi-crop</v-icon> Drag on the visualization to place a comment.
+                </v-col>
+                <v-col cols="auto" class="ma-0 pa-0">
+                  <v-checkbox v-model="hideComments" hide-details class="ml-0 pl-0 shrink" density="compact"
+                    label="Hide Comments"></v-checkbox></v-col>
+              </v-row>
+            </v-container>
           </div>
 
 
@@ -17,8 +26,7 @@
             :tracesSubmitted="tracesSubmitted" light="" @export="openTraceform" />-->
           <!--<panTraceImage v-if="image && traces" :image="image" :traces="traces" @export="openTraceform" />-->
 
-          <v-checkbox v-model="hideComments" hide-details class="ml-0 pl-0 shrink" density="compact"
-            label="Hide Comments"></v-checkbox>
+
 
         </v-col>
         <v-col class="v-col-4">
