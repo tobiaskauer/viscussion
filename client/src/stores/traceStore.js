@@ -530,12 +530,12 @@ export const useTraceStore = defineStore("trace", {
           : null;
       payload.session = localStorage.getItem("session");
       payload.patina = this.patinas.find((patina) => patina.active).key;
-      /*try {
+      try {
         const response = await axios.post(apiUrl + "interaction", payload);
         //console.log("recorded interaction:", response.data);
       } catch (error) {
         console.log(error);
-      }*/
+      }
     },
   },
 });
