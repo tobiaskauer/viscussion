@@ -2,22 +2,59 @@
   <v-container fluid style="background: #ddd">
     <v-container>
       <v-row>
-        <v-col class="v-col-5 offset-1">
+        <v-col class="v-col-4 offset-1">
           <!--<h1>Let's talk <span style="text-decoration:line-through;"> about</span> <span style="font-weight: 900; font-style: italic;"> with</span> data visualization.</h1>-->
           <!--<h1>Data visualization is a canvas. <span style="font-weight: 900; font-style: italic;"><br>Let's paint a picture.</span></h1>-->
           <img src="@/assets/userstudy.png" style="width: 100%" />
         </v-col>
-        <v-col class="v-col-5">
-          <p style="font-size: 1.3em"><strong>Participate in our user study</strong> and help us understand how we can
-            integrate discussions into
-            data
-            visualizations. </p>
+        <v-col class="v-col-7">
 
-          <p class="my-5">The way we discuss visualisations has influence how people understand, contextualise and argue
-            about data. We
-            are running a user study to evaluate a prototype for discussion about data visualization.<br>
-            If you are interested in our work and want to support our research, join one of the sessions!</p>
-          <v-btn color="primary" target="_blank" href="https://forms.gle/o9KKssCfNuBupA5y8">Register now</v-btn>
+          <p style="font-size: 1.3em">
+            <strong>Discursive Patinas: Anchoring Discussions in Data Visualization</strong><br>
+            <span style="font-size: 0.8em;">IEEE Transactions on
+              Visualization and Computer Graphics (VIS'24)</span>
+          </p>
+
+          <p>
+            <a class="mr-3" href="https://arxiv.org/abs/2407.17994"><v-btn size="small" variant="outlined"><v-icon start
+                  icon="mdi-download"></v-icon>Full Paper</v-btn></a>
+            <a class="mr-3" href="https://github.com/tobiaskauer/viscussion"><v-btn size="small"
+                variant="outlined"><v-icon start icon="mdi-code"></v-icon>GitHub Repository</v-btn></a>
+            <a href="https://github.com/tobiaskauer/viscussion"><v-btn size="small" variant="outlined"><v-icon start
+                  icon="mdi-play"></v-icon>Recorded Talk</v-btn></a>
+          </p>
+
+          <p class="my-3">The way we discuss visualisations influences how people understand, contextualise and argue
+            about data. This prototype offers a way to create, explore, and engage in discussions integrated into data
+            visualizations.
+          </p>
+          <v-row align="top">
+            <v-col class="avatar">
+              <v-img :src="tobi" aspect-ratio="1:1" width="50%" class="mx-auto" />
+              <div><span>Tobias Kauer</span><br /><a href="https://visualinteractivedata.github.io/">University of
+                  Edinburgh</a>,<br><a href="https://uclab.fh-potsdam.de/">Urban Complexity Lab Potsdam</a></div>
+            </v-col>
+            <v-col class="avatar">
+              <v-img :src="derya" aspect-ratio="1:1" width="50%" class="mx-auto" />
+              <div><span><a href="https://gotdairyya.github.io/">Derya Akbaba</a></span><br><a
+                  href="https://liu.se/en">Linköping University</a></div>
+            </v-col>
+            <v-col class="avatar">
+              <v-img :src="marian" aspect-ratio="1:1" width="50%" class="mx-auto" />
+              <div><span><a href="https://mariandoerk.de/">Marian Dörk</a></span><br><a
+                  href="https://uclab.fh-potsdam.de/">Urban Complexity Lab Potsdam</a></div>
+            </v-col>
+            <v-col class="avatar">
+              <v-img :src="ben" aspect-ratio="1:1" width="50%" class="mx-auto" />
+              <div><span><a href="https://aviz.fr/~bbach/homepage/index-homepage.html">Benjamin Bach</a></span><br><a
+                  href="https://www.inria.fr/en">INRIA</a>,<br><a
+                  href="https://visualinteractivedata.github.io/">University of Edinburgh</a></div>
+            </v-col>
+          </v-row>
+
+
+
+
         </v-col>
       </v-row>
     </v-container>
@@ -71,6 +108,12 @@
 import { useImageStore } from "../stores/imgStore.js";
 import { useTraceStore } from "../stores/traceStore.js";
 
+import tobi from '@/assets/tobi.png'
+import derya from '@/assets/derya.png'
+import marian from '@/assets/marian.jpg'
+import ben from '@/assets/ben.png'
+
+
 
 import { onMounted, computed, } from 'vue'
 const traceStore = useTraceStore();
@@ -96,3 +139,20 @@ onMounted(() => {
   traceStore.fetchTraces(null) //reset existing traces
 })
 </script>
+
+<style>
+.avatar img {
+  border-radius: 100%;
+}
+
+.avatar {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+
+.avatar span {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+</style>

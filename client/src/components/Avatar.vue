@@ -1,6 +1,7 @@
 <template>
   <div class="avatar" ref="container" style="width: 120px;">
 
+
     <!--<div class="traceAvatar" @mouseDown="mousedown" @mousemove="mousemove"
       :style="`
 background-image: url(${avatar.url});background-size: ${avatar.zoom}px;background-position-x: ${avatar.x}%;background-position-y: ${avatar.y}%;height: ${avatar.height}px;width: ${avatar.width}px;`">

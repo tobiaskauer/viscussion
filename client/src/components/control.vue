@@ -5,15 +5,17 @@
                <v-tab value="Traces">Traces ({{ traces.length }})</v-tab>
                <!--<v-tab value="Interactions">Interactions ({{ interactions.length }})</v-tab>-->
                <v-tab value="Sessions">Sessions ({{ sessions.length }})</v-tab>
+               <v-tab value="Coding">Open Coding</v-tab>
           </v-tabs>
           <v-window v-model="tab">
                <v-window-item value="Images">
                     <v-table v-if="images">
                          <thead>
                               <tr>
-                                   <th v-for="head in imageHeaders" :key="'th-' + head.key" :style="`width: ${head.width}%`">
+                                   <th v-for="head in imageHeaders" :key="'th-' + head.key"
+                                        :style="`width: ${head.width}%`">
                                         {{
-                                             head.key }}
+               head.key }}
                                    </th>
                               </tr>
                          </thead>
@@ -44,15 +46,17 @@
                     <v-table v-if="traces">
                          <thead>
                               <tr>
-                                   <th v-for="head in traceHeaders" :key="'th-' + head.key" :style="`width: ${head.width}%`">
+                                   <th v-for="head in traceHeaders" :key="'th-' + head.key"
+                                        :style="`width: ${head.width}%`">
                                         {{
-                                             head.key }}
+               head.key }}
                                    </th>
                               </tr>
                          </thead>
                          <tbody>
                               <tr v-for="trace in traces" :key="trace.id">
-                                   <td v-for="head in traceHeaders" :key="'td-' + head.key" :style="`width: ${head.width}%`">
+                                   <td v-for="head in traceHeaders" :key="'td-' + head.key"
+                                        :style="`width: ${head.width}%`">
                                         <template v-if="head.key == 'anchors'">
                                              {{ trace.anchors.length }}
                                              <!--<Avatar :image="trace.image" :trace="trace.anchors" width="300" />-->
@@ -81,7 +85,7 @@
                                    <th v-for="head in interactionHeaders" :key="'th-' + head.key"
                                         :style="`width: ${head.width}%`">
                                         {{
-                                             head.key }}
+               head.key }}
                                    </th>
                               </tr>
                          </thead>
@@ -112,7 +116,7 @@
                                    <th v-for="head in sessionHeaders" :key="'th-' + head.key"
                                         :style="`width: ${head.width}%`">
                                         {{
-                                             head.key }}
+               head.key }}
                                    </th>
                               </tr>
                          </thead>
@@ -128,32 +132,32 @@
                                         </template>
                                         <template v-else-if="head.key == 'hoverEmbeddedTrace'">
                                              {{ session.interactions.filter(interaction => interaction.action
-                                                  == 'hoverEmbeddedTrace').length }}
+               == 'hoverEmbeddedTrace').length }}
                                         </template>
                                         <template v-else-if="head.key == 'hoverSeparatedTrace'">
                                              {{ session.interactions.filter(interaction => interaction.action
-                                                  == 'hoverSeparatedTrace').length }}
+               == 'hoverSeparatedTrace').length }}
                                         </template>
 
                                         <template v-else-if="head.key == 'changePath'">
                                              {{ session.interactions.filter(interaction => interaction.action
-                                                  == 'changePath').length }}
+               == 'changePath').length }}
                                         </template>
                                         <template v-else-if="head.key == 'switchPatina'">
                                              {{ session.interactions.filter(interaction => interaction.action
-                                                  == 'switchPatina').length }}
+               == 'switchPatina').length }}
                                         </template>
                                         <template v-else-if="head.key == 'expandTrace'">
                                              {{ session.interactions.filter(interaction => interaction.action
-                                                  == 'expandTrace').length }}
+               == 'expandTrace').length }}
                                         </template>
                                         <template v-else-if="head.key == 'submitTrace'">
                                              {{ session.interactions.filter(interaction => interaction.action
-                                                  == 'submitTrace').length }}
+               == 'submitTrace').length }}
                                         </template>
                                         <template v-else-if="head.key == 'upvote'">
                                              {{ session.interactions.filter(interaction => interaction.action
-                                                  == 'upvote').length }}
+               == 'upvote').length }}
                                         </template>
                                         <template v-else>
                                              <div style="max-width: 200px;">{{ session[head.key] }}</div>
@@ -164,7 +168,40 @@
                          </tbody>
                     </v-table>
                </v-window-item>
-          </v-window>
+
+               <v-window-item value="Coding">
+                    <v-table v-if="coding">
+                         <thead>
+                              <tr>
+                                   <th v-for="head in codingHeaders" :key="'th-' + head.key"
+                                        :style="`width: ${head.width}%`">
+                                        {{
+               head.key }}
+                                   </th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              <tr v-for="trace in coding" :key="trace.id">
+                                   <td v-for="head in codingHeaders" :key="'td-' + head.key"
+                                        :style="`width: ${head.width}%`">
+                                        <template v-if="head.key == 'image'">
+                                             <a :href="trace.image.url" target="_blank"><img :src="trace.image.url"
+                                                       width="200" /></a>
+                                        </template>
+
+                                        <template v-else-if="head.key == 'avatar'">
+                                             <Avatar v-if="trace.anchors && trace.anchors.length > 0"
+                                                  :image="trace.image" :trace="trace.anchors" />
+                                        </template>
+                                        <template v-else>
+                                             <div style="max-width: 200px;">{{ trace[head.key] }}</div>
+                                        </template>
+
+                                   </td>
+                              </tr>
+                         </tbody>
+                    </v-table>
+               </v-window-item> </v-window>
      </v-container>
 </template>
 
@@ -197,7 +234,7 @@ const interactionHeaders = [
 ]
 
 
-let tab = ref("Sessions")
+let tab = ref("Coding")
 
 const sessions = computed(() => {
      let interactions = traceStore.interactions
@@ -252,6 +289,26 @@ const deleteImage = (image) => {
 })*/
 
 const traces = computed(() => traceStore.getAllTraces)
+
+const coding = computed(() => {
+     let traces = traceStore.getAllTraces
+     let manualTraces = [233, 234, 235, 236, 238, 239, 240, 241, 242, 243, 245, 246, 247, 248, 249, 250, 252, 253, 251, 254, 255, 256, 257, 258, 260, 261, 262, 263, 264, 265, 259, 266, 269, 271, 272, 273, 270, 275, 276, 277, 278, 279, 280, 281, 282, 284, 286, 287, 288, 290, 292, 294, 295, 296, 297, 299, 300, 301, 302, 303, 305, 306, 307, 308, 310, 311, 312, 313, 314, 315, 316, 317, 318, 283, 304, 319, 320, 321, 274, 268, 267, 322, 323, 324, 325, 326, 328, 327, 330, 331, 332, 333, 329, 334, 335, 336, 293, 337, 338, 339, 349, 351, 352, 353, 354, 355, 356, 357, 359, 360, 361, 362, 363, 364, 365, 366, 367, 369, 370, 371, 373, 374, 375, 377, 378, 380, 382, 383, 384, 376, 385, 386, 368, 388, 389, 390, 387, 392, 372, 394, 395, 397, 399, 350, 400, 401, 402, 403, 404, 405, 406, 407, 408, 379, 409, 410, 358, 411, 412, 348, 413, 396, 391, 415, 393, 414, 416, 244, 381, 417, 418, 419, 424, 425, 428, 426, 427, 431, 433, 434, 435, 436, 437, 438, 439, 440, 441, 444, 447, 451, 453, 455, 457, 458, 445, 459, 460, 461, 462, 454, 442, 448, 452, 449, 463, 464, 430, 446, 450, 465, 443, 466, 432, 429, 456, 467, 1876, 1877, 1878, 1879, 1880, 1881, 1882, 1883, 1884, 1885, 1886, 1887, 1888, 1889, 1890, 1891, 1892, 1893, 1894, 1895, 1896, 1898, 1899, 1900, 1901, 1902, 1903, 1897, 1905, 1906, 1907, 1908, 1909, 1910, 1911, 1904, 1912, 1913, 1914, 1915, 1916, 1917, 1918, 1919, 1920, 1921, 1922, 1923]
+     let filteredTraces = traces.filter(trace => manualTraces.includes(trace.id))
+     filteredTraces.forEach(trace => {
+          trace.image = images.value.find(image => image.id == trace.image) // translate image id to full image object
+     })
+
+     return filteredTraces
+})
+
+const codingHeaders = [
+     { key: 'id', width: 5 },
+     { key: 'avatar', width: 10 },
+     { key: 'text', width: 10 },
+     { key: 'category', width: 10 },
+     { key: 'image', width: 10 },
+]
+
 const traceHeaders = [
      { key: 'id', width: 5 },
      //{ key: 'anchors', width: 10 },

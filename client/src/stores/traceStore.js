@@ -45,7 +45,7 @@ export const useTraceStore = defineStore("trace", {
         icon: "mdi-heart-outline",
         desc: "What's liked often?",
       },
-      //{ key: "Temporal", active: false, icon: "mdi-clock-outline", desc: "" },
+      { key: "Temporal", active: false, icon: "mdi-clock-outline", desc: "" },
       {
         key: "Relation",
         active: false,
@@ -185,6 +185,11 @@ export const useTraceStore = defineStore("trace", {
         });
 
         this.traceLinks = links;
+      }
+
+      //filter for temporal mockuo
+      if (this.activePatina.key == "Activity") {
+        traces = this.traces.filter((trace, i) => i < 50);
       }
 
       //filter no liked
